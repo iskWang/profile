@@ -42,25 +42,26 @@ export default function JoshWangProfile() {
 
   const experiences = [
     {
-      company: "專案導向",
-      role: "資深前端技術顧問",
+      company: "Independent / Project-based",
+      role: "Senior Front-End Technical Consultant",
       period: "2023/06 - Current",
+      description: "專精於舊有程式碼重構 (Legacy Code Refactoring)、AI 工作流整合，以及組織轉型期間的系統穩定化",
       subProjects: [
         {
           title: "數據分析新創 (SaaS)",
           period: "2025/11 – 2026/01",
           highlights: [
-            "主導 CI/CD 流程重構，整併 Git 分支（5→2）與 Monorepo 結構優化",
-            "規劃導入自動化測試架構，利用 Claude + Playwright MCP 自動生成 Gherkin 腳本",
-            "負責資安弱點修補（CVE-2025-29927 等）及安全性更新"
+            "主導 CI/CD 流程重構，將過度拆分的 Git 分支（5 個整併為 2 個）與 Monorepo 結構優化",
+            "規劃並導入自動化測試架構，利用 Claude + Playwright MCP 自動生成 Gherkin 腳本",
+            "針對急迫資安風險進行修補，成功解決 CVE-2025-29927 漏洞，提升系統防護等級"
           ]
         },
         {
           title: "知名房產集團",
           period: "2025/05 – 2025/09",
           highlights: [
-            "負責集團核心產品之地圖功能開發，實作選定範圍搜尋與多種 POI 篩選互動",
-            "導入 AI 輔助開發模式（Claude Code），一天半內完成特定功能驗證與初期實作",
+            "擔任核心功能開發主力，協助團隊填補技術缺口，於期限內完成地圖多種 POI 篩選互動功能上線",
+            "導入 AI 輔助開發模式（Claude Code），成功於一天半內完成特定功能的驗證與初期實作",
             "協助舊專案模組拆解與程式碼重構，解決既有架構之技術債"
           ]
         },
@@ -68,10 +69,10 @@ export default function JoshWangProfile() {
           title: "獨立開發者：AI 應用與前端技術研究",
           period: "2023/06 – 2025/05",
           highlights: [
-            "深度研究 Vibe Coding 模式，熟練運用 Windsurf 與 Claude Code 輔助開發",
-            "探索 MCP 應用，串接不同開發工具與 Context，提升 AI 協作效率",
-            "架設 SD A1111 與 ComfyUI Workflow，研究本機端圖像生成",
-            "使用 Vue 3 + Nuxt.js + Pinia 獨立建構即時交易資訊平台"
+            "深度研究並實踐 Vibe Coding 模式，熟練運用 Windsurf 與 Claude Code 進行輔助開發",
+            "探索 MCP 應用，串接不同開發工具與 Context，提升 AI 對專案代碼庫的理解與協作效率",
+            "架設 SD A1111 與 ComfyUI Workflow，研究本機端圖像生成邏輯",
+            "使用 Vue 3 + Nuxt.js + Pinia 獨立建構即時交易資訊平台，整合 TradingView Widget 與 ECharts"
           ]
         }
       ]
@@ -81,9 +82,10 @@ export default function JoshWangProfile() {
       role: "Front-End Developer",
       period: "2021/10 - 2023/06",
       highlights: [
-        "以 AWS S3/CloudFront + Next.js 取代 Firebase/Cloudinary，降低十倍預算",
-        "翻修 50%+ legacy code，導入效能檢測與自動縮圖系統",
-        "開發 CYBERSEC 2022/2023 資安大會活動頁面（Svelte、Preact.js）"
+        "以 AWS S3/CloudFront + Next.js 取代 Firebase/Cloudinary，降低十倍預算及提升網站可靠性",
+        "翻修 50%+ legacy code，使用 AWS SDK/TypeScript/Pica.js 實作自動縮圖系統",
+        "開發 CYBERSEC 2022/2023 資安大會活動頁面（Svelte、Preact.js + Tailwind CSS）",
+        "外部廠商系統資安問題反映: 密碼明碼傳輸及登入權限設計問題"
       ]
     },
     {
@@ -92,7 +94,8 @@ export default function JoshWangProfile() {
       period: "2019/05 - 2021/10",
       highlights: [
         "採用 React Hook + Context API，領導集團全新 IT 前端專案，覆蓋全球 50+ 國家",
-        "設計單頁近百格欄位表單，使用 Formik + Yup + React.memo",
+        "設計單頁近百格欄位表單，使用 Formik + Yup + React.memo 確保驗證和效能",
+        "使用 WebSocket 實作留言互動及即時通知功能",
         "內部提案使用 GitHub Actions 建置 CI/CD 流程（2019/8 首批採用者）"
       ]
     },

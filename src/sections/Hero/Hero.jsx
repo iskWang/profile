@@ -51,7 +51,7 @@ const Hero = () => {
               <TerminalLine delay={700} prefix="">
                 <span className="text-cyan-300 ml-2 sm:ml-4">"title"</span>
                 <span className="text-slate-400">: </span>
-                <span className="text-amber-300">"資深前端技術顧問"</span>
+                <span className="text-amber-300">"Senior Front-End Technical Consultant"</span>
                 <span className="text-slate-400">,</span>
               </TerminalLine>
               <TerminalLine delay={900} prefix="">
@@ -118,9 +118,9 @@ const Hero = () => {
           
           {/* CakeResume Link */}
           <div className="mt-8">
-            <a 
-              href="https://www.cake.me/joshwang" 
-              target="_blank" 
+            <a
+              href="/FED-JoshWang.pdf"
+              target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/40 rounded-xl text-amber-300 hover:text-amber-200 hover:border-amber-400/60 hover:shadow-lg hover:shadow-amber-500/10 transition-all group"
             >

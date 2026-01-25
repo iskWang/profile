@@ -1,14 +1,17 @@
 import React from 'react';
 import PawPrint from '../common/PawPrint';
 
-const ExperienceCard = ({ company, role, period, highlights, subProjects }) => {
+const ExperienceCard = ({ company, role, period, highlights, subProjects, description }) => {
   return (
     <div className="experience-card relative p-6 rounded-lg border border-slate-700/50 bg-slate-800/30 backdrop-blur-sm cursor-default">
       <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
         <h3 className="text-xl font-semibold text-white">{role}</h3>
         <span className="text-sm text-slate-400 font-mono bg-slate-700/50 px-3 py-1 rounded">{period}</span>
       </div>
-      <p className="text-emerald-400 font-medium mb-3">{company}</p>
+      <p className="text-emerald-400 font-medium mb-2">{company}</p>
+      {description && (
+        <p className="text-slate-400 text-sm mb-3 italic">{description}</p>
+      )}
 
       {subProjects && subProjects.length > 0 ? (
         <div className="space-y-4">
