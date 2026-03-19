@@ -9,10 +9,11 @@
 
     <link rel="canonical" href="https://profile.joshwang.dev" />
 
-    <!-- Google Fonts preconnect + stylesheet (避免 CSS @import render-blocking 瀑布) -->
+    <!-- Google Fonts: preconnect 提早建立連線，media="print" 讓字型非同步載入不 block render -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" /></noscript>
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
