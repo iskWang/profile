@@ -1,27 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { TerminalLine, CatFace } from '../../components/common';
 
 const Hero = () => {
-  const [typedText, setTypedText] = useState('');
   const fullText = 'josh.init()';
-  
-  useEffect(() => {
-    let i = 0;
-    const timer = setInterval(() => {
-      if (i <= fullText.length) {
-        setTypedText(fullText.slice(0, i));
-        i++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <section id="about" className="min-h-screen flex items-center justify-center px-6 pt-32 sm:pt-20">
       <div className="max-w-4xl w-full">
-        <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 overflow-hidden backdrop-blur-sm shadow-2xl">
+        <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 overflow-hidden shadow-2xl">
           {/* Terminal header */}
           <div className="flex items-center gap-2 px-4 py-3 bg-slate-800/80 border-b border-slate-700/50">
             <div className="w-3 h-3 rounded-full bg-red-500/80" />
@@ -83,7 +69,7 @@ const Hero = () => {
             </div>
 
             <TerminalLine delay={2000}>
-              <span className="text-emerald-400">{typedText}</span>
+              <span className="text-emerald-400">{fullText}</span>
               <span className="animate-pulse">▊</span>
             </TerminalLine>
           </div>
