@@ -1,20 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const FloatingCat = ({ style, delay = 0, className = '' }) => {
-  const [visible, setVisible] = useState(false);
-  
-  useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), delay);
-    return () => clearTimeout(timer);
-  }, [delay]);
-  
   return (
     <div
-      className={`absolute transition-all duration-1000 ${className} ${visible ? 'opacity-100' : 'opacity-0'}`}
+      className={`absolute ${className}`}
       style={{
         ...style,
-        animation: 'float 6s ease-in-out infinite',
-        animationDelay: `${delay}ms`
+        animation: `float 6s ease-in-out ${delay}ms infinite`,
       }}
     >
       <span className="text-4xl filter drop-shadow-lg">🐱</span>
