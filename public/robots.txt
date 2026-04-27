@@ -1,0 +1,33 @@
+# robots.txt - profile.joshwang.dev
+# https://www.rfc-editor.org/rfc/rfc9309
+
+# Default: allow all search crawlers
+User-agent: *
+Allow: /
+
+# AI training bots - disallow (ai-train: no)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+# AI search agents - allow (search: yes)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Content-Signal: ai-train=no, search=yes, ai-input=no
+
+Sitemap: https://profile.joshwang.dev/sitemap.xml

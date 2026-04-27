@@ -13,24 +13,24 @@ const Highlights = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="highlight-card highlight-card-cyan p-6 rounded-xl border border-cyan-500/30 bg-cyan-500/5 cursor-default group">
-            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200 inline-block">🤖</div>
-            <h3 className="text-lg font-semibold mb-2">AI 工具整合</h3>
-            <p className="text-slate-400 text-sm">Claude Code + Playwright MCP 自動產生測試腳本</p>
+            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200 inline-block">🚀</div>
+            <h3 className="text-lg font-semibold mb-2">雲端維運優化</h3>
+            <p className="text-slate-400 text-sm">降低雲端基礎設施成本 90%，建置 13 語系網站架構</p>
           </div>
           <div className="highlight-card highlight-card-amber p-6 rounded-xl border border-amber-500/30 bg-amber-500/5 cursor-default group">
-            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200 inline-block">📱</div>
-            <h3 className="text-lg font-semibold mb-2">Mobile 開發</h3>
-            <p className="text-slate-400 text-sm">兩次獨立 React Native 專案，熟悉 Code Push、Firebase 推播整合</p>
+            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200 inline-block">🤖</div>
+            <h3 className="text-lg font-semibold mb-2">AI 協作實踐</h3>
+            <p className="text-slate-400 text-sm">熟練 Claude Code & MCP，將 POC 驗證縮短至 1.5 天</p>
           </div>
           <div className="highlight-card highlight-card-emerald p-6 rounded-xl border border-emerald-500/30 bg-emerald-500/5 cursor-default group">
-            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200 inline-block">🤝</div>
-            <h3 className="text-lg font-semibold mb-2">跨部門與新創</h3>
-            <p className="text-slate-400 text-sm">與 SRE、設計師、HR、行銷協作，多間新創實戰經驗</p>
+            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200 inline-block">⚙️</div>
+            <h3 className="text-lg font-semibold mb-2">CI/CD 與品質</h3>
+            <p className="text-slate-400 text-sm">主導分支重構優化維運負擔，自動化測試提升驗收效率</p>
           </div>
           <div className="highlight-card highlight-card-cyan p-6 rounded-xl border border-cyan-500/30 bg-cyan-500/5 cursor-default group">
             <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200 inline-block">🔐</div>
-            <h3 className="text-lg font-semibold mb-2">資安意識</h3>
-            <p className="text-slate-400 text-sm">TeamT5 經驗，考慮駭客攻擊點，預防 API/輸入框入侵</p>
+            <h3 className="text-lg font-semibold mb-2">資安與防禦</h3>
+            <p className="text-slate-400 text-sm">修補 CVE-2025-29927 關鍵漏洞，落實安全性 Patching</p>
           </div>
         </div>
       </div>

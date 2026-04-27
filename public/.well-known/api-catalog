@@ -1,0 +1,19 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://profile.joshwang.dev/",
+      "describedby": [
+        {
+          "href": "https://profile.joshwang.dev/sitemap.xml",
+          "type": "application/xml"
+        }
+      ],
+      "alternate": [
+        {
+          "href": "https://profile.joshwang.dev/index.md",
+          "type": "text/markdown"
+        }
+      ]
+    }
+  ]
+}

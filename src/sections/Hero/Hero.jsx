@@ -36,76 +36,72 @@ const Hero = () => {
               </TerminalLine>
               <TerminalLine delay={700} prefix="">
                 <span className="text-cyan-300 ml-2 sm:ml-4">"title"</span>
-                <span className="text-slate-400">: </span>
-                <span className="text-amber-300">"Senior Front-End Technical Consultant"</span>
-                <span className="text-slate-400">,</span>
-              </TerminalLine>
-              <TerminalLine delay={900} prefix="">
-                <span className="text-cyan-300 ml-2 sm:ml-4">"experience"</span>
-                <span className="text-slate-400">: </span>
-                <span className="text-emerald-400">"10+ years"</span>
-                <span className="text-slate-400">,</span>
-              </TerminalLine>
-              <TerminalLine delay={1100} prefix="">
-                <span className="text-cyan-300 ml-2 sm:ml-4">"location"</span>
-                <span className="text-slate-400">: </span>
-                <span className="text-amber-300">"Taipei, Taiwan"</span>
-                <span className="text-slate-400">,</span>
-              </TerminalLine>
-              <TerminalLine delay={1300} prefix="">
-                <span className="text-cyan-300 ml-2 sm:ml-4">"personality"</span>
-                <span className="text-slate-400">: </span>
-                <span className="text-amber-300">"INTP 邏輯學家"</span>
-                <span className="text-slate-400">,</span>
-              </TerminalLine>
-              <TerminalLine delay={1500} prefix="">
-                <span className="text-cyan-300 ml-2 sm:ml-4">"pet"</span>
-                <span className="text-slate-400">: </span>
-                <span className="text-amber-300">"🐱"</span>
-              </TerminalLine>
-              <TerminalLine delay={1700} prefix="">
-                <span className="text-slate-500">{'}'}</span>
-              </TerminalLine>
-            </div>
-
-            <TerminalLine delay={2000}>
-              <span className="text-emerald-400">{fullText}</span>
-              <span className="animate-pulse">▊</span>
+              <span className="text-slate-400">: </span>
+              <span className="text-amber-300">"Software Developer"</span>
+              <span className="text-slate-400">,</span>
+            </TerminalLine>
+            <TerminalLine delay={900} prefix="">
+              <span className="text-cyan-300 ml-2 sm:ml-4">"experience"</span>
+              <span className="text-slate-400">: </span>
+              <span className="text-emerald-400">"10+ years"</span>
+              <span className="text-slate-400">,</span>
+            </TerminalLine>
+            <TerminalLine delay={1100} prefix="">
+              <span className="text-cyan-300 ml-2 sm:ml-4">"focus"</span>
+              <span className="text-slate-400">: </span>
+              <span className="text-amber-300">"React / AI Workflow"</span>
+              <span className="text-slate-400">,</span>
+            </TerminalLine>
+            <TerminalLine delay={1300} prefix="">
+              <span className="text-cyan-300 ml-2 sm:ml-4">"location"</span>
+              <span className="text-slate-400">: </span>
+              <span className="text-amber-300">"Taipei, Taiwan"</span>
+              <span className="text-slate-400">,</span>
+            </TerminalLine>
+            <TerminalLine delay={1500} prefix="">
+              <span className="text-cyan-300 ml-2 sm:ml-4">"pet"</span>
+              <span className="text-slate-400">: </span>
+              <span className="text-amber-300">"🐱"</span>
+            </TerminalLine>
+            <TerminalLine delay={1700} prefix="">
+              <span className="text-slate-500">{'}'}</span>
             </TerminalLine>
           </div>
-        </div>
 
-        {/* Quick intro */}
-        <div className="mt-8 sm:mt-12 text-center space-y-4">
-          <h1 className="text-3xl sm:text-5xl font-bold px-4">
-            <span className="bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              您好，我是 Josh!
-            </span>
-            <span className="ml-2 sm:ml-3 inline-block animate-bounce">👋</span>
-          </h1>
-          <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed px-6">
-            專注於<span className="text-emerald-400">後台系統</span>及<span className="text-cyan-400">活動頁面</span>開發，
-            擅長 CI/CD 架構優化、前端安全性及跨部門協作。
-          </p>
-          <div className="flex justify-center gap-4 mt-6 flex-wrap">
-            <span className="tag-cyan px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg text-cyan-400 text-sm flex items-center gap-2 cursor-default">
-              <span>🤖</span> AI 工具整合
-            </span>
-            <span className="tag-amber px-4 py-2 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-400 text-sm flex items-center gap-2 cursor-default">
-              <span>📱</span> Mobile 開發
-            </span>
-            <span className="tag-emerald px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-emerald-400 text-sm flex items-center gap-2 cursor-default">
-              <span>🤝</span> 跨部門與新創
-            </span>
-            <span className="tag-cyan px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg text-cyan-400 text-sm flex items-center gap-2 cursor-default">
-              <span>🔐</span> 資安意識
-            </span>
-          </div>
+          <TerminalLine delay={2000}>
+            <span className="text-emerald-400">{fullText}</span>
+            <span className="animate-pulse">▊</span>
+          </TerminalLine>
+        </div>
+      </div>
+
+      {/* Quick intro */}
+      <div className="mt-8 sm:mt-12 text-center space-y-4">
+        <h1 className="text-3xl sm:text-5xl font-bold px-4">
+          <span className="bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+            您好，我是 Josh!
+          </span>
+          <span className="ml-2 sm:ml-3 inline-block animate-bounce">👋</span>
+        </h1>
+        <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed px-6">
+          專注於 <span className="text-emerald-400">React / Next.js 架構設計</span>、<span className="text-cyan-400">AI 開發流程整合</span>與快速交付的軟體開發者。
+        </p>
+        <div className="flex justify-center gap-4 mt-6 flex-wrap">
+          <span className="tag-cyan px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg text-cyan-400 text-sm flex items-center gap-2 cursor-default">
+            <span>🤖</span> AI 驅動開發
+          </span>
+          <span className="tag-amber px-4 py-2 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-400 text-sm flex items-center gap-2 cursor-default">
+            <span>🌐</span> 跨平台開發
+          </span>
+          <span className="tag-cyan px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg text-cyan-400 text-sm flex items-center gap-2 cursor-default">
+            <span>🔐</span> 資安意識
+          </span>
+        </div>
           
           {/* CakeResume Link */}
           <div className="mt-8">
             <a
-              href="/FED-JoshWang.pdf"
+              href="/SWE-JoshWang.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/40 rounded-xl text-amber-300 hover:text-amber-200 hover:border-amber-400/60 hover:shadow-lg hover:shadow-amber-500/10 transition-all group"

@@ -22,7 +22,7 @@ const Experience = ({ experiences }) => {
         <div className="mt-8 text-center">
           <p className="text-slate-400 text-sm font-mono flex items-center justify-center gap-2">
             <PawPrint className="text-amber-400/50" />
-            更多經歷：CatFi、myTreat、Ecowork 等新創團隊
+            早期經歷：Fullinn、CatFi、myTreat、Ecowork 等新創團隊
             <PawPrint className="text-amber-400/50" />
           </p>
         </div>

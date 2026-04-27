@@ -1,0 +1,16 @@
+{
+  "serverInfo": {
+    "name": "Josh Wang Profile",
+    "version": "1.0.0",
+    "description": "Josh Wang - Senior Front-End Technical Consultant, Taipei"
+  },
+  "transport": {
+    "type": "http",
+    "endpoint": "https://profile.joshwang.dev"
+  },
+  "capabilities": {
+    "tools": false,
+    "resources": false,
+    "prompts": false
+  }
+}

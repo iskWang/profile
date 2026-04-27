@@ -42,10 +42,10 @@ export default function JoshWangProfile() {
 
   const experiences = [
     {
-      company: "Independent / Project-based",
-      role: "Senior Front-End Technical Consultant",
+      company: "Independent",
+      role: "Front-End Technical Consultant (專案合作制)",
       period: "2023/06 - Current",
-      description: "專精於舊有程式碼重構 (Legacy Code Refactoring)、AI 工作流整合，以及組織轉型期間的系統穩定化",
+      description: "CI/CD 架構與資安深度優化 | 數據分析新創 (SaaS)",
       subProjects: [
         {
           title: "CI/CD 架構與資安深度優化 | 數據分析新創 (SaaS)",
@@ -66,22 +66,15 @@ export default function JoshWangProfile() {
         {
           title: "Vibe Coding 模式實踐與 MCP 應用研究",
           highlights: [
-            "深度研究並實踐 Vibe Coding，熟練運用 Windsurf 與 Claude Code 進行開發縮短 POC 驗證時間",
-            "探索 Model Context Protocol (MCP) 應用，提升 AI 對專案代碼庫的協作效率"
-          ]
-        },
-        {
-          title: "生成式 AI 工具鏈整合 (SD & ComfyUI)",
-          highlights: [
-            "架設 Stable Diffusion (A1111) 與 ComfyUI 工作流，研究本機端或雲端 (Runpod) 圖像生成邏輯，並探索整合至前端應用之可能性"
+            "深度研究並實踐 Vibe Coding，熟練運用 Windsurf 與 Claude Code 進行開發，縮短 POC 驗證時間",
+            "探索 Model Context Protocol (MCP) 應用，提升 AI 對專案 codebase 的協作效率"
           ]
         },
         {
           title: "即時量化交易平台建構 | Vue 3 + Nuxt.js",
           highlights: [
             "跨出 React 生態系，獨立使用 Vue 3 + Nuxt 3 + Pinia 建構具備即時交易資訊之平台",
-            "整合 TradingView Widget 與 ECharts，實作即時股價、最佳五檔行情及數據視覺化",
-            "優化既有系統框架之資料存取邏輯，確保使用者權限與數據安全之嚴密性"
+            "整合 TradingView Widget 與 ECharts，實作即時股價、最佳五檔行情及數據視覺化"
           ]
         }
       ]
@@ -98,7 +91,7 @@ export default function JoshWangProfile() {
       ]
     },
     {
-      company: "海碩集團 鑫享科技",
+      company: "海碩集團 鑫享科技 (OEC Group)",
       role: "Front-End Developer",
       period: "2019/05 - 2021/10",
       highlights: [
@@ -107,25 +100,15 @@ export default function JoshWangProfile() {
         "使用 WebSocket 實作留言互動及即時通知功能",
         "內部提案使用 GitHub Actions 建置 CI/CD 流程（2019/8 首批採用者）"
       ]
-    },
-    {
-      company: "Fullinn 滿房寶房宿系統（新創）",
-      role: "Front-End Developer",
-      period: "2017/12 - 2019/04",
-      highlights: [
-        "協助轉移 Redux + Reducer 到 Apollo 2.0，使用 React.js 及 GraphQL 開發",
-        "協助 React Native 實作，引入 Firebase Push + Code Push",
-        "領導前端架構設計，以 Next.js 開發 SEO 友善的民宿官網系統"
-      ]
     }
   ];
 
   const skills = {
-    frontend: ["React.js/Next.js", "TypeScript", "React Context", "Redux", "Tailwind.css", "Sass", "GraphQL", "Vue.js/Nuxt.js"],
-    backend: ["Node.js", "Koa", "Rails", "AWS (S3, CloudFront)"],
-    devops: ["Docker", "GitHub Actions", "GitLab Runner"],
+    frontend: ["React.js/Next.js", "TypeScript", "Redux", "Tailwind CSS", "Sass", "GraphQL", "Vue.js/Nuxt.js"],
+    backend: ["Node.js", "Rails", "Koa", "AWS (S3, CloudFront)", "Docker"],
+    devops: ["GitHub Actions", "GitLab Runner", "Jest", "Cucumber"],
     mobile: ["React Native", "Code Push", "Fabric", "TestFlight"],
-    testing: ["Jest", "Cucumber", "Jenkins"]
+    ai: ["Claude Code", "MCP", "Windsurf", "Playwright"]
   };
 
   return (

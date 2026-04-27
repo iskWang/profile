@@ -27,7 +27,7 @@ const Skills = ({ skills }) => {
             
             <div>
               <h3 className="text-lg font-semibold text-cyan-400 mb-3 font-mono">
-                {'{'} Back-End {'}'}
+                {'{'} Back-End & DevOps {'}'}
               </h3>
               <div className="flex flex-wrap">
                 {skills.backend.map((skill, i) => (
@@ -39,6 +39,17 @@ const Skills = ({ skills }) => {
           
           <div className="space-y-6">
             <div>
+              <h3 className="text-lg font-semibold text-emerald-400 mb-3 font-mono flex items-center gap-2">
+                <span>🤖</span> AI Workflow
+              </h3>
+              <div className="flex flex-wrap">
+                {skills.ai.map((skill, i) => (
+                  <SkillBadge key={i} name={skill} level="primary" />
+                ))}
+              </div>
+            </div>
+            
+            <div>
               <h3 className="text-lg font-semibold text-amber-400 mb-3 font-mono flex items-center gap-2">
                 <span>📱</span> Mobile
               </h3>
@@ -48,14 +59,14 @@ const Skills = ({ skills }) => {
                 ))}
               </div>
             </div>
-            
+
             <div>
-              <h3 className="text-lg font-semibold text-emerald-400 mb-3 font-mono flex items-center gap-2">
-                <span>⚙️</span> DevOps & Testing
+              <h3 className="text-lg font-semibold text-cyan-400 mb-3 font-mono flex items-center gap-2">
+                <span>⚙️</span> CI/CD & Testing
               </h3>
               <div className="flex flex-wrap">
-                {[...skills.devops, ...skills.testing].map((skill, i) => (
-                  <SkillBadge key={i} name={skill} level="primary" />
+                {skills.devops.map((skill, i) => (
+                  <SkillBadge key={i} name={skill} level="secondary" />
                 ))}
               </div>
             </div>
