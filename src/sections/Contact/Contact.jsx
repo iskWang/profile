@@ -50,18 +50,6 @@ const Contact = () => {
           <CatFace size="text-lg" className="flex-shrink-0" />
         </p>
         
-        {/* CTA Button */}
-        <div className="mt-8">
-          <a 
-            href="https://www.cake.me/joshwang" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl text-white font-semibold hover:from-emerald-400 hover:to-cyan-400 hover:shadow-lg hover:shadow-emerald-500/30 transition-all hover:-translate-y-1 group"
-          >
-            <span>下載完整履歷</span>
-            <CatFace size="text-xl" className="group-hover:rotate-12 transition-transform" />
-          </a>
-        </div>
       </div>
     </section>
   );
