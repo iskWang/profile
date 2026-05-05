@@ -32,15 +32,6 @@ const Contact = () => {
               <span className="text-amber-300">"Taipei, Taiwan"</span>
               <span className="text-slate-400">;</span>
             </p>
-            <p className="flex flex-wrap items-center">
-              <span className="text-cyan-300">const</span>
-              <span className="text-white ml-2">resume</span>
-              <span className="text-slate-400 mx-1 sm:mx-2">=</span>
-              <a href="https://www.cake.me/joshwang" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 transition-colors break-all">
-                "https://www.cake.me/joshwang"
-              </a>
-              <span className="text-slate-400">;</span>
-            </p>
           </div>
         </div>
         
