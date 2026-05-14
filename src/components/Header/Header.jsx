@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { CatFace } from '../common';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Header = ({ scrollToSection }) => {
+  const { lang, toggleLang, content } = useLanguage();
   const [activeSection, setActiveSection] = useState('about');
-  
+
   const sections = [
-    { id: 'about', label: 'about' },
-    { id: 'experience', label: 'experience' },
-    { id: 'skills', label: 'skills' },
-    { id: 'contact', label: 'contact' }
+    { id: 'about',      label: content.nav.about },
+    { id: 'experience', label: content.nav.experience },
+    { id: 'skills',     label: content.nav.skills },
+    { id: 'contact',    label: content.nav.contact },
   ];
 
   useEffect(() => {
@@ -27,12 +29,12 @@ const Header = ({ scrollToSection }) => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [sections]);
 
   return (
     <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-900/70 border-b border-slate-700/50">
       <nav className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div 
+        <div
           className="font-mono text-emerald-400 flex items-center gap-2 cursor-pointer group"
           onClick={() => scrollToSection('about')}
         >
@@ -41,8 +43,7 @@ const Header = ({ scrollToSection }) => {
           <span className="text-white group-hover:text-emerald-400 transition-colors">josh_wang</span>
           <span className="animate-pulse">_</span>
         </div>
-        
-        {/* Breadcrumb-style navigation for mobile, standard for desktop */}
+
         <div className="flex items-center gap-2 md:gap-6 font-mono text-sm overflow-x-auto no-scrollbar max-w-full px-2">
           {sections.map((section, index) => (
             <React.Fragment key={section.id}>
@@ -50,8 +51,8 @@ const Header = ({ scrollToSection }) => {
               <button
                 onClick={() => scrollToSection(section.id)}
                 className={`transition-colors whitespace-nowrap ${
-                  activeSection === section.id 
-                    ? 'text-emerald-400 font-bold' 
+                  activeSection === section.id
+                    ? 'text-emerald-400 font-bold'
                     : 'text-slate-400 hover:text-emerald-400'
                 }`}
               >
@@ -61,6 +62,14 @@ const Header = ({ scrollToSection }) => {
               </button>
             </React.Fragment>
           ))}
+
+          <button
+            onClick={toggleLang}
+            aria-label="Switch language"
+            className="ml-2 font-mono text-xs px-3 py-1.5 rounded-lg border border-slate-600/60 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all whitespace-nowrap"
+          >
+            {lang === 'zh' ? 'EN' : '中文'}
+          </button>
         </div>
       </nav>
     </header>

@@ -2,7 +2,6 @@
 
 **地點：** Taipei, Taiwan
 **Email：** spjay1@gmail.com
-**履歷：** https://www.cake.me/joshwang
 **個人網站：** https://profile.joshwang.dev
 **個性：** INTP 邏輯學家
 
@@ -112,5 +111,4 @@
 
 - **Email：** spjay1@gmail.com
 - **地點：** Taipei, Taiwan
-- **CakeResume：** https://www.cake.me/joshwang
 - **履歷 PDF：** https://profile.joshwang.dev/SWE-JoshWang.pdf

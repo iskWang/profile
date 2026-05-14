@@ -4,49 +4,70 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Josh Wang | Front-End Developer</title>
-    <meta name="description" content="Josh Wang - 10 年 WEB 開發經驗，專注於後台系統及活動頁面開發，擅長 CI/CD 架構優化、前端安全性及跨部門協作。" />
+    <title>Josh Wang | Software Developer</title>
+    <meta name="description" content="Josh Wang — Software Developer with 10+ years of experience. React/Next.js architecture, AI workflow integration, security awareness. / 軟體開發者，專注 React/Next.js 架構設計與 AI 開發流程整合。" />
 
-    <link rel="canonical" href="https://profile.joshwang.dev" />
+    <!-- Canonical & hreflang for multilingual SPA -->
+    <link rel="canonical" href="https://profile.joshwang.dev/" />
+    <link rel="alternate" hreflang="zh-TW" href="https://profile.joshwang.dev/?lang=zh" />
+    <link rel="alternate" hreflang="en" href="https://profile.joshwang.dev/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://profile.joshwang.dev/" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="profile" />
     <meta property="og:locale" content="zh_TW" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:url" content="https://profile.joshwang.dev" />
     <meta property="og:title" content="Josh Wang | Software Developer" />
-    <meta property="og:description" content="專注 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者。" />
+    <meta property="og:description" content="專注 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者。A software developer focusing on React/Next.js architecture and AI workflow integration." />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Josh Wang | Software Developer" />
-    <meta name="twitter:description" content="專注 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者。" />
+    <meta name="twitter:description" content="專注 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者。A software developer focusing on React/Next.js architecture and AI workflow integration." />
 
-    <!-- JSON-LD structured data -->
+    <!-- JSON-LD: all language variants in one static block, no JS rendering needed -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfilePage",
-      "mainEntity": {
-        "@type": "Person",
-        "name": "Josh Wang",
-        "jobTitle": "Software Developer",
-        "description": "專注 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者。",
-        "email": "spjay1@gmail.com",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Taipei",
-          "addressCountry": "TW"
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://profile.joshwang.dev/#person",
+          "name": "Josh Wang",
+          "jobTitle": "Software Developer",
+          "email": "spjay1@gmail.com",
+          "url": "https://profile.joshwang.dev",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Taipei",
+            "addressCountry": "TW"
+          },
+          "knowsAbout": [
+            "React.js", "Next.js", "TypeScript", "Vue.js", "Nuxt.js",
+            "Node.js", "GraphQL", "Docker", "GitHub Actions",
+            "React Native", "CI/CD", "Front-End Security", "AI Workflow", "Claude Code", "MCP"
+          ]
         },
-        "knowsAbout": [
-          "React.js", "Next.js", "TypeScript", "Vue.js", "Nuxt.js",
-          "Node.js", "GraphQL", "Docker", "GitHub Actions",
-          "React Native", "CI/CD", "Front-End Security"
-        ],
-        "url": "https://profile.joshwang.dev",
-        "sameAs": [
-          "https://www.cake.me/joshwang"
-        ]
-      }
+        {
+          "@type": "ProfilePage",
+          "@id": "https://profile.joshwang.dev/?lang=zh",
+          "inLanguage": "zh-TW",
+          "name": "Josh Wang | 軟體開發者",
+          "description": "專注 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者。10+ 年 Web 開發經驗。",
+          "url": "https://profile.joshwang.dev/?lang=zh",
+          "mainEntity": { "@id": "https://profile.joshwang.dev/#person" }
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://profile.joshwang.dev/?lang=en",
+          "inLanguage": "en",
+          "name": "Josh Wang | Software Developer",
+          "description": "A software developer with 10+ years of experience focusing on React/Next.js architecture, AI workflow integration, and rapid delivery.",
+          "url": "https://profile.joshwang.dev/?lang=en",
+          "mainEntity": { "@id": "https://profile.joshwang.dev/#person" }
+        }
+      ]
     }
     </script>
   </head>
