@@ -18,7 +18,19 @@ const ExperienceCard = ({ company, role, period, highlights, subProjects, descri
           {subProjects.map((project, idx) => (
             <div key={idx} className="pl-2 border-l-2 border-slate-600/50">
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="text-slate-200 font-medium">{project.title}</span>
+                {project.url ? (
+                  <a 
+                    href={project.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-slate-200 font-medium hover:text-emerald-400 transition-colors flex items-center gap-1 group"
+                  >
+                    {project.title}
+                    <span className="text-xs opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+                  </a>
+                ) : (
+                  <span className="text-slate-200 font-medium">{project.title}</span>
+                )}
                 {project.period && (
                   <span className="text-xs text-slate-500 font-mono">{project.period}</span>
                 )}

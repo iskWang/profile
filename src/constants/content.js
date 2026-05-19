@@ -27,8 +27,17 @@ export const CONTENT = {
           company: "Independent",
           role: "Front-End Technical Consultant (專案合作制)",
           period: "2023/06 - Current",
-          description: "CI/CD 架構與資安深度優化 | 數據分析新創 (SaaS)",
+          description: "AI Workflow 整合 | CI/CD 架構與資安深度優化",
           subProjects: [
+            {
+              title: "⭐⭐⭐ PickleScout | LLM-driven Browser Agent (Open Source) - GitHub",
+              url: "https://github.com/iskWang/PickleScout",
+              highlights: [
+                "開發基於 LLM 的自動化瀏覽器代理，自動探索 Web App 並生成 ready-to-run 的 Cucumber.js + Playwright 測試套件",
+                "整合 Stagehand 進行瀏覽器自動化，利用 LLM 實作 Self-healing 選擇器與 Gherkin 腳本自動生成",
+                "後端架構採用 Fastify 結合 Redis/BullMQ 處理異步任務隊列，優化大規模網頁探索效能"
+              ]
+            },
             {
               title: "CI/CD 架構與資安深度優化 | 數據分析新創 (SaaS)",
               highlights: [
@@ -50,13 +59,6 @@ export const CONTENT = {
               highlights: [
                 "深度研究並實踐 Vibe Coding，熟練運用 Windsurf 與 Claude Code 進行開發，縮短 POC 驗證時間",
                 "探索 Model Context Protocol (MCP) 應用，提升 AI 對專案 codebase 的協作效率"
-              ]
-            },
-            {
-              title: "即時量化交易平台建構 | Vue 3 + Nuxt.js",
-              highlights: [
-                "跨出 React 生態系，獨立使用 Vue 3 + Nuxt 3 + Pinia 建構具備即時交易資訊之平台",
-                "整合 TradingView Widget 與 ECharts，實作即時股價、最佳五檔行情及數據視覺化"
               ]
             }
           ]
@@ -133,10 +135,10 @@ export const CONTENT = {
     },
     skillsData: {
       frontend: ["React.js/Next.js", "TypeScript", "Redux", "Tailwind CSS", "Sass", "GraphQL", "Vue.js/Nuxt.js"],
-      backend: ["Node.js", "Rails", "Koa", "AWS (S3, CloudFront)", "Docker"],
+      backend: ["Node.js", "Fastify", "Redis", "BullMQ", "AWS (S3, CloudFront)", "Docker"],
       devops: ["GitHub Actions", "GitLab Runner", "Jest", "Cucumber"],
       mobile: ["React Native", "Code Push", "Fabric", "TestFlight"],
-      ai: ["Claude Code", "MCP", "Windsurf", "Playwright"]
+      ai: ["Claude Code", "MCP", "Stagehand (Browser Agent)", "Playwright", "Windsurf"]
     }
   },
   en: {
@@ -167,8 +169,17 @@ export const CONTENT = {
           company: "Independent",
           role: "Front-End Technical Consultant (Project-based)",
           period: "2023/06 - Current",
-          description: "CI/CD Architecture & Security Optimization | Data Analytics Startup (SaaS)",
+          description: "AI Workflow Integration | CI/CD Architecture & Security Optimization",
           subProjects: [
+            {
+              title: "⭐⭐⭐ PickleScout | LLM-driven Browser Agent (Open Source) - GitHub",
+              url: "https://github.com/iskWang/PickleScout",
+              highlights: [
+                "Developed an LLM-driven autonomous browser agent that explores web apps and generates ready-to-run Cucumber.js + Playwright test suites.",
+                "Integrated Stagehand for browser automation, utilizing LLMs for self-healing selectors and automated Gherkin script generation.",
+                "Architected the backend with Fastify, Redis, and BullMQ to handle asynchronous job queues and optimize web exploration performance."
+              ]
+            },
             {
               title: "CI/CD Architecture & Security Optimization | Data Analytics Startup (SaaS)",
               highlights: [
@@ -190,13 +201,6 @@ export const CONTENT = {
               highlights: [
                 "Researched and practiced Vibe Coding, using Windsurf and Claude Code to accelerate POC verification.",
                 "Explored Model Context Protocol (MCP) applications to improve AI collaboration efficiency within the codebase."
-              ]
-            },
-            {
-              title: "Real-time Quantitative Trading Platform | Vue 3 + Nuxt.js",
-              highlights: [
-                "Expanded beyond the React ecosystem to build a platform with real-time trading info using Vue 3 + Nuxt 3 + Pinia.",
-                "Integrated TradingView Widgets and ECharts for real-time stock prices, Order Book, and data visualization."
               ]
             }
           ]
@@ -273,10 +277,10 @@ export const CONTENT = {
     },
     skillsData: {
       frontend: ["React.js/Next.js", "TypeScript", "Redux", "Tailwind CSS", "Sass", "GraphQL", "Vue.js/Nuxt.js"],
-      backend: ["Node.js", "Rails", "Koa", "AWS (S3, CloudFront)", "Docker"],
+      backend: ["Node.js", "Fastify", "Redis", "BullMQ", "AWS (S3, CloudFront)", "Docker"],
       devops: ["GitHub Actions", "GitLab Runner", "Jest", "Cucumber"],
       mobile: ["React Native", "Code Push", "Fabric", "TestFlight"],
-      ai: ["Claude Code", "MCP", "Windsurf", "Playwright"]
+      ai: ["Claude Code", "MCP", "Stagehand (Browser Agent)", "Playwright", "Windsurf"]
     }
   }
 };

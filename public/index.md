@@ -28,7 +28,12 @@
 ### Independent / Project-based — Front-End Technical Consultant
 **2023/06 – 至今**
 
-專精於舊有程式碼重構 (Legacy Code Refactoring)、AI 工作流整合，以及組織轉型期間的系統穩定化
+專精於 **AI 工作流整合 (AI Workflow)**、舊有程式碼重構 (Legacy Code Refactoring)，以及組織轉型期間的系統穩定化
+
+- **⭐⭐⭐ PickleScout | LLM-driven Browser Agent (Open Source)**
+  - 開發基於 LLM 的自動化瀏覽器代理，自動探索 Web App 並生成 ready-to-run 的 Cucumber.js + Playwright 測試套件
+  - 整合 Stagehand 進行瀏覽器自動化，利用 LLM 實作 Self-healing 選擇器與 Gherkin 腳本自動生成
+  - 後端架構採用 Fastify 結合 Redis/BullMQ 處理異步任務隊列，優化大規模網頁探索效能
 
 - **CI/CD 架構與資安深度優化 | 數據分析新創 (SaaS)**
   - 主導 CI/CD 流程重構，將過度拆分的 5 個分支整併為 2 個，優化 Monorepo 結構有效降低維運負擔
@@ -46,11 +51,6 @@
 
 - **生成式 AI 工具鏈整合 (SD & ComfyUI)**
   - 架設 Stable Diffusion (A1111) 與 ComfyUI 工作流，研究本機端或雲端 (Runpod) 圖像生成邏輯，並探索整合至前端應用之可能性
-
-- **即時量化交易平台建構 | Vue 3 + Nuxt.js**
-  - 跨出 React 生態系，獨立使用 Vue 3 + Nuxt 3 + Pinia 建構具備即時交易資訊之平台
-  - 整合 TradingView Widget 與 ECharts，實作即時股價、最佳五檔行情及數據視覺化
-  - 優化既有系統框架之資料存取邏輯，確保使用者權限與數據安全之嚴密性
 
 ### TeamT5 杜浦數位安全 — Front-End Developer
 **2021/10 – 2023/06**
