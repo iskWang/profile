@@ -98,6 +98,7 @@ export const CONTENT = {
         ai: "AI Workflow",
         mobile: "Mobile",
         testing: "Architecture & Infra",
+        testing_extra: "Testing",
       },
     },
     contact: {
@@ -285,6 +286,7 @@ export const CONTENT = {
         ai: "AI Workflow",
         mobile: "Mobile",
         testing: "Architecture & Infra",
+        testing_extra: "Testing",
       },
     },
     contact: {

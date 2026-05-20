@@ -39,9 +39,7 @@ const Skills = ({ skills }) => {
                 ))}
               </div>
             </div>
-          </div>
 
-          <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-emerald-400 mb-3 font-mono flex items-center gap-2">
                 <span>🤖</span> {skillsContent.categories.ai}
@@ -52,7 +50,9 @@ const Skills = ({ skills }) => {
                 ))}
               </div>
             </div>
+          </div>
 
+          <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-amber-400 mb-3 font-mono flex items-center gap-2">
                 <span>📱</span> {skillsContent.categories.mobile}
@@ -70,6 +70,17 @@ const Skills = ({ skills }) => {
               </h3>
               <div className="flex flex-wrap">
                 {skills.devops.map((skill, i) => (
+                  <SkillBadge key={i} name={skill} level="secondary" />
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-slate-300 mb-3 font-mono flex items-center gap-2">
+                <span>🧪</span> {skillsContent.categories.testing_extra || 'Testing'}
+              </h3>
+              <div className="flex flex-wrap">
+                {skills.testing.map((skill, i) => (
                   <SkillBadge key={i} name={skill} level="secondary" />
                 ))}
               </div>

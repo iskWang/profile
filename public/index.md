@@ -93,11 +93,18 @@
 
 ## 技術技能
 
-**前端：** React.js/Next.js、TypeScript、Redux、GraphQL、Tailwind CSS、Vue.js/Nuxt.js
-**後端：** Node.js、Rails、Koa、Fastify、Redis、BullMQ、AWS (S3, CloudFront)
-**架構與維運：** monorepo、CI/CD、GitHub Actions、GitLab Runner、AWS、Docker
-**Mobile：** React Native、Code Push、Fabric、TestFlight
-**測試：** Jest、Cucumber、RSpec
+**Frontend:** React / Next.js / TypeScript / Redux / GraphQL / Tailwind CSS / Vue 3 / Nuxt.js
+**Architecture & Infra:** monorepo / CI/CD / GitHub Actions / GitLab Runner / AWS / Docker
+**AI Workflow:** Claude Code / MCP / Playwright / Windsurf
+**Backend:** Node.js / Rails / Koa
+**Mobile:** React Native / Code Push / Fabric / TestFlight
+**Testing:** Jest / Cucumber / RSpec
+
+---
+
+## 學歷
+
+**文藻外語大學** 數位內容應用與管理系 (2009/09 – 2013/06)
 
 ---
 
