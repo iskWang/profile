@@ -94,10 +94,10 @@ export const CONTENT = {
       subtitle: "// Tech stack overview",
       categories: {
         frontend: "Front-End",
-        backend: "Back-End & DevOps",
+        backend: "Back-End",
         ai: "AI Workflow",
         mobile: "Mobile",
-        testing: "CI/CD & Testing",
+        testing: "Architecture & Infra",
       },
     },
     contact: {
@@ -164,7 +164,7 @@ export const CONTENT = {
         "Nuxt.js",
       ],
       backend: ["Node.js", "Rails", "Koa"],
-      architecture: [
+      devops: [
         "monorepo",
         "CI/CD",
         "GitHub Actions",
@@ -281,10 +281,10 @@ export const CONTENT = {
       subtitle: "// Tech stack overview",
       categories: {
         frontend: "Front-End",
-        backend: "Back-End & DevOps",
+        backend: "Back-End",
         ai: "AI Workflow",
         mobile: "Mobile",
-        testing: "CI/CD & Testing",
+        testing: "Architecture & Infra",
       },
     },
     contact: {
@@ -356,7 +356,7 @@ export const CONTENT = {
         "Nuxt.js",
       ],
       backend: ["Node.js", "Rails", "Koa"],
-      architecture: [
+      devops: [
         "monorepo",
         "CI/CD",
         "GitHub Actions",
