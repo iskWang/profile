@@ -84,14 +84,14 @@ const Hero = () => {
         </div>
 
         {/* Quick intro — inside max-w-4xl so it stacks below the terminal */}
-        <div className="mt-8 sm:mt-12 text-center space-y-4">
+        <div className="mt-6 sm:mt-8 text-center space-y-4">
           <h1 className="text-3xl sm:text-5xl font-bold px-4">
             <span className="bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
               {hero.welcome}
             </span>
             <span className="ml-2 sm:ml-3 inline-block animate-bounce">👋</span>
           </h1>
-          <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed px-6">
+          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-loose px-4 mt-4">
             {hero.description}
           </p>
           <div className="flex justify-center gap-4 mt-6 flex-wrap">
