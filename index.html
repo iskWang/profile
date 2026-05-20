@@ -9,8 +9,8 @@
 
     <!-- Canonical & hreflang for multilingual SPA -->
     <link rel="canonical" href="https://profile.joshwang.dev/" />
-    <link rel="alternate" hreflang="zh-TW" href="https://profile.joshwang.dev/?lang=zh" />
-    <link rel="alternate" hreflang="en" href="https://profile.joshwang.dev/?lang=en" />
+    <link rel="alternate" hreflang="zh-TW" href="https://profile.joshwang.dev/" />
+    <link rel="alternate" hreflang="en" href="https://profile.joshwang.dev/" />
     <link rel="alternate" hreflang="x-default" href="https://profile.joshwang.dev/" />
 
     <!-- Open Graph -->
@@ -26,13 +26,21 @@
     <meta name="twitter:title" content="Josh Wang | Software Developer" />
     <meta name="twitter:description" content="專注 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者。A software developer focusing on React/Next.js architecture and AI workflow integration." />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6XYV1VQQDX"></script>
+    <!-- Preconnect for GTM -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+
+    <!-- Google tag (gtag.js) — deferred until after load to avoid blocking LCP -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-6XYV1VQQDX');
+      window.addEventListener('load', function() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-6XYV1VQQDX';
+        document.head.appendChild(s);
+      });
     </script>
 
     <!-- JSON-LD: all language variants in one static block, no JS rendering needed -->
