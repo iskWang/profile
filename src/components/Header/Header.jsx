@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CatFace } from '../common';
-import { useLanguage } from '../../context/LanguageContext';
+import { useLanguage } from '../../context/useLanguage';
 
 const Header = ({ scrollToSection }) => {
   const { lang, toggleLang, content } = useLanguage();

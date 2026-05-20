@@ -1,15 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CONTENT } from '../constants/content';
-
-const LanguageContext = createContext();
-
-export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
-};
+import { LanguageContext } from './useLanguage';
 
 export const LanguageProvider = ({ children }) => {
   const [lang, setLang] = useState('zh'); // Default matching SSR

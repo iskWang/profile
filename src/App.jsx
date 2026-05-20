@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLanguage } from './context/LanguageContext';
+import { useLanguage } from './context/useLanguage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingCat from './components/common/FloatingCat';

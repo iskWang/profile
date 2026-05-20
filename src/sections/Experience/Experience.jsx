@@ -1,7 +1,7 @@
 import React from 'react';
 import { CatFace, PawPrint } from '../../components/common';
 import ExperienceCard from '../../components/ExperienceCard';
-import { useLanguage } from '../../context/LanguageContext';
+import { useLanguage } from '../../context/useLanguage';
 
 const Experience = ({ experiences }) => {
   const { content } = useLanguage();

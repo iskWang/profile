@@ -1,6 +1,6 @@
 import React from 'react';
 import { CatFace } from '../../components/common';
-import { useLanguage } from '../../context/LanguageContext';
+import { useLanguage } from '../../context/useLanguage';
 
 const colorMap = {
   cyan:    'border-cyan-500/30 bg-cyan-500/5 highlight-card-cyan',

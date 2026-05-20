@@ -1,6 +1,6 @@
 import React from 'react';
 import { TerminalLine, CatFace } from '../../components/common';
-import { useLanguage } from '../../context/LanguageContext';
+import { useLanguage } from '../../context/useLanguage';
 
 const TAG_STYLES = [
   'bg-cyan-500/10 border-cyan-500/30 text-cyan-400',

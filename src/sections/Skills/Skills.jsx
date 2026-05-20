@@ -1,6 +1,6 @@
 import React from 'react';
 import { CatFace, SkillBadge } from '../../components/common';
-import { useLanguage } from '../../context/LanguageContext';
+import { useLanguage } from '../../context/useLanguage';
 
 const Skills = ({ skills }) => {
   const { content } = useLanguage();
