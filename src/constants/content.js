@@ -3,6 +3,7 @@ export const CONTENT = {
     nav: {
       about: "關於",
       experience: "經歷",
+      projects: "專案",
       skills: "技能",
       contact: "聯繫",
     },
@@ -29,16 +30,6 @@ export const CONTENT = {
           period: "2023/06 - 至今",
           description: "CI/CD 架構與資安深度優化 | AI 輔助開發工作流程實踐",
           subProjects: [
-            {
-              title:
-                "⭐⭐⭐ PickleScout | LLM 驅動的 E2E 測試自動生成工具 (Open Source)",
-              url: "https://github.com/iskWang/PickleScout",
-              highlights: [
-                "開發基於 LLM 的自動化瀏覽器代理，自動探索 Web App 並生成 ready-to-run 的 Gherkin 檔與 Playwright 測試腳本",
-                "整合 Stagehand 進行瀏覽器自動化，利用 LLM 實作 Self-healing 選擇器與自動化修復機制",
-                "全端架構採用 Fastify、Redis/BullMQ 處理任務隊列，產出物包含 GitHub Actions workflow，runtime 無 LLM 依賴",
-              ],
-            },
             {
               title: "CI/CD 架構與資安深度優化 | 數據分析新創 (SaaS)",
               highlights: [
@@ -141,6 +132,22 @@ export const CONTENT = {
         },
       ],
     },
+    projects: {
+      title: "個人專案",
+      subtitle: "// Side projects & Open source",
+      items: [
+        {
+          title: "PickleScout — LLM 驅動的 E2E 測試自動生成工具",
+          url: "https://github.com/iskWang/PickleScout",
+          tags: ["AI Agent", "E2E Testing", "LLM", "Open Source"],
+          highlights: [
+            "開發基於 LLM 的自動化瀏覽器代理，自動探索 Web App 並生成 ready-to-run 的 Gherkin 檔與 Playwright 測試腳本",
+            "整合 Stagehand 進行瀏覽器自動化，利用 LLM 實作 Self-healing 選擇器與自動化修復機制",
+            "全端架構採用 Fastify、Redis/BullMQ 處理任務隊列，產出物包含 GitHub Actions workflow，runtime 無 LLM 依賴",
+          ],
+        },
+      ],
+    },
     skillsData: {
       frontend: [
         "React.js/Next.js",
@@ -170,6 +177,7 @@ export const CONTENT = {
     nav: {
       about: "about",
       experience: "experience",
+      projects: "projects",
       skills: "skills",
       contact: "contact",
     },
@@ -203,16 +211,6 @@ export const CONTENT = {
           description:
             "CI/CD Architecture & Security | AI-Assisted Engineering Workflow",
           subProjects: [
-            {
-              title:
-                "⭐⭐⭐ PickleScout | LLM-Driven E2E Test Generation Agent (Open Source)",
-              url: "https://github.com/iskWang/PickleScout",
-              highlights: [
-                "Developed an LLM-driven autonomous browser agent that explores web apps and generates ready-to-run Gherkin files and Playwright test scripts.",
-                "Integrated Stagehand for browser automation, utilizing LLMs for self-healing selectors and automated repair mechanisms.",
-                "Full-stack architecture with Fastify, Redis/BullMQ for job queues; generated output includes GitHub Actions workflow with zero LLM dependency at runtime.",
-              ],
-            },
             {
               title:
                 "CI/CD Architecture & Security Optimization | Data Analytics Startup (SaaS)",
@@ -319,6 +317,22 @@ export const CONTENT = {
           description:
             "Patched CVE-2025-29927 critical vulnerability and implemented security patching.",
           color: "cyan",
+        },
+      ],
+    },
+    projects: {
+      title: "Projects",
+      subtitle: "// Side projects & Open source",
+      items: [
+        {
+          title: "PickleScout — LLM-Driven E2E Test Generation Agent",
+          url: "https://github.com/iskWang/PickleScout",
+          tags: ["AI Agent", "E2E Testing", "LLM", "Open Source"],
+          highlights: [
+            "Developed an LLM-driven autonomous browser agent that explores web apps and generates ready-to-run Gherkin files and Playwright test scripts.",
+            "Integrated Stagehand for browser automation, utilizing LLMs for self-healing selectors and automated repair mechanisms.",
+            "Full-stack architecture with Fastify, Redis/BullMQ for job queues; generated output includes GitHub Actions workflow with zero LLM dependency at runtime.",
+          ],
         },
       ],
     },

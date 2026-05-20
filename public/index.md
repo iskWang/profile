@@ -1,7 +1,7 @@
 # Josh Wang — Software Developer
 
 **地點：** Taipei, Taiwan
-**Email：** spjay1@gmail.com
+**Email：Spjay1@gmail.com**
 **個人網站：** https://profile.joshwang.dev
 **個性：** INTP 邏輯學家
 
@@ -29,11 +29,6 @@
 **2023/06 – 至今**
 
 專注於 **CI/CD 架構與資安深度優化** 以及 **AI 輔助開發工作流程實踐**
-
-- **⭐⭐⭐ PickleScout | LLM 驅動的 E2E 測試自動生成工具 (Open Source)**
-  - 開發基於 LLM 的自動化瀏覽器代理，自動探索 Web App 並生成 ready-to-run 的 Gherkin 檔與 Playwright 測試腳本
-  - 整合 Stagehand 進行瀏覽器自動化，利用 LLM 實作 Self-healing 選擇器與自動化修復機制
-  - 全端架構採用 Fastify、Redis/BullMQ 處理任務隊列，產出物包含 GitHub Actions workflow，runtime 無 LLM 依賴
 
 - **CI/CD 架構與資安深度優化 | 數據分析新創 (SaaS)**
   - 主導 CI/CD 流程重構，將過度拆分的 5 個分支整併為 2 個，優化 Monorepo 結構有效降低維運負擔
@@ -68,6 +63,15 @@
 - 採用 React Hooks 及 Context API，領導集團內全新前端專案架構，覆蓋全球 50+ 國內部使用者
 - 設計單頁近百格欄位表單，使用 Formik、Yup 及 React.memo 確保欄位驗證與效能
 - 使用 WebSocket 實作留言互動及即時通知功能；於 2019/08 提案導入 GitHub Actions CI/CD 流程
+
+---
+
+## 個人專案
+
+- **⭐⭐⭐ PickleScout | LLM 驅動的 E2E 測試自動生成工具 (Open Source)**
+  - 開發基於 LLM 的自動化瀏覽器代理，自動探索 Web App 並生成 ready-to-run 的 Gherkin 檔與 Playwright 測試腳本
+  - 整合 Stagehand 進行瀏覽器自動化，利用 LLM 實作 Self-healing 選擇器與自動化修復機制
+  - 全端架構採用 Fastify、Redis/BullMQ 處理任務隊列，產出物包含 GitHub Actions workflow，runtime 無 LLM 依賴
 
 ---
 
