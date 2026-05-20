@@ -12,10 +12,12 @@ export const useLanguage = () => {
 };
 
 export const LanguageProvider = ({ children }) => {
-  const getInitialLanguage = () => {
-    if (typeof window === 'undefined') {
-      return 'zh'; // Default for SSR
-    }
+  const [lang, setLang] = useState('zh'); // Default matching SSR
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  const getBrowserLanguage = () => {
+    if (typeof window === 'undefined') return 'zh';
+
     // 1. Check URL query params
     const params = new URLSearchParams(window.location.search);
     const langParam = params.get('lang');
@@ -38,11 +40,15 @@ export const LanguageProvider = ({ children }) => {
     return 'en';
   };
 
-  const [lang, setLang] = useState(getInitialLanguage());
+  // Initial client-side sync
+  useEffect(() => {
+    setLang(getBrowserLanguage());
+    setIsHydrated(true);
+  }, []);
 
   // Update URL, localStorage, and html[lang] whenever language changes
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (!isHydrated) return;
 
     localStorage.setItem('preferred_lang', lang);
 
@@ -51,7 +57,7 @@ export const LanguageProvider = ({ children }) => {
     window.history.replaceState({}, '', url.toString());
 
     document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
-  }, [lang]);
+  }, [lang, isHydrated]);
 
   const toggleLang = () => {
     setLang((prev) => (prev === 'zh' ? 'en' : 'zh'));
@@ -60,7 +66,7 @@ export const LanguageProvider = ({ children }) => {
   const content = CONTENT[lang];
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, toggleLang, content }}>
+    <LanguageContext.Provider value={{ lang, setLang, toggleLang, content, isHydrated }}>
       {children}
     </LanguageContext.Provider>
   );
