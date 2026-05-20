@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLanguage } from './context/useLanguage';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -12,6 +12,26 @@ import Contact from './sections/Contact';
 
 export default function JoshWangProfile() {
   const { content } = useLanguage();
+
+  useEffect(() => {
+    const hero = document.querySelector('#about');
+    if (hero) hero.classList.add('section-visible');
+
+    const sections = document.querySelectorAll('main section:not(#about)');
+    sections.forEach(s => s.classList.add('section-animate'));
+
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('section-visible');
+          observer.unobserve(entry.target);
+        }
+      }),
+      { threshold: 0.05 }
+    );
+    sections.forEach(s => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -53,8 +73,8 @@ export default function JoshWangProfile() {
         linear-gradient(to bottom, #0f172a, #1e293b)
       `
     }}>
-      {/* Animated grid background with paw prints */}
-      <div className="fixed inset-0 opacity-20 pointer-events-none">
+      {/* Animated grid background */}
+      <div className="fixed inset-0 opacity-20 pointer-events-none" aria-hidden="true" style={{ willChange: 'transform' }}>
         <div className="absolute inset-0" style={{
           backgroundImage: `
             linear-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px),

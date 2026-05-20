@@ -8,6 +8,7 @@ const FloatingCat = ({ style, delay = 0, className = '' }) => {
         ...style,
         animation: `float 6s ease-in-out ${delay}ms infinite`,
       }}
+      aria-hidden="true"
     >
       <span className="text-4xl filter drop-shadow-lg">🐱</span>
     </div>

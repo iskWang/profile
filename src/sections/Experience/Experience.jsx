@@ -10,9 +10,9 @@ const Experience = ({ experiences }) => {
   return (
     <section className="pt-32 sm:pt-24 pb-24 px-6" id="experience">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-2 flex items-center gap-3">
-          <span className="text-emerald-400 font-mono">{'>'}</span>
-          <span>{experience.title}</span>
+        <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-2 flex items-center gap-3">
+          <span className="text-emerald-400 font-mono font-normal">{'>'}</span>
+          <span className="text-amber-300">{experience.title}</span>
           <CatFace size="text-2xl" className="ml-2" />
         </h2>
         <p className="text-slate-400 mb-12 font-mono text-sm">{experience.subtitle}</p>

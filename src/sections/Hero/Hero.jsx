@@ -85,13 +85,13 @@ const Hero = () => {
 
         {/* Quick intro — inside max-w-4xl so it stacks below the terminal */}
         <div className="mt-6 sm:mt-8 text-center space-y-4">
-          <h1 className="text-3xl sm:text-5xl font-bold px-4">
-            <span className="bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-5xl font-black leading-tight tracking-tight px-4">
+            <span className="text-amber-400">
               {hero.welcome}
             </span>
-            <span className="ml-2 sm:ml-3 inline-block animate-bounce">👋</span>
+            <span className="ml-2 sm:ml-3 inline-block animate-bounce" aria-hidden="true">👋</span>
           </h1>
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-loose px-4 mt-4">
+          <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-loose px-4 mt-4">
             {hero.description}
           </p>
           <div className="flex justify-center gap-4 mt-6 flex-wrap">
@@ -110,7 +110,7 @@ const Hero = () => {
               href={hero.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/40 rounded-xl text-amber-300 hover:text-amber-200 hover:border-amber-400/60 hover:shadow-lg hover:shadow-amber-500/10 transition-all group"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-amber-500/10 border border-amber-500/40 rounded-xl text-amber-300 hover:text-amber-200 hover:border-amber-400/60 hover:shadow-lg hover:shadow-amber-500/10 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
             >
               <CatFace size="text-xl" className="group-hover:scale-110 transition-transform" />
               <span className="font-medium">{hero.resumeBtn}</span>

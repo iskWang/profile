@@ -35,15 +35,15 @@ const Header = ({ scrollToSection }) => {
   return (
     <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-900/70 border-b border-slate-700/50">
       <nav className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div
-          className="font-mono text-emerald-400 flex items-center gap-2 cursor-pointer group"
+        <button
+          className="font-mono text-emerald-400 flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded"
           onClick={() => scrollToSection('about')}
         >
           <CatFace size="text-xl" />
           <span className="text-xl">~/</span>
           <span className="text-white group-hover:text-emerald-400 transition-colors">josh_wang</span>
-          <span className="animate-pulse">_</span>
-        </div>
+          <span className="animate-pulse" aria-hidden="true">_</span>
+        </button>
 
         <div className="flex items-center gap-2 md:gap-6 font-mono text-sm overflow-x-auto no-scrollbar max-w-full px-2">
           {sections.map((section, index) => (
@@ -51,7 +51,7 @@ const Header = ({ scrollToSection }) => {
               {index > 0 && <span className="text-slate-600 sm:hidden">/</span>}
               <button
                 onClick={() => scrollToSection(section.id)}
-                className={`transition-colors whitespace-nowrap ${
+                className={`transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded px-1 ${
                   activeSection === section.id
                     ? 'text-emerald-400 font-bold'
                     : 'text-slate-400 hover:text-emerald-400'
@@ -67,7 +67,7 @@ const Header = ({ scrollToSection }) => {
           <button
             onClick={toggleLang}
             aria-label="Switch language"
-            className="ml-2 font-mono text-xs px-3 py-1.5 rounded-lg border border-slate-600/60 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all whitespace-nowrap"
+            className="ml-2 font-mono text-xs px-3 py-2 min-h-[44px] flex items-center rounded-lg border border-slate-600/60 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
           >
             {lang === 'zh' ? 'EN' : '中文'}
           </button>

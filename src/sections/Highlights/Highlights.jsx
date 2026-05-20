@@ -15,9 +15,9 @@ const Highlights = () => {
   return (
     <section className="pt-32 sm:pt-24 pb-24 px-6">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12 flex items-center gap-3">
-          <span className="text-emerald-400 font-mono">{'>'}</span>
-          <span>{highlights.title}</span>
+        <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-12 flex items-center gap-3">
+          <span className="text-emerald-400 font-mono font-normal">{'>'}</span>
+          <span className="text-amber-300">{highlights.title}</span>
           <CatFace size="text-2xl" className="ml-2" />
         </h2>
 
@@ -27,7 +27,7 @@ const Highlights = () => {
               key={i}
               className={`highlight-card p-6 rounded-xl border cursor-default group ${colorMap[item.color] ?? colorMap.cyan}`}
             >
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200 inline-block">
+              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200 inline-block" aria-hidden="true">
                 {item.emoji}
               </div>
               <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
