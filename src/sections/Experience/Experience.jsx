@@ -15,7 +15,7 @@ const Experience = ({ experiences }) => {
           <span className="text-amber-300">{experience.title}</span>
           <CatFace size="text-2xl" className="ml-2" />
         </h2>
-        <p className="text-slate-400 mb-12 font-mono text-sm">{experience.subtitle}</p>
+        <p className="text-slate-400 mb-12 text-sm">{experience.subtitle}</p>
 
         <div className="space-y-6">
           {experiences.map((exp, i) => (
@@ -24,7 +24,7 @@ const Experience = ({ experiences }) => {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-slate-400 text-sm font-mono flex items-center justify-center gap-2">
+          <p className="text-slate-400 text-sm flex items-center justify-center gap-2">
             <PawPrint className="text-amber-400/50" />
             {experience.earlyExperience}
             <PawPrint className="text-amber-400/50" />

@@ -36,7 +36,7 @@ const Header = ({ scrollToSection }) => {
     <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-900/70 border-b border-slate-700/50">
       <nav className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
         <button
-          className="font-mono text-emerald-400 flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded"
+          className="text-emerald-400 flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded"
           onClick={() => scrollToSection('about')}
         >
           <CatFace size="text-xl" />
@@ -45,7 +45,7 @@ const Header = ({ scrollToSection }) => {
           <span className="animate-pulse" aria-hidden="true">_</span>
         </button>
 
-        <div className="flex items-center gap-2 md:gap-6 font-mono text-sm overflow-x-auto no-scrollbar max-w-full px-2">
+        <div className="flex items-center gap-2 md:gap-6 text-sm overflow-x-auto no-scrollbar max-w-full px-2">
           {sections.map((section, index) => (
             <React.Fragment key={section.id}>
               {index > 0 && <span className="text-slate-600 sm:hidden">/</span>}
@@ -67,7 +67,7 @@ const Header = ({ scrollToSection }) => {
           <button
             onClick={toggleLang}
             aria-label="Switch language"
-            className="ml-2 font-mono text-xs px-3 py-2 min-h-[44px] flex items-center rounded-lg border border-slate-600/60 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+            className="ml-2 text-xs px-3 py-2 min-h-[44px] flex items-center rounded-lg border border-slate-600/60 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
           >
             {lang === 'zh' ? 'EN' : '中文'}
           </button>

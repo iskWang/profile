@@ -14,7 +14,7 @@ const Skills = ({ skills }) => {
           <span className="text-amber-300">{skillsContent.title}</span>
           <CatFace size="text-2xl" className="ml-2" />
         </h2>
-        <p className="text-slate-400 mb-12 font-mono text-sm">{skillsContent.subtitle}</p>
+        <p className="text-slate-400 mb-12 text-sm">{skillsContent.subtitle}</p>
 
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-6">

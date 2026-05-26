@@ -14,7 +14,7 @@ const Projects = ({ projects }) => {
           <span className="text-amber-300">{projectsContent.title}</span>
           <CatFace size="text-2xl" className="ml-2" />
         </h2>
-        <p className="text-slate-400 mb-12 font-mono text-sm">{projectsContent.subtitle}</p>
+        <p className="text-slate-400 mb-12 text-sm">{projectsContent.subtitle}</p>
 
         <div className="grid gap-8">
           {projects.map((project, i) => (
