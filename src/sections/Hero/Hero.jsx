@@ -13,7 +13,7 @@ const Hero = () => {
   const { hero } = content;
 
   return (
-    <section id="about" className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-24 sm:pt-20 sm:pb-20">
+    <section id="about" className="min-h-[88vh] flex items-center justify-center px-6 pt-32 sm:pt-20">
       <div className="max-w-4xl w-full">
 
         {/* Terminal card */}
@@ -121,14 +121,6 @@ const Hero = () => {
           </div>
         </div>
 
-      </div>
-
-      {/* Scroll hint */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-slate-500 animate-bounce" aria-hidden="true">
-        <span className="text-xs font-mono tracking-widest">scroll</span>
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
       </div>
     </section>
   );
