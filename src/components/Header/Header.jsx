@@ -8,9 +8,9 @@ const Header = ({ scrollToSection }) => {
 
   const sections = [
     { id: 'about',      label: content.nav.about },
-    { id: 'experience', label: content.nav.experience },
     { id: 'projects',   label: content.nav.projects },
     { id: 'skills',     label: content.nav.skills },
+    { id: 'experience', label: content.nav.experience },
     { id: 'contact',    label: content.nav.contact },
   ];
 

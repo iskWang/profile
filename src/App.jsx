@@ -4,10 +4,9 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingCat from './components/common/FloatingCat';
 import Hero from './sections/Hero';
-import Experience from './sections/Experience';
 import Projects from './sections/Projects';
 import Skills from './sections/Skills';
-import Highlights from './sections/Highlights';
+import Experience from './sections/Experience';
 import Contact from './sections/Contact';
 
 export default function JoshWangProfile() {
@@ -93,10 +92,9 @@ export default function JoshWangProfile() {
 
       <main>
         <Hero />
-        <Experience experiences={content.experience.items} />
         <Projects projects={content.projects.items} />
         <Skills skills={content.skillsData} />
-        <Highlights />
+        <Experience experiences={content.experience.items} />
         <Contact />
       </main>
 
