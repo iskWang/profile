@@ -195,7 +195,7 @@ export const CONTENT = {
       location: "Taipei, Taiwan",
       welcome: "Hi, I'm Josh!",
       description:
-        "Senior Software Engineer with 10+ years of experience specializing in front-end architecture, cross-platform applications, and AI-driven engineering workflows.",
+        "Senior Developer driving front-end, cross-platform & AI workflows.",
       tags: [
         "🤖 AI-Driven Development",
         "🌐 Cross-platform",
