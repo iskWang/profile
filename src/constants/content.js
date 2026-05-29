@@ -14,7 +14,7 @@ export const CONTENT = {
       focus: "React / AI Workflow",
       location: "Taipei, Taiwan",
       welcome: "您好，我是 Josh!",
-      description: "10+ 年軟體開發經驗，橫跨前端架構、跨平台應用與 AI 驅動的工程工作流程。",
+      description: "10+ 年軟體開發經驗，橫跨前端架構、跨平台應用與 AI 驅動的工程工作流程",
       tags: ["🤖 AI 驅動開發", "🌐 跨平台開發", "🔐 資安意識"],
       resumeBtn: "查看完整履歷 (PDF)",
       resumeUrl: "/JoshWang_ZH_Resume.pdf",
@@ -195,7 +195,7 @@ export const CONTENT = {
       location: "Taipei, Taiwan",
       welcome: "Hi, I'm Josh!",
       description:
-        "10+ years of experience building React / Next.js applications across SaaS, cybersecurity, and internal platforms. Led architecture and delivery for 7+ web systems and 2 mobile apps.",
+        "Senior Software Engineer with 10+ years of experience specializing in front-end architecture, cross-platform applications, and AI-driven engineering workflows.",
       tags: [
         "🤖 AI-Driven Development",
         "🌐 Cross-platform",
