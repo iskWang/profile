@@ -1,0 +1,2242 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josh Wang — 面試簡報</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface2: #334155;
+  --text: #f1f5f9;
+  --text-dim: #94a3b8;
+  --accent: #10b981;
+  --accent2: #f59e0b;
+  --accent3: #06b6d4;
+  --border: #334155;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%; height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans TC', sans-serif;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Slide Container */
+.deck {
+  width: 100%; height: 100vh;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6vh 8vw;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Typography */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 500;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.8rem;
+}
+
+p, li {
+  font-size: clamp(1.02rem, 1.45vw, 1.22rem);
+  line-height: 1.65;
+  color: var(--text-dim);
+  font-weight: 300;
+}
+
+.highlight { color: var(--accent); font-weight: 500; }
+.highlight2 { color: var(--accent2); font-weight: 500; }
+.highlight3 { color: var(--accent3); font-weight: 500; }
+
+/* Slide-specific layouts */
+
+/* Cover */
+.slide-cover {
+  justify-content: center;
+  position: relative;
+}
+
+.slide-cover::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(ellipse, rgba(96, 165, 250, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cover-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.cover-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.cover-title {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--text-dim);
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.cover-meta {
+  display: flex;
+  gap: 2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  opacity: 0.6;
+}
+
+.cover-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(2rem, 8vw, 7rem);
+  width: 100%;
+  margin-top: 24vh;
+}
+
+.cover-footer {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.cover-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem;
+  background: rgba(241, 245, 249, 0.96);
+  border-radius: 14px;
+  color: #0f172a;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+.cover-qr img {
+  display: block;
+  width: clamp(170px, 16vw, 240px);
+  height: clamp(170px, 16vw, 240px);
+}
+
+.cover-qr span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: #334155;
+}
+
+.cover-meta span {
+  overflow-wrap: anywhere;
+}
+
+/* Two-column */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4vw;
+  align-items: start;
+}
+
+.two-col-narrow {
+  display: grid;
+  grid-template-columns: 0.4fr 1fr;
+  gap: 4vw;
+  align-items: start;
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: border-color 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--accent);
+}
+
+.card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: var(--text);
+}
+
+.card p {
+  font-size: 1rem;
+}
+
+.positioning-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.92fr) minmax(420px, 1.08fr);
+  gap: 5vw;
+  align-items: center;
+}
+
+.positioning-lead {
+  max-width: 640px;
+  color: var(--text);
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-weight: 400;
+}
+
+.role-traits {
+  display: grid;
+  gap: 1rem;
+}
+
+.trait-card {
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.trait-card h4,
+.phase-card h4,
+.proof-card h4,
+.principle-card h4 {
+  color: var(--text);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 1.08rem;
+  margin-bottom: 0.45rem;
+}
+
+.trait-card p,
+.phase-card p,
+.principle-card p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.phase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+
+.phase-card {
+  position: relative;
+  padding: 1.35rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.phase-date,
+.proof-context,
+.principle-label {
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.proof-card {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.proof-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.proof-step {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.proof-step span {
+  color: var(--text-dim);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.proof-result {
+  color: var(--accent2);
+  font-size: 1.45rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.principles-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.75fr) minmax(520px, 1.25fr);
+  gap: 4vw;
+  align-items: center;
+}
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.principle-card {
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+/* Metric */
+.metric {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.metric-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.metric-unit {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.tag.primary {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tag.secondary {
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+/* Timeline */
+.timeline-item {
+  position: relative;
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  border-left: 2px solid var(--border);
+}
+
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.timeline-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+
+.timeline-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-desc {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  font-weight: 300;
+}
+
+/* Grid layout for skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.2rem;
+}
+
+.skill-group h4 {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.skill-group p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* Diagram: AI collaboration model */
+.collab-model {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.collab-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  text-align: center;
+  flex: 1;
+  min-width: 140px;
+}
+
+.collab-box.me { border-color: var(--accent); }
+.collab-box.ai { border-color: var(--accent2); }
+
+.collab-box .icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.collab-box .label {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.collab-box .desc {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.collab-arrow {
+  font-size: 1.5rem;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+/* Expectations list */
+.expect-list {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+
+.expect-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1.05rem;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.expect-list li::before {
+  content: '→';
+  color: var(--accent);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0.1em;
+}
+
+.expect-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(500px, 1.18fr);
+  gap: 4vw;
+  align-items: center;
+}
+
+.expect-lead {
+  max-width: 500px;
+  margin-top: 1rem;
+}
+
+.expect-focus {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.expect-focus span {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 700;
+  background: rgba(245, 158, 11, 0.08);
+}
+
+.expect-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.expect-item {
+  padding: 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.expect-item.wide {
+  grid-column: 1 / -1;
+}
+
+.expect-label {
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.expect-item h4 {
+  margin: 0.5rem 0 0.45rem;
+  color: var(--text);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 1.05rem;
+}
+
+.expect-item p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.expect-quote {
+  grid-column: 1 / -1;
+  padding: 1.4rem 1.7rem;
+  background: rgba(20, 184, 166, 0.08);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+}
+
+.expect-quote p {
+  color: var(--text);
+  font-weight: 400;
+  font-size: 1.02rem;
+}
+
+/* Project showcase */
+.project-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(420px, 1.2fr);
+  gap: 4vw;
+  align-items: center;
+}
+
+.project-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--accent);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.project-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  line-height: 0.98;
+  margin-bottom: 1.2rem;
+}
+
+.project-summary {
+  color: var(--text);
+  font-weight: 400;
+  max-width: 560px;
+}
+
+.project-points {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.8rem;
+}
+
+.project-points li {
+  display: grid;
+  grid-template-columns: 1.2rem 1fr;
+  gap: 0.7rem;
+  color: var(--text-dim);
+  font-size: 0.98rem;
+}
+
+.project-points li::before {
+  content: '•';
+  color: var(--accent);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.demo-frame {
+  background: #0b1220;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 14px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.demo-bar {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0 1rem;
+  background: rgba(15, 23, 42, 0.92);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.demo-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--surface2);
+}
+
+.demo-dot:nth-child(1) { background: #f87171; }
+.demo-dot:nth-child(2) { background: #fbbf24; }
+.demo-dot:nth-child(3) { background: #34d399; }
+
+.demo-url {
+  margin-left: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.demo-screen {
+  padding: 1.2rem;
+  min-height: 420px;
+}
+
+.demo-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.demo-heading {
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.demo-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-top: 0.25rem;
+}
+
+.demo-button {
+  background: var(--accent);
+  color: #052e1f;
+  border-radius: 6px;
+  padding: 0.55rem 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.demo-stat,
+.demo-panel,
+.demo-table,
+.demo-log,
+.demo-code {
+  background: rgba(30, 41, 59, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 10px;
+}
+
+.demo-stat {
+  padding: 0.85rem;
+}
+
+.demo-stat-label,
+.demo-panel-title,
+.demo-log-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.demo-stat-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-top: 0.45rem;
+}
+
+.demo-stat.good .demo-stat-value { color: var(--accent); }
+.demo-stat.warn .demo-stat-value { color: var(--accent2); }
+.demo-stat.info .demo-stat-value { color: var(--accent3); }
+
+.demo-chart {
+  height: 145px;
+  padding: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+.chart-bars {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.45rem;
+  padding-top: 1.2rem;
+}
+
+.chart-bars span {
+  flex: 1;
+  border-radius: 6px 6px 0 0;
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.95), rgba(6, 182, 212, 0.55));
+  min-height: 26%;
+}
+
+.demo-table {
+  padding: 0.35rem 0.75rem;
+}
+
+.demo-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  font-size: 0.75rem;
+}
+
+.demo-row:last-child { border-bottom: 0; }
+
+.demo-pill {
+  border-radius: 999px;
+  border: 1px solid rgba(16, 185, 129, 0.55);
+  color: var(--accent);
+  padding: 0.2rem 0.45rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+}
+
+.demo-input {
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.74rem;
+  color: var(--text-dim);
+  margin-bottom: 0.85rem;
+}
+
+.pipeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.pipeline-step {
+  padding: 0.75rem 0.55rem;
+  border-radius: 8px;
+  background: rgba(51, 65, 85, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text);
+}
+
+.pipeline-step.active {
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+.demo-log {
+  padding: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+.log-line {
+  display: grid;
+  grid-template-columns: 4.4rem 1fr auto;
+  gap: 0.6rem;
+  padding-top: 0.55rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.log-line strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.demo-code {
+  padding: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+.demo-code .code-accent { color: var(--accent3); }
+
+.actual-shot {
+  min-height: 430px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.ly-app {
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  min-height: 430px;
+  background: #f4f6f7;
+  color: #1f2933;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.ly-side {
+  background: #eef2f4;
+  border-right: 1px solid #dde4e8;
+  padding: 1rem 0.7rem;
+}
+
+.ly-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 1px;
+  margin-bottom: 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.ly-logo span:first-child { color: #0c9bb0; }
+
+.ly-nav {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.ly-nav-item {
+  border-radius: 8px;
+  color: #667781;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.5rem 0.55rem;
+}
+
+.ly-nav-item.active {
+  background: #d9eef2;
+  color: #0c8799;
+}
+
+.ly-main {
+  padding: 1.1rem 1.25rem;
+  min-width: 0;
+}
+
+.ly-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.ly-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.ly-import {
+  background: #0c9bb0;
+  color: white;
+  border-radius: 8px;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.ly-total {
+  padding: 1.15rem 0 1.35rem;
+}
+
+.ly-total-label {
+  color: #667781;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.ly-total-value {
+  color: #14212b;
+  font-size: 2.3rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.ly-cats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid #dde4e8;
+  padding-top: 0.65rem;
+  margin-top: 0.8rem;
+}
+
+.ly-cat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.68rem;
+  color: #667781;
+}
+
+.ly-cat strong {
+  color: #1f2933;
+  font-size: 0.78rem;
+}
+
+.ly-trend,
+.ly-table {
+  background: #fbfcfc;
+  border: 1px solid #dde4e8;
+  border-radius: 12px;
+}
+
+.ly-trend {
+  padding: 0.85rem;
+  margin-bottom: 0.8rem;
+}
+
+.ly-section-title {
+  color: #667781;
+  font-size: 0.68rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.ly-lines {
+  position: relative;
+  height: 92px;
+  border-bottom: 1px dashed #d7dee3;
+  background:
+    linear-gradient(to bottom, transparent 31px, #edf1f3 32px, transparent 33px),
+    linear-gradient(to bottom, transparent 62px, #edf1f3 63px, transparent 64px);
+}
+
+.ly-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100%;
+  clip-path: polygon(0 72%, 10% 58%, 22% 66%, 34% 42%, 45% 54%, 57% 28%, 69% 45%, 82% 34%, 100% 18%, 100% 100%, 0 100%);
+  opacity: 0.22;
+}
+
+.ly-line.income { background: #10a36f; }
+.ly-line.expense {
+  background: #d75a4a;
+  clip-path: polygon(0 46%, 12% 64%, 24% 50%, 37% 70%, 51% 44%, 64% 58%, 78% 40%, 100% 62%, 100% 100%, 0 100%);
+}
+
+.ly-table {
+  overflow: hidden;
+  font-size: 0.68rem;
+}
+
+.ly-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.8rem;
+  padding: 0.58rem 0.75rem;
+  border-bottom: 1px solid #e7ecef;
+}
+
+.ly-row:first-child {
+  background: #f4f7f8;
+  color: #667781;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ly-row:last-child { border-bottom: 0; }
+.ly-neg { color: #c94b3c; font-weight: 700; }
+.ly-pos { color: #14875d; font-weight: 700; }
+
+.ps-app {
+  min-height: 430px;
+  padding: 1.05rem;
+  background: #0d0f14;
+  color: #e2e8f0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.ps-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.9rem;
+}
+
+.ps-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.ps-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  color: #0d0f14;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+}
+
+.ps-download {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  color: #0d0f14;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.ps-status {
+  border: 1px solid #2a3348;
+  border-radius: 16px;
+  background: #161a23;
+  padding: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.ps-status-line {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.7rem;
+}
+
+.ps-url {
+  flex: 1;
+  color: #94a3b8;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ps-chip {
+  border-radius: 999px;
+  background: rgba(251, 146, 60, 0.15);
+  border: 1px solid rgba(251, 146, 60, 0.35);
+  color: #fb923c;
+  padding: 0.25rem 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+}
+
+.ps-progress {
+  height: 7px;
+  border-radius: 999px;
+  background: #252c3b;
+  overflow: hidden;
+}
+
+.ps-progress span {
+  display: block;
+  height: 100%;
+  width: 78%;
+  background: linear-gradient(90deg, #60a5fa, #a78bfa, #fb923c);
+}
+
+.ps-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 0.75rem;
+}
+
+.ps-card {
+  border: 1px solid #2a3348;
+  border-radius: 16px;
+  background: #161a23;
+  padding: 0.85rem;
+}
+
+.ps-card-title {
+  color: #94a3b8;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+}
+
+.ps-action {
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  gap: 0.5rem;
+  padding: 0.45rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.68rem;
+  color: #cbd5e1;
+}
+
+.ps-action.active {
+  background: #1e2430;
+  color: #e2e8f0;
+}
+
+.ps-action span:first-child { color: #4ade80; }
+.ps-action.active span:first-child { color: #60a5fa; }
+
+.ps-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+  padding: 0.7rem;
+  background: #1e2430;
+  border-radius: 10px;
+  margin-bottom: 0.7rem;
+}
+
+.ps-stat {
+  text-align: center;
+}
+
+.ps-stat strong {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+}
+
+.ps-stat span {
+  color: #64748b;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+}
+
+.ps-file {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.55rem;
+  border-radius: 6px;
+  color: #cbd5e1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+}
+
+.ps-file.active {
+  background: #252c3b;
+  color: #4ade80;
+}
+
+.architecture-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.78fr) minmax(520px, 1.22fr);
+  gap: 4vw;
+  align-items: center;
+}
+
+.arch-summary {
+  color: var(--text);
+  font-weight: 400;
+  max-width: 560px;
+}
+
+.arch-points {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.6rem;
+}
+
+.arch-point {
+  padding: 0.95rem 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(30, 41, 59, 0.78);
+}
+
+.arch-point h4 {
+  color: var(--text);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 0.98rem;
+  margin-bottom: 0.25rem;
+}
+
+.arch-point p {
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.arch-diagram {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.arch-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.arch-row.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.arch-node {
+  min-height: 94px;
+  padding: 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.arch-node.primary { border-color: rgba(16, 185, 129, 0.65); }
+.arch-node.secondary { border-color: rgba(245, 158, 11, 0.65); }
+.arch-node.info { border-color: rgba(6, 182, 212, 0.65); }
+
+.arch-node span {
+  display: block;
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+
+.arch-node strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1.25;
+  margin-bottom: 0.35rem;
+}
+
+.arch-node p {
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
+.arch-flow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.arch-arrow {
+  color: var(--accent2);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  bottom: 3vh;
+  right: 4vw;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 100;
+}
+
+.nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.nav-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.nav-counter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* Progress bar */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  transition: width 0.4s ease;
+  z-index: 100;
+}
+
+/* Stagger animation for children */
+.slide.active .stagger > * {
+  animation: fadeUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+.slide.active .stagger > *:nth-child(1) { animation-delay: 0.1s; }
+.slide.active .stagger > *:nth-child(2) { animation-delay: 0.2s; }
+.slide.active .stagger > *:nth-child(3) { animation-delay: 0.3s; }
+.slide.active .stagger > *:nth-child(4) { animation-delay: 0.4s; }
+.slide.active .stagger > *:nth-child(5) { animation-delay: 0.5s; }
+.slide.active .stagger > *:nth-child(6) { animation-delay: 0.6s; }
+.slide.active .stagger > *:nth-child(7) { animation-delay: 0.7s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .slide {
+    justify-content: flex-start;
+    align-items: stretch;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 4vh 6vw 12vh;
+  }
+  .slide-cover {
+    justify-content: center;
+    padding-bottom: 4vh;
+  }
+  h2 { margin-bottom: 1rem; }
+  p, li { font-size: 0.94rem; line-height: 1.55; }
+  .cover-name { font-size: clamp(2.7rem, 15vw, 3.7rem); }
+  .cover-title { margin-bottom: 1.4rem; }
+  .cover-content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    min-width: 0;
+    margin-top: 18vh;
+  }
+  .cover-content > div { min-width: 0; }
+  .two-col, .two-col-narrow { grid-template-columns: 1fr; gap: 1.2rem; }
+  .card { padding: 1rem; border-radius: 8px; }
+  .card p { font-size: 0.9rem; }
+  .card[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+  .positioning-layout,
+  .principles-layout {
+    grid-template-columns: 1fr;
+    gap: 1.3rem;
+  }
+  .positioning-lead { font-size: 1rem; line-height: 1.55; }
+  .role-traits { gap: 0.75rem; }
+  .trait-card,
+  .phase-card,
+  .proof-card,
+  .principle-card { padding: 0.95rem 1rem; }
+  .trait-card h4,
+  .phase-card h4,
+  .proof-card h4,
+  .principle-card h4 { font-size: 0.96rem; }
+  .trait-card p,
+  .phase-card p,
+  .proof-card p,
+  .principle-card p { font-size: 0.84rem; line-height: 1.45; }
+  .phase-grid,
+  .proof-grid,
+  .principles-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  .proof-card { gap: 0.65rem; }
+  .proof-result { font-size: 1.12rem; }
+  .metric-value { font-size: 2rem; }
+  .metric-unit { font-size: 0.82rem; }
+  .timeline-item { padding-left: 1.2rem; padding-bottom: 1rem; }
+  .timeline-desc { font-size: 0.82rem; line-height: 1.45; }
+  .collab-model { flex-direction: column; }
+  .collab-arrow { transform: rotate(90deg); }
+  .collab-box { width: 100%; padding: 0.9rem 1rem; }
+  .collab-box .icon { font-size: 1.3rem; margin-bottom: 0.25rem; }
+  .collab-box .desc { font-size: 0.72rem; }
+  .expect-layout { grid-template-columns: 1fr; gap: 1.2rem; }
+  .expect-lead { margin-top: 0.7rem; }
+  .expect-focus { gap: 0.55rem; margin-top: 1rem; }
+  .expect-focus span { font-size: 0.82rem; padding: 0.48rem 0.7rem; }
+  .expect-panel { grid-template-columns: 1fr; gap: 0.85rem; }
+  .expect-item { padding: 0.9rem 1rem; }
+  .expect-item h4 { font-size: 0.95rem; margin: 0.38rem 0 0.28rem; }
+  .expect-item p { font-size: 0.82rem; line-height: 1.45; }
+  .expect-list { gap: 0.7rem; }
+  .expect-list li { font-size: 0.92rem; gap: 0.6rem; }
+  .expect-quote { padding: 1rem 1.1rem; }
+  .expect-quote p { font-size: 0.9rem; line-height: 1.55; }
+  .skills-grid { grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+  .tag { font-size: 0.68rem; padding: 0.28rem 0.52rem; }
+  .cover-footer { align-items: flex-start; flex-direction: column; }
+  .cover-meta { gap: 0.75rem; flex-direction: column; }
+  .cover-qr { display: none; }
+  .project-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+  .project-title { font-size: clamp(2rem, 12vw, 3.2rem); }
+  .project-summary { font-size: 0.92rem; }
+  .project-points { gap: 0.5rem; margin-top: 1rem; }
+  .project-points li { font-size: 0.86rem; line-height: 1.45; }
+  .project-layout .demo-frame { display: none; }
+  .architecture-layout { grid-template-columns: 1fr; gap: 1.2rem; }
+  .arch-summary { font-size: 0.92rem; }
+  .arch-points { gap: 0.6rem; margin-top: 1rem; }
+  .arch-point { padding: 0.8rem 0.9rem; }
+  .arch-point h4 { font-size: 0.9rem; }
+  .arch-point p { font-size: 0.8rem; }
+  .arch-diagram { padding: 0.8rem; gap: 0.65rem; }
+  .arch-row,
+  .arch-row.two,
+  .arch-flow {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+  .arch-node { min-height: 0; padding: 0.75rem; }
+  .arch-node strong { font-size: 0.88rem; }
+  .arch-node p { font-size: 0.72rem; }
+  .arch-arrow { text-align: center; transform: rotate(90deg); }
+  .demo-screen { min-height: 0; padding: 0.85rem; }
+  .demo-grid { grid-template-columns: 1fr 1fr 1fr; gap: 0.45rem; }
+  .demo-stat { padding: 0.65rem; }
+  .demo-stat-value { font-size: 0.95rem; }
+  .demo-chart { height: 95px; }
+  .pipeline { grid-template-columns: repeat(2, 1fr); }
+  .demo-row { grid-template-columns: 1fr; gap: 0.25rem; }
+  .log-line { grid-template-columns: 3.2rem 1fr; }
+  .log-line span:last-child { display: none; }
+  .nav {
+    left: 50%;
+    right: auto;
+    bottom: 2vh;
+    transform: translateX(-50%);
+  }
+  .nav-btn { width: 36px; height: 36px; }
+}
+
+@media (max-width: 520px) {
+  .skills-grid { grid-template-columns: 1fr; }
+  .cover-meta { font-size: 0.72rem; }
+  .tags { gap: 0.35rem; }
+}
+
+@media (max-height: 680px) and (max-width: 768px) {
+  .slide { padding-top: 3vh; }
+  h3 { margin-bottom: 0.45rem; }
+  h2 { font-size: 1.2rem; }
+  .card p { font-size: 0.82rem; line-height: 1.45; }
+  .project-points li { font-size: 0.82rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- Slide 1: Cover -->
+  <div class="slide slide-cover active" data-slide="0">
+    <div class="cover-content stagger">
+      <div>
+        <div class="cover-label">面試簡報 — 2026</div>
+        <div class="cover-name">Josh Wang</div>
+        <div class="cover-title">
+          Software Developer<br>
+          <span style="color: var(--accent);">架構導向 · AI 協作開發</span>
+        </div>
+        <div class="cover-footer">
+          <div class="cover-meta">
+            <span>📍 Taipei, Taiwan</span>
+            <span>📧 spjay1@gmail.com</span>
+            <span>🔗 profile.joshwang.dev/slides</span>
+          </div>
+        </div>
+      </div>
+      <div class="cover-qr" aria-label="QR code to slides">
+        <img src="/slides/qr-slides.png" alt="QR code for https://profile.joshwang.dev/slides">
+        <span>profile.joshwang.dev/slides</span>
+      </div>
+    </div>
+  </div>
+  <!-- Slide 2: 定位 -->
+  <div class="slide" data-slide="1">
+    <div class="positioning-layout stagger">
+      <div>
+        <h3>我的定位</h3>
+        <h2>Software Developer<br><span class="highlight">把不確定性變成可交付系統</span></h2>
+        <p class="positioning-lead">
+          我擅長在需求仍在變動、系統已有包袱、時程又很緊的情境中，釐清問題邊界，設計可維護的實作路徑，並用 AI 協作加速驗證。
+        </p>
+      </div>
+      <div class="role-traits">
+        <div class="trait-card">
+          <h4>架構導向</h4>
+          <p>先看資料流、部署流程與維護成本，再決定要寫什麼程式碼。</p>
+        </div>
+        <div class="trait-card">
+          <h4>產品交付導向</h4>
+          <p>把技術選型拉回使用情境、風險與可驗收結果，而不是只追求漂亮實作。</p>
+        </div>
+        <div class="trait-card">
+          <h4>AI 協作導向</h4>
+          <p>用 AI 擴大探索、測試與重構速度，但保留人的架構判斷與品質把關。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3: 經驗脈絡 -->
+  <div class="slide" data-slide="2">
+    <div class="stagger">
+      <h3>能力形成的脈絡</h3>
+      <h2>三個階段，累積出同一種工作方法</h2>
+      <p style="max-width: 760px;">
+        這不是職缺清單，而是我在哪些產品環境裡學會處理複雜度、交付壓力與長期維護。
+      </p>
+      <div class="phase-grid">
+        <div class="phase-card">
+          <div class="phase-date">2014 — 2019</div>
+          <h4>新創與全端探索</h4>
+          <p>從旅宿、行動 App、GraphQL 到客服後台，習慣在模糊需求中自己補齊產品與工程邊界。</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-date">2019 — 2023</div>
+          <h4>企業系統與資安產品</h4>
+          <p>在 OEC 與 TeamT5 處理跨國內部系統、資安產品前端、官網與活動頁的可靠性要求。</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-date">2023 — 現在</div>
+          <h4>專案型交付與 AI Workflow</h4>
+          <p>聚焦 CI/CD、技術債、地圖互動、交易平台與 AI-assisted development workflow 的落地。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 4: 關鍵證據 -->
+  <div class="slide" data-slide="3">
+    <div class="stagger">
+      <h3>證據</h3>
+      <h2>三個可以被驗證的結果</h2>
+      <div class="proof-grid">
+        <div class="proof-card">
+          <div class="proof-context">SaaS / CI/CD</div>
+          <h4>把發布流程從分裂拉回可維護</h4>
+          <div class="proof-step">
+            <span>Problem</span>
+            <p>分支與環境流程過度拆分，維運成本與 release 風險持續升高。</p>
+          </div>
+          <div class="proof-step">
+            <span>Intervention</span>
+            <p>重構 Monorepo 流程，重新整理 CI/CD 分支策略與自動化驗收路徑。</p>
+          </div>
+          <div class="proof-result">5 branches → 2</div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-context">Real Estate / POC</div>
+          <h4>用 AI 協作壓縮功能驗證時間</h4>
+          <div class="proof-step">
+            <span>Problem</span>
+            <p>地圖 POI 篩選互動複雜，既有模組也帶著技術債，驗證週期偏長。</p>
+          </div>
+          <div class="proof-step">
+            <span>Intervention</span>
+            <p>導入 Claude Code 協作，把探索、拆解與實作驗證變成可重複流程。</p>
+          </div>
+          <div class="proof-result">數週 → 1.5 天</div>
+        </div>
+        <div class="proof-card">
+          <div class="proof-context">Security / Infrastructure</div>
+          <h4>把前端架構決策連到營運成本</h4>
+          <div class="proof-step">
+            <span>Problem</span>
+            <p>官網基礎設施成本偏高，舊系統維護負擔也影響後續迭代。</p>
+          </div>
+          <div class="proof-step">
+            <span>Intervention</span>
+            <p>以 Next.js 搭配 AWS S3 / CloudFront 重建部署架構，並清理舊 code。</p>
+          </div>
+          <div class="proof-result">成本降低 90%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 5: AI 協作模式 -->
+  <div class="slide" data-slide="4">
+    <div class="stagger">
+      <h3>工作方式</h3>
+      <h2>我的 <span class="highlight2">AI 協作開發</span>模式</h2>
+      <p style="max-width: 600px; margin-bottom: 1rem;">
+        不是把 AI 當自動完成工具，而是建立一套<span class="highlight2">人機協作的開發流程</span>——我負責架構決策和品質把關，AI 加速實作和驗證。
+      </p>
+      <div class="collab-model">
+        <div class="collab-box me">
+          <div class="icon">🧠</div>
+          <div class="label">我 — 設計</div>
+          <div class="desc">架構決策<br>安全審查<br>效能策略</div>
+        </div>
+        <div class="collab-arrow">→</div>
+        <div class="collab-box ai">
+          <div class="icon">🤖</div>
+          <div class="label">AI — 實作</div>
+          <div class="desc">Claude Code<br>MCP 整合<br>測試生成</div>
+        </div>
+        <div class="collab-arrow">→</div>
+        <div class="collab-box me">
+          <div class="icon">🔍</div>
+          <div class="label">我 — 審查</div>
+          <div class="desc">Code Review<br>邊界測試<br>生產驗證</div>
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem;">
+        <span class="highlight">80%</span> 時間投入：複雜邏輯、安全性、效能瓶頸<br>
+        <span class="highlight2">20%</span> 時間投入：關鍵路徑的親手實作
+      </p>
+    </div>
+  </div>
+
+  <!-- Slide 6: 工作原則 -->
+  <div class="slide" data-slide="5">
+    <div class="principles-layout stagger">
+      <div>
+        <h3>工作原則</h3>
+        <h2>我怎麼把 AI 協作<br>落成可靠交付</h2>
+        <p>
+          AI 可以加快探索與實作，但真正決定品質的是：問題拆解、邊界設計、驗收方法與回饋節奏。
+        </p>
+      </div>
+      <div class="principles-grid">
+        <div class="principle-card">
+          <div class="principle-label">01</div>
+          <h4>先定義風險，再寫功能</h4>
+          <p>先找資料流、權限、效能與維護成本的風險點，避免快速實作變成快速累積技術債。</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-label">02</div>
+          <h4>把 AI 當協作者，不當權威</h4>
+          <p>讓 AI 協助產生方案、測試與重構候選，但由我負責驗證假設與保留決策脈絡。</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-label">03</div>
+          <h4>用可驗收成果溝通進度</h4>
+          <p>把進度拆成可 demo、可測試、可 review 的小結果，讓團隊能快速對齊取捨。</p>
+        </div>
+        <div class="principle-card">
+          <div class="principle-label">04</div>
+          <h4>讓好的流程能被複用</h4>
+          <p>沉澱 CI/CD、測試、文件與 prompt 流程，讓一次解法變成下一次交付的起點。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 7: 技術棧 -->
+  <div class="slide" data-slide="6">
+    <div class="stagger">
+      <h3>技術棧</h3>
+      <h2>工具是手段，<span class="highlight3">解決問題</span>是目的</h2>
+      <div class="skills-grid" style="margin-top: 1.5rem;">
+        <div class="skill-group">
+          <h4>Frontend（主力）</h4>
+          <div class="tags">
+            <span class="tag primary">React/Next.js</span>
+            <span class="tag primary">TypeScript</span>
+            <span class="tag">Redux</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">GraphQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Frontend（跨生態）</h4>
+          <div class="tags">
+            <span class="tag secondary">Vue 3/Nuxt.js</span>
+            <span class="tag">Svelte</span>
+            <span class="tag">Preact</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Backend & Cloud</h4>
+          <div class="tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">Rails</span>
+            <span class="tag">AWS S3/CloudFront</span>
+            <span class="tag">Docker</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>CI/CD & Testing</h4>
+          <div class="tags">
+            <span class="tag primary">GitHub Actions</span>
+            <span class="tag">GitLab Runner</span>
+            <span class="tag">Playwright</span>
+            <span class="tag">Jest</span>
+            <span class="tag">Cucumber</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Mobile</h4>
+          <div class="tags">
+            <span class="tag">React Native</span>
+            <span class="tag">Code Push</span>
+            <span class="tag">TestFlight</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>AI 工具鏈</h4>
+          <div class="tags">
+            <span class="tag primary">Claude Code</span>
+            <span class="tag primary">MCP</span>
+            <span class="tag">Windsurf</span>
+            <span class="tag">Stable Diffusion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 8: 期望 -->
+  <div class="slide" data-slide="7">
+    <div class="expect-layout stagger">
+      <div>
+        <h3>我在找的環境</h3>
+        <h2>期望與合作方式</h2>
+        <p class="expect-lead">
+          我希望加入一個願意把工程品質、產品效率與團隊溝通放在同一張桌上討論的環境。
+        </p>
+        <div class="expect-focus">
+          <span>架構品質與長期維護性</span>
+          <span>AI 協作與開發流程升級</span>
+        </div>
+      </div>
+      <div class="expect-panel">
+        <div class="expect-item">
+          <span class="expect-label">Role</span>
+          <h4>發揮架構價值的角色</h4>
+          <p>帶頭解決困難問題、優化底層架構，並把重構落成團隊可持續採用的做法。</p>
+        </div>
+        <div class="expect-item">
+          <span class="expect-label">Communication</span>
+          <h4>追求實效的團隊溝通</h4>
+          <p>用數據衡量成果，重視開發者體驗 (DX)，也願意把取捨講清楚、對齊清楚。</p>
+        </div>
+        <div class="expect-item wide">
+          <span class="expect-label">Team</span>
+          <h4>凝聚力強的協作環境</h4>
+          <p>互相分享技術、不藏私，彼此信任且目標一致，讓好的工程習慣能被放大。</p>
+        </div>
+        <div class="expect-quote">
+          <p>
+            「我不只期許自己是交付功能的開發者，更希望能運用<span class="highlight">架構視野</span>與<span class="highlight2">AI 開發流程</span>，為團隊帶來更高的開發效率與架構品質。」
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 9: Project - lychart -->
+  <div class="slide" data-slide="8">
+    <div class="project-layout stagger">
+      <div>
+        <div class="project-kicker">Selected Work / Data Product</div>
+        <div class="project-title">lychart</div>
+        <p class="project-summary">
+          個人財務資料產品：把散落在 Email 裡的銀行與信用卡對帳單，轉成可審核、可分析、可輸出的月報系統。
+        </p>
+        <ul class="project-points">
+          <li>Gmail 匯入對帳單，透過 job stream 顯示解析進度與結果</li>
+          <li>銀行 / 信用卡 statement 分流管理，保留待審核與解析狀態</li>
+          <li>ECharts 呈現 12 個月收支趨勢，並支援月報 PDF 匯出</li>
+        </ul>
+        <div class="tags">
+          <span class="tag primary">React</span>
+          <span class="tag primary">TypeScript</span>
+          <span class="tag primary">FastAPI</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Redis / arq</span>
+          <span class="tag">Gemini Vision</span>
+          <span class="tag">ECharts</span>
+          <span class="tag">PDF Export</span>
+        </div>
+      </div>
+      <div class="demo-frame" aria-label="lychart dashboard screenshot-style mockup">
+        <div class="demo-bar">
+          <span class="demo-dot"></span>
+          <span class="demo-dot"></span>
+          <span class="demo-dot"></span>
+          <span class="demo-url">lychart.local/dashboard</span>
+        </div>
+        <div class="actual-shot ly-app">
+          <aside class="ly-side">
+            <div class="ly-logo"><span>ly</span><span>chart</span></div>
+            <div class="ly-nav">
+              <div class="ly-nav-item active">財務總覽</div>
+              <div class="ly-nav-item">Gmail 設定</div>
+              <div class="ly-nav-item">對帳單</div>
+              <div class="ly-nav-item">帳戶管理</div>
+            </div>
+          </aside>
+          <div class="ly-main">
+            <div class="ly-header">
+              <div class="ly-heading">財務總覽</div>
+              <div class="ly-import">執行匯入</div>
+            </div>
+            <section class="ly-total">
+              <div class="ly-total-label">總資產</div>
+              <div class="ly-total-value">NT$ 842,160</div>
+              <div class="ly-cats">
+                <div class="ly-cat"><span>銀行帳戶</span><strong>612,400</strong></div>
+                <div class="ly-cat"><span>信用卡應付</span><strong>38,920</strong></div>
+                <div class="ly-cat"><span>待審核</span><strong>6 份</strong></div>
+              </div>
+            </section>
+            <section class="ly-trend">
+              <div class="ly-section-title">近 12 個月收支（點月份查看月報表）</div>
+              <div class="ly-lines">
+                <div class="ly-line income"></div>
+                <div class="ly-line expense"></div>
+              </div>
+            </section>
+            <section class="ly-table">
+              <div class="ly-row"><span>交易</span><span>金額</span></div>
+              <div class="ly-row"><span>薪資入帳 · 玉山銀行</span><span class="ly-pos">+128,000</span></div>
+              <div class="ly-row"><span>雲端服務 · 台新信用卡</span><span class="ly-neg">-2,480</span></div>
+              <div class="ly-row"><span>房租轉帳 · 中信銀行</span><span class="ly-neg">-28,000</span></div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 10: lychart Architecture -->
+  <div class="slide" data-slide="9">
+    <div class="architecture-layout stagger">
+      <div>
+        <div class="project-kicker">Architecture / lychart</div>
+        <h2>從 Gmail statement 到<br><span class="highlight">自託管財務資料管線</span></h2>
+        <p class="arch-summary">
+          這個系統要解決的問題很單純：每個月信箱裡有很多金融對帳單，我希望它可以自己收、自己讀、自己整理，但在不確定的地方留下人工確認。
+        </p>
+        <div class="arch-points">
+          <div class="arch-point">
+            <h4>把收信與解析放到背景跑</h4>
+            <p>使用者不用等在畫面前；匯入、解密、解析和月底快照都交給背景工作處理。</p>
+          </div>
+          <div class="arch-point">
+            <h4>讓 AI 直接看 PDF</h4>
+            <p>台灣帳單版型差異很大，所以不是先硬拆文字，而是讓 vision model 直接讀 PDF 並輸出固定格式。</p>
+          </div>
+          <div class="arch-point">
+            <h4>只審需要注意的例外</h4>
+            <p>乾淨的資料自動入帳；失敗、帳戶不確定或高風險機構才丟進 review queue。</p>
+          </div>
+        </div>
+      </div>
+      <div class="arch-diagram" aria-label="lychart architecture diagram">
+        <div class="arch-flow">
+          <div class="arch-node primary">
+            <span>Step 1</span>
+            <strong>從信箱收帳單</strong>
+            <p>依機構規則抓 Gmail 裡的銀行、信用卡、證券與水電帳單。</p>
+          </div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node secondary">
+            <span>Step 2</span>
+            <strong>解密並讀懂 PDF</strong>
+            <p>背景工作負責解密，再讓 AI 把帳單轉成交易資料。</p>
+          </div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node info">
+            <span>Step 3</span>
+            <strong>存成可查詢資料</strong>
+            <p>交易、帳戶、匯率與每月資產快照都進資料庫。</p>
+          </div>
+        </div>
+        <div class="arch-row">
+          <div class="arch-node">
+            <span>Safety</span>
+            <strong>避免重複入帳</strong>
+            <p>用帳戶、日期、金額與描述產生去重 key，降低重複匯入風險。</p>
+          </div>
+          <div class="arch-node">
+            <span>Review</span>
+            <strong>例外才人工確認</strong>
+            <p>解析失敗或帳戶不確定時，才需要進入審核畫面。</p>
+          </div>
+          <div class="arch-node">
+            <span>Output</span>
+            <strong>看趨勢、匯出月報</strong>
+            <p>儀表板看資產與收支，月底可以輸出 PDF 留存。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 11: Project - PickleScout -->
+  <div class="slide" data-slide="10">
+    <div class="project-layout stagger">
+      <div>
+        <div class="project-kicker">Selected Work / AI Testing</div>
+        <div class="project-title">PickleScout</div>
+        <p class="project-summary">
+          LLM-driven browser agent：讓 AI 實際探索 Web app，產生可直接執行的 Cucumber.js + Playwright 測試專案。
+        </p>
+        <ul class="project-points">
+          <li>Stagehand + Playwright 探索使用者流程，記錄 ActionLog 與截圖</li>
+          <li>雙階段 LLM pipeline 轉出 Gherkin scenarios 與 TypeScript steps</li>
+          <li>自動驗證與 self-healing，最後輸出可放進 CI/CD 的 zip</li>
+        </ul>
+        <div class="tags">
+          <span class="tag primary">LLM Agent</span>
+          <span class="tag primary">Playwright</span>
+          <span class="tag">Cucumber.js</span>
+          <span class="tag">Fastify</span>
+          <span class="tag">BullMQ</span>
+          <span class="tag">Redis</span>
+        </div>
+      </div>
+      <div class="demo-frame" aria-label="PickleScout job detail screenshot-style mockup">
+        <div class="demo-bar">
+          <span class="demo-dot"></span>
+          <span class="demo-dot"></span>
+          <span class="demo-dot"></span>
+          <span class="demo-url">picklescout.local/jobs/demo</span>
+        </div>
+        <div class="actual-shot ps-app">
+          <div class="ps-top">
+            <div class="ps-brand"><span class="ps-mark">P</span><span>PickleScout</span></div>
+            <div class="ps-download">Download ZIP</div>
+          </div>
+          <div class="ps-status">
+            <div class="ps-status-line">
+              <div class="ps-url">https://demo.app.local/orders</div>
+              <div class="ps-chip">verifying · step 7 / 9</div>
+            </div>
+            <div class="ps-progress"><span></span></div>
+          </div>
+          <div class="ps-grid">
+            <section class="ps-card">
+              <div class="ps-card-title">ActionLog</div>
+              <div class="ps-action"><span>✓</span><span>goto /login</span></div>
+              <div class="ps-action"><span>✓</span><span>fill [name=email]</span></div>
+              <div class="ps-action"><span>✓</span><span>click text=Orders</span></div>
+              <div class="ps-action active"><span>↻</span><span>observe table filters</span></div>
+              <div class="ps-action"><span>·</span><span>package generated-tests.zip</span></div>
+            </section>
+            <section class="ps-card">
+              <div class="ps-card-title">Feature Preview</div>
+              <div class="ps-stats">
+                <div class="ps-stat"><strong>8</strong><span>features</span></div>
+                <div class="ps-stat"><strong>21</strong><span>steps</span></div>
+                <div class="ps-stat"><strong>1</strong><span>healed</span></div>
+              </div>
+              <div class="ps-file">▾ features</div>
+              <div class="ps-file active">◇ 01_login_flow.feature</div>
+              <div class="ps-file">◇ 02_order_search.feature</div>
+              <div class="ps-file">▾ steps</div>
+              <div class="ps-file">◇ order_search.steps.ts</div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 12: PickleScout Architecture -->
+  <div class="slide" data-slide="11">
+    <div class="architecture-layout stagger">
+      <div>
+        <div class="project-kicker">Architecture / PickleScout</div>
+        <h2>一個 AI agent pipeline<br><span class="highlight2">產生可落地的 E2E 測試專案</span></h2>
+        <p class="arch-summary">
+          PickleScout 的想法是：讓 AI 先像真人一樣逛一次網站，理解使用流程，再把觀察結果轉成可以下載、可以執行、可以放進 CI 的測試專案。
+        </p>
+        <div class="arch-points">
+          <div class="arch-point">
+            <h4>每次產生測試都是一個任務</h4>
+            <p>前端送出目標網站後，後端排隊處理，畫面只負責即時顯示進度。</p>
+          </div>
+          <div class="arch-point">
+            <h4>先探索，再產生測試</h4>
+            <p>Browser agent 記錄點擊、輸入與畫面變化，AI 再把這些紀錄整理成測試案例。</p>
+          </div>
+          <div class="arch-point">
+            <h4>驗證後才輸出</h4>
+            <p>產生後會先試跑；如果 selector 或等待時間出錯，會嘗試自動修正，再打包成 zip。</p>
+          </div>
+        </div>
+      </div>
+      <div class="arch-diagram" aria-label="PickleScout architecture diagram">
+        <div class="arch-flow">
+          <div class="arch-node primary">
+            <span>Step 1</span>
+            <strong>輸入目標網站</strong>
+            <p>使用者提供 URL、登入資訊與 AI provider 設定。</p>
+          </div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node secondary">
+            <span>Step 2</span>
+            <strong>排入背景任務</strong>
+            <p>後端建立 job，讓 worker 處理探索、生成與驗證。</p>
+          </div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node info">
+            <span>Step 3</span>
+            <strong>即時回報進度</strong>
+            <p>前端可以看到目前正在探索、生成、驗證或打包。</p>
+          </div>
+        </div>
+        <div class="arch-row">
+          <div class="arch-node">
+            <span>Explore</span>
+            <strong>像使用者一樣操作</strong>
+            <p>打開瀏覽器、點按鈕、填表單，並留下操作紀錄與截圖。</p>
+          </div>
+          <div class="arch-node">
+            <span>Generate</span>
+            <strong>把操作變成測試</strong>
+            <p>先寫出情境，再產生對應的 Playwright step files。</p>
+          </div>
+          <div class="arch-node">
+            <span>Verify</span>
+            <strong>先跑過一次</strong>
+            <p>確認測試可以執行；失敗時嘗試修 selector 或 timeout。</p>
+          </div>
+        </div>
+        <div class="arch-row two">
+          <div class="arch-node secondary">
+            <span>Trace</span>
+            <strong>保留過程證據</strong>
+            <p>截圖、操作紀錄與生成結果都會被保存，方便回頭檢查。</p>
+          </div>
+          <div class="arch-node primary">
+            <span>Output</span>
+            <strong>下載完整測試專案</strong>
+            <p>zip 裡包含測試、設定與 CI workflow，執行時不需要再呼叫 AI。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 13: Contact -->
+  <div class="slide" data-slide="12">
+    <div class="stagger" style="text-align: center; align-items: center; display: flex; flex-direction: column;">
+      <h3>Thank You</h3>
+      <div class="cover-name" style="font-size: clamp(2.5rem, 6vw, 5rem); margin-bottom: 2rem;">
+        Let's Talk.
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0.8rem; align-items: center;">
+        <p style="font-size: 1.1rem; color: var(--text);">📧 spjay1@gmail.com</p>
+        <p style="font-size: 1.1rem; color: var(--text);">🔗 profile.joshwang.dev/slides</p>
+        <p style="font-size: 1.1rem; color: var(--text);">📍 Taipei, Taiwan</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button class="nav-btn" onclick="navigate(-1)" aria-label="Previous">←</button>
+  <span class="nav-counter" id="counter">1 / 13</span>
+  <button class="nav-btn" onclick="navigate(1)" aria-label="Next">→</button>
+</div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+const counter = document.getElementById('counter');
+const progress = document.getElementById('progress');
+
+function showSlide(index) {
+  slides.forEach(s => s.classList.remove('active'));
+  slides[index].classList.add('active');
+  counter.textContent = `${index + 1} / ${total}`;
+  progress.style.width = `${((index + 1) / total) * 100}%`;
+}
+
+function navigate(dir) {
+  current = Math.max(0, Math.min(total - 1, current + dir));
+  showSlide(current);
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+    e.preventDefault();
+    navigate(1);
+  }
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    navigate(-1);
+  }
+});
+
+// Touch support
+let touchStartX = 0;
+document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', (e) => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) navigate(diff > 0 ? 1 : -1);
+});
+
+showSlide(0);
+</script>
+
+</body>
+</html>
