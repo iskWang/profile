@@ -373,6 +373,280 @@ p, li {
   margin-top: 0.1em;
 }
 
+/* Project showcase */
+.project-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(420px, 1.2fr);
+  gap: 4vw;
+  align-items: center;
+}
+
+.project-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--accent);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.project-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  line-height: 0.98;
+  margin-bottom: 1.2rem;
+}
+
+.project-summary {
+  color: var(--text);
+  font-weight: 400;
+  max-width: 560px;
+}
+
+.project-points {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.8rem;
+}
+
+.project-points li {
+  display: grid;
+  grid-template-columns: 1.2rem 1fr;
+  gap: 0.7rem;
+  color: var(--text-dim);
+  font-size: 0.98rem;
+}
+
+.project-points li::before {
+  content: '•';
+  color: var(--accent);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.demo-frame {
+  background: #0b1220;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 14px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.demo-bar {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0 1rem;
+  background: rgba(15, 23, 42, 0.92);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.demo-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--surface2);
+}
+
+.demo-dot:nth-child(1) { background: #f87171; }
+.demo-dot:nth-child(2) { background: #fbbf24; }
+.demo-dot:nth-child(3) { background: #34d399; }
+
+.demo-url {
+  margin-left: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.demo-screen {
+  padding: 1.2rem;
+  min-height: 420px;
+}
+
+.demo-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.demo-heading {
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.demo-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-top: 0.25rem;
+}
+
+.demo-button {
+  background: var(--accent);
+  color: #052e1f;
+  border-radius: 6px;
+  padding: 0.55rem 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.demo-stat,
+.demo-panel,
+.demo-table,
+.demo-log,
+.demo-code {
+  background: rgba(30, 41, 59, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 10px;
+}
+
+.demo-stat {
+  padding: 0.85rem;
+}
+
+.demo-stat-label,
+.demo-panel-title,
+.demo-log-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.demo-stat-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-top: 0.45rem;
+}
+
+.demo-stat.good .demo-stat-value { color: var(--accent); }
+.demo-stat.warn .demo-stat-value { color: var(--accent2); }
+.demo-stat.info .demo-stat-value { color: var(--accent3); }
+
+.demo-chart {
+  height: 145px;
+  padding: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+.chart-bars {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.45rem;
+  padding-top: 1.2rem;
+}
+
+.chart-bars span {
+  flex: 1;
+  border-radius: 6px 6px 0 0;
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.95), rgba(6, 182, 212, 0.55));
+  min-height: 26%;
+}
+
+.demo-table {
+  padding: 0.35rem 0.75rem;
+}
+
+.demo-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  font-size: 0.75rem;
+}
+
+.demo-row:last-child { border-bottom: 0; }
+
+.demo-pill {
+  border-radius: 999px;
+  border: 1px solid rgba(16, 185, 129, 0.55);
+  color: var(--accent);
+  padding: 0.2rem 0.45rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+}
+
+.demo-input {
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.74rem;
+  color: var(--text-dim);
+  margin-bottom: 0.85rem;
+}
+
+.pipeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.pipeline-step {
+  padding: 0.75rem 0.55rem;
+  border-radius: 8px;
+  background: rgba(51, 65, 85, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text);
+}
+
+.pipeline-step.active {
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+.demo-log {
+  padding: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+.log-line {
+  display: grid;
+  grid-template-columns: 4.4rem 1fr auto;
+  gap: 0.6rem;
+  padding-top: 0.55rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.log-line strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.demo-code {
+  padding: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+.demo-code .code-accent { color: var(--accent3); }
+
 /* Navigation */
 .nav {
   position: fixed;
@@ -447,6 +721,19 @@ p, li {
   .collab-model { flex-direction: column; }
   .collab-arrow { transform: rotate(90deg); }
   .skills-grid { grid-template-columns: 1fr 1fr; }
+  .project-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+  .project-title { font-size: clamp(2rem, 12vw, 3.2rem); }
+  .project-points { gap: 0.5rem; margin-top: 1rem; }
+  .project-points li { font-size: 0.86rem; line-height: 1.45; }
+  .demo-screen { min-height: 0; padding: 0.85rem; }
+  .demo-grid { grid-template-columns: 1fr 1fr 1fr; gap: 0.45rem; }
+  .demo-stat { padding: 0.65rem; }
+  .demo-stat-value { font-size: 0.95rem; }
+  .demo-chart { height: 95px; }
+  .pipeline { grid-template-columns: repeat(2, 1fr); }
+  .demo-row { grid-template-columns: 1fr; gap: 0.25rem; }
+  .log-line { grid-template-columns: 3.2rem 1fr; }
+  .log-line span:last-child { display: none; }
 }
 </style>
 </head>
@@ -732,8 +1019,174 @@ p, li {
     </div>
   </div>
 
-  <!-- Slide 9: Contact -->
+  <!-- Slide 9: Project - lychart -->
   <div class="slide" data-slide="8">
+    <div class="project-layout stagger">
+      <div>
+        <div class="project-kicker">Selected Work / Data Product</div>
+        <div class="project-title">lychart</div>
+        <p class="project-summary">
+          個人財務資料產品：把散落在 Email 裡的銀行與信用卡對帳單，轉成可審核、可分析、可輸出的月報系統。
+        </p>
+        <ul class="project-points">
+          <li>Gmail 匯入對帳單，透過 job stream 顯示解析進度與結果</li>
+          <li>銀行 / 信用卡 statement 分流管理，保留待審核與解析狀態</li>
+          <li>ECharts 呈現 12 個月收支趨勢，並支援月報 PDF 匯出</li>
+        </ul>
+        <div class="tags">
+          <span class="tag primary">React</span>
+          <span class="tag primary">TypeScript</span>
+          <span class="tag">React Query</span>
+          <span class="tag">Zustand</span>
+          <span class="tag">ECharts</span>
+          <span class="tag">PDF Export</span>
+        </div>
+      </div>
+      <div class="demo-frame" aria-label="lychart demo screenshot mockup">
+        <div class="demo-bar">
+          <span class="demo-dot"></span>
+          <span class="demo-dot"></span>
+          <span class="demo-dot"></span>
+          <span class="demo-url">lychart.local/dashboard</span>
+        </div>
+        <div class="demo-screen">
+          <div class="demo-topline">
+            <div>
+              <div class="demo-heading">財務總覽</div>
+              <div class="demo-sub">去識別化 demo data / 近 12 個月</div>
+            </div>
+            <div class="demo-button">匯出 PDF</div>
+          </div>
+          <div class="demo-grid">
+            <div class="demo-stat good">
+              <div class="demo-stat-label">Income</div>
+              <div class="demo-stat-value">+128k</div>
+            </div>
+            <div class="demo-stat warn">
+              <div class="demo-stat-label">Expense</div>
+              <div class="demo-stat-value">-74k</div>
+            </div>
+            <div class="demo-stat info">
+              <div class="demo-stat-label">Review</div>
+              <div class="demo-stat-value">6</div>
+            </div>
+          </div>
+          <div class="demo-panel demo-chart">
+            <div class="demo-panel-title">12-month cashflow</div>
+            <div class="chart-bars">
+              <span style="height: 42%;"></span>
+              <span style="height: 58%;"></span>
+              <span style="height: 36%;"></span>
+              <span style="height: 74%;"></span>
+              <span style="height: 62%;"></span>
+              <span style="height: 84%;"></span>
+              <span style="height: 53%;"></span>
+              <span style="height: 68%;"></span>
+              <span style="height: 46%;"></span>
+              <span style="height: 78%;"></span>
+              <span style="height: 57%;"></span>
+              <span style="height: 91%;"></span>
+            </div>
+          </div>
+          <div class="demo-table">
+            <div class="demo-row">
+              <span>台新信用卡 / 2026-05</span>
+              <span>NT$ 18,240</span>
+              <span class="demo-pill">待審核</span>
+            </div>
+            <div class="demo-row">
+              <span>玉山銀行 / 2026-05</span>
+              <span>+NT$ 42,000</span>
+              <span class="demo-pill">已解析</span>
+            </div>
+            <div class="demo-row">
+              <span>中信信用卡 / 2026-04</span>
+              <span>NT$ 12,680</span>
+              <span class="demo-pill">已核可</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 10: Project - PickleScout -->
+  <div class="slide" data-slide="9">
+    <div class="project-layout stagger">
+      <div>
+        <div class="project-kicker">Selected Work / AI Testing</div>
+        <div class="project-title">PickleScout</div>
+        <p class="project-summary">
+          LLM-driven browser agent：讓 AI 實際探索 Web app，產生可直接執行的 Cucumber.js + Playwright 測試專案。
+        </p>
+        <ul class="project-points">
+          <li>Stagehand + Playwright 探索使用者流程，記錄 ActionLog 與截圖</li>
+          <li>雙階段 LLM pipeline 轉出 Gherkin scenarios 與 TypeScript steps</li>
+          <li>自動驗證與 self-healing，最後輸出可放進 CI/CD 的 zip</li>
+        </ul>
+        <div class="tags">
+          <span class="tag primary">LLM Agent</span>
+          <span class="tag primary">Playwright</span>
+          <span class="tag">Cucumber.js</span>
+          <span class="tag">Fastify</span>
+          <span class="tag">BullMQ</span>
+          <span class="tag">Redis</span>
+        </div>
+      </div>
+      <div class="demo-frame" aria-label="PickleScout demo screenshot mockup">
+        <div class="demo-bar">
+          <span class="demo-dot"></span>
+          <span class="demo-dot"></span>
+          <span class="demo-dot"></span>
+          <span class="demo-url">picklescout.local/jobs/demo</span>
+        </div>
+        <div class="demo-screen">
+          <div class="demo-topline">
+            <div>
+              <div class="demo-heading">Browse once, test forever.</div>
+              <div class="demo-sub">LLM exploration → verified test project</div>
+            </div>
+            <div class="demo-button">Download ZIP</div>
+          </div>
+          <div class="demo-input">https://demo.app.local/orders · hint: cover login, search, checkout</div>
+          <div class="pipeline">
+            <div class="pipeline-step">Explore</div>
+            <div class="pipeline-step">Generate</div>
+            <div class="pipeline-step active">Verify</div>
+            <div class="pipeline-step">Package</div>
+          </div>
+          <div class="demo-log">
+            <div class="demo-log-title">Live job stream</div>
+            <div class="log-line">
+              <strong>00:12</strong>
+              <span>Observed login form and submitted valid user</span>
+              <span>ok</span>
+            </div>
+            <div class="log-line">
+              <strong>00:27</strong>
+              <span>Generated 8 scenarios from ActionLog</span>
+              <span>ok</span>
+            </div>
+            <div class="log-line">
+              <strong>00:41</strong>
+              <span>Selector repaired during verification retry</span>
+              <span>healed</span>
+            </div>
+          </div>
+          <div class="demo-code">
+            <span class="code-accent">Feature:</span> Order search and checkout<br>
+            &nbsp;&nbsp;<span class="code-accent">Scenario:</span> User filters paid orders<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Given I am signed in<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;When I search for "invoice-ready"<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Then I should see verified order results
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 11: Contact -->
+  <div class="slide" data-slide="10">
     <div class="stagger" style="text-align: center; align-items: center; display: flex; flex-direction: column;">
       <h3>Thank You</h3>
       <div class="cover-name" style="font-size: clamp(2.5rem, 6vw, 5rem); margin-bottom: 2rem;">
@@ -752,7 +1205,7 @@ p, li {
 <!-- Navigation -->
 <div class="nav">
   <button class="nav-btn" onclick="navigate(-1)" aria-label="Previous">←</button>
-  <span class="nav-counter" id="counter">1 / 9</span>
+  <span class="nav-counter" id="counter">1 / 11</span>
   <button class="nav-btn" onclick="navigate(1)" aria-label="Next">→</button>
 </div>
 
