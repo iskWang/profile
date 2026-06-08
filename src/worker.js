@@ -5,6 +5,18 @@ export default {
     const url = new URL(request.url);
     const accept = request.headers.get('Accept') || '';
 
+    if (url.pathname === '/deck' || url.pathname === '/deck/' || url.pathname === '/deck/index.html') {
+      return Response.redirect(`${SITE_URL}/slides`, 301);
+    }
+
+    if (url.pathname === '/slides') {
+      const slidesRequest = new Request(new URL('/slides/index.html', url), {
+        method: request.method,
+        headers: request.headers,
+      });
+      return env.ASSETS.fetch(slidesRequest);
+    }
+
     // Markdown for Agents: serve index.md when Accept: text/markdown on homepage
     if (accept.includes('text/markdown') && url.pathname === '/') {
       const mdRequest = new Request(new URL('/index.md', url), {
