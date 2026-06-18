@@ -1,1 +1,1 @@
-.agent/docs/CLAUDE.md
+.agent/docs/AGENTS.md
