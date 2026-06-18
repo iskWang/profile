@@ -49,7 +49,7 @@
   - 跨出 React 生態系，獨立使用 Vue 3 + Nuxt 3 + Pinia 建構具備即時交易資訊之平台
   - 整合 TradingView Widget 與 ECharts，實作即時股價、最佳五檔行情及數據視覺化
 
-### TeamT5 杜浦數位安全 — Front-End Developer (Platform & Architecture)
+### TeamT5 杜浦數位安全 — Frontend Developer (Platform & Architecture)
 **2021/10 – 2023/06**
 
 - 主導前後端分離架構規劃，制定頁面結構與資料流遷移方案，產出技術規格與架構設計文件
@@ -57,7 +57,7 @@
 - 重構 50%+ legacy code，改善維護效率並優化資源消耗；實作自動縮圖及雲端上傳功能
 - 發現外部廠商系統資安問題（密碼明碼傳輸及權限設計問題），提報後獲得高層關注並推動改善
 
-### 海碩集團 鑫享科技 (OEC Group) — Front-End Lead
+### 海碩集團 鑫享科技 (OEC Group) — Frontend Lead
 **2019/05 – 2021/10**
 
 - 採用 React Hooks 及 Context API，領導集團內全新前端專案架構，覆蓋全球 50+ 國內部使用者

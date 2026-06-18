@@ -65,7 +65,7 @@ export const CONTENT = {
         },
         {
           company: "TeamT5 杜浦數位安全",
-          role: "Front-End Developer (Platform & Architecture)",
+          role: "Frontend Developer (Platform & Architecture)",
           period: "2021/10 - 2023/06",
           highlights: [
             "ThreatSonar 產品前端架構規劃：主導前後端分離架構、頁面結構與資料流遷移方案，產出技術規格與架構設計文件",
@@ -77,7 +77,7 @@ export const CONTENT = {
         },
         {
           company: "海碩集團 鑫享科技 (OEC Group)",
-          role: "Front-End Lead",
+          role: "Frontend Lead",
           period: "2019/05 - 2021/10",
           highlights: [
             "B2B/B2C 後台系統：採用 React Hooks 及 Context API 領導集團前端專案，覆蓋全球 50+ 國內部使用者",
@@ -93,7 +93,7 @@ export const CONTENT = {
       title: "技能樹",
       subtitle: "// Tech stack overview",
       categories: {
-        frontend: "Front-End",
+        frontend: "Frontend",
         backend: "Back-End",
         ai: "AI Workflow",
         mobile: "Mobile",
@@ -195,7 +195,7 @@ export const CONTENT = {
       location: "Taipei, Taiwan",
       welcome: "Hi, I'm Josh!",
       description:
-        "Senior Developer driving front-end, cross-platform & AI workflows.",
+        "Senior Developer driving Frontend, cross-platform & AI workflows.",
       tags: [
         "🤖 AI-Driven Development",
         "🌐 Cross-platform",
@@ -254,7 +254,7 @@ export const CONTENT = {
         },
         {
           company: "TeamT5 (Cybersecurity)",
-          role: "Front-End Developer (Platform & Architecture)",
+          role: "Frontend Developer (Platform & Architecture)",
           period: "Oct 2021 - Jun 2023",
           highlights: [
             "ThreatSonar Product — Frontend Architecture Planning: Led architecture planning for frontend/backend separation; produced technical specifications and design documents.",
@@ -266,7 +266,7 @@ export const CONTENT = {
         },
         {
           company: "OEC Group",
-          role: "Front-End Lead",
+          role: "Frontend Lead",
           period: "May 2019 - Oct 2021",
           highlights: [
             "B2B/B2C Back-office System: Led frontend rebuild using React Hooks and Context API, covering internal systems across 50+ countries.",
@@ -282,7 +282,7 @@ export const CONTENT = {
       title: "Skill Tree",
       subtitle: "// Tech stack overview",
       categories: {
-        frontend: "Front-End",
+        frontend: "Frontend",
         backend: "Back-End",
         ai: "AI Workflow",
         mobile: "Mobile",

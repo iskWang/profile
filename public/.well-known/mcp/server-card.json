@@ -2,7 +2,7 @@
   "serverInfo": {
     "name": "Josh Wang Profile",
     "version": "1.0.0",
-    "description": "Josh Wang - Senior Front-End Technical Consultant, Taipei"
+    "description": "Josh Wang - Senior Frontend Technical Consultant, Taipei"
   },
   "transport": {
     "type": "http",
