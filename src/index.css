@@ -6,7 +6,7 @@
 :root {
   --ink: 17 17 17;
   --paper: 244 241 232;
-  --lime: 190 242 100;
+  --accent: 223 248 255;
   --cyan-soft: 223 248 255;
 }
 
@@ -61,7 +61,7 @@
     transform: translateY(-8px);
   }
   .skill-badge-emerald:hover {
-    background-color: rgb(var(--lime) / 0.6);
+    background-color: rgb(var(--accent) / 0.72);
     border-color: rgb(var(--ink) / 0.3);
     box-shadow: 4px 4px 0 #111111;
   }
@@ -71,7 +71,7 @@
     box-shadow: 4px 4px 0 #111111;
   }
   .skill-badge-amber:hover {
-    background-color: rgb(var(--lime) / 0.6);
+    background-color: rgb(var(--accent) / 0.72);
     border-color: rgb(var(--ink) / 0.3);
     box-shadow: 4px 4px 0 #111111;
   }
@@ -84,7 +84,7 @@
   }
   .highlight-card-emerald:hover {
     border-color: rgb(var(--ink) / 0.6);
-    background-color: rgb(var(--lime) / 0.6);
+    background-color: rgb(var(--accent) / 0.72);
     box-shadow: 4px 4px 0 #111111;
   }
   .highlight-card-cyan:hover {
@@ -94,7 +94,7 @@
   }
   .highlight-card-amber:hover {
     border-color: rgb(var(--ink) / 0.6);
-    background-color: rgb(var(--lime) / 0.6);
+    background-color: rgb(var(--accent) / 0.72);
     box-shadow: 4px 4px 0 #111111;
   }
   .tag-emerald {
@@ -103,7 +103,7 @@
   }
   .tag-emerald:hover {
     transform: translateY(-8px);
-    background-color: rgb(var(--lime) / 0.6);
+    background-color: rgb(var(--accent) / 0.72);
     border-color: rgb(var(--ink) / 0.5);
     box-shadow: 4px 4px 0 #111111;
   }
@@ -123,7 +123,7 @@
   }
   .tag-amber:hover {
     transform: translateY(-8px);
-    background-color: rgb(var(--lime) / 0.6);
+    background-color: rgb(var(--accent) / 0.72);
     border-color: rgb(var(--ink) / 0.5);
     box-shadow: 4px 4px 0 #111111;
   }

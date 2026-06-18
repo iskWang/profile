@@ -10,13 +10,13 @@ const Contact = () => {
       <div className="mx-auto max-w-7xl">
         <div className="bento-card grid gap-8 bg-black p-5 text-white sm:p-8 lg:grid-cols-[0.86fr_1.14fr]">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-lime-300">{contact.subtitle}</p>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-white/58">{contact.subtitle}</p>
             <h2 className="mt-4 text-4xl font-black leading-none tracking-[-0.05em] sm:text-7xl">{contact.title}</h2>
             <p className="mt-6 max-w-xl text-base font-medium leading-7 text-white/66">{contact.quote}</p>
           </div>
 
           <div className="grid content-center gap-4">
-            <div className="rounded-[1.5rem] border border-white/15 bg-lime-300 p-4 text-black sm:p-5">
+            <div className="rounded-[1.5rem] border border-white/15 bg-white p-4 text-black sm:p-5">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-black/55">{contact.resumePrompt}</p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <a

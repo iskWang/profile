@@ -1,4 +1,5 @@
 import React from 'react';
+import { SectionHeader } from '../../components/common';
 import { useLanguage } from '../../context/useLanguage';
 
 const Skills = ({ skills }) => {
@@ -6,7 +7,7 @@ const Skills = ({ skills }) => {
   const { skills: skillsContent } = content;
   const groups = [
     { label: skillsContent.categories.frontend, items: skills.frontend, tone: 'bg-black text-white', inverted: true },
-    { label: skillsContent.categories.ai, items: skills.ai, tone: 'bg-lime-300 text-black' },
+    { label: skillsContent.categories.ai, items: skills.ai, tone: 'bg-white text-black' },
     { label: skillsContent.categories.testing, items: skills.devops, tone: 'bg-[#dff8ff] text-black' },
     { label: skillsContent.categories.backend, items: skills.backend, tone: 'bg-white text-black' },
     { label: skillsContent.categories.mobile, items: skills.mobile, tone: 'bg-white text-black' },
@@ -16,10 +17,10 @@ const Skills = ({ skills }) => {
   return (
     <section className="px-4 py-16 sm:px-6 lg:py-24" id="skills">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-8 border-t border-black pt-5">
-          <p className="section-kicker">{skillsContent.subtitle}</p>
-          <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] sm:text-6xl">{skillsContent.title}</h2>
-        </div>
+        <SectionHeader
+          kicker={skillsContent.subtitle}
+          title={skillsContent.title}
+        />
 
         <div className="grid gap-4 md:grid-cols-3">
           {groups.map((group, index) => (

@@ -38,11 +38,8 @@ const Header = ({ scrollToSection }) => {
           className="group flex items-center gap-3 rounded-full border border-black/15 bg-white/70 px-3 py-2 text-left shadow-[0_1px_0_rgba(17,17,17,0.08)] transition hover:-translate-y-0.5 hover:border-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
           onClick={() => scrollToSection('about')}
         >
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-black text-xs font-black text-lime-300">JW</span>
-          <span className="leading-tight">
-            <span className="block text-sm font-black tracking-tight">Josh Wang</span>
-            <span className="block text-[11px] font-medium uppercase tracking-[0.24em] text-black/50">Profile OS</span>
-          </span>
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-black text-xs font-black text-white">JW</span>
+          <span className="text-sm font-black tracking-tight">Josh Wang</span>
         </button>
 
         <div className="flex max-w-full items-center gap-1 overflow-x-auto rounded-full border border-black/10 bg-white/70 p-1 text-sm shadow-[0_1px_0_rgba(17,17,17,0.08)] no-scrollbar">
@@ -65,7 +62,7 @@ const Header = ({ scrollToSection }) => {
           <button
             onClick={toggleLang}
             aria-label="Switch language"
-            className="ml-1 flex min-h-[38px] items-center whitespace-nowrap rounded-full border border-black/15 px-3 text-xs font-black uppercase tracking-[0.16em] text-black transition hover:bg-lime-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+            className="ml-1 flex min-h-[38px] items-center whitespace-nowrap rounded-full border border-black/15 px-3 text-xs font-black uppercase tracking-[0.16em] text-black transition hover:bg-[#dff8ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
           >
             {lang === 'zh' ? 'EN' : '中文'}
           </button>

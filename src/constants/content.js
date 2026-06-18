@@ -14,9 +14,9 @@ export const CONTENT = {
       focus: "React / AI Workflow",
       location: "Taipei, Taiwan",
       welcome: "您好，我是 Josh!",
-      slogan: "用前端架構、AI 工作流與交付經驗，把複雜產品穩定推進。",
+      slogan: "用前端架構、AI 工作流與交付經驗，把複雜產品穩定推進",
       signalLabel: "重點訊號",
-      signalTitle: "能接住架構、交付壓力與 AI 輔助工程流程的前端工程師。",
+      signalTitle: "能接住架構、交付壓力與 AI 輔助工程流程的前端工程師",
       stackLabel: "目前技術重點",
       description: "10+ 年軟體開發經驗，橫跨前端架構、跨平台應用與 AI 驅動的工程工作流程",
       tags: ["🤖 AI 驅動開發", "🌐 跨平台開發", "🔐 資安意識"],
@@ -32,7 +32,7 @@ export const CONTENT = {
     experience: {
       title: "工作經歷",
       subtitle: "// 近期經歷",
-      summary: "從新創產品、全球內部系統、資安平台到獨立架構顧問，累積前端架構、交付與現代化重構經驗。",
+      summary: "從新創產品、全球內部系統、資安平台到獨立架構顧問，累積前端架構、交付與現代化重構經驗",
       earlyExperience: "早期經歷：Fullinn、CatFi、myTreat、Ecowork 等新創團隊",
       items: [
         {
@@ -105,7 +105,7 @@ export const CONTENT = {
       subtitle: "// 技術堆疊總覽",
       categories: {
         frontend: "Frontend",
-        backend: "Back-End",
+        backend: "Backend",
         ai: "AI Workflow",
         mobile: "Mobile",
         testing: "Architecture & Infra",
@@ -153,7 +153,7 @@ export const CONTENT = {
     projects: {
       title: "個人專案",
       subtitle: "// 個人專案與開源",
-      summary: "用實際作品說話：自動化、測試生成、AI agent 與可落地的工程流程。",
+      summary: "用實際作品說話：自動化、測試生成、AI agent 與可落地的工程流程",
       items: [
         {
           title: "PickleScout — LLM 驅動的 E2E 測試自動生成工具",
@@ -209,13 +209,13 @@ export const CONTENT = {
       focus: "React / AI Workflow",
       location: "Taipei, Taiwan",
       welcome: "Hi, I'm Josh!",
-      slogan: "Building resilient frontend systems with AI-era engineering workflow.",
+      slogan: "Building resilient frontend systems with AI-era engineering workflow",
       signalLabel: "Signal",
       signalTitle:
-        "Architecture, delivery pressure, and AI-assisted engineering in one operator.",
+        "Architecture, delivery pressure, and AI-assisted engineering in one operator",
       stackLabel: "Current Stack",
       description:
-        "Senior Developer driving frontend, cross-platform & AI workflows.",
+        "Senior Developer driving frontend, cross-platform & AI workflows",
       tags: [
         "🤖 AI-Driven Development",
         "🌐 Cross-platform",
@@ -234,9 +234,9 @@ export const CONTENT = {
       title: "Experience",
       subtitle: "// Recent positions",
       summary:
-        "A career arc through startup product work, global internal systems, cybersecurity platforms, and independent architecture contracts.",
+        "A career arc through startup product work, global internal systems, cybersecurity platforms, and independent architecture contracts",
       earlyExperience:
-        "Early experience: Startups including Fullinn, CatFi, myTreat, Ecowork, etc.",
+        "Early experience: Startups including Fullinn, CatFi, myTreat, Ecowork, etc",
       items: [
         {
           company: "Independent",
@@ -249,33 +249,33 @@ export const CONTENT = {
               title:
                 "CI/CD Architecture & Security | Data Analytics SaaS Startup",
               highlights: [
-                "Restructured CI/CD pipeline from 5 fragmented branches to 2, optimizing monorepo structure and reducing operational overhead.",
-                "Planned and integrated automated testing architecture with Claude + Playwright MCP for Gherkin script generation, improving QA efficiency.",
-                "Performed critical security patching under time pressure, resolving CVE-2025-29927 and strengthening system security posture.",
+                "Restructured CI/CD pipeline from 5 fragmented branches to 2, optimizing monorepo structure and reducing operational overhead",
+                "Planned and integrated automated testing architecture with Claude + Playwright MCP for Gherkin script generation, improving QA efficiency",
+                "Performed critical security patching under time pressure, resolving CVE-2025-29927 and strengthening system security posture",
               ],
             },
             {
               title:
                 "Map System Development & Tech Debt Cleanup | Major Real Estate Group",
               highlights: [
-                "Served as technical lead to fill development gaps, delivering complex map POI filtering features on tight deadlines.",
-                "Adopted Claude Code AI-assisted development, reducing POC validation from weeks to 1.5 days.",
-                "Led systematic module decomposition and refactoring to resolve legacy architectural debt at the root.",
+                "Served as technical lead to fill development gaps, delivering complex map POI filtering features on tight deadlines",
+                "Adopted Claude Code AI-assisted development, reducing POC validation from weeks to 1.5 days",
+                "Led systematic module decomposition and refactoring to resolve legacy architectural debt at the root",
               ],
             },
             {
               title: "AI-Assisted Engineering Workflow & MCP",
               highlights: [
-                "Built reusable AI-assisted development workflows with Claude Code and MCP, accelerating project iteration cycles.",
-                "Explored Model Context Protocol (MCP) applications to improve AI collaboration accuracy across large codebases.",
-                "Established automated testing and acceptance pipelines (Playwright, Jest, Cucumber), reducing regression risk and improving release stability.",
+                "Built reusable AI-assisted development workflows with Claude Code and MCP, accelerating project iteration cycles",
+                "Explored Model Context Protocol (MCP) applications to improve AI collaboration accuracy across large codebases",
+                "Established automated testing and acceptance pipelines (Playwright, Jest, Cucumber), reducing regression risk and improving release stability",
               ],
             },
             {
               title: "Real-time Trading Platform | Vue 3 + Nuxt.js",
               highlights: [
-                "Built a real-time trading platform with Vue 3 / Nuxt 3 / Pinia, order book visualization, and data analytics.",
-                "Integrated TradingView Widget and ECharts for real-time price feeds and data visualization.",
+                "Built a real-time trading platform with Vue 3 / Nuxt 3 / Pinia, order book visualization, and data analytics",
+                "Integrated TradingView Widget and ECharts for real-time price feeds and data visualization",
               ],
             },
           ],
@@ -285,11 +285,11 @@ export const CONTENT = {
           role: "Frontend Developer (Platform & Architecture)",
           period: "Oct 2021 - Jun 2023",
           highlights: [
-            "ThreatSonar Product — Frontend Architecture Planning: Led architecture planning for frontend/backend separation; produced technical specifications and design documents.",
-            "Official Website: Led cloud architecture migration from Firebase/Cloudinary to AWS S3/CloudFront + Next.js, reducing cloud costs by 90% and improving reliability.",
-            "Refactored 50%+ legacy codebase, improving maintainability; implemented file-upload system with AWS SDK / TypeScript / Pica.js.",
-            "Conducted early ChatGPT-powered SEO crawler testing; findings presented to and recognized by executive team.",
-            "CYBERSEC 2022/2023 & InterOp23 Event Pages: Built event pages with Preact.js + Tailwind CSS; identified and drove remediation for auth design flaws.",
+            "ThreatSonar Product — Frontend Architecture Planning: Led architecture planning for frontend/backend separation; produced technical specifications and design documents",
+            "Official Website: Led cloud architecture migration from Firebase/Cloudinary to AWS S3/CloudFront + Next.js, reducing cloud costs by 90% and improving reliability",
+            "Refactored 50%+ legacy codebase, improving maintainability; implemented file-upload system with AWS SDK / TypeScript / Pica.js",
+            "Conducted early ChatGPT-powered SEO crawler testing; findings presented to and recognized by executive team",
+            "CYBERSEC 2022/2023 & InterOp23 Event Pages: Built event pages with Preact.js + Tailwind CSS; identified and drove remediation for auth design flaws",
           ],
         },
         {
@@ -297,11 +297,11 @@ export const CONTENT = {
           role: "Frontend Lead",
           period: "May 2019 - Oct 2021",
           highlights: [
-            "B2B/B2C Back-office System: Led frontend rebuild using React Hooks and Context API, covering internal systems across 50+ countries.",
-            "Designed 100-field single-page forms using Formik / Yup / React.memo with strict validation; implemented real-time messaging via WebSockets.",
-            "Proposed and adopted GitHub Actions CI/CD pipeline as an early adopter upon its launch in Aug 2019.",
-            "Website Redesign / Internal Training: Completed Next.js + i18n architecture (13 languages) within one month.",
-            "Led Pull Request Code Review culture to improve code quality and ensure requirement alignment.",
+            "B2B/B2C Back-office System: Led frontend rebuild using React Hooks and Context API, covering internal systems across 50+ countries",
+            "Designed 100-field single-page forms using Formik / Yup / React.memo with strict validation; implemented real-time messaging via WebSockets",
+            "Proposed and adopted GitHub Actions CI/CD pipeline as an early adopter upon its launch in Aug 2019",
+            "Website Redesign / Internal Training: Completed Next.js + i18n architecture (13 languages) within one month",
+            "Led Pull Request Code Review culture to improve code quality and ensure requirement alignment",
           ],
         },
       ],
@@ -311,7 +311,7 @@ export const CONTENT = {
       subtitle: "// Tech stack overview",
       categories: {
         frontend: "Frontend",
-        backend: "Back-End",
+        backend: "Backend",
         ai: "AI Workflow",
         mobile: "Mobile",
         testing: "Architecture & Infra",
@@ -322,9 +322,9 @@ export const CONTENT = {
       title: "Contact Me",
       subtitle: "// Feel free to contact me 🐱",
       quote:
-        "Passionate about sharing perspectives; rarely the quietest one in the room.",
+        "Passionate about sharing perspectives; rarely the quietest one in the room",
       downloadBtn: "Download Full Resume",
-      resumePrompt: "Need the full version?",
+      resumePrompt: "Need the full version",
       resumeZh: "中文履歷",
       resumeEn: "English Resume",
     },
@@ -335,28 +335,28 @@ export const CONTENT = {
           emoji: "🚀",
           title: "Cloud Ops Optimization",
           description:
-            "Reduced cloud costs by 90% and built 13-language site architectures across 50+ countries.",
+            "Reduced cloud costs by 90% and built 13-language site architectures across 50+ countries",
           color: "cyan",
         },
         {
           emoji: "🤖",
           title: "AI Collaboration",
           description:
-            "Expert in Claude Code & MCP, shortening POC validation from weeks to 1.5 days.",
+            "Expert in Claude Code & MCP, shortening POC validation from weeks to 1.5 days",
           color: "amber",
         },
         {
           emoji: "⚙️",
           title: "CI/CD & Quality",
           description:
-            "Led branch restructuring (5 to 2) and used automation to improve efficiency.",
+            "Led branch restructuring (5 to 2) and used automation to improve efficiency",
           color: "emerald",
         },
         {
           emoji: "🔐",
           title: "Security & Defense",
           description:
-            "Patched CVE-2025-29927 critical vulnerability and improved system security posture.",
+            "Patched CVE-2025-29927 critical vulnerability and improved system security posture",
           color: "cyan",
         },
       ],
@@ -365,18 +365,18 @@ export const CONTENT = {
       title: "Projects",
       subtitle: "// Side projects & Open source",
       summary:
-        "Proof-of-work over decoration: shipped tooling, automation, and test generation.",
+        "Proof-of-work over decoration: shipped tooling, automation, and test generation",
       items: [
         {
           title: "PickleScout — LLM-Driven E2E Test Generation Agent",
           url: "https://github.com/iskWang/PickleScout",
           tags: ["AI Agent", "E2E Testing", "LLM", "Open Source"],
           highlights: [
-            "Designed and developed an automated test generation workflow that analyzes user journeys solely from a URL input to automatically generate Gherkin test cases and Playwright test scripts.",
-            "Built and delivered an E2E test automation tool POC within one week, integrating Playwright, LLMs, and browser automation workflows.",
-            "Implemented a self-healing mechanism for tests that automatically corrects selectors and timeouts upon failure and re-executes, significantly improving test stability.",
-            "Constructed a full-stack monorepo architecture utilizing React/Vite, Fastify, BullMQ, Redis, and Docker Compose.",
-            "Integrated CI/CD pipelines with GitHub Actions, ensuring generated test scripts can be executed independently without requiring an LLM runtime.",
+            "Designed and developed an automated test generation workflow that analyzes user journeys solely from a URL input to automatically generate Gherkin test cases and Playwright test scripts",
+            "Built and delivered an E2E test automation tool POC within one week, integrating Playwright, LLMs, and browser automation workflows",
+            "Implemented a self-healing mechanism for tests that automatically corrects selectors and timeouts upon failure and re-executes, significantly improving test stability",
+            "Constructed a full-stack monorepo architecture utilizing React/Vite, Fastify, BullMQ, Redis, and Docker Compose",
+            "Integrated CI/CD pipelines with GitHub Actions, ensuring generated test scripts can be executed independently without requiring an LLM runtime",
           ],
         },
       ],

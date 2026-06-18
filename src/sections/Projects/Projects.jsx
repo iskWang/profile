@@ -1,4 +1,5 @@
 import React from 'react';
+import { SectionHeader } from '../../components/common';
 import { useLanguage } from '../../context/useLanguage';
 
 const Projects = ({ projects }) => {
@@ -8,15 +9,11 @@ const Projects = ({ projects }) => {
   return (
     <section className="px-4 py-16 sm:px-6 lg:py-24" id="projects">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-8 flex flex-col justify-between gap-4 border-t border-black pt-5 sm:flex-row sm:items-end">
-          <div>
-            <p className="section-kicker">{projectsContent.subtitle}</p>
-            <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] sm:text-6xl">{projectsContent.title}</h2>
-          </div>
-          <p className="max-w-sm text-sm font-medium leading-6 text-black/60">
-            {projectsContent.summary}
-          </p>
-        </div>
+        <SectionHeader
+          kicker={projectsContent.subtitle}
+          title={projectsContent.title}
+          summary={projectsContent.summary}
+        />
 
         <div className="grid gap-4">
           {projects.map((project, i) => (
@@ -29,7 +26,7 @@ const Projects = ({ projects }) => {
                 <h3 className="mt-4 text-3xl font-black leading-tight tracking-[-0.04em]">{project.title}</h3>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="rounded-full border border-black/15 bg-lime-300 px-3 py-1 text-xs font-black uppercase tracking-[0.12em]">
+                    <span key={tag} className="rounded-full border border-black/15 bg-[#dff8ff] px-3 py-1 text-xs font-black uppercase tracking-[0.12em]">
                       {tag}
                     </span>
                   ))}

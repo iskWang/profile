@@ -63,7 +63,7 @@ export default function JoshWangProfile() {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#f4f1e8] text-[#111111] selection:bg-lime-300">
+    <div className="min-h-screen overflow-x-hidden bg-[#f4f1e8] text-[#111111] selection:bg-[#dff8ff] selection:text-black">
       <div className="fixed inset-0 pointer-events-none bg-[linear-gradient(rgba(17,17,17,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(17,17,17,0.055)_1px,transparent_1px)] bg-[size:32px_32px]" aria-hidden="true" />
       <div className="fixed inset-x-0 top-0 h-56 pointer-events-none bg-[radial-gradient(circle_at_20%_20%,rgba(132,204,22,0.26),transparent_32%),radial-gradient(circle_at_78%_12%,rgba(34,211,238,0.18),transparent_30%)]" aria-hidden="true" />
       <Header scrollToSection={scrollToSection} />
