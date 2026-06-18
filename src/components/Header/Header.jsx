@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { CatFace } from '../common';
 import { useLanguage } from '../../context/useLanguage';
 
 const Header = ({ scrollToSection }) => {
@@ -33,33 +32,32 @@ const Header = ({ scrollToSection }) => {
   }, [sections]);
 
   return (
-    <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-900/70 border-b border-slate-700/50">
-      <nav className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <header className="fixed top-0 w-full z-50 border-b border-black/10 bg-[#f4f1e8]/88 backdrop-blur-xl">
+      <nav className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-3 sm:flex-row md:px-6">
         <button
-          className="font-mono text-emerald-400 flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded"
+          className="group flex items-center gap-3 rounded-full border border-black/15 bg-white/70 px-3 py-2 text-left shadow-[0_1px_0_rgba(17,17,17,0.08)] transition hover:-translate-y-0.5 hover:border-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
           onClick={() => scrollToSection('about')}
         >
-          <CatFace size="text-xl" />
-          <span className="text-xl">~/</span>
-          <span className="text-white group-hover:text-emerald-400 transition-colors">josh_wang</span>
-          <span className="animate-pulse" aria-hidden="true">_</span>
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-black text-xs font-black text-lime-300">JW</span>
+          <span className="leading-tight">
+            <span className="block text-sm font-black tracking-tight">Josh Wang</span>
+            <span className="block text-[11px] font-medium uppercase tracking-[0.24em] text-black/50">Profile OS</span>
+          </span>
         </button>
 
-        <div className="flex items-center gap-2 md:gap-6 font-mono text-sm overflow-x-auto no-scrollbar max-w-full px-2">
+        <div className="flex max-w-full items-center gap-1 overflow-x-auto rounded-full border border-black/10 bg-white/70 p-1 text-sm shadow-[0_1px_0_rgba(17,17,17,0.08)] no-scrollbar">
           {sections.map((section, index) => (
             <React.Fragment key={section.id}>
-              {index > 0 && <span className="text-slate-600 sm:hidden">/</span>}
+              {index > 0 && <span className="hidden text-black/20 sm:inline">/</span>}
               <button
                 onClick={() => scrollToSection(section.id)}
-                className={`transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded px-1 ${
+                className={`min-h-[38px] whitespace-nowrap rounded-full px-3 text-xs font-bold uppercase tracking-[0.14em] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black ${
                   activeSection === section.id
-                    ? 'text-emerald-400 font-bold'
-                    : 'text-slate-400 hover:text-emerald-400'
+                    ? 'bg-black text-white'
+                    : 'text-black/55 hover:bg-black/5 hover:text-black'
                 }`}
               >
-                <span className="hidden sm:inline">.</span>
                 {section.label}
-                <span className="hidden sm:inline">()</span>
               </button>
             </React.Fragment>
           ))}
@@ -67,7 +65,7 @@ const Header = ({ scrollToSection }) => {
           <button
             onClick={toggleLang}
             aria-label="Switch language"
-            className="ml-2 font-mono text-xs px-3 py-2 min-h-[44px] flex items-center rounded-lg border border-slate-600/60 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+            className="ml-1 flex min-h-[38px] items-center whitespace-nowrap rounded-full border border-black/15 px-3 text-xs font-black uppercase tracking-[0.16em] text-black transition hover:bg-lime-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
           >
             {lang === 'zh' ? 'EN' : '中文'}
           </button>

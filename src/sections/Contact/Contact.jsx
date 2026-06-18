@@ -1,5 +1,4 @@
 import React from 'react';
-import { CatFace } from '../../components/common';
 import { useLanguage } from '../../context/useLanguage';
 
 const Contact = () => {
@@ -7,44 +6,43 @@ const Contact = () => {
   const { contact, hero } = content;
 
   return (
-    <section className="pt-32 sm:pt-24 pb-24 px-6 bg-slate-800/30" id="contact">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-8 flex items-center justify-center gap-3">
-          <span className="text-emerald-400 font-mono font-normal">{'>'}</span>
-          <span className="text-amber-300">{contact.title}</span>
-          <CatFace size="text-2xl" className="ml-2" />
-        </h2>
+    <section className="px-4 py-16 sm:px-6 lg:py-24" id="contact">
+      <div className="mx-auto max-w-7xl">
+        <div className="bento-card grid gap-8 bg-black p-5 text-white sm:p-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-lime-300">{contact.subtitle}</p>
+            <h2 className="mt-4 text-4xl font-black leading-none tracking-[-0.05em] sm:text-7xl">{contact.title}</h2>
+            <p className="mt-6 max-w-xl text-base font-medium leading-7 text-white/66">{contact.quote}</p>
+          </div>
 
-        <div className="bg-slate-800/60 rounded-xl border border-slate-700/50 p-4 sm:p-8 inline-block max-w-full overflow-hidden">
-          <div className="font-mono space-y-3 text-left overflow-x-auto custom-scrollbar text-xs sm:text-sm md:text-base">
-            <p className="whitespace-nowrap">
-              <span className="text-slate-500">{contact.subtitle}</span>
-            </p>
-            <p className="flex flex-wrap items-center">
-              <span className="text-cyan-300">const</span>
-              <span className="text-white ml-2">email</span>
-              <span className="text-slate-400 mx-1 sm:mx-2">=</span>
-              <a href="mailto:spjay1@gmail.com" className="text-amber-300 hover:text-amber-200 transition-colors break-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded" aria-label="Send email to spjay1@gmail.com">
-                "spjay1@gmail.com"
+          <div className="grid content-end gap-3">
+            <a
+              href="mailto:spjay1@gmail.com"
+              className="rounded-[1.5rem] border border-white/15 bg-white p-5 text-xl font-black tracking-[-0.03em] text-black transition hover:-translate-y-1 hover:bg-lime-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-300 sm:text-3xl"
+              aria-label="Send email to spjay1@gmail.com"
+            >
+              spjay1@gmail.com
+            </a>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <a
+                href="/JoshWang_ZH_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-white/15 px-5 py-4 text-center text-sm font-black uppercase tracking-[0.16em] transition hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                Resume ZH
               </a>
-              <span className="text-slate-400">;</span>
-            </p>
-            <p className="flex flex-wrap items-center">
-              <span className="text-cyan-300">const</span>
-              <span className="text-white ml-2">location</span>
-              <span className="text-slate-400 mx-1 sm:mx-2">=</span>
-              <span className="text-amber-300">"Taipei, Taiwan"</span>
-              <span className="text-slate-400">;</span>
-            </p>
+              <a
+                href="/JoshWang_EN_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-white/15 px-5 py-4 text-center text-sm font-black uppercase tracking-[0.16em] transition hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                Resume EN
+              </a>
+            </div>
           </div>
         </div>
-
-        <p className="mt-8 text-slate-400 flex items-center justify-center gap-2 px-4 italic sm:not-italic">
-          <CatFace size="text-lg" className="flex-shrink-0" />
-          <span className="text-xs sm:text-sm md:text-base">{contact.quote}</span>
-          <CatFace size="text-lg" className="flex-shrink-0" />
-        </p>
-        
       </div>
     </section>
   );

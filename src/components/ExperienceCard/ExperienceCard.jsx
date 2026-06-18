@@ -1,45 +1,43 @@
 import React from 'react';
-import PawPrint from '../common/PawPrint';
 
-const ExperienceCard = ({ company, role, period, highlights, subProjects, description }) => {
+const ExperienceCard = ({ company, role, period, highlights, subProjects, description, index = 0 }) => {
   return (
-    <div className="experience-card relative p-6 rounded-lg border border-slate-700/50 bg-slate-800/40 cursor-default">
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-        <h3 className="text-xl font-semibold text-white">{role}</h3>
-        <span className="text-sm text-slate-400 font-mono bg-slate-700/50 px-3 py-1 rounded">{period}</span>
+    <article className="bento-card grid gap-6 bg-white p-5 md:grid-cols-[0.36fr_0.64fr] md:p-7">
+      <div>
+        <p className="section-kicker">{String(index + 1).padStart(2, '0')} / {period}</p>
+        <h3 className="mt-4 text-3xl font-black leading-tight tracking-[-0.04em]">{role}</h3>
+        <p className="mt-3 text-base font-black text-black/60">{company}</p>
+        {description && (
+          <p className="mt-4 rounded-2xl bg-lime-300 p-4 text-sm font-bold leading-6 text-black">{description}</p>
+        )}
       </div>
-      <p className="text-emerald-400 font-medium mb-2">{company}</p>
-      {description && (
-        <p className="text-slate-400 text-sm mb-3 italic">{description}</p>
-      )}
 
       {subProjects && subProjects.length > 0 ? (
-        <div className="space-y-4">
+        <div className="grid gap-3">
           {subProjects.map((project, idx) => (
-            <div key={idx} className="pl-2 border-l-2 border-slate-600/50">
-              <div className="flex flex-wrap items-center gap-2 mb-2">
+            <div key={idx} className="rounded-2xl border border-black/10 bg-[#f4f1e8] p-4">
+              <div className="mb-3 flex flex-wrap items-center gap-2">
                 {project.url ? (
                   <a 
                     href={project.url} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-slate-200 font-medium hover:text-emerald-400 transition-colors flex items-center gap-1 group"
+                    className="font-black text-black underline decoration-black/20 underline-offset-4 transition hover:decoration-black"
                   >
                     {project.title}
-                    <span className="text-xs opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
                   </a>
                 ) : (
-                  <span className="text-slate-200 font-medium">{project.title}</span>
+                  <span className="font-black text-black">{project.title}</span>
                 )}
                 {project.period && (
-                  <span className="text-xs text-slate-500 font-mono">{project.period}</span>
+                  <span className="rounded-full border border-black/10 px-2 py-1 text-xs font-bold text-black/50">{project.period}</span>
                 )}
               </div>
-              <ul className="space-y-2 pl-2">
+              <ul className="space-y-2">
                 {project.highlights.map((item, i) => (
-                  <li key={i} className="text-slate-300 text-sm flex items-start">
-                    <PawPrint className="text-amber-400/70 mr-2 mt-0.5 flex-shrink-0" />
-                    {item}
+                  <li key={i} className="flex gap-3 text-sm font-medium leading-6 text-black/68">
+                    <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-black" aria-hidden="true" />
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -47,16 +45,16 @@ const ExperienceCard = ({ company, role, period, highlights, subProjects, descri
           ))}
         </div>
       ) : (
-        <ul className="space-y-2">
+        <ul className="grid gap-3">
           {highlights.map((item, i) => (
-            <li key={i} className="text-slate-300 text-sm flex items-start">
-              <PawPrint className="text-amber-400/70 mr-2 mt-0.5 flex-shrink-0" />
-              {item}
+            <li key={i} className="rounded-2xl border border-black/10 bg-[#f4f1e8] p-4 text-sm font-medium leading-6 text-black/68">
+              <span className="mr-3 font-black text-black">{String(i + 1).padStart(2, '0')}</span>
+              <span>{item}</span>
             </li>
           ))}
         </ul>
       )}
-    </div>
+    </article>
   );
 };
 

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useLanguage } from './context/useLanguage';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import FloatingCat from './components/common/FloatingCat';
 import Hero from './sections/Hero';
 import Projects from './sections/Projects';
 import Skills from './sections/Skills';
@@ -64,37 +63,16 @@ export default function JoshWangProfile() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 overflow-x-hidden" style={{
-      backgroundImage: `
-        radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
-        linear-gradient(to bottom, #0f172a, #1e293b)
-      `
-    }}>
-      {/* Animated grid background */}
-      <div className="fixed inset-0 opacity-20 pointer-events-none" aria-hidden="true" style={{ willChange: 'transform' }}>
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(16, 185, 129, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px'
-        }} />
-      </div>
-
-      {/* Floating cats */}
-      <FloatingCat style={{ top: '15%', right: '10%' }} delay={500} className="hidden sm:block" />
-      <FloatingCat style={{ top: '60%', left: '5%' }} delay={1500} className="hidden sm:block" />
-      <FloatingCat style={{ bottom: '20%', right: '15%' }} delay={2500} className="hidden sm:block" />
-
+    <div className="min-h-screen overflow-x-hidden bg-[#f4f1e8] text-[#111111] selection:bg-lime-300">
+      <div className="fixed inset-0 pointer-events-none bg-[linear-gradient(rgba(17,17,17,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(17,17,17,0.055)_1px,transparent_1px)] bg-[size:32px_32px]" aria-hidden="true" />
+      <div className="fixed inset-x-0 top-0 h-56 pointer-events-none bg-[radial-gradient(circle_at_20%_20%,rgba(132,204,22,0.26),transparent_32%),radial-gradient(circle_at_78%_12%,rgba(34,211,238,0.18),transparent_30%)]" aria-hidden="true" />
       <Header scrollToSection={scrollToSection} />
 
-      <main>
+      <main className="relative z-10">
         <Hero />
+        <Experience experiences={content.experience.items} />
         <Projects projects={content.projects.items} />
         <Skills skills={content.skillsData} />
-        <Experience experiences={content.experience.items} />
         <Contact />
       </main>
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import { TerminalLine, CatFace } from '../../components/common';
 import { useLanguage } from '../../context/useLanguage';
 
-const TAG_STYLES = [
-  'bg-cyan-500/10 border-cyan-500/30 text-cyan-400',
-  'bg-amber-500/10 border-amber-500/30 text-amber-400',
-  'bg-cyan-500/10 border-cyan-500/30 text-cyan-400',
+const METRICS = [
+  { value: '10+', label: 'Years' },
+  { value: '90%', label: 'Cloud cost cut' },
+  { value: '13', label: 'Locales shipped' },
+  { value: '1.5d', label: 'POC cycle' },
 ];
 
 const Hero = () => {
@@ -13,114 +13,73 @@ const Hero = () => {
   const { hero } = content;
 
   return (
-    <section id="about" className="min-h-[88vh] flex items-center justify-center px-6 pt-32 sm:pt-20">
-      <div className="max-w-4xl w-full">
-
-        {/* Terminal card */}
-        <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 overflow-hidden shadow-2xl">
-          <div className="flex items-center gap-2 px-4 py-3 bg-slate-800/80 border-b border-slate-700/50">
-            <div className="w-3 h-3 rounded-full bg-red-500/80" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-            <div className="w-3 h-3 rounded-full bg-green-500/80" />
-            <span className="ml-4 text-slate-400 text-sm font-mono">josh@taipei ~ %</span>
-            <CatFace size="text-sm" className="ml-2" />
-          </div>
-
-          <div className="p-4 sm:p-8 font-mono space-y-4 text-xs sm:text-sm md:text-base">
-            <TerminalLine delay={100}>
-              <span className="text-slate-300">cat</span>
-              <span className="text-cyan-400 ml-2">./profile.json</span>
-            </TerminalLine>
-
-            <div className="pl-4 sm:pl-6 space-y-2">
-              <TerminalLine delay={300} prefix="">
-                <span className="text-slate-500">{'{'}</span>
-              </TerminalLine>
-              <TerminalLine delay={500} prefix="">
-                <span className="text-cyan-300 ml-2 sm:ml-4">"name"</span>
-                <span className="text-slate-400">: </span>
-                <span className="text-amber-300">"{hero.name}"</span>
-                <span className="text-slate-400">,</span>
-              </TerminalLine>
-              <TerminalLine delay={700} prefix="">
-                <span className="text-cyan-300 ml-2 sm:ml-4">"title"</span>
-                <span className="text-slate-400">: </span>
-                <span className="text-amber-300">"{hero.title}"</span>
-                <span className="text-slate-400">,</span>
-              </TerminalLine>
-              <TerminalLine delay={900} prefix="">
-                <span className="text-cyan-300 ml-2 sm:ml-4">"experience"</span>
-                <span className="text-slate-400">: </span>
-                <span className="text-emerald-400">"{hero.experience}"</span>
-                <span className="text-slate-400">,</span>
-              </TerminalLine>
-              <TerminalLine delay={1100} prefix="">
-                <span className="text-cyan-300 ml-2 sm:ml-4">"focus"</span>
-                <span className="text-slate-400">: </span>
-                <span className="text-amber-300">"{hero.focus}"</span>
-                <span className="text-slate-400">,</span>
-              </TerminalLine>
-              <TerminalLine delay={1300} prefix="">
-                <span className="text-cyan-300 ml-2 sm:ml-4">"location"</span>
-                <span className="text-slate-400">: </span>
-                <span className="text-amber-300">"{hero.location}"</span>
-                <span className="text-slate-400">,</span>
-              </TerminalLine>
-              <TerminalLine delay={1500} prefix="">
-                <span className="text-cyan-300 ml-2 sm:ml-4">"pet"</span>
-                <span className="text-slate-400">: </span>
-                <span className="text-amber-300">"🐱"</span>
-              </TerminalLine>
-              <TerminalLine delay={1700} prefix="">
-                <span className="text-slate-500">{'}'}</span>
-              </TerminalLine>
-            </div>
-
-            <TerminalLine delay={2000}>
-              <span className="text-emerald-400">josh.init()</span>
-              <span className="animate-pulse">▊</span>
-            </TerminalLine>
-          </div>
-        </div>
-
-        {/* Quick intro — inside max-w-4xl so it stacks below the terminal */}
-        <div className="mt-6 sm:mt-8 text-center space-y-4">
-          <h1 className="text-3xl sm:text-5xl font-black leading-tight tracking-tight px-4">
-            <span className="text-amber-400">
-              {hero.welcome}
+    <section id="about" className="px-4 pb-16 pt-32 sm:px-6 lg:pb-24 lg:pt-36">
+      <div className="mx-auto grid max-w-7xl gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="rounded-[2rem] border border-black bg-[#111111] p-5 text-white shadow-[8px_8px_0_#111111] sm:p-8 lg:min-h-[590px]">
+          <div className="mb-12 flex items-center justify-between gap-4">
+            <span className="rounded-full border border-white/15 px-3 py-1 text-xs font-black uppercase tracking-[0.22em] text-lime-300">
+              {hero.location}
             </span>
-            <span className="ml-2 sm:ml-3 inline-block animate-bounce" aria-hidden="true">👋</span>
+            <span className="text-xs font-bold uppercase tracking-[0.22em] text-white/45">{hero.focus}</span>
+          </div>
+
+          <p className="mb-5 text-sm font-bold uppercase tracking-[0.24em] text-white/45">{hero.title}</p>
+          <h1 className="max-w-4xl text-5xl font-black leading-[0.9] tracking-[-0.05em] text-white sm:text-7xl lg:text-8xl">
+            {hero.name}
+            <span className="block text-lime-300">builds front-end systems with AI-era workflow.</span>
           </h1>
-          <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-loose px-4 mt-4">
+
+          <p className="mt-8 max-w-2xl text-lg leading-8 text-white/72 sm:text-xl">
             {hero.description}
           </p>
-          <div className="flex justify-center gap-4 mt-6 flex-wrap">
-            {hero.tags.map((tag, i) => (
-              <span
-                key={i}
-                className={`px-4 py-2 border rounded-lg text-sm flex items-center gap-2 cursor-default ${TAG_STYLES[i % TAG_STYLES.length]}`}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
 
-          <div className="mt-8">
+          <div className="mt-10 flex flex-wrap gap-3">
             <a
               href={hero.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-3 bg-amber-500/10 border border-amber-500/40 rounded-xl text-amber-300 hover:text-amber-200 hover:border-amber-400/60 hover:shadow-lg hover:shadow-amber-500/10 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+              className="inline-flex min-h-[48px] items-center rounded-full bg-lime-300 px-5 text-sm font-black uppercase tracking-[0.14em] text-black transition hover:-translate-y-1 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-300"
             >
-              <CatFace size="text-xl" className="group-hover:scale-110 transition-transform" />
-              <span className="font-medium">{hero.resumeBtn}</span>
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
+              {hero.resumeBtn}
+            </a>
+            <a
+              href="mailto:spjay1@gmail.com"
+              className="inline-flex min-h-[48px] items-center rounded-full border border-white/20 px-5 text-sm font-black uppercase tracking-[0.14em] text-white transition hover:-translate-y-1 hover:border-white hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              spjay1@gmail.com
             </a>
           </div>
         </div>
 
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="bento-card bg-white p-5 sm:col-span-2">
+            <p className="section-kicker">Signal</p>
+            <h2 className="mt-4 text-3xl font-black leading-tight tracking-[-0.04em] sm:text-5xl">
+              Architecture, delivery pressure, and AI-assisted engineering in one operator.
+            </h2>
+          </div>
+
+          {METRICS.map((metric) => (
+            <div key={metric.label} className="bento-card bg-lime-300 p-5">
+              <p className="text-4xl font-black tracking-[-0.06em]">{metric.value}</p>
+              <p className="mt-2 text-xs font-black uppercase tracking-[0.18em] text-black/60">{metric.label}</p>
+            </div>
+          ))}
+
+          <div className="bento-card bg-[#dff8ff] p-5 sm:col-span-2">
+            <p className="section-kicker">Current Stack</p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {hero.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-black/15 bg-white px-3 py-2 text-sm font-bold text-black"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
