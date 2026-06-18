@@ -5,7 +5,7 @@ const Skills = ({ skills }) => {
   const { content } = useLanguage();
   const { skills: skillsContent } = content;
   const groups = [
-    { label: skillsContent.categories.frontend, items: skills.frontend, tone: 'bg-black text-white' },
+    { label: skillsContent.categories.frontend, items: skills.frontend, tone: 'bg-black text-white', inverted: true },
     { label: skillsContent.categories.ai, items: skills.ai, tone: 'bg-lime-300 text-black' },
     { label: skillsContent.categories.testing, items: skills.devops, tone: 'bg-[#dff8ff] text-black' },
     { label: skillsContent.categories.backend, items: skills.backend, tone: 'bg-white text-black' },
@@ -24,7 +24,7 @@ const Skills = ({ skills }) => {
         <div className="grid gap-4 md:grid-cols-3">
           {groups.map((group, index) => (
             <article key={group.label} className={`bento-card p-5 ${group.tone} ${index === 0 || index === 1 ? 'md:col-span-1' : ''}`}>
-              <p className={`text-xs font-black uppercase tracking-[0.2em] ${group.tone.includes('black') ? 'text-white/55' : 'text-black/50'}`}>
+              <p className={`text-xs font-black uppercase tracking-[0.2em] ${group.inverted ? 'text-white/55' : 'text-black/50'}`}>
                 {group.label}
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
@@ -32,7 +32,7 @@ const Skills = ({ skills }) => {
                   <span
                     key={skill}
                     className={`rounded-full border px-3 py-2 text-sm font-bold ${
-                      group.tone.includes('black') ? 'border-white/15 bg-white/10 text-white' : 'border-black/15 bg-white/65 text-black'
+                      group.inverted ? 'border-white/15 bg-white/10 text-white' : 'border-black/15 bg-white/70 text-black'
                     }`}
                   >
                     {skill}

@@ -1,13 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../../context/useLanguage';
 
-const METRICS = [
-  { value: '10+', label: 'Years' },
-  { value: '90%', label: 'Cloud cost cut' },
-  { value: '13', label: 'Locales shipped' },
-  { value: '1.5d', label: 'POC cycle' },
-];
-
 const Hero = () => {
   const { content } = useLanguage();
   const { hero } = content;
@@ -26,7 +19,7 @@ const Hero = () => {
           <p className="mb-5 text-sm font-bold uppercase tracking-[0.24em] text-white/45">{hero.title}</p>
           <h1 className="max-w-4xl text-5xl font-black leading-[0.9] tracking-[-0.05em] text-white sm:text-7xl lg:text-8xl">
             {hero.name}
-            <span className="block text-lime-300">builds front-end systems with AI-era workflow.</span>
+            <span className="block text-lime-300">{hero.slogan}</span>
           </h1>
 
           <p className="mt-8 max-w-2xl text-lg leading-8 text-white/72 sm:text-xl">
@@ -53,13 +46,13 @@ const Hero = () => {
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="bento-card bg-white p-5 sm:col-span-2">
-            <p className="section-kicker">Signal</p>
+            <p className="section-kicker">{hero.signalLabel}</p>
             <h2 className="mt-4 text-3xl font-black leading-tight tracking-[-0.04em] sm:text-5xl">
-              Architecture, delivery pressure, and AI-assisted engineering in one operator.
+              {hero.signalTitle}
             </h2>
           </div>
 
-          {METRICS.map((metric) => (
+          {hero.metrics.map((metric) => (
             <div key={metric.label} className="bento-card bg-lime-300 p-5">
               <p className="text-4xl font-black tracking-[-0.06em]">{metric.value}</p>
               <p className="mt-2 text-xs font-black uppercase tracking-[0.18em] text-black/60">{metric.label}</p>
@@ -67,7 +60,7 @@ const Hero = () => {
           ))}
 
           <div className="bento-card bg-[#dff8ff] p-5 sm:col-span-2">
-            <p className="section-kicker">Current Stack</p>
+            <p className="section-kicker">{hero.stackLabel}</p>
             <div className="mt-5 flex flex-wrap gap-2">
               {hero.tags.map((tag) => (
                 <span

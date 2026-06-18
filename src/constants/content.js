@@ -14,14 +14,25 @@ export const CONTENT = {
       focus: "React / AI Workflow",
       location: "Taipei, Taiwan",
       welcome: "您好，我是 Josh!",
+      slogan: "用前端架構、AI 工作流與交付經驗，把複雜產品穩定推進。",
+      signalLabel: "重點訊號",
+      signalTitle: "能接住架構、交付壓力與 AI 輔助工程流程的前端工程師。",
+      stackLabel: "目前技術重點",
       description: "10+ 年軟體開發經驗，橫跨前端架構、跨平台應用與 AI 驅動的工程工作流程",
       tags: ["🤖 AI 驅動開發", "🌐 跨平台開發", "🔐 資安意識"],
       resumeBtn: "查看完整履歷 (PDF)",
       resumeUrl: "/JoshWang_ZH_Resume.pdf",
+      metrics: [
+        { value: "10+", label: "年開發經驗" },
+        { value: "90%", label: "雲端成本降低" },
+        { value: "13", label: "語系架構" },
+        { value: "1.5天", label: "POC 驗證週期" },
+      ],
     },
     experience: {
       title: "工作經歷",
-      subtitle: "// Recent positions",
+      subtitle: "// 近期經歷",
+      summary: "從新創產品、全球內部系統、資安平台到獨立架構顧問，累積前端架構、交付與現代化重構經驗。",
       earlyExperience: "早期經歷：Fullinn、CatFi、myTreat、Ecowork 等新創團隊",
       items: [
         {
@@ -65,7 +76,7 @@ export const CONTENT = {
         },
         {
           company: "TeamT5 杜浦數位安全",
-          role: "Front-End Developer (Platform & Architecture)",
+          role: "Frontend Developer (Platform & Architecture)",
           period: "2021/10 - 2023/06",
           highlights: [
             "ThreatSonar 產品前端架構規劃：主導前後端分離架構、頁面結構與資料流遷移方案，產出技術規格與架構設計文件",
@@ -77,7 +88,7 @@ export const CONTENT = {
         },
         {
           company: "海碩集團 鑫享科技 (OEC Group)",
-          role: "Front-End Lead",
+          role: "Frontend Lead",
           period: "2019/05 - 2021/10",
           highlights: [
             "B2B/B2C 後台系統：採用 React Hooks 及 Context API 領導集團前端專案，覆蓋全球 50+ 國內部使用者",
@@ -91,9 +102,9 @@ export const CONTENT = {
     },
     skills: {
       title: "技能樹",
-      subtitle: "// Tech stack overview",
+      subtitle: "// 技術堆疊總覽",
       categories: {
-        frontend: "Front-End",
+        frontend: "Frontend",
         backend: "Back-End",
         ai: "AI Workflow",
         mobile: "Mobile",
@@ -103,9 +114,12 @@ export const CONTENT = {
     },
     contact: {
       title: "聯繫方式",
-      subtitle: "// Feel free to contact me 🐱",
+      subtitle: "// 歡迎聯絡",
       quote: "樂於參與討論分享觀點，通常不是會議中最安靜的那位",
       downloadBtn: "下載完整履歷",
+      resumePrompt: "下載 PDF 履歷",
+      resumeZh: "中文履歷",
+      resumeEn: "English Resume",
     },
     highlights: {
       title: "特色亮點",
@@ -138,7 +152,8 @@ export const CONTENT = {
     },
     projects: {
       title: "個人專案",
-      subtitle: "// Side projects & Open source",
+      subtitle: "// 個人專案與開源",
+      summary: "用實際作品說話：自動化、測試生成、AI agent 與可落地的工程流程。",
       items: [
         {
           title: "PickleScout — LLM 驅動的 E2E 測試自動生成工具",
@@ -194,8 +209,13 @@ export const CONTENT = {
       focus: "React / AI Workflow",
       location: "Taipei, Taiwan",
       welcome: "Hi, I'm Josh!",
+      slogan: "Building resilient frontend systems with AI-era engineering workflow.",
+      signalLabel: "Signal",
+      signalTitle:
+        "Architecture, delivery pressure, and AI-assisted engineering in one operator.",
+      stackLabel: "Current Stack",
       description:
-        "Senior Developer driving front-end, cross-platform & AI workflows.",
+        "Senior Developer driving frontend, cross-platform & AI workflows.",
       tags: [
         "🤖 AI-Driven Development",
         "🌐 Cross-platform",
@@ -203,10 +223,18 @@ export const CONTENT = {
       ],
       resumeBtn: "View Full Resume (PDF)",
       resumeUrl: "/JoshWang_EN_Resume.pdf",
+      metrics: [
+        { value: "10+", label: "Years" },
+        { value: "90%", label: "Cloud cost cut" },
+        { value: "13", label: "Locales shipped" },
+        { value: "1.5d", label: "POC cycle" },
+      ],
     },
     experience: {
       title: "Experience",
       subtitle: "// Recent positions",
+      summary:
+        "A career arc through startup product work, global internal systems, cybersecurity platforms, and independent architecture contracts.",
       earlyExperience:
         "Early experience: Startups including Fullinn, CatFi, myTreat, Ecowork, etc.",
       items: [
@@ -254,7 +282,7 @@ export const CONTENT = {
         },
         {
           company: "TeamT5 (Cybersecurity)",
-          role: "Front-End Developer (Platform & Architecture)",
+          role: "Frontend Developer (Platform & Architecture)",
           period: "Oct 2021 - Jun 2023",
           highlights: [
             "ThreatSonar Product — Frontend Architecture Planning: Led architecture planning for frontend/backend separation; produced technical specifications and design documents.",
@@ -266,7 +294,7 @@ export const CONTENT = {
         },
         {
           company: "OEC Group",
-          role: "Front-End Lead",
+          role: "Frontend Lead",
           period: "May 2019 - Oct 2021",
           highlights: [
             "B2B/B2C Back-office System: Led frontend rebuild using React Hooks and Context API, covering internal systems across 50+ countries.",
@@ -282,7 +310,7 @@ export const CONTENT = {
       title: "Skill Tree",
       subtitle: "// Tech stack overview",
       categories: {
-        frontend: "Front-End",
+        frontend: "Frontend",
         backend: "Back-End",
         ai: "AI Workflow",
         mobile: "Mobile",
@@ -296,6 +324,9 @@ export const CONTENT = {
       quote:
         "Passionate about sharing perspectives; rarely the quietest one in the room.",
       downloadBtn: "Download Full Resume",
+      resumePrompt: "Need the full version?",
+      resumeZh: "中文履歷",
+      resumeEn: "English Resume",
     },
     highlights: {
       title: "Highlights",
@@ -333,6 +364,8 @@ export const CONTENT = {
     projects: {
       title: "Projects",
       subtitle: "// Side projects & Open source",
+      summary:
+        "Proof-of-work over decoration: shipped tooling, automation, and test generation.",
       items: [
         {
           title: "PickleScout — LLM-Driven E2E Test Generation Agent",

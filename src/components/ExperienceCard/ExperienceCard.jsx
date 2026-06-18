@@ -5,7 +5,7 @@ const ExperienceCard = ({ company, role, period, highlights, subProjects, descri
     <article className="bento-card grid gap-6 bg-white p-5 md:grid-cols-[0.36fr_0.64fr] md:p-7">
       <div>
         <p className="section-kicker">{String(index + 1).padStart(2, '0')} / {period}</p>
-        <h3 className="mt-4 text-3xl font-black leading-tight tracking-[-0.04em]">{role}</h3>
+        <h3 className="mt-4 text-2xl font-black leading-tight tracking-[-0.04em] sm:text-3xl md:whitespace-nowrap md:text-[clamp(1.55rem,2.05vw,2rem)]">{role}</h3>
         <p className="mt-3 text-base font-black text-black/60">{company}</p>
         {description && (
           <p className="mt-4 rounded-2xl bg-lime-300 p-4 text-sm font-bold leading-6 text-black">{description}</p>

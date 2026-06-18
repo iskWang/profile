@@ -14,7 +14,7 @@ const Projects = ({ projects }) => {
             <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] sm:text-6xl">{projectsContent.title}</h2>
           </div>
           <p className="max-w-sm text-sm font-medium leading-6 text-black/60">
-            Proof-of-work over decoration: shipped tooling, automation, and test generation.
+            {projectsContent.summary}
           </p>
         </div>
 

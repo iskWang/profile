@@ -15,7 +15,7 @@ const Experience = ({ experiences }) => {
             <h2 className="mt-3 text-4xl font-black tracking-[-0.05em] sm:text-6xl">{experience.title}</h2>
           </div>
           <p className="max-w-2xl text-lg font-medium leading-8 text-black/62">
-            A career arc through startup product work, global internal systems, cybersecurity platforms, and independent architecture contracts.
+            {experience.summary}
           </p>
         </div>
 
