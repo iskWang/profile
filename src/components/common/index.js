@@ -4,3 +4,4 @@ export { default as FloatingCat } from './FloatingCat';
 export { default as PawPrint } from './PawPrint';
 export { default as SkillBadge } from './SkillBadge';
 export { default as SectionHeader } from './SectionHeader';
+export { default as ProfileCard, DetailList } from './ProfileCard';

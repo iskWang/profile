@@ -1,27 +1,25 @@
 import React from 'react';
+import { DetailList, ProfileCard } from '../common';
 
 const ExperienceCard = ({ company, role, period, highlights, subProjects, description, index = 0 }) => {
   return (
-    <article className="bento-card grid gap-6 bg-white p-5 min-[560px]:grid-cols-[240px_minmax(0,1fr)] md:p-7 lg:grid-cols-[430px_minmax(0,1fr)]">
-      <div className="w-full max-w-[430px]">
-        <p className="section-kicker">{String(index + 1).padStart(2, '0')} / {period}</p>
-        <h3 className="mt-4 text-2xl font-black leading-tight tracking-[-0.04em] sm:text-3xl min-[560px]:text-[1.35rem] lg:text-[clamp(1.5rem,1.8vw,1.9rem)]">{role}</h3>
-        <p className="mt-3 text-base font-black text-black/60">{company}</p>
-        {description && (
-          <p className="mt-4 rounded-2xl border border-black/10 bg-[#f4f1e8] p-4 text-sm font-bold leading-6 text-black">{description}</p>
-        )}
-      </div>
-
+    <ProfileCard
+      kicker={`${String(index + 1).padStart(2, '0')} / ${period}`}
+      title={role}
+      subtitle={company}
+      description={description}
+    >
       {subProjects && subProjects.length > 0 ? (
-        <div className="grid w-full gap-3">
-          {subProjects.map((project, idx) => (
-            <div key={idx} className="rounded-2xl border border-black/10 bg-[#f4f1e8] p-4">
+        <DetailList
+          items={subProjects}
+          renderItem={(project, idx) => (
+            <>
               <div className="mb-3 flex flex-wrap items-start gap-3">
                 <span className="font-black text-black">{String(idx + 1).padStart(2, '0')}</span>
                 {project.url ? (
-                  <a 
-                    href={project.url} 
-                    target="_blank" 
+                  <a
+                    href={project.url}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 font-black text-black underline decoration-black/20 underline-offset-4 transition hover:decoration-black"
                   >
@@ -42,20 +40,13 @@ const ExperienceCard = ({ company, role, period, highlights, subProjects, descri
                   </li>
                 ))}
               </ul>
-            </div>
-          ))}
-        </div>
+            </>
+          )}
+        />
       ) : (
-        <ul className="grid w-full gap-3">
-          {highlights.map((item, i) => (
-            <li key={i} className="rounded-2xl border border-black/10 bg-[#f4f1e8] p-4 text-sm font-medium leading-6 text-black/68">
-              <span className="mr-3 font-black text-black">{String(i + 1).padStart(2, '0')}</span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
+        <DetailList items={highlights} />
       )}
-    </article>
+    </ProfileCard>
   );
 };
 
