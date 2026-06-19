@@ -1579,159 +1579,309 @@ p, li {
   .card p { font-size: 0.82rem; line-height: 1.45; }
   .project-points li { font-size: 0.82rem; }
 }
+
+
+/* Takahashi method refresh */
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface2: #334155;
+  --text: #f8fafc;
+  --text-dim: #94a3b8;
+  --accent: #10b981;
+  --accent2: #f59e0b;
+  --accent3: #06b6d4;
+  --border: rgba(148, 163, 184, 0.24);
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+body[data-theme="light"] {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface2: #e2e8f0;
+  --text: #0f172a;
+  --text-dim: #475569;
+  --accent: #047857;
+  --accent2: #b45309;
+  --accent3: #0e7490;
+  --border: rgba(15, 23, 42, 0.16);
+  --shadow: rgba(15, 23, 42, 0.12);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 14% 18%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 28%),
+    radial-gradient(circle at 84% 76%, color-mix(in srgb, var(--accent3) 14%, transparent), transparent 30%);
+  opacity: 0.75;
+}
+
+.slide {
+  align-items: center;
+  text-align: center;
+  padding: clamp(2rem, 8vh, 5rem) clamp(1.5rem, 8vw, 7rem);
+}
+
+.taka {
+  width: min(1180px, 100%);
+  display: grid;
+  gap: clamp(1rem, 3vh, 2rem);
+  place-items: center;
+}
+
+.taka-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.75rem, 1.3vw, 1rem);
+  color: var(--accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.taka-line {
+  color: var(--text);
+  font-size: clamp(3rem, 10vw, 8.8rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.07em;
+  text-wrap: balance;
+}
+
+.taka-line.medium {
+  font-size: clamp(2.5rem, 7.8vw, 6.5rem);
+}
+
+.taka-line.small {
+  font-size: clamp(2.1rem, 6vw, 5rem);
+}
+
+.taka-sub {
+  color: var(--text-dim);
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.taka-split {
+  display: grid;
+  gap: 0.15em;
+}
+
+.evidence-layout {
+  width: min(1180px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: stretch;
+  text-align: left;
+}
+
+.demo-placeholder {
+  min-height: min(62vh, 560px);
+  border: 2px dashed var(--border);
+  border-radius: 28px;
+  background: color-mix(in srgb, var(--surface) 76%, transparent);
+  box-shadow: 0 24px 80px var(--shadow);
+  display: grid;
+  place-items: center;
+  color: var(--text-dim);
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-weight: 900;
+  text-align: center;
+}
+
+.evidence-card {
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: color-mix(in srgb, var(--surface) 86%, transparent);
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  box-shadow: 0 24px 80px var(--shadow);
+}
+
+.evidence-card h2 {
+  color: var(--text);
+  font-size: clamp(2rem, 4.5vw, 4.3rem);
+  line-height: 1;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.05em;
+}
+
+.evidence-card p {
+  color: var(--text-dim);
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  font-weight: 600;
+}
+
+.evidence-card ul {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.6rem;
+  list-style: none;
+}
+
+.evidence-card li {
+  color: var(--text);
+  font-size: clamp(1.05rem, 1.7vw, 1.45rem);
+  line-height: 1.45;
+  font-weight: 800;
+}
+
+.evidence-card li::before {
+  content: '— ';
+  color: var(--accent);
+}
+
+.showcase-only {
+  width: min(1100px, 100%);
+}
+
+.showcase-only .demo-frame {
+  text-align: left;
+  box-shadow: 0 34px 100px var(--shadow);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 120;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  color: var(--text);
+  padding: 0.55rem 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 36px var(--shadow);
+}
+
+@media (max-width: 768px) {
+  .slide { justify-content: center; overflow-y: auto; }
+  .taka-line { font-size: clamp(2.6rem, 16vw, 5rem); }
+  .taka-line.medium { font-size: clamp(2.2rem, 13vw, 4.2rem); }
+  .evidence-layout { grid-template-columns: 1fr; }
+  .demo-placeholder { min-height: 34vh; }
+  .showcase-only .demo-frame { transform: scale(0.92); transform-origin: center; }
+  .theme-toggle { top: auto; bottom: 1rem; left: 1rem; right: auto; }
+}
+
 </style>
 </head>
 <body>
 
 <div class="progress" id="progress"></div>
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="切換亮色或暗色主題">☾ Dark</button>
 
 <div class="deck" id="deck">
 
-  <!-- Slide 1: Cover -->
-  <div class="slide slide-cover active" data-slide="0">
-    <div class="cover-content stagger">
-      <div>
-        <div class="cover-label">面試簡報 — 2026</div>
-        <div class="cover-name">Josh Wang</div>
-        <div class="cover-title">
-          Software Developer<br>
-          <span style="color: var(--accent);">架構導向 · AI 協作開發</span>
-        </div>
-        <div class="cover-footer">
-          <div class="cover-meta">
-            <span>📍 Taipei, Taiwan</span>
-            <span>📧 spjay1@gmail.com</span>
-            <span>🔗 profile.joshwang.dev/slides</span>
-          </div>
-        </div>
-      </div>
-      <div class="cover-qr" aria-label="QR code to slides">
-        <img src="/slides/qr-slides.png" alt="QR code for https://profile.joshwang.dev/slides">
-        <span>profile.joshwang.dev/slides</span>
-      </div>
+  <div class="slide slide-cover" data-slide="0">
+    <div class="taka stagger">
+      <div class="taka-kicker">P1</div>
+      <div class="taka-line">Josh Wang</div>
+      <div class="taka-sub">架構 × AI 協作開發</div>
     </div>
   </div>
 
-  <!-- Slide 2: 定位 -->
-  <div class="slide" data-slide="1">
-    <div class="positioning-layout stagger">
-      <div>
-        <h3>我的定位</h3>
-        <h2>Software Developer<br><span class="highlight">把不確定性變成可交付系統</span></h2>
-        <p class="positioning-lead">
-          10+ 年 Web / Mobile 架構開發經驗。<br>擅長在需求模糊、系統有包袱、時程緊的情境下，釐清問題邊界、設計可維護路徑，並用 AI 協作加速驗證。
-        </p>
-      </div>
-      <div class="role-traits">
-        <div class="trait-card">
-          <h4>架構導向</h4>
-          <p>先看資料流、部署與維護成本，再決定寫什麼程式碼。</p>
-        </div>
-        <div class="trait-card">
-          <h4>產品交付導向</h4>
-          <p>把技術選型拉回使用情境與可驗收結果，不只追求漂亮實作。</p>
-        </div>
-        <div class="trait-card">
-          <h4>AI 協作導向</h4>
-          <p>用 AI 擴大探索、測試與重構速度，保留人的架構判斷與品質把關。</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Slide 3: 職涯脈絡 -->
-  <div class="slide" data-slide="2">
-    <div class="stagger">
-      <h3>能力形成的脈絡</h3>
-      <h2>三個階段，同一種工作方法</h2>
-      <div class="phase-grid">
-        <div class="phase-card">
-          <div class="phase-date">2014 — 2019</div>
-          <h4>新創與全端探索</h4>
-          <p>旅宿、行動 App、GraphQL、客服後台 — 習慣在模糊需求中補齊產品與工程邊界。</p>
-        </div>
-        <div class="phase-card">
-          <div class="phase-date">2019 — 2023</div>
-          <h4>企業系統與資安產品</h4>
-          <p>OEC 跨國內部系統（50+ 國）、TeamT5 資安產品前端與官網，強調可靠性與維護性。</p>
-        </div>
-        <div class="phase-card">
-          <div class="phase-date">2023 — 現在</div>
-          <h4>專案型交付與 AI Workflow</h4>
-          <p>CI/CD 重構、技術債清理、地圖互動、交易平台，以及 AI-assisted development 的落地實踐。</p>
-        </div>
-      </div>
+  <div class="slide " data-slide="1">
+    <div class="taka stagger">
+      <div class="taka-kicker">定位</div>
+      <div class="taka-line">把不確定性<br>變成可交付系統</div>
     </div>
   </div>
 
-  <!-- Slide 4: 關鍵成果 -->
-  <div class="slide" data-slide="3">
-    <div class="stagger">
-      <h3>證據</h3>
-      <h2>三個可以被驗證的結果</h2>
-      <div class="proof-grid">
-        <div class="proof-card">
-          <div class="proof-context">SaaS / CI/CD</div>
-          <h4>把發布流程從分裂拉回可維護</h4>
-          <div class="proof-step">
-            <span>Problem</span>
-            <p>分支與環境流程過度拆分，維運成本與 release 風險持續升高。</p>
-          </div>
-          <div class="proof-step">
-            <span>Intervention</span>
-            <p>重構 Monorepo 流程，重新整理 CI/CD 分支策略與自動化驗收路徑。</p>
-          </div>
-          <div class="proof-result">5 branches → 2</div>
-        </div>
-        <div class="proof-card">
-          <div class="proof-context">Real Estate / POC</div>
-          <h4>用 AI 協作壓縮功能驗證時間</h4>
-          <div class="proof-step">
-            <span>Problem</span>
-            <p>地圖 POI 篩選互動複雜，既有模組帶著技術債，驗證週期偏長。</p>
-          </div>
-          <div class="proof-step">
-            <span>Intervention</span>
-            <p>導入 Claude Code 協作，把探索、拆解與實作驗證變成可重複流程。</p>
-          </div>
-          <div class="proof-result">數週 → 1.5 天</div>
-        </div>
-        <div class="proof-card">
-          <div class="proof-context">Security / TeamT5</div>
-          <h4>主動發現並推動修補資安問題</h4>
-          <div class="proof-step">
-            <span>Problem</span>
-            <p>審查外部廠商系統時，發現密碼明碼傳輸及登入權限設計漏洞。</p>
-          </div>
-          <div class="proof-step">
-            <span>Intervention</span>
-            <p>主動提報管理層，推動廠商改善並追蹤修補進度。</p>
-          </div>
-          <div class="proof-result" style="font-size: 1.1rem;">主動提報 → 推動改善</div>
-        </div>
-      </div>
+  <div class="slide " data-slide="2">
+    <div class="taka stagger">
+      <div class="taka-kicker">定位</div>
+      <div class="taka-line">10+ 年</div>
+      <div class="taka-sub">架構與交付經驗</div>
     </div>
   </div>
 
-  <!-- Slide 5: lychart -->
-  <div class="slide slide-mobile-center" data-slide="4">
-    <div class="project-layout stagger">
-      <div>
-        <div class="project-kicker">Selected Work / Data Product</div>
-        <div class="project-title">lychart</div>
-        <p class="project-summary">
-          慣用的記帳 App 開始不可靠，決定自己整合銀行對帳單 — 但不想把財務資料交給雲端 AI 處理。
-        </p>
-        <ul class="project-points">
-          <li>Gmail 自動收帳單，AI 讀取加密 PDF 整理成可查詢資料，例外才人工審核</li>
-          <li>自託管架構，財務資料不離開本地；12 個月收支趨勢與月報 PDF 匯出</li>
+  <div class="slide " data-slide="3">
+    <div class="taka stagger">
+      <div class="taka-kicker">2014–2019</div>
+      <div class="taka-line">全端探索</div>
+      <div class="taka-sub">模糊需求中找邊界</div>
+    </div>
+  </div>
+
+  <div class="slide " data-slide="4">
+    <div class="taka stagger">
+      <div class="taka-kicker">2019–2023</div>
+      <div class="taka-line">企業與資安產品</div>
+      <div class="taka-sub">跨國系統 × 可靠性</div>
+    </div>
+  </div>
+
+  <div class="slide " data-slide="5">
+    <div class="taka stagger">
+      <div class="taka-kicker">2023–現在</div>
+      <div class="taka-line">AI Workflow 落地</div>
+      <div class="taka-sub">架構判斷 + AI 加速實作</div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="6">
+    <div class="evidence-layout stagger">
+      <div class="demo-placeholder">Demo 照片待補</div>
+      <div class="evidence-card">
+        <div class="taka-kicker">證據案例</div>
+        <h2>滿房寶 Web 專案</h2>
+        <p>一句定位待補</p>
+        <ul>
+          <li>技術判斷 / 決策：待補</li>
+          <li>結果：待補</li>
         </ul>
-        <div class="tags">
-          <span class="tag primary">React</span>
-          <span class="tag primary">TypeScript</span>
-          <span class="tag primary">FastAPI</span>
-          <span class="tag">Gemini Vision</span>
-        </div>
       </div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="7">
+    <div class="evidence-layout stagger">
+      <div class="demo-placeholder">Demo 照片待補</div>
+      <div class="evidence-card">
+        <div class="taka-kicker">證據案例</div>
+        <h2>滿房寶 RN 專案</h2>
+        <p>一句定位待補</p>
+        <ul>
+          <li>技術判斷 / 決策：待補</li>
+          <li>結果：待補</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide="8">
+    <div class="evidence-layout stagger">
+      <div class="demo-placeholder">Demo 照片待補</div>
+      <div class="evidence-card">
+        <div class="taka-kicker">證據案例</div>
+        <h2>TeamT5 Web 專案</h2>
+        <p>一句定位待補</p>
+        <ul>
+          <li>技術判斷 / 決策：待補</li>
+          <li>結果：待補</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide " data-slide="9">
+    <div class="taka stagger">
+      <div class="taka-kicker">lychart</div>
+      <div class="taka-line">記帳 App 不可靠</div>
+      <div class="taka-sub">財務資料不想交給雲端</div>
+    </div>
+  </div>
+
+  <div class="slide slide-mobile-center" data-slide="10">
+    <div class="showcase-only stagger">
       <div class="demo-frame" aria-label="lychart dashboard screenshot-style mockup">
         <div class="demo-bar">
           <span class="demo-dot"></span>
@@ -1782,70 +1932,24 @@ p, li {
     </div>
   </div>
 
-  <!-- Slide 6: lychart 架構 -->
-  <div class="slide" data-slide="5">
-    <div class="architecture-layout stagger">
-      <div>
-        <div class="project-kicker">Architecture / lychart</div>
-        <h2>從 Gmail 信箱到<br><span class="highlight">自託管財務資料管線</span></h2>
-        <p class="arch-summary">
-          台灣帳單格式各異、PDF 加密方式不一，同時不想把財務資料送到雲端 AI。<br>這兩個限制決定了架構的核心設計。
-        </p>
-        <div class="arch-points">
-          <div class="arch-point">
-            <h4>讓 AI 直接讀 PDF</h4>
-            <p>台灣帳單版型差異很大，不先拆文字，讓 vision model 直接讀 PDF 並輸出固定格式，省去維護 parser 的成本。</p>
-          </div>
-          <div class="arch-point">
-            <h4>例外才人工審核</h4>
-            <p>乾淨的資料自動入帳；解析失敗或帳戶不確定時，才進入 review queue，操作負擔維持最低。</p>
-          </div>
-        </div>
-      </div>
-      <div class="arch-diagram" aria-label="lychart architecture diagram">
-        <div class="arch-flow">
-          <div class="arch-node primary">
-            <span>Step 1</span>
-            <strong>從信箱收帳單</strong>
-            <p>依機構規則抓 Gmail 裡的銀行、信用卡、證券與水電帳單。</p>
-          </div>
-          <div class="arch-arrow">→</div>
-          <div class="arch-node secondary">
-            <span>Step 2</span>
-            <strong>解密並讓 AI 讀 PDF</strong>
-            <p>背景工作解密後，vision model 直接讀帳單並輸出結構化交易資料。</p>
-          </div>
-          <div class="arch-arrow">→</div>
-          <div class="arch-node info">
-            <span>Step 3</span>
-            <strong>存成可查詢資料</strong>
-            <p>交易、帳戶、匯率與每月資產快照進資料庫；例外進 review queue。</p>
-          </div>
-        </div>
-      </div>
+  <div class="slide " data-slide="11">
+    <div class="taka stagger">
+      <div class="taka-kicker">lychart</div>
+      <div class="taka-line">Gmail → 解密 → AI 讀 PDF</div>
+      <div class="taka-sub">自託管，資料不離開本地</div>
     </div>
   </div>
 
-  <!-- Slide 7: PickleScout -->
-  <div class="slide slide-mobile-center" data-slide="6">
-    <div class="project-layout stagger">
-      <div>
-        <div class="project-kicker">Selected Work / AI Testing</div>
-        <div class="project-title">PickleScout</div>
-        <p class="project-summary">
-          接手新專案時，手寫測試來不及、不測又不安心 — 讓 browser agent 先把 app 走一遍，自動生成 E2E 測試套件。
-        </p>
-        <ul class="project-points">
-          <li>Stagehand 記錄 ActionLog → Two-pass LLM 轉 Gherkin + Playwright steps → self-healing 驗證，輸出 CI-ready zip</li>
-          <li>一週完成 POC 並開源，runtime 零 LLM 依賴</li>
-        </ul>
-        <div class="tags">
-          <span class="tag primary">LLM Agent</span>
-          <span class="tag primary">Playwright</span>
-          <span class="tag">Cucumber.js</span>
-          <span class="tag">Fastify</span>
-        </div>
-      </div>
+  <div class="slide " data-slide="12">
+    <div class="taka stagger">
+      <div class="taka-kicker">PickleScout</div>
+      <div class="taka-line">新專案沒時間補測試</div>
+      <div class="taka-sub">不測又不安心</div>
+    </div>
+  </div>
+
+  <div class="slide slide-mobile-center" data-slide="13">
+    <div class="showcase-only stagger">
       <div class="demo-frame" aria-label="PickleScout job detail screenshot-style mockup">
         <div class="demo-bar">
           <span class="demo-dot"></span>
@@ -1893,65 +1997,35 @@ p, li {
     </div>
   </div>
 
-  <!-- Slide 8: PickleScout 架構 -->
-  <div class="slide" data-slide="7">
-    <div class="architecture-layout stagger">
-      <div>
-        <div class="project-kicker">Architecture / PickleScout</div>
-        <h2>Browser agent 探索，<br><span class="highlight2">LLM 轉成可落地測試</span></h2>
-        <p class="arch-summary">
-          核心挑戰：AI 探索行為是機率性的，但輸出的測試必須是確定性的。<br>Two-pass pipeline 與 self-healing 就是為了解決這個張力。
-        </p>
-        <div class="arch-points">
-          <div class="arch-point">
-            <h4>先探索，再產生測試</h4>
-            <p>第一步讓 browser agent 操作 app 並記錄 ActionLog；第二步才由 LLM 把紀錄整理成測試案例，兩步分開讓每個階段都可以獨立驗證。</p>
-          </div>
-          <div class="arch-point">
-            <h4>驗證後才輸出，失敗自動修</h4>
-            <p>產生後先試跑；selector 或 timeout 出錯時，LLM 自動修正後重試。最終 zip 的 runtime 不再需要呼叫 AI。</p>
-          </div>
-        </div>
-      </div>
-      <div class="arch-diagram" aria-label="PickleScout architecture diagram">
-        <div class="arch-flow">
-          <div class="arch-node primary">
-            <span>Step 1</span>
-            <strong>Browser Agent 探索</strong>
-            <p>Stagehand 瀏覽 app，記錄點擊、輸入與畫面變化為 ActionLog。</p>
-          </div>
-          <div class="arch-arrow">→</div>
-          <div class="arch-node secondary">
-            <span>Step 2</span>
-            <strong>Two-pass LLM 生成</strong>
-            <p>ActionLog → Gherkin feature files → Playwright step definitions。</p>
-          </div>
-          <div class="arch-arrow">→</div>
-          <div class="arch-node info">
-            <span>Step 3</span>
-            <strong>驗證 + Self-heal → 輸出</strong>
-            <p>試跑測試，失敗時自動修 selector；通過後打包成 CI-ready zip。</p>
-          </div>
-        </div>
-      </div>
+  <div class="slide " data-slide="14">
+    <div class="taka stagger">
+      <div class="taka-kicker">PickleScout</div>
+      <div class="taka-line">Browser Agent 探索</div>
+      <div class="taka-sub">LLM 轉測試，失敗自動修</div>
     </div>
   </div>
 
-  <!-- Slide 9: Contact -->
-  <div class="slide slide-mobile-center" data-slide="8">
-    <div class="stagger" style="text-align: center; align-items: center; display: flex; flex-direction: column;">
-      <h3>Thank You</h3>
-      <div class="cover-name" style="font-size: clamp(2.5rem, 6vw, 5rem); margin-bottom: 1.5rem;">
-        Let's Talk.
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 0.8rem; align-items: center; margin-bottom: 1.5rem;">
-        <p style="font-size: 1.1rem; color: var(--text);">📧 spjay1@gmail.com</p>
-        <p style="font-size: 1.1rem; color: var(--text);">🔗 profile.joshwang.dev/slides</p>
-        <p style="font-size: 1.1rem; color: var(--text);">📍 Taipei, Taiwan</p>
-      </div>
-      <p style="color: var(--text-dim); font-size: 0.95rem; max-width: 480px;">
-        想加入把 <span class="highlight">架構品質</span> 與 <span class="highlight2">AI 開發流程</span> 放在同一張桌上討論的團隊。
-      </p>
+  <div class="slide " data-slide="15">
+    <div class="taka stagger">
+      <div class="taka-kicker">PickleScout</div>
+      <div class="taka-line">一週 POC</div>
+      <div class="taka-sub">開源，Runtime 零 LLM 依賴</div>
+    </div>
+  </div>
+
+  <div class="slide " data-slide="16">
+    <div class="taka stagger">
+      <div class="taka-kicker">結尾</div>
+      <div class="taka-line">AI 跑很快</div>
+      <div class="taka-sub">我握著方向盤</div>
+    </div>
+  </div>
+
+  <div class="slide " data-slide="17">
+    <div class="taka stagger">
+      <div class="taka-kicker">Let's Talk</div>
+      <div class="taka-line">Let's Talk</div>
+      <div class="taka-sub">spjay1@gmail.com</div>
     </div>
   </div>
 
@@ -1960,7 +2034,7 @@ p, li {
 <!-- Navigation -->
 <div class="nav">
   <button class="nav-btn" onclick="navigate(-1)" aria-label="Previous">←</button>
-  <span class="nav-counter" id="counter">1 / 9</span>
+  <span class="nav-counter" id="counter">1 / 18</span>
   <button class="nav-btn" onclick="navigate(1)" aria-label="Next">→</button>
 </div>
 
@@ -1970,6 +2044,7 @@ const slides = document.querySelectorAll('.slide');
 const total = slides.length;
 const counter = document.getElementById('counter');
 const progress = document.getElementById('progress');
+const themeToggle = document.getElementById('themeToggle');
 
 function showSlide(index) {
   slides.forEach(s => s.classList.remove('active'));
@@ -2002,6 +2077,17 @@ document.addEventListener('touchend', (e) => {
   if (Math.abs(diff) > 50) navigate(diff > 0 ? 1 : -1);
 });
 
+function setTheme(theme) {
+  document.body.dataset.theme = theme;
+  themeToggle.textContent = theme === 'light' ? '☀ Light' : '☾ Dark';
+  localStorage.setItem('slides-theme', theme);
+}
+
+themeToggle.addEventListener('click', () => {
+  setTheme(document.body.dataset.theme === 'light' ? 'dark' : 'light');
+});
+
+setTheme(localStorage.getItem('slides-theme') || 'dark');
 showSlide(0);
 </script>
 
