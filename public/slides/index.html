@@ -201,7 +201,7 @@ html, body {
 .cover-tagline .hl { color: var(--accent); font-weight: 700; }
 .cover-qr-wrap {
   position: absolute;
-  bottom: 6vh; right: 7vw;
+  bottom: 6vh; left: 7vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -737,20 +737,15 @@ html, body {
   <!-- S7: 案例 — 滿房寶 Web -->
   <div class="slide slide-case" data-slide="6">
     <div class="case-photo">
-      <div class="case-placeholder">
-        <div class="case-placeholder-box">
-          <span class="case-placeholder-label">截圖待提供</span>
-          <span class="case-placeholder-hint">滿房寶 Web 專案</span>
-        </div>
-      </div>
+      <img src="/slides/manfangbao-web.png" alt="滿房寶旅宿官網設計師 screenshot" style="width:100%;height:100%;object-fit:cover;">
     </div>
     <div class="case-text stagger">
       <div class="case-kicker">案例 01</div>
       <div class="case-project">滿房寶 Web</div>
-      <div class="case-positioning">一句定位（待補充）</div>
+      <div class="case-positioning">首次主導 Next.js 前端 WEB 架構，並帶領前端成員</div>
       <ul class="case-bullets">
-        <li><span class="case-pending">技術判斷 / 決策（待補充）</span></li>
-        <li><span class="case-pending">可量化結果（待補充）</span></li>
+        <li>採用 Next.js + GraphQL Apollo 架構，支援 SEO</li>
+        <li>約一個月內完成並上線</li>
       </ul>
     </div>
   </div>
@@ -758,20 +753,15 @@ html, body {
   <!-- S8: 案例 — 滿房寶 RN -->
   <div class="slide slide-case" data-slide="7">
     <div class="case-photo">
-      <div class="case-placeholder">
-        <div class="case-placeholder-box">
-          <span class="case-placeholder-label">截圖待提供</span>
-          <span class="case-placeholder-hint">滿房寶 React Native 專案</span>
-        </div>
-      </div>
+      <img src="/slides/manfangbao-rn.png" alt="滿房寶 React Native app screenshot" style="width:100%;height:100%;object-fit:cover;">
     </div>
     <div class="case-text stagger">
       <div class="case-kicker">案例 02</div>
       <div class="case-project">滿房寶 React Native</div>
-      <div class="case-positioning">一句定位（待補充）</div>
+      <div class="case-positioning">接手外包後穩定 React Native 行動端，同步維護 WEB</div>
       <ul class="case-bullets">
-        <li><span class="case-pending">技術判斷 / 決策（待補充）</span></li>
-        <li><span class="case-pending">可量化結果（待補充）</span></li>
+        <li>獨立接手外包交付的 RN 程式碼，建立可維護的模組結構</li>
+        <li>修復既有問題逾 40%</li>
       </ul>
     </div>
   </div>
@@ -779,20 +769,15 @@ html, body {
   <!-- S9: 案例 — TeamT5 Web -->
   <div class="slide slide-case" data-slide="8">
     <div class="case-photo">
-      <div class="case-placeholder">
-        <div class="case-placeholder-box">
-          <span class="case-placeholder-label">截圖待提供</span>
-          <span class="case-placeholder-hint">TeamT5 Web 專案</span>
-        </div>
-      </div>
+      <img src="/slides/teamt5-web.png" alt="TeamT5 News & Events screenshot" style="width:100%;height:100%;object-fit:cover;">
     </div>
     <div class="case-text stagger">
       <div class="case-kicker">案例 03</div>
       <div class="case-project">TeamT5 Web</div>
-      <div class="case-positioning">一句定位（待補充）</div>
+      <div class="case-positioning">官網架構遷移至 AWS S3 靜態部署，沿用為活動網站標準模板</div>
       <ul class="case-bullets">
-        <li><span class="case-pending">技術判斷 / 決策（待補充）</span></li>
-        <li><span class="case-pending">可量化結果（待補充）</span></li>
+        <li>前後端分離 + Next.js 靜態化，同步移除 Legacy Code</li>
+        <li>載入 2.47s → 1.6s，包大小 13.7mb → 8.4mb</li>
       </ul>
     </div>
   </div>
@@ -952,7 +937,7 @@ html, body {
     <div class="stagger" style="display:flex;flex-direction:column;align-items:center;">
       <div class="tk-main">AI 跑很快</div>
       <div class="tk-divider"></div>
-      <div class="tk-main">我握著方向盤</div>
+      <div class="tk-main" style="color:var(--accent)">但我握著方向盤</div>
     </div>
   </div>
 
@@ -987,6 +972,7 @@ function showSlide(i) {
   slides[i].classList.add('active');
   counter.textContent = `${i + 1} / ${total}`;
   progress.style.width = `${((i + 1) / total) * 100}%`;
+  history.replaceState(null, '', '#' + (i + 1));
 }
 
 function navigate(dir) {
@@ -1023,10 +1009,18 @@ document.addEventListener('touchend', e => {
   if (Math.abs(d) > 50) navigate(d > 0 ? 1 : -1);
 });
 
-// Support #N hash for deep-linking (e.g. /slides/#3 starts on slide 3)
-const hashSlide = parseInt(location.hash.slice(1)) - 1;
-const initialSlide = Number.isFinite(hashSlide) && hashSlide >= 0 ? Math.min(hashSlide, total - 1) : 0;
-showSlide(initialSlide);
+function slideFromHash() {
+  const n = parseInt(location.hash.slice(1)) - 1;
+  return Number.isFinite(n) && n >= 0 ? Math.min(n, total - 1) : 0;
+}
+
+window.addEventListener('hashchange', () => {
+  current = slideFromHash();
+  showSlide(current);
+});
+
+current = slideFromHash();
+showSlide(current);
 </script>
 </body>
 </html>
