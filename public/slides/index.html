@@ -374,6 +374,8 @@ html, body {
   box-shadow: 0 16px 48px rgba(0,0,0,0.14);
   border-color: rgba(0,0,0,0.12);
 }
+.shot-frame { max-width: 1080px; background: #fff; }
+.shot-frame img { width: 100%; display: block; }
 .demo-bar {
   height: 34px;
   display: flex;
@@ -783,24 +785,56 @@ html, body {
     </div>
   </div>
 
-  <!-- S10: 案例 — 信義房屋 -->
-  <div class="slide slide-case" data-slide="9">
-    <div class="case-photo">
-      <img src="/slides/sinyi-ai-declutter.png" alt="信義房屋 AI 一鍵清空 before/after screenshot" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-    <div class="case-text stagger">
-      <div class="case-kicker">案例 04</div>
-      <div class="case-project">信義房屋</div>
-      <div class="case-positioning">大型企業官網前端維運，導入 AI 協作開發加速功能交付</div>
-      <ul class="case-bullets">
-        <li>技術棧 React.js / Next.js / Docker(Linux)，主導 Class → Hook Component 遷移</li>
-        <li>搭配 Claude Code 交付「AI 一鍵清空」、「生活圈找屋」、「實價登錄 手機版」等上線功能</li>
-      </ul>
+  <!-- S10: 信義房屋 轉場前 -->
+  <div class="slide slide-tk" data-slide="9">
+    <div class="stagger" style="display:flex;flex-direction:column;align-items:center;">
+      <div class="tk-main">信義房屋</div>
+      <div class="tk-divider"></div>
+      <div class="tk-sub tk-dim">大型企業官網 · React.js / Next.js / Docker(Linux)</div>
     </div>
   </div>
 
-  <!-- S11: lychart 轉場前 -->
-  <div class="slide slide-tk" data-slide="10">
+  <!-- S11: 信義房屋 Demo — 生活圈找屋 -->
+  <div class="slide slide-demo" data-slide="10">
+    <div class="demo-slide-label">信義房屋 — 生活圈找屋（500 公尺 / POI 功能搜尋條）</div>
+    <div class="demo-frame-wrap">
+      <div class="demo-frame shot-frame">
+        <img src="/slides/sinyi-poi-search.png" alt="信義房屋 生活圈找屋 screenshot">
+      </div>
+    </div>
+  </div>
+
+  <!-- S12: 信義房屋 Demo — AI 一鍵清空 -->
+  <div class="slide slide-demo" data-slide="11">
+    <div class="demo-slide-label">信義房屋 — AI 一鍵清空（搭配 Claude Code + ChatGPT 實作）</div>
+    <div class="demo-frame-wrap">
+      <div class="demo-frame shot-frame">
+        <img src="/slides/sinyi-ai-declutter.png" alt="信義房屋 AI 一鍵清空 before/after screenshot">
+      </div>
+    </div>
+  </div>
+
+  <!-- S13: 信義房屋 Demo — 實價登錄手機版 -->
+  <div class="slide slide-demo" data-slide="12">
+    <div class="demo-slide-label">信義房屋 — 實價登錄 手機版（搭配 Claude Code 實作）</div>
+    <div class="demo-frame-wrap">
+      <div class="demo-frame shot-frame">
+        <img src="/slides/sinyi-price-registry-mobile.png" alt="信義房屋 實價登錄手機版 screenshot">
+      </div>
+    </div>
+  </div>
+
+  <!-- S14: 信義房屋 轉場後 -->
+  <div class="slide slide-tk" data-slide="13">
+    <div class="stagger" style="display:flex;flex-direction:column;align-items:center;">
+      <div class="tk-main">既有系統<span class="tk-accent">，</span>也能上 AI</div>
+      <div class="tk-divider"></div>
+      <div class="tk-sub">主導遷移 <span class="tk-accent">×</span> Claude Code 交付</div>
+    </div>
+  </div>
+
+  <!-- S15: lychart 轉場前 -->
+  <div class="slide slide-tk" data-slide="14">
     <div class="stagger" style="display:flex;flex-direction:column;align-items:center;">
       <div class="tk-main">記帳 App 不可靠</div>
       <div class="tk-divider"></div>
@@ -808,8 +842,8 @@ html, body {
     </div>
   </div>
 
-  <!-- S12: lychart Demo -->
-  <div class="slide slide-demo" data-slide="11">
+  <!-- S16: lychart Demo -->
+  <div class="slide slide-demo" data-slide="15">
     <div class="demo-slide-label">lychart — 個人財務自託管系統</div>
     <div class="demo-frame-wrap">
       <div class="demo-frame" aria-label="lychart dashboard mockup">
@@ -862,8 +896,8 @@ html, body {
     </div>
   </div>
 
-  <!-- S13: lychart 轉場後 -->
-  <div class="slide slide-tk" data-slide="12">
+  <!-- S17: lychart 轉場後 -->
+  <div class="slide slide-tk" data-slide="16">
     <div class="stagger" style="display:flex;flex-direction:column;align-items:center;">
       <div class="tk-flow">Gmail <span class="tk-accent">→</span> 解密 <span class="tk-accent">→</span> AI 讀 PDF</div>
       <div class="tk-divider"></div>
@@ -871,8 +905,8 @@ html, body {
     </div>
   </div>
 
-  <!-- S14: PickleScout 轉場前 -->
-  <div class="slide slide-tk" data-slide="13">
+  <!-- S18: PickleScout 轉場前 -->
+  <div class="slide slide-tk" data-slide="17">
     <div class="stagger" style="display:flex;flex-direction:column;align-items:center;">
       <div class="tk-main">新專案沒時間補測試</div>
       <div class="tk-divider"></div>
@@ -880,8 +914,8 @@ html, body {
     </div>
   </div>
 
-  <!-- S15: PickleScout Demo -->
-  <div class="slide slide-demo" data-slide="14">
+  <!-- S19: PickleScout Demo -->
+  <div class="slide slide-demo" data-slide="18">
     <div class="demo-slide-label">PickleScout — Browser Agent 自動生成 E2E 測試</div>
     <div class="demo-frame-wrap">
       <div class="demo-frame" aria-label="PickleScout job detail mockup">
@@ -931,8 +965,8 @@ html, body {
     </div>
   </div>
 
-  <!-- S16: PickleScout 轉場後 -->
-  <div class="slide slide-tk" data-slide="15">
+  <!-- S20: PickleScout 轉場後 -->
+  <div class="slide slide-tk" data-slide="19">
     <div class="stagger" style="display:flex;flex-direction:column;align-items:center;">
       <div class="tk-main">Browser Agent 探索</div>
       <div class="tk-divider"></div>
@@ -940,8 +974,8 @@ html, body {
     </div>
   </div>
 
-  <!-- S17: PickleScout POC -->
-  <div class="slide slide-tk" data-slide="16">
+  <!-- S21: PickleScout POC -->
+  <div class="slide slide-tk" data-slide="20">
     <div class="stagger" style="display:flex;flex-direction:column;align-items:center;">
       <div class="tk-main tk-accent">一週 POC</div>
       <div class="tk-divider"></div>
@@ -949,8 +983,8 @@ html, body {
     </div>
   </div>
 
-  <!-- S18: 結尾 Let's Talk -->
-  <div class="slide slide-tk" data-slide="17">
+  <!-- S22: 結尾 Let's Talk -->
+  <div class="slide slide-tk" data-slide="21">
     <div class="stagger" style="display:flex;flex-direction:column;align-items:center;">
       <div class="tk-main tk-accent">Let's Talk</div>
       <div class="tk-divider"></div>
@@ -963,7 +997,7 @@ html, body {
 <!-- Navigation -->
 <div class="nav">
   <button class="nav-btn" onclick="navigate(-1);this.blur()" aria-label="前一張">←</button>
-  <span class="nav-counter" id="counter">1 / 18</span>
+  <span class="nav-counter" id="counter">1 / 22</span>
   <button class="nav-btn" onclick="navigate(1);this.blur()" aria-label="下一張">→</button>
 </div>
 
