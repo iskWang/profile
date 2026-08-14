@@ -160,7 +160,7 @@ export const CONTENT = {
       ],
     },
     contact: {
-      title: "Let’s work together",
+      title: "Let's work together",
       lead: "如果你正在建立需要穩定交付的產品，歡迎從一封 email 開始。",
       email: "spjay1@gmail.com",
       location: "Taipei, Taiwan",
@@ -336,7 +336,7 @@ export const CONTENT = {
       ],
     },
     contact: {
-      title: "Let’s work together",
+      title: "Let's work together",
       lead: "If you are building a product that needs dependable delivery, start with an email.",
       email: "spjay1@gmail.com",
       location: "Taipei, Taiwan",
