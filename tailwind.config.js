@@ -5,7 +5,40 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        bg: 'var(--color-bg)',
+        surface: 'var(--color-surface)',
+        ink: 'var(--color-ink)',
+        'ink-muted': 'var(--color-ink-muted)',
+        accent: 'var(--color-accent)',
+        line: 'var(--color-line)',
+      },
+      fontFamily: {
+        display: 'var(--font-display)',
+        body: 'var(--font-body)',
+        zh: 'var(--font-zh)',
+        mono: 'var(--font-mono)',
+      },
+      maxWidth: {
+        container: 'var(--container-max)',
+      },
+      spacing: {
+        gutter: 'var(--page-gutter)',
+        header: 'var(--header-height)',
+      },
+      zIndex: {
+        base: 'var(--z-base)',
+        decor: 'var(--z-decor)',
+        content: 'var(--z-content)',
+        sticky: 'var(--z-sticky)',
+        popover: 'var(--z-popover)',
+        overlay: 'var(--z-overlay)',
+        modal: 'var(--z-modal)',
+        toast: 'var(--z-toast)',
+        tooltip: 'var(--z-tooltip)',
+      },
+    },
   },
   plugins: [],
 }
