@@ -1,78 +1,76 @@
-import React, { useState, useEffect } from 'react';
-import { CatFace } from '../common';
+import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../../context/useLanguage';
+import { useTheme } from '../../context/useTheme';
+import { CatMark } from '../common';
 
-const Header = ({ scrollToSection }) => {
+const SECTION_IDS = ['about', 'work', 'experience', 'capabilities', 'contact'];
+
+const ThemeIcon = ({ theme }) => (
+  theme === 'dark' ? (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current" strokeWidth="1.8">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.7 6.7 0 0 0 21 12.8Z" />
+    </svg>
+  ) : (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current" strokeWidth="1.8">
+      <circle cx="12" cy="12" r="3.5" />
+      <path strokeLinecap="round" d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+    </svg>
+  )
+);
+
+const Header = () => {
   const { lang, toggleLang, content } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const [activeSection, setActiveSection] = useState('about');
-
-  const sections = [
-    { id: 'about',      label: content.nav.about },
-    { id: 'projects',   label: content.nav.projects },
-    { id: 'skills',     label: content.nav.skills },
-    { id: 'experience', label: content.nav.experience },
-    { id: 'contact',    label: content.nav.contact },
-  ];
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const sections = SECTION_IDS.map((id) => ({ id, label: content.nav[id] }));
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 100;
-      for (const section of sections) {
-        const element = document.getElementById(section.id);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section.id);
-            break;
-          }
-        }
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [sections]);
+    const observedSections = SECTION_IDS.map((id) => document.getElementById(id)).filter(Boolean);
+    if (!observedSections.length) return undefined;
+    const observer = new IntersectionObserver((entries) => {
+      const visibleEntry = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visibleEntry) setActiveSection(visibleEntry.target.id);
+    }, { rootMargin: '-64px 0px -45%', threshold: [0.15, 0.5, 0.75] });
+    observedSections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  const linkClass = (id) =>
+    `inline-flex min-h-[44px] items-center rounded px-2 font-body text-[length:var(--type-meta)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+      activeSection === id ? 'text-accent' : 'text-ink-muted hover:text-accent'
+    }`;
+  const renderLinks = (onNavigate) => sections.map(({ id, label }) => (
+    <a key={id} href={`#${id}`} className={linkClass(id)} aria-current={activeSection === id ? 'page' : undefined} onClick={onNavigate}>
+      {label}
+    </a>
+  ));
+  const themeButton = (
+    <button type="button" onClick={toggleTheme} aria-label={theme === 'dark' ? 'Use light theme' : 'Use dark theme'} className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded text-ink-muted transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+      <ThemeIcon theme={theme} />
+    </button>
+  );
 
   return (
-    <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-900/70 border-b border-slate-700/50">
-      <nav className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <button
-          className="font-mono text-emerald-400 flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded"
-          onClick={() => scrollToSection('about')}
-        >
-          <CatFace size="text-xl" />
-          <span className="text-xl">~/</span>
-          <span className="text-white group-hover:text-emerald-400 transition-colors">josh_wang</span>
-          <span className="animate-pulse" aria-hidden="true">_</span>
-        </button>
-
-        <div className="flex items-center gap-2 md:gap-6 font-mono text-sm overflow-x-auto no-scrollbar max-w-full px-2">
-          {sections.map((section, index) => (
-            <React.Fragment key={section.id}>
-              {index > 0 && <span className="text-slate-600 sm:hidden">/</span>}
-              <button
-                onClick={() => scrollToSection(section.id)}
-                className={`transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded px-1 ${
-                  activeSection === section.id
-                    ? 'text-emerald-400 font-bold'
-                    : 'text-slate-400 hover:text-emerald-400'
-                }`}
-              >
-                <span className="hidden sm:inline">.</span>
-                {section.label}
-                <span className="hidden sm:inline">()</span>
-              </button>
-            </React.Fragment>
-          ))}
-
-          <button
-            onClick={toggleLang}
-            aria-label="Switch language"
-            className="ml-2 font-mono text-xs px-3 py-2 min-h-[44px] flex items-center rounded-lg border border-slate-600/60 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/50 transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
-          >
-            {lang === 'zh' ? 'EN' : '中文'}
+    <header className="sticky top-0 z-sticky h-header bg-bg/90 backdrop-blur-md">
+      <nav aria-label="Main navigation" className="mx-auto flex h-full max-w-container items-center justify-between px-gutter">
+        <a href="#about" className="inline-flex min-h-[44px] items-center gap-2 rounded font-body text-[length:var(--type-meta)] font-semibold text-ink transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+          <CatMark size={22} /> Josh Wang
+        </a>
+        <div className="hidden items-center gap-1 lg:flex">
+          {renderLinks()}
+          <button type="button" onClick={toggleLang} aria-label="Switch language" className="inline-flex min-h-[44px] items-center rounded px-2 font-body text-[length:var(--type-meta)] text-ink-muted transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">{lang === 'zh' ? 'EN' : '中文'}</button>
+          {themeButton}
+        </div>
+        <div className="flex items-center gap-1 lg:hidden">
+          <button type="button" onClick={toggleLang} aria-label="Switch language" className="inline-flex min-h-[44px] items-center rounded px-2 font-body text-[length:var(--type-meta)] text-ink-muted transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">{lang === 'zh' ? 'EN' : '中文'}</button>
+          {themeButton}
+          <button type="button" aria-expanded={isMenuOpen} aria-controls="mobile-navigation" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} onClick={() => setIsMenuOpen((open) => !open)} className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded text-ink-muted transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current" strokeWidth="2"><path strokeLinecap="round" d={isMenuOpen ? 'M6 6l12 12M18 6L6 18' : 'M4 7h16M4 12h16M4 17h16'} /></svg>
           </button>
         </div>
       </nav>
+      {isMenuOpen && <div id="mobile-navigation" className="absolute left-0 right-0 top-full z-popover bg-bg px-gutter pb-3 shadow-lg lg:hidden"><div className="mx-auto grid max-w-container items-stretch">{renderLinks(() => setIsMenuOpen(false))}</div></div>}
     </header>
   );
 };

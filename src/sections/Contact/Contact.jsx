@@ -1,50 +1,44 @@
 import React from 'react';
-import { CatFace } from '../../components/common';
 import { useLanguage } from '../../context/useLanguage';
 
 const Contact = () => {
   const { content } = useLanguage();
-  const { contact, hero } = content;
+  const { contact } = content;
+
+  const links = [
+    { href: contact.links.email, label: contact.email, primary: true },
+    { href: contact.links.github, label: 'GitHub' },
+    { href: contact.links.zhResume, label: 'ZH Resume' },
+    { href: contact.links.enResume, label: 'EN Resume' },
+  ];
 
   return (
-    <section className="pt-32 sm:pt-24 pb-24 px-6 bg-slate-800/30" id="contact">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-8 flex items-center justify-center gap-3">
-          <span className="text-emerald-400 font-mono font-normal">{'>'}</span>
-          <span className="text-amber-300">{contact.title}</span>
-          <CatFace size="text-2xl" className="ml-2" />
+    <section id="contact" className="bg-accent py-[var(--space-section-standard)] text-bg">
+      <div className="mx-auto max-w-container px-gutter">
+        <h2 className="font-display text-[length:var(--type-hero)] leading-[var(--leading-section)]">
+          {contact.title}
         </h2>
+        <p className="mt-5 max-w-[68ch] text-[length:var(--type-body)] leading-[var(--leading-body)]">
+          {contact.lead}
+        </p>
 
-        <div className="bg-slate-800/60 rounded-xl border border-slate-700/50 p-4 sm:p-8 inline-block max-w-full overflow-hidden">
-          <div className="font-mono space-y-3 text-left overflow-x-auto custom-scrollbar text-xs sm:text-sm md:text-base">
-            <p className="whitespace-nowrap">
-              <span className="text-slate-500">{contact.subtitle}</span>
-            </p>
-            <p className="flex flex-wrap items-center">
-              <span className="text-cyan-300">const</span>
-              <span className="text-white ml-2">email</span>
-              <span className="text-slate-400 mx-1 sm:mx-2">=</span>
-              <a href="mailto:spjay1@gmail.com" className="text-amber-300 hover:text-amber-200 transition-colors break-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded" aria-label="Send email to spjay1@gmail.com">
-                "spjay1@gmail.com"
-              </a>
-              <span className="text-slate-400">;</span>
-            </p>
-            <p className="flex flex-wrap items-center">
-              <span className="text-cyan-300">const</span>
-              <span className="text-white ml-2">location</span>
-              <span className="text-slate-400 mx-1 sm:mx-2">=</span>
-              <span className="text-amber-300">"Taipei, Taiwan"</span>
-              <span className="text-slate-400">;</span>
-            </p>
-          </div>
+        <div className="mt-8 flex flex-wrap items-center gap-2">
+          {links.map(({ href, label, primary }) => (
+            <a
+              key={href}
+              href={href}
+              className={`px-4 py-3 text-bg underline-offset-4 hover:underline ${
+                primary ? 'text-[length:var(--type-title)]' : 'text-[length:var(--type-body)]'
+              }`}
+            >
+              {label}
+            </a>
+          ))}
         </div>
 
-        <p className="mt-8 text-slate-400 flex items-center justify-center gap-2 px-4 italic sm:not-italic">
-          <CatFace size="text-lg" className="flex-shrink-0" />
-          <span className="text-xs sm:text-sm md:text-base">{contact.quote}</span>
-          <CatFace size="text-lg" className="flex-shrink-0" />
+        <p className="mt-6 text-[length:var(--type-meta)] leading-[var(--leading-body)]">
+          {contact.location}
         </p>
-        
       </div>
     </section>
   );

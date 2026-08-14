@@ -1,16 +1,17 @@
 import React from 'react';
-import { CatFace } from '../common';
+import { CatMark } from '../common';
+import { useLanguage } from '../../context/useLanguage';
 
 const Footer = () => {
+  const { content } = useLanguage();
+
   return (
-    <footer className="py-8 px-6 border-t border-slate-700/50">
-      <div className="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-        <p className="font-mono flex items-center gap-2">
-          © {Math.max(new Date().getFullYear(), 2026)} Josh Wang <CatFace size="text-base" />
+    <footer className="border-t border-line px-gutter py-6">
+      <div className="mx-auto flex max-w-container flex-row items-center justify-between gap-4 text-[length:var(--type-meta)] leading-[var(--leading-body)] text-ink-muted">
+        <p className="flex items-center gap-2">
+          © {new Date().getFullYear()} Josh Wang <CatMark size={20} className="text-accent" />
         </p>
-        <p className="font-mono">
-          <span className="text-emerald-500">▸</span> Built with React
-        </p>
+        <p className="text-right">{content.footer.builtWith}</p>
       </div>
     </footer>
   );
