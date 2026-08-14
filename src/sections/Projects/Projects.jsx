@@ -54,7 +54,7 @@ const Projects = () => {
           {/* Right: highlights */}
           <div className="border-l-0 border-line pl-0 lg:border-l lg:pl-8">
             <p className="mb-3 text-[length:var(--type-meta)] font-medium uppercase tracking-[0.1em] text-ink-muted">
-              Design Decisions
+              {projectsContent.decisionsTitle}
             </p>
             <ul className="space-y-4 text-[length:var(--type-body)] leading-[var(--leading-body)] text-ink-muted">
               {project.highlights.map((highlight) => (

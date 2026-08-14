@@ -9,9 +9,9 @@ export const CONTENT = {
     },
     hero: {
       name: "Josh Wang",
-      role: "Software Developer",
+      role: "軟體開發者",
       summary:
-        "專注 React / Next.js 前端架構，兼具 Node.js 後端與 AI 開發流程整合經驗的全端工程師。10+ 年全端開發經驗（前端為主），涵蓋 SaaS、資安、跨國內部系統與 React Native。主導過 7 個以上 Web 系統與 2 個 Mobile App 架構設計，熟悉 TypeScript、CI/CD、AWS。近期專注於 AI-assisted development workflow 落地、技術債重構與高效產品交付。",
+        "前端出身的全端工程師，將 React / Next.js 架構、Node.js 後端與 AI 開發流程，落地為可驗收、可持續交付的產品系統。",
       evidence: [
         {
           label: "雲端基礎設施成本",
@@ -29,8 +29,9 @@ export const CONTENT = {
       projectBtn: "查看 PickleScout",
     },
     projects: {
-      title: "Selected Work",
+      title: "代表作品",
       intro: "把自然語言操作流程，轉成可追蹤、可重跑的 E2E 測試。",
+      decisionsTitle: "設計依據",
       items: [
         {
           title: "PickleScout",
@@ -160,8 +161,8 @@ export const CONTENT = {
       ],
     },
     contact: {
-      title: "Let's work together",
-      lead: "如果你正在建立需要穩定交付的產品，歡迎從一封 email 開始。",
+      title: "想聊聊你的產品？",
+      lead: "樂於參與討論、分享觀點，通常不是會議中最安靜的那位。",
       email: "spjay1@gmail.com",
       location: "Taipei, Taiwan",
       links: {
@@ -187,7 +188,7 @@ export const CONTENT = {
       name: "Josh Wang",
       role: "Software Developer",
       summary:
-        "Full-stack engineer specializing in React / Next.js front-end architecture, with Node.js backend and AI-assisted development workflow integration experience. 10+ years of full-stack development experience (primarily front-end), spanning SaaS, cybersecurity, cross-border internal systems, and React Native. Led frontend architecture and delivery for 7+ web systems and 2 mobile apps using TypeScript, CI/CD, monorepo, and AWS. Focused on scalable frontend systems, AI-assisted development workflows, and legacy system modernization.",
+        "A front-end-trained full-stack engineer who turns React / Next.js architecture, Node.js backends, and AI workflows into reliable, verifiable product delivery.",
       evidence: [
         {
           label: "Cloud infrastructure cost",
@@ -207,6 +208,7 @@ export const CONTENT = {
     projects: {
       title: "Selected Work",
       intro: "Turning natural-language user flows into traceable, repeatable E2E tests.",
+      decisionsTitle: "Design decisions",
       items: [
         {
           title: "PickleScout",
@@ -336,8 +338,8 @@ export const CONTENT = {
       ],
     },
     contact: {
-      title: "Let's work together",
-      lead: "If you are building a product that needs dependable delivery, start with an email.",
+      title: "Let's talk about what you're building.",
+      lead: "Passionate about sharing perspectives; rarely the quietest person in the room.",
       email: "spjay1@gmail.com",
       location: "Taipei, Taiwan",
       links: {

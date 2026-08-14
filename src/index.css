@@ -5,12 +5,20 @@
 :root {
   color-scheme: light;
 
-  --color-bg: oklch(0.975 0.006 250);
-  --color-surface: oklch(0.94 0.012 250);
-  --color-ink: oklch(0.22 0.025 255);
-  --color-ink-muted: oklch(0.43 0.025 255);
-  --color-accent: oklch(0.53 0.19 31);
-  --color-line: oklch(0.8 0.018 250);
+  --color-bg: oklch(0.98 0.006 165);
+  --color-surface: oklch(0.945 0.016 165);
+  --color-ink: oklch(0.22 0.025 245);
+  --color-ink-muted: oklch(0.43 0.025 245);
+  --color-accent: oklch(0.48 0.13 165);
+  --color-line: oklch(0.81 0.018 165);
+
+  /* Fixed brand primitives: dark hero world, teal proof, gold emphasis. */
+  --color-hero: oklch(0.18 0.028 245);
+  --color-hero-ink: oklch(0.94 0.01 165);
+  --color-hero-muted: oklch(0.75 0.028 165);
+  --color-hero-signal: oklch(0.77 0.16 165);
+  --color-hero-gold: oklch(0.84 0.15 85);
+  --color-hero-line: oklch(0.38 0.045 185);
 
   --font-display: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
@@ -63,12 +71,12 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --color-bg: oklch(0.18 0.018 255);
-  --color-surface: oklch(0.24 0.022 255);
-  --color-ink: oklch(0.93 0.01 255);
-  --color-ink-muted: oklch(0.72 0.015 255);
-  --color-accent: oklch(0.72 0.18 40);
-  --color-line: oklch(0.36 0.025 255);
+  --color-bg: oklch(0.18 0.025 245);
+  --color-surface: oklch(0.24 0.03 245);
+  --color-ink: oklch(0.93 0.01 165);
+  --color-ink-muted: oklch(0.74 0.025 165);
+  --color-accent: oklch(0.75 0.15 165);
+  --color-line: oklch(0.37 0.04 185);
 }
 
 @media (min-width: 48rem) {

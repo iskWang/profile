@@ -13,6 +13,12 @@ export default {
         'ink-muted': 'var(--color-ink-muted)',
         accent: 'var(--color-accent)',
         line: 'var(--color-line)',
+        hero: 'var(--color-hero)',
+        'hero-ink': 'var(--color-hero-ink)',
+        'hero-muted': 'var(--color-hero-muted)',
+        'hero-signal': 'var(--color-hero-signal)',
+        'hero-gold': 'var(--color-hero-gold)',
+        'hero-line': 'var(--color-hero-line)',
       },
       fontFamily: {
         display: 'var(--font-display)',
