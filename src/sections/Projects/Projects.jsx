@@ -11,7 +11,7 @@ const Projects = () => {
   return (
     <section id="work" className="section-stable section-work bg-surface py-[var(--space-section-standard)]">
       <div className="mx-auto max-w-container px-gutter">
-        <h2 className="font-display text-[length:var(--type-section)] leading-[var(--leading-section)] text-heading [text-wrap:balance]">
+        <h2 className="font-display text-[length:var(--type-section)] leading-[var(--leading-section)] text-ink [text-wrap:balance]">
           {projectsContent.title}
         </h2>
         <p className="mt-3 max-w-[68ch] text-[length:var(--type-lead)] leading-[var(--leading-lead)] text-ink-muted [text-wrap:pretty]">

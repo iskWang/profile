@@ -13,7 +13,6 @@ export default {
         'ink-muted': 'var(--color-ink-muted)',
         accent: 'var(--color-accent)',
         line: 'var(--color-line)',
-        heading: 'var(--color-heading)',
         hero: 'var(--color-hero)',
         'hero-ink': 'var(--color-hero-ink)',
         'hero-muted': 'var(--color-hero-muted)',

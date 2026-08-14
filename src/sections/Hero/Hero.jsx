@@ -18,7 +18,7 @@ const Hero = () => {
         </p>
 
         <h1
-          className={`mt-3 font-display text-[length:var(--type-hero)] ${heroLeading} tracking-[-0.03em] text-heading [text-wrap:balance]`}
+          className={`mt-3 font-display text-[length:var(--type-hero)] ${heroLeading} tracking-[-0.03em] text-hero-ink [text-wrap:balance]`}
         >
           {hero.name}
         </h1>
