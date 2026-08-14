@@ -13,12 +13,12 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section-stable section-contact bg-hero py-[var(--space-section-standard)] text-hero-ink">
+    <section id="contact" className="section-stable section-contact bg-contact py-[var(--space-section-standard)] text-contact-ink">
       <div className="mx-auto max-w-container px-gutter">
         <h2 className="font-display text-[length:var(--type-section)] leading-[var(--leading-section)] [text-wrap:balance]">
           {contact.title}
         </h2>
-        <p className="mt-5 max-w-[68ch] text-[length:var(--type-lead)] leading-[var(--leading-lead)] text-hero-muted">
+        <p className="mt-5 max-w-[68ch] text-[length:var(--type-lead)] leading-[var(--leading-lead)] text-contact-muted">
           {contact.lead}
         </p>
 
@@ -27,8 +27,8 @@ const Contact = () => {
             <a
               key={href}
               href={href}
-              className={`px-4 py-3 underline-offset-4 transition-colors hover:text-hero-gold hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-gold ${
-                primary ? 'text-[length:var(--type-title)] text-hero-gold' : 'text-[length:var(--type-body)] text-hero-ink'
+              className={`px-4 py-3 underline-offset-4 transition-colors hover:text-contact-gold hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-contact-gold ${
+                primary ? 'text-[length:var(--type-title)] text-contact-gold' : 'text-[length:var(--type-body)] text-contact-ink'
               }`}
             >
               {label}
@@ -36,7 +36,7 @@ const Contact = () => {
           ))}
         </div>
 
-        <p className="mt-6 text-[length:var(--type-meta)] leading-[var(--leading-body)] text-hero-muted">
+        <p className="mt-6 text-[length:var(--type-meta)] leading-[var(--leading-body)] text-contact-muted">
           {contact.location}
         </p>
       </div>

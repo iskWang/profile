@@ -18,7 +18,7 @@ const Hero = () => {
         </p>
 
         <h1
-          className={`mt-3 font-display text-[length:var(--type-hero)] ${heroLeading} tracking-[-0.03em] text-hero-ink [text-wrap:balance]`}
+          className={`mt-3 font-display text-[length:var(--type-hero)] ${heroLeading} tracking-[-0.03em] text-heading [text-wrap:balance]`}
         >
           {hero.name}
         </h1>
@@ -55,13 +55,13 @@ const Hero = () => {
                 href={hero.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center justify-center rounded-[var(--radius-control)] bg-hero-signal px-5 py-3 text-[length:var(--type-meta)] font-medium text-hero transition-colors hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-gold focus-visible:ring-offset-2 focus-visible:ring-offset-hero"
+                className="pressable inline-flex min-h-11 items-center justify-center rounded-[var(--radius-control)] bg-hero-signal px-5 py-3 text-[length:var(--type-meta)] font-medium text-hero-button-ink hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-gold focus-visible:ring-offset-2 focus-visible:ring-offset-hero"
               >
                 {hero.resumeBtn}
               </a>
               <a
                 href="#work"
-                className="inline-flex min-h-11 items-center justify-center rounded-[var(--radius-control)] border border-hero-muted px-5 py-3 text-[length:var(--type-meta)] font-medium text-hero-ink transition-colors hover:border-hero-gold hover:text-hero-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-gold focus-visible:ring-offset-2 focus-visible:ring-offset-hero"
+                className="pressable inline-flex min-h-11 items-center justify-center rounded-[var(--radius-control)] border border-hero-muted px-5 py-3 text-[length:var(--type-meta)] font-medium text-hero-ink hover:border-hero-gold hover:text-hero-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-gold focus-visible:ring-offset-2 focus-visible:ring-offset-hero"
               >
                 {hero.projectBtn}
               </a>

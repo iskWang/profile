@@ -11,14 +11,23 @@
   --color-ink-muted: oklch(0.43 0.025 245);
   --color-accent: oklch(0.48 0.13 165);
   --color-line: oklch(0.81 0.018 165);
+  --color-heading: oklch(0.43 0.15 160);
 
-  /* Fixed brand primitives: dark hero world, teal proof, gold emphasis. */
-  --color-hero: oklch(0.18 0.028 245);
-  --color-hero-ink: oklch(0.94 0.01 165);
-  --color-hero-muted: oklch(0.75 0.028 165);
-  --color-hero-signal: oklch(0.77 0.16 165);
-  --color-hero-gold: oklch(0.84 0.15 85);
-  --color-hero-line: oklch(0.38 0.045 185);
+  /* Theme-aware hero: sea-glass in light mode, navy in dark mode. */
+  --color-hero: oklch(0.935 0.045 165);
+  --color-hero-ink: oklch(0.22 0.025 245);
+  --color-hero-muted: oklch(0.39 0.025 210);
+  --color-hero-signal: oklch(0.46 0.14 165);
+  --color-hero-gold: oklch(0.45 0.11 85);
+  --color-hero-line: oklch(0.75 0.045 165);
+  --color-hero-button-ink: oklch(0.18 0.028 245);
+
+  /* Contact remains a dark closing surface in either theme. */
+  --color-contact: oklch(0.18 0.028 245);
+  --color-contact-ink: oklch(0.94 0.01 165);
+  --color-contact-muted: oklch(0.75 0.028 165);
+  --color-contact-gold: oklch(0.84 0.15 85);
+  --color-contact-line: oklch(0.38 0.045 185);
 
   --font-display: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
@@ -63,6 +72,8 @@
   --z-tooltip: 80;
 
   --radius-control: 0.25rem;
+  --duration-theme: 220ms;
+  --duration-press: 140ms;
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -77,6 +88,14 @@
   --color-ink-muted: oklch(0.74 0.025 165);
   --color-accent: oklch(0.75 0.15 165);
   --color-line: oklch(0.37 0.04 185);
+  --color-heading: oklch(0.78 0.16 165);
+  --color-hero: oklch(0.18 0.028 245);
+  --color-hero-ink: oklch(0.94 0.01 165);
+  --color-hero-muted: oklch(0.75 0.028 165);
+  --color-hero-signal: oklch(0.77 0.16 165);
+  --color-hero-gold: oklch(0.84 0.15 85);
+  --color-hero-line: oklch(0.38 0.045 185);
+  --color-hero-button-ink: oklch(0.18 0.028 245);
 }
 
 @media (min-width: 48rem) {
@@ -115,7 +134,7 @@
     font-size: var(--type-body);
     line-height: var(--leading-body);
     transition-property: background-color, color;
-    transition-duration: 180ms;
+    transition-duration: var(--duration-theme);
     transition-timing-function: var(--ease-out-quint);
   }
 
@@ -137,9 +156,9 @@
     text-underline-offset: 0.2em;
   }
 
-  :where(header, main, section, footer, a, button, input, textarea, select) {
-    transition-property: color, background-color, border-color;
-    transition-duration: 180ms;
+  :where(header, main, section, footer, h1, h2, h3, p, li, a, button, input, textarea, select) {
+    transition-property: color, background-color, border-color, text-decoration-color;
+    transition-duration: var(--duration-theme);
     transition-timing-function: var(--ease-out-quint);
   }
 
@@ -220,7 +239,7 @@
   }
 
   .section-work {
-    --section-min-height: 60.75rem;
+    --section-min-height: 63.6875rem;
   }
 
   .section-experience {
@@ -241,7 +260,7 @@
     }
 
     .section-work {
-      --section-min-height: 51.3125rem;
+      --section-min-height: 54.5rem;
     }
 
     .section-experience {
@@ -322,58 +341,28 @@
     max-width: 28em;
   }
 
-  .interactive {
+  .pressable {
     transition:
-      color 140ms var(--ease-out-quart),
-      background-color 140ms var(--ease-out-quart),
-      border-color 140ms var(--ease-out-quart),
-      transform 140ms var(--ease-out-quart);
+      color var(--duration-theme) var(--ease-out-quint),
+      background-color var(--duration-theme) var(--ease-out-quint),
+      border-color var(--duration-theme) var(--ease-out-quint),
+      text-decoration-color var(--duration-theme) var(--ease-out-quint),
+      opacity var(--duration-press) var(--ease-out-quart),
+      transform var(--duration-press) var(--ease-out-quart);
   }
 
   @media (hover: hover) {
-    .interactive:hover {
-      transform: translateY(-2px);
+    .pressable:hover {
+      transform: translateY(-1px);
     }
   }
 
-  .theme-transition {
-    transition:
-      color 180ms var(--ease-out-quint),
-      background-color 180ms var(--ease-out-quint),
-      border-color 180ms var(--ease-out-quint);
+  .pressable:active {
+    transform: scale(0.99);
   }
 }
 
 @layer utilities {
-  @keyframes hero-rail-in {
-    from {
-      transform: scaleX(0.7);
-    }
-
-    to {
-      transform: scaleX(1);
-    }
-  }
-
-  @keyframes proof-row-in {
-    from {
-      transform: translateY(0.5rem);
-    }
-
-    to {
-      transform: translateY(0);
-    }
-  }
-
-  .motion-hero-rail {
-    transform-origin: left center;
-    animation: hero-rail-in 420ms var(--ease-out-expo) both;
-  }
-
-  .motion-proof-row {
-    animation: proof-row-in 320ms var(--ease-out-expo) both;
-    animation-delay: var(--motion-delay, 0ms);
-  }
 
   .font-display {
     font-family: var(--font-display);
@@ -402,5 +391,11 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     transition-delay: 0ms !important;
+  }
+
+  .pressable,
+  .pressable:hover,
+  .pressable:active {
+    transform: none;
   }
 }

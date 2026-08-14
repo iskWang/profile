@@ -45,7 +45,7 @@ const Header = () => {
     </a>
   ));
   const themeButton = (
-    <button type="button" onClick={toggleTheme} aria-label={theme === 'dark' ? 'Use light theme' : 'Use dark theme'} className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded text-hero-muted transition-colors hover:text-hero-signal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-gold">
+    <button type="button" onClick={toggleTheme} aria-label={theme === 'dark' ? 'Use light theme' : 'Use dark theme'} className="pressable inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded text-hero-muted hover:text-hero-signal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-gold">
       <ThemeIcon theme={theme} />
     </button>
   );
@@ -58,13 +58,13 @@ const Header = () => {
         </a>
         <div className="hidden items-center gap-1 lg:flex">
           {renderLinks()}
-          <button type="button" onClick={toggleLang} aria-label="Switch language" className="inline-flex min-h-[44px] items-center rounded px-2 font-body text-[length:var(--type-meta)] text-hero-muted transition-colors hover:text-hero-signal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-gold">{lang === 'zh' ? 'EN' : '中文'}</button>
+          <button type="button" onClick={toggleLang} aria-label="Switch language" className="pressable inline-flex min-h-[44px] items-center rounded px-2 font-body text-[length:var(--type-meta)] text-hero-muted hover:text-hero-signal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-gold">{lang === 'zh' ? 'EN' : '中文'}</button>
           {themeButton}
         </div>
         <div className="flex items-center gap-1 lg:hidden">
-          <button type="button" onClick={toggleLang} aria-label="Switch language" className="inline-flex min-h-[44px] items-center rounded px-2 font-body text-[length:var(--type-meta)] text-hero-muted transition-colors hover:text-hero-signal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-gold">{lang === 'zh' ? 'EN' : '中文'}</button>
+          <button type="button" onClick={toggleLang} aria-label="Switch language" className="pressable inline-flex min-h-[44px] items-center rounded px-2 font-body text-[length:var(--type-meta)] text-hero-muted hover:text-hero-signal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-gold">{lang === 'zh' ? 'EN' : '中文'}</button>
           {themeButton}
-          <button type="button" aria-expanded={isMenuOpen} aria-controls="mobile-navigation" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} onClick={() => setIsMenuOpen((open) => !open)} className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded text-hero-muted transition-colors hover:text-hero-signal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-gold">
+          <button type="button" aria-expanded={isMenuOpen} aria-controls="mobile-navigation" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} onClick={() => setIsMenuOpen((open) => !open)} className="pressable inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded text-hero-muted hover:text-hero-signal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-gold">
             <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current" strokeWidth="2"><path strokeLinecap="round" d={isMenuOpen ? 'M6 6l12 12M18 6L6 18' : 'M4 7h16M4 12h16M4 17h16'} /></svg>
           </button>
         </div>

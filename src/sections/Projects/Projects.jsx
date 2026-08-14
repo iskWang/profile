@@ -1,6 +1,8 @@
 import React from 'react';
 import { useLanguage } from '../../context/useLanguage';
 
+const PICKLESCOUT_LOGO_URL = 'https://raw.githubusercontent.com/iskWang/PickleScout/5dfca51bc1b235b59e3ae0984df0e970ed14427a/packages/frontend/public/logo.png';
+
 const Projects = () => {
   const { content } = useLanguage();
   const projectsContent = content.projects;
@@ -9,7 +11,7 @@ const Projects = () => {
   return (
     <section id="work" className="section-stable section-work bg-surface py-[var(--space-section-standard)]">
       <div className="mx-auto max-w-container px-gutter">
-        <h2 className="font-display text-[length:var(--type-section)] leading-[var(--leading-section)] text-ink [text-wrap:balance]">
+        <h2 className="font-display text-[length:var(--type-section)] leading-[var(--leading-section)] text-heading [text-wrap:balance]">
           {projectsContent.title}
         </h2>
         <p className="mt-3 max-w-[68ch] text-[length:var(--type-lead)] leading-[var(--leading-lead)] text-ink-muted [text-wrap:pretty]">
@@ -20,16 +22,28 @@ const Projects = () => {
         <article className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_minmax(0,22rem)] lg:gap-12">
           {/* Left: value prop + flow */}
           <div>
-            <h3 className="font-display text-[length:var(--type-title)] leading-[var(--leading-title)] text-ink [text-wrap:balance]">
-              {project.title}
-            </h3>
-            <p className="mt-1 text-[length:var(--type-body)] leading-[var(--leading-body)] text-ink-muted [text-wrap:pretty]">
-              {project.descriptor}
-            </p>
-            <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[length:var(--type-meta)] leading-[var(--leading-meta)] text-ink-muted">
-              <span>{project.date}</span>
-              <span aria-hidden="true">·</span>
-              <span>{project.meta}</span>
+            <div className="flex items-start gap-4">
+              <img
+                src={PICKLESCOUT_LOGO_URL}
+                alt="PickleScout logo"
+                width="64"
+                height="64"
+                decoding="async"
+                className="h-16 w-16 shrink-0 object-contain"
+              />
+              <div className="min-w-0">
+                <h3 className="font-display text-[length:var(--type-title)] leading-[var(--leading-title)] text-ink [text-wrap:balance]">
+                  {project.title}
+                </h3>
+                <p className="mt-1 text-[length:var(--type-body)] leading-[var(--leading-body)] text-ink-muted [text-wrap:pretty]">
+                  {project.descriptor}
+                </p>
+                <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[length:var(--type-meta)] leading-[var(--leading-meta)] text-ink-muted">
+                  <span>{project.date}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{project.meta}</span>
+                </div>
+              </div>
             </div>
 
             <p className="mt-6 text-[length:var(--type-body)] font-medium leading-[var(--leading-body)] text-ink [text-wrap:pretty]">
