@@ -6,7 +6,7 @@ const Skills = () => {
   const { capabilities } = content;
 
   return (
-    <section id="capabilities" className="bg-surface py-[var(--space-section-standard)]">
+    <section id="capabilities" className="section-stable section-capabilities bg-surface py-[var(--space-section-standard)]">
       <div className="mx-auto max-w-container px-gutter">
         <header className="mb-[2rem] max-w-[68ch]">
           <h2 className="font-display text-[length:var(--type-title)] font-semibold leading-[var(--leading-title)] text-ink">

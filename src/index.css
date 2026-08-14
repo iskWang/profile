@@ -210,7 +210,96 @@
     padding-block: var(--space-section-feature);
   }
 
-  /* min-heights removed — content drives section height */
+  .section-stable {
+    min-height: var(--section-min-height);
+  }
+
+  /* Reserve the taller locale at each responsive topology. */
+  .section-about {
+    --section-min-height: 46.0625rem;
+  }
+
+  .section-work {
+    --section-min-height: 60.75rem;
+  }
+
+  .section-experience {
+    --section-min-height: 221.375rem;
+  }
+
+  .section-capabilities {
+    --section-min-height: 76.5rem;
+  }
+
+  .section-contact {
+    --section-min-height: 33.6875rem;
+  }
+
+  @media (min-width: 23.4375rem) {
+    .section-about {
+      --section-min-height: 44.375rem;
+    }
+
+    .section-work {
+      --section-min-height: 51.3125rem;
+    }
+
+    .section-experience {
+      --section-min-height: 192rem;
+    }
+
+    .section-capabilities {
+      --section-min-height: 73.25rem;
+    }
+
+    .section-contact {
+      --section-min-height: 26.3125rem;
+    }
+  }
+
+  @media (min-width: 48rem) {
+    .section-about {
+      --section-min-height: 37.875rem;
+    }
+
+    .section-work {
+      --section-min-height: 41.75rem;
+    }
+
+    .section-experience {
+      --section-min-height: 138.9375rem;
+    }
+
+    .section-capabilities {
+      --section-min-height: 40.6875rem;
+    }
+
+    .section-contact {
+      --section-min-height: 20.6875rem;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .section-about {
+      --section-min-height: 39.9375rem;
+    }
+
+    .section-work {
+      --section-min-height: 35.1875rem;
+    }
+
+    .section-experience {
+      --section-min-height: 127.5625rem;
+    }
+
+    .section-capabilities {
+      --section-min-height: 37.75rem;
+    }
+
+    .section-contact {
+      --section-min-height: 24.375rem;
+    }
+  }
 
   .measure-prose,
   .measure-copy {

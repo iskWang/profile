@@ -7,7 +7,7 @@ const Projects = () => {
   const project = projectsContent.items[0];
 
   return (
-    <section id="work" className="bg-surface py-[var(--space-section-standard)]">
+    <section id="work" className="section-stable section-work bg-surface py-[var(--space-section-standard)]">
       <div className="mx-auto max-w-container px-gutter">
         <h2 className="font-display text-[length:var(--type-section)] leading-[var(--leading-section)] text-ink [text-wrap:balance]">
           {projectsContent.title}

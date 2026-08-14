@@ -13,7 +13,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="bg-hero py-[var(--space-section-standard)] text-hero-ink">
+    <section id="contact" className="section-stable section-contact bg-hero py-[var(--space-section-standard)] text-hero-ink">
       <div className="mx-auto max-w-container px-gutter">
         <h2 className="font-display text-[length:var(--type-section)] leading-[var(--leading-section)] [text-wrap:balance]">
           {contact.title}

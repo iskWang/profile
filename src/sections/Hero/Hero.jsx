@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section
       id="about"
-      className="bg-hero py-[var(--space-section-feature)] text-hero-ink"
+      className="section-stable section-about bg-hero py-[var(--space-section-feature)] text-hero-ink"
     >
       <div className="mx-auto max-w-container px-gutter">
         <p className="text-[length:var(--type-meta)] uppercase tracking-[0.16em] text-hero-gold">

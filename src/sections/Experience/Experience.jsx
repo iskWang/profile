@@ -26,7 +26,7 @@ const Experience = () => {
   const experience = content.experience;
 
   return (
-    <section id="experience" className="py-[var(--space-section-standard)]">
+    <section id="experience" className="section-stable section-experience py-[var(--space-section-standard)]">
       <div className="max-w-container mx-auto px-gutter">
         <header className="mb-[2rem]">
           <h2 className="font-display text-[length:var(--type-section)] leading-[var(--leading-section)] text-ink text-balance">
