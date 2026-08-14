@@ -30,8 +30,8 @@ if (typeof navigator !== 'undefined' && 'modelContext' in navigator) {
           title: 'Software Developer',
           experience: '10+ years',
           location: 'Taipei, Taiwan',
-          summary: '專注於 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者',
-          highlights: ['AI 驅動開發', '資安意識', '跨平台開發'],
+          summary: '專注 React / Next.js 前端架構，兼具 Node.js 後端與 AI 開發流程整合經驗的全端工程師',
+          highlights: ['Frontend Architecture', 'Backend & API', 'AI Workflow', 'CI/CD & Security'],
         }),
       },
       {
@@ -40,7 +40,7 @@ if (typeof navigator !== 'undefined' && 'modelContext' in navigator) {
         inputSchema: { type: 'object', properties: {} },
         execute: async () => ({
           email: 'spjay1@gmail.com',
-          location: 'Taipei, Taiwan',
+          github: 'https://github.com/iskWang',
           resumePdf_ZH: 'https://profile.joshwang.dev/JoshWang_ZH_Resume.pdf',
           resumePdf_EN: 'https://profile.joshwang.dev/JoshWang_EN_Resume.pdf',
         }),

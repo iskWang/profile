@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Josh Wang | Software Developer</title>
-    <meta name="description" content="Josh Wang — Software Developer with 10+ years of experience. React/Next.js architecture, AI workflow integration, security awareness. / 軟體開發者，專注 React/Next.js 架構設計與 AI 開發流程整合。" />
+    <meta name="description" content="Josh Wang — Software Developer with 10+ years of experience across React/Next.js, Node.js/Fastify, delivery architecture, and AI-assisted engineering workflows. / 軟體開發者，具 10+ 年 Web 與跨平台開發經驗。" />
+    <script>
+      (() => {
+        let theme = 'light';
+        try {
+          const savedTheme = window.localStorage.getItem('profile-theme');
+          if (savedTheme === 'light' || savedTheme === 'dark') {
+            theme = savedTheme;
+          }
+        } catch (error) {
+          console.warn('[theme] Saved theme is unavailable; using light for this visit.', error);
+        }
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
 
     <!-- Canonical & hreflang for multilingual SPA -->
     <link rel="canonical" href="https://profile.joshwang.dev/" />
@@ -19,18 +34,20 @@
     <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:url" content="https://profile.joshwang.dev" />
     <meta property="og:title" content="Josh Wang | Software Developer" />
-    <meta property="og:description" content="專注 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者。A software developer focusing on React/Next.js architecture and AI workflow integration." />
+    <meta property="og:description" content="具 10+ 年經驗的軟體開發者，專注 React/Next.js、Node.js/Fastify、交付架構與 AI 輔助工程流程。Software development across product delivery, architecture, and operations." />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Josh Wang | Software Developer" />
-    <meta name="twitter:description" content="專注 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者。A software developer focusing on React/Next.js architecture and AI workflow integration." />
+    <meta name="twitter:description" content="具 10+ 年經驗的軟體開發者，專注 React/Next.js、Node.js/Fastify、交付架構與 AI 輔助工程流程。Software development across product delivery, architecture, and operations." />
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6XYV1VQQDX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag() {
+        dataLayer.push(arguments);
+      }
       gtag('js', new Date());
       gtag('config', 'G-6XYV1VQQDX');
     </script>
@@ -45,17 +62,22 @@
           "@id": "https://profile.joshwang.dev/#person",
           "name": "Josh Wang",
           "jobTitle": "Software Developer",
+          "description": "Software Developer with 10+ years of web and cross-platform experience across React/Next.js, Node.js/Fastify, delivery architecture, and AI-assisted engineering workflows.",
           "email": "spjay1@gmail.com",
           "url": "https://profile.joshwang.dev",
+          "sameAs": ["https://github.com/iskWang"],
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Taipei",
             "addressCountry": "TW"
           },
           "knowsAbout": [
-            "React.js", "Next.js", "TypeScript", "Vue.js", "Nuxt.js",
-            "Node.js", "GraphQL", "Docker", "GitHub Actions",
-            "React Native", "CI/CD", "Frontend Security", "AI Workflow", "Claude Code", "MCP"
+            "Frontend", "React", "Next.js", "TypeScript", "Redux", "Tailwind CSS", "Vue 3", "Nuxt.js",
+            "Backend", "Node.js", "Fastify", "Rails", "Koa", "RESTful API", "GraphQL", "Redis", "BullMQ",
+            "Architecture & Infra", "Monorepo", "CI/CD", "GitHub Actions", "GitLab Runner", "Docker", "AWS",
+            "AI Workflow", "Claude Code", "MCP", "Windsurf",
+            "Testing", "Playwright", "Jest", "Cucumber", "RSpec",
+            "Mobile", "React Native", "TestFlight"
           ]
         },
         {
@@ -63,7 +85,7 @@
           "@id": "https://profile.joshwang.dev/?lang=zh",
           "inLanguage": "zh-TW",
           "name": "Josh Wang | 軟體開發者",
-          "description": "專注 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者。10+ 年 Web 開發經驗。",
+          "description": "具 10+ 年 Web 與跨平台開發經驗的軟體開發者，專注 React/Next.js、Node.js/Fastify、交付架構與 AI 輔助工程流程。",
           "url": "https://profile.joshwang.dev/?lang=zh",
           "mainEntity": { "@id": "https://profile.joshwang.dev/#person" }
         },
@@ -72,7 +94,7 @@
           "@id": "https://profile.joshwang.dev/?lang=en",
           "inLanguage": "en",
           "name": "Josh Wang | Software Developer",
-          "description": "A software developer with 10+ years of experience focusing on React/Next.js architecture, AI workflow integration, and rapid delivery.",
+          "description": "A software developer with 10+ years of web and cross-platform experience across React/Next.js, Node.js/Fastify, delivery architecture, and AI-assisted engineering workflows.",
           "url": "https://profile.joshwang.dev/?lang=en",
           "mainEntity": { "@id": "https://profile.joshwang.dev/#person" }
         }
