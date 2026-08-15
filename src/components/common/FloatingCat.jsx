@@ -1,4 +1,5 @@
 import React from 'react';
+const catMascotUrl = '/cat-mascot.webp';
 
 const FloatingCat = ({ style, delay = 0, className = '' }) => {
   return (
@@ -10,7 +11,22 @@ const FloatingCat = ({ style, delay = 0, className = '' }) => {
       }}
       aria-hidden="true"
     >
-      <span className="text-4xl filter drop-shadow-lg">🐱</span>
+      <span
+        className="inline-block w-16 h-16 bg-teal"
+        style={{
+          WebkitMaskImage: `url(${catMascotUrl})`,
+          maskImage: `url(${catMascotUrl})`,
+          WebkitMaskSize: 'contain',
+          maskSize: 'contain',
+          WebkitMaskRepeat: 'no-repeat',
+          maskRepeat: 'no-repeat',
+          WebkitMaskPosition: 'center',
+          maskPosition: 'center',
+          filter: 'drop-shadow(var(--shadow-mascot))',
+        }}
+        role="img"
+        aria-label="Josh 的貓"
+      />
     </div>
   );
 };

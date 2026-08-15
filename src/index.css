@@ -2,14 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design tokens — RGB channels for use with opacity syntax: rgb(var(--emerald) / 0.3) */
+/*
+ * Design tokens — warm paper ground, graphite ink, a single friendly teal
+ * accent. Deliberately not cream+terracotta, not dark+neon, and not the old
+ * slate/emerald/cyan/amber terminal palette above (kept above only until
+ * every section has migrated off it; then it goes away too).
+ * Single source of truth — every section pulls colors from here via the
+ * Tailwind classes in tailwind.config.js (bg-paper, text-ink, text-teal,
+ * border-line, ...), never a re-declared hex/oklch value in a component.
+ */
 :root {
-  --emerald: 16 185 129;       /* #10b981 */
-  --emerald-light: 52 211 153; /* #34d399 */
-  --cyan: 6 182 212;           /* #06b6d4 */
-  --cyan-light: 34 211 238;    /* #22d3ee */
-  --amber: 245 158 11;         /* #f59e0b */
-  --amber-bright: 251 191 36;  /* #fbbf24 */
+  color-scheme: light;
+  --color-paper: oklch(0.97 0.008 95);
+  --color-paper-deep: oklch(0.93 0.014 95);
+  --color-ink: oklch(0.22 0.014 260);
+  --color-ink-soft: oklch(0.46 0.016 260);
+  --color-teal: oklch(0.62 0.11 185);
+  --color-teal-soft: oklch(0.62 0.11 185 / 0.14);
+  --color-teal-cta: #007e73;
+  --color-line: oklch(0.75 0.018 95);
+  --shadow-mascot: 0 6px 10px rgb(0 0 0 / 0.08);
+}
+
+/*
+ * Night platform — same tokens, lit differently after dark. Toggled via
+ * <html data-theme="dark">, set by ThemeContext / the inline FOUC-avoiding
+ * script in index.html. Every component reads the same bg-paper/text-ink/
+ * bg-teal classes either way; only the values here change.
+ */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-paper: oklch(0.17 0.012 95);
+  --color-paper-deep: oklch(0.222 0.014 95);
+  --color-ink: oklch(0.93 0.008 95);
+  --color-ink-soft: oklch(0.68 0.01 95);
+  --color-teal: oklch(0.68 0.12 185);
+  --color-teal-soft: oklch(0.68 0.12 185 / 0.18);
+  --color-teal-cta: #007e73;
+  --color-line: oklch(0.34 0.014 95);
 }
 
 @layer base {
@@ -19,111 +50,10 @@
 }
 
 @layer components {
-  @keyframes terminalSlideIn {
-    from { transform: translateY(6px); }
-    to   { transform: translateY(0); }
-  }
-  .terminal-line {
-    animation: terminalSlideIn 0.4s ease both;
-  }
   @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    0%, 100% { transform: translateY(0) rotate(0deg); }
     25% { transform: translateY(-10px) rotate(3deg); }
     75% { transform: translateY(5px) rotate(-3deg); }
-  }
-  @keyframes pawWalk {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
-  }
-  .hover-lift {
-    transition: all 0.2s ease;
-    transform: translateY(0);
-  }
-  .hover-lift:hover {
-    transform: translateY(-8px);
-  }
-  .experience-card {
-    transition: all 0.2s ease;
-    transform: translateY(0);
-  }
-  .experience-card:hover {
-    transform: translateY(-8px);
-    border-color: rgb(var(--emerald) / 0.5);
-    box-shadow: 0 10px 15px -3px rgb(var(--emerald) / 0.1), 0 4px 6px -4px rgb(var(--emerald) / 0.1);
-  }
-  .skill-badge {
-    transition: all 0.2s ease;
-    transform: translateY(0);
-  }
-  .skill-badge:hover {
-    transform: translateY(-8px);
-  }
-  .skill-badge-emerald:hover {
-    background-color: rgb(var(--emerald) / 0.3);
-    border-color: rgb(var(--emerald-light) / 0.5);
-    box-shadow: 0 10px 15px -3px rgb(var(--emerald) / 0.2);
-  }
-  .skill-badge-cyan:hover {
-    background-color: rgb(var(--cyan) / 0.3);
-    border-color: rgb(var(--cyan-light) / 0.5);
-    box-shadow: 0 10px 15px -3px rgb(var(--cyan) / 0.2);
-  }
-  .skill-badge-amber:hover {
-    background-color: rgb(var(--amber) / 0.3);
-    border-color: rgb(var(--amber-bright) / 0.5);
-    box-shadow: 0 10px 15px -3px rgb(var(--amber) / 0.2);
-  }
-  .highlight-card {
-    transition: all 0.2s ease;
-    transform: translateY(0);
-  }
-  .highlight-card:hover {
-    transform: translateY(-8px);
-  }
-  .highlight-card-emerald:hover {
-    border-color: rgb(var(--emerald-light) / 0.6);
-    background-color: rgb(var(--emerald) / 0.15);
-    box-shadow: 0 10px 15px -3px rgb(var(--emerald) / 0.2);
-  }
-  .highlight-card-cyan:hover {
-    border-color: rgb(var(--cyan-light) / 0.6);
-    background-color: rgb(var(--cyan) / 0.15);
-    box-shadow: 0 10px 15px -3px rgb(var(--cyan) / 0.2);
-  }
-  .highlight-card-amber:hover {
-    border-color: rgb(var(--amber-bright) / 0.6);
-    background-color: rgb(var(--amber) / 0.15);
-    box-shadow: 0 10px 15px -3px rgb(var(--amber) / 0.2);
-  }
-  .tag-emerald {
-    transition: all 0.2s ease;
-    transform: translateY(0);
-  }
-  .tag-emerald:hover {
-    transform: translateY(-8px);
-    background-color: rgb(var(--emerald) / 0.2);
-    border-color: rgb(var(--emerald-light) / 0.5);
-    box-shadow: 0 10px 15px -3px rgb(var(--emerald) / 0.2);
-  }
-  .tag-cyan {
-    transition: all 0.2s ease;
-    transform: translateY(0);
-  }
-  .tag-cyan:hover {
-    transform: translateY(-8px);
-    background-color: rgb(var(--cyan) / 0.2);
-    border-color: rgb(var(--cyan-light) / 0.5);
-    box-shadow: 0 10px 15px -3px rgb(var(--cyan) / 0.2);
-  }
-  .tag-amber {
-    transition: all 0.2s ease;
-    transform: translateY(0);
-  }
-  .tag-amber:hover {
-    transform: translateY(-8px);
-    background-color: rgb(var(--amber) / 0.2);
-    border-color: rgb(var(--amber-bright) / 0.5);
-    box-shadow: 0 10px 15px -3px rgb(var(--amber) / 0.2);
   }
 }
 
@@ -154,10 +84,59 @@
     background: transparent;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgb(var(--emerald) / 0.3);
+    background: var(--color-teal-soft);
     border-radius: 10px;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgb(var(--emerald) / 0.5);
+    background: var(--color-teal);
+  }
+}
+
+/* ---- Hero mascot animation and shared interactive motion. ---------------- */
+@layer components {
+  @keyframes cat-drift {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    15% { transform: rotate(14deg); }
+    30% { transform: rotate(-8deg); }
+    45% { transform: rotate(14deg); }
+    60% { transform: rotate(0deg); }
+  }
+
+  .cat-mascot__drift {
+    animation: cat-drift 5600ms ease-in-out infinite;
+  }
+
+  /* Spring-feeling hover: a slight lift plus tilt, not just a color fade.
+     Global utility — any interactive chip/button/card in the new system
+     uses this instead of a one-off transform. */
+  .spring-hover {
+    transition: transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .spring-hover:hover {
+    transform: translateY(-3px) rotate(-1deg);
+  }
+
+  /* Paper ground with a soft off-center teal glow — the "featured" surface
+     treatment (Hero, and any section that wants to read as the lead act).
+     Plain sections use bg-paper / bg-paper-deep instead (see tailwind.config.js). */
+  .surface-glow {
+    background:
+      radial-gradient(60% 60% at 82% 18%, var(--color-teal-soft), transparent 65%),
+      var(--color-paper);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cat-mascot__drift,
+  .spring-hover,
+  [class*="animate-[wave"] {
+    animation: none !important;
+    transition: none !important;
   }
 }
