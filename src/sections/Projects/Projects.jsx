@@ -1,34 +1,47 @@
 import React from 'react';
 import { CatFace, PawPrint } from '../../components/common';
 import { useLanguage } from '../../context/useLanguage';
+import picklescoutLogo from '../../assets/picklescout-logo.png';
+import picklescoutSlogan from '../../assets/picklescout-slogan.png';
 
 const Projects = ({ projects }) => {
   const { content } = useLanguage();
   const { projects: projectsContent } = content;
 
   return (
-    <section className="pt-24 pb-24 px-6" id="projects">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-2 flex items-center gap-3">
-          <span className="text-emerald-400 font-mono font-normal">{'>'}</span>
-          <span className="text-amber-300">{projectsContent.title}</span>
+    <section className="pt-24 pb-24 px-6 bg-paper-deep" id="projects">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-2 flex items-center gap-3 text-ink">
+          {projectsContent.title}
           <CatFace size="text-2xl" className="ml-2" />
         </h2>
-        <p className="text-slate-400 mb-12 font-mono text-sm">{projectsContent.subtitle}</p>
+        <p className="text-ink-soft mb-12 font-mono text-sm">{projectsContent.subtitle}</p>
 
         <div className="grid gap-8">
           {projects.map((project, i) => (
             <div 
               key={i} 
-              className="group relative p-6 rounded-xl border border-slate-700/50 bg-slate-800/40 hover:border-emerald-500/30 transition-all shadow-xl overflow-hidden"
+              className="group relative p-8 sm:p-10 rounded-2xl border border-line bg-paper spring-hover shadow-sm overflow-hidden"
             >
-              {/* Project corner accent */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 -mr-16 -mt-16 group-hover:bg-emerald-500/8 transition-colors rounded-full" aria-hidden="true" />
               
               <div className="relative flex flex-col md:flex-row md:items-start justify-between gap-4">
                 <div className="flex-1">
+                  <div className="mb-5 flex items-center gap-4">
+                    <img
+                      src={picklescoutLogo}
+                      alt=""
+                      aria-hidden="true"
+                      className="h-14 w-14 shrink-0 sm:h-16 sm:w-16"
+                    />
+                    <img
+                      src={picklescoutSlogan}
+                      alt="PickleScout — Web Scraping & Data Navigation"
+                      className="h-8 w-auto sm:h-9"
+                    />
+                  </div>
+
                   <div className="flex items-center gap-3 mb-3">
-                    <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+                    <h3 className="text-xl font-bold text-ink">
                       {project.title}
                     </h3>
                     {project.url && (
@@ -36,7 +49,7 @@ const Projects = ({ projects }) => {
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-1.5 rounded-lg bg-slate-700/50 text-slate-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400"
+                        className="spring-hover p-1.5 rounded-lg bg-paper-deep text-ink-soft hover:text-teal hover:bg-teal-soft transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
                         aria-label={`View source for ${project.title}`}
                       >
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -46,11 +59,11 @@ const Projects = ({ projects }) => {
                     )}
                   </div>
                   
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.tags.map((tag, idx) => (
                       <span 
                         key={idx}
-                        className="px-2 py-0.5 text-xs font-mono rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                        className="spring-hover px-2 py-0.5 text-xs font-mono rounded-md bg-teal-soft text-teal border border-teal"
                       >
                         {tag}
                       </span>
@@ -59,8 +72,8 @@ const Projects = ({ projects }) => {
 
                   <ul className="space-y-3">
                     {project.highlights.map((highlight, idx) => (
-                      <li key={idx} className="text-slate-300 text-sm flex items-start">
-                        <PawPrint className="text-amber-400/70 mr-3 mt-0.5 flex-shrink-0" />
+                      <li key={idx} className="text-ink text-sm flex items-start">
+                        <PawPrint className="text-ink-soft mr-3 mt-0.5 flex-shrink-0" />
                         <span>{highlight}</span>
                       </li>
                     ))}
