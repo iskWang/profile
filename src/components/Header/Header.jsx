@@ -76,7 +76,7 @@ const Header = ({ scrollToSection }) => {
           ))}
           <button
             onClick={toggleLang}
-            aria-label="Switch language"
+            aria-label={lang === 'zh' ? 'EN — 切換為英文' : '中文 — Switch to Chinese'}
             className="ml-2 font-mono text-xs px-3 py-2 min-h-[44px] flex items-center rounded-lg border border-line text-ink-soft hover:text-teal hover:border-teal transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
           >
             {lang === 'zh' ? 'EN' : '中文'}
