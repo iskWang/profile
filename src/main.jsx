@@ -4,10 +4,8 @@ import JoshWangProfile from './App.jsx'
 import { LanguageProvider } from './context/LanguageContext'
 import { ThemeProvider } from './context/ThemeContext'
 import './index.css'
-import '@fontsource/noto-sans-tc/chinese-traditional-400.css'
-import '@fontsource/noto-sans-tc/chinese-traditional-700.css'
-import '@fontsource/noto-sans-tc/latin-400.css'
-import '@fontsource/noto-sans-tc/latin-700.css'
+import '@fontsource/noto-sans-tc/400.css'
+import '@fontsource/noto-sans-tc/700.css'
 
 ReactDOM.hydrateRoot(
   document.getElementById('root'),
