@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+  <html lang="zh-TW" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Josh Wang | Software Developer</title>
     <meta name="description" content="Josh Wang — Software Developer with 10+ years of experience. React/Next.js architecture, AI workflow integration, security awareness. / 軟體開發者，專注 React/Next.js 架構設計與 AI 開發流程整合。" />
+    <script>
+      (() => {
+        let theme = 'light';
+        try {
+          const savedTheme = window.localStorage.getItem('theme');
+          if (savedTheme === 'light' || savedTheme === 'dark') {
+            theme = savedTheme;
+          }
+        } catch (error) {
+          console.warn('[theme] Saved theme is unavailable; using light for this visit.', error);
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
 
     <!-- Canonical & hreflang for multilingual SPA -->
     <link rel="canonical" href="https://profile.joshwang.dev/" />
