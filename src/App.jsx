@@ -64,29 +64,9 @@ export default function JoshWangProfile() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 overflow-x-hidden" style={{
-      backgroundImage: `
-        radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
-        linear-gradient(to bottom, #0f172a, #1e293b)
-      `
-    }}>
-      {/* Animated grid background */}
-      <div className="fixed inset-0 opacity-20 pointer-events-none" aria-hidden="true" style={{ willChange: 'transform' }}>
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(16, 185, 129, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px'
-        }} />
-      </div>
-
-      {/* Floating cats */}
-      <FloatingCat style={{ top: '15%', right: '10%' }} delay={500} className="hidden sm:block" />
-      <FloatingCat style={{ top: '60%', left: '5%' }} delay={1500} className="hidden sm:block" />
-      <FloatingCat style={{ bottom: '20%', right: '15%' }} delay={2500} className="hidden sm:block" />
+    <div className="min-h-screen bg-paper text-ink overflow-x-hidden">
+      {/* Single floating mascot detail */}
+      <FloatingCat style={{ top: '15%', right: '10%' }} className="hidden sm:block" />
 
       <Header scrollToSection={scrollToSection} />
 

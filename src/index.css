@@ -12,6 +12,44 @@
   --amber-bright: 251 191 36;  /* #fbbf24 */
 }
 
+/*
+ * Design tokens — warm paper ground, graphite ink, a single friendly teal
+ * accent. Deliberately not cream+terracotta, not dark+neon, and not the old
+ * slate/emerald/cyan/amber terminal palette above (kept above only until
+ * every section has migrated off it; then it goes away too).
+ * Single source of truth — every section pulls colors from here via the
+ * Tailwind classes in tailwind.config.js (bg-paper, text-ink, text-teal,
+ * border-line, ...), never a re-declared hex/oklch value in a component.
+ */
+:root {
+  color-scheme: light;
+  --color-paper: oklch(0.97 0.008 95);
+  --color-paper-deep: oklch(0.93 0.014 95);
+  --color-ink: oklch(0.22 0.014 260);
+  --color-ink-soft: oklch(0.46 0.016 260);
+  --color-teal: oklch(0.62 0.11 185);
+  --color-teal-soft: oklch(0.62 0.11 185 / 0.14);
+  --color-line: oklch(0.75 0.018 95);
+}
+
+/*
+ * Night platform — same tokens, lit differently after dark. Toggled via
+ * <html data-theme="dark">, set by ThemeContext / the inline FOUC-avoiding
+ * script in index.html. Every component reads the same bg-paper/text-ink/
+ * bg-teal classes either way; only the values here change.
+ */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-paper: oklch(0.17 0.012 95);
+  --color-paper-deep: oklch(0.222 0.014 95);
+  --color-ink: oklch(0.93 0.008 95);
+  --color-ink-soft: oklch(0.68 0.01 95);
+  --color-teal: oklch(0.68 0.12 185);
+  --color-teal-soft: oklch(0.68 0.12 185 / 0.18);
+  --color-line: oklch(0.34 0.014 95);
+}
+
 @layer base {
   body {
     font-family: 'Noto Sans TC', 'Noto Sans', sans-serif;
@@ -159,5 +197,55 @@
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgb(var(--emerald) / 0.5);
+  }
+}
+
+/* ---- Hero-prototype: cat mascot + lively hover, kept out of the dark
+   terminal/emerald system above on purpose. ------------------------- */
+@layer components {
+  @keyframes cat-drift {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    15% { transform: rotate(14deg); }
+    30% { transform: rotate(-8deg); }
+    45% { transform: rotate(14deg); }
+    60% { transform: rotate(0deg); }
+  }
+
+  .cat-mascot__drift {
+    animation: cat-drift 5600ms ease-in-out infinite;
+  }
+
+  /* Spring-feeling hover: a slight lift plus tilt, not just a color fade.
+     Global utility — any interactive chip/button/card in the new system
+     uses this instead of a one-off transform. */
+  .spring-hover {
+    transition: transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .spring-hover:hover {
+    transform: translateY(-3px) rotate(-1deg);
+  }
+
+  /* Paper ground with a soft off-center teal glow — the "featured" surface
+     treatment (Hero, and any section that wants to read as the lead act).
+     Plain sections use bg-paper / bg-paper-deep instead (see tailwind.config.js). */
+  .surface-glow {
+    background:
+      radial-gradient(60% 60% at 82% 18%, var(--color-teal-soft), transparent 65%),
+      var(--color-paper);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cat-mascot__drift,
+  .spring-hover,
+  [class*="animate-[wave"] {
+    animation: none !important;
+    transition: none !important;
   }
 }
