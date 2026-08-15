@@ -15,7 +15,7 @@ const ExperienceCard = ({
   const cardClasses = isCurrent ? 'border-teal p-8' : 'border-line p-6';
 
   return (
-    <div className={`experience-card relative rounded-lg border bg-paper cursor-default ${cardClasses}`}>
+    <div className={`relative rounded-lg border bg-paper cursor-default ${cardClasses}`}>
       {isCurrent && (
         <span className="absolute top-4 right-4 rounded-full bg-teal-soft px-3 py-1 text-xs font-mono text-teal">
           {lang === 'zh' ? '目前' : 'Current'}

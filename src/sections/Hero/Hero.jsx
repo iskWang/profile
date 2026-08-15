@@ -101,7 +101,7 @@ const Hero = () => {
               maskRepeat: 'no-repeat',
               WebkitMaskPosition: 'center',
               maskPosition: 'center',
-              filter: 'drop-shadow(0 6px 10px rgba(0,0,0,0.08))',
+              filter: 'drop-shadow(var(--shadow-mascot))',
             }}
             role="img"
             aria-label="Josh 的貓"

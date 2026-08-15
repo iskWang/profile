@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design tokens — RGB channels for use with opacity syntax: rgb(var(--emerald) / 0.3) */
-:root {
-  --emerald: 16 185 129;       /* #10b981 */
-  --emerald-light: 52 211 153; /* #34d399 */
-  --cyan: 6 182 212;           /* #06b6d4 */
-  --cyan-light: 34 211 238;    /* #22d3ee */
-  --amber: 245 158 11;         /* #f59e0b */
-  --amber-bright: 251 191 36;  /* #fbbf24 */
-}
-
 /*
  * Design tokens — warm paper ground, graphite ink, a single friendly teal
  * accent. Deliberately not cream+terracotta, not dark+neon, and not the old
@@ -30,6 +20,7 @@
   --color-teal: oklch(0.62 0.11 185);
   --color-teal-soft: oklch(0.62 0.11 185 / 0.14);
   --color-line: oklch(0.75 0.018 95);
+  --shadow-mascot: 0 6px 10px rgb(0 0 0 / 0.08);
 }
 
 /*
@@ -57,111 +48,10 @@
 }
 
 @layer components {
-  @keyframes terminalSlideIn {
-    from { transform: translateY(6px); }
-    to   { transform: translateY(0); }
-  }
-  .terminal-line {
-    animation: terminalSlideIn 0.4s ease both;
-  }
   @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    0%, 100% { transform: translateY(0) rotate(0deg); }
     25% { transform: translateY(-10px) rotate(3deg); }
     75% { transform: translateY(5px) rotate(-3deg); }
-  }
-  @keyframes pawWalk {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
-  }
-  .hover-lift {
-    transition: all 0.2s ease;
-    transform: translateY(0);
-  }
-  .hover-lift:hover {
-    transform: translateY(-8px);
-  }
-  .experience-card {
-    transition: all 0.2s ease;
-    transform: translateY(0);
-  }
-  .experience-card:hover {
-    transform: translateY(-8px);
-    border-color: rgb(var(--emerald) / 0.5);
-    box-shadow: 0 10px 15px -3px rgb(var(--emerald) / 0.1), 0 4px 6px -4px rgb(var(--emerald) / 0.1);
-  }
-  .skill-badge {
-    transition: all 0.2s ease;
-    transform: translateY(0);
-  }
-  .skill-badge:hover {
-    transform: translateY(-8px);
-  }
-  .skill-badge-emerald:hover {
-    background-color: rgb(var(--emerald) / 0.3);
-    border-color: rgb(var(--emerald-light) / 0.5);
-    box-shadow: 0 10px 15px -3px rgb(var(--emerald) / 0.2);
-  }
-  .skill-badge-cyan:hover {
-    background-color: rgb(var(--cyan) / 0.3);
-    border-color: rgb(var(--cyan-light) / 0.5);
-    box-shadow: 0 10px 15px -3px rgb(var(--cyan) / 0.2);
-  }
-  .skill-badge-amber:hover {
-    background-color: rgb(var(--amber) / 0.3);
-    border-color: rgb(var(--amber-bright) / 0.5);
-    box-shadow: 0 10px 15px -3px rgb(var(--amber) / 0.2);
-  }
-  .highlight-card {
-    transition: all 0.2s ease;
-    transform: translateY(0);
-  }
-  .highlight-card:hover {
-    transform: translateY(-8px);
-  }
-  .highlight-card-emerald:hover {
-    border-color: rgb(var(--emerald-light) / 0.6);
-    background-color: rgb(var(--emerald) / 0.15);
-    box-shadow: 0 10px 15px -3px rgb(var(--emerald) / 0.2);
-  }
-  .highlight-card-cyan:hover {
-    border-color: rgb(var(--cyan-light) / 0.6);
-    background-color: rgb(var(--cyan) / 0.15);
-    box-shadow: 0 10px 15px -3px rgb(var(--cyan) / 0.2);
-  }
-  .highlight-card-amber:hover {
-    border-color: rgb(var(--amber-bright) / 0.6);
-    background-color: rgb(var(--amber) / 0.15);
-    box-shadow: 0 10px 15px -3px rgb(var(--amber) / 0.2);
-  }
-  .tag-emerald {
-    transition: all 0.2s ease;
-    transform: translateY(0);
-  }
-  .tag-emerald:hover {
-    transform: translateY(-8px);
-    background-color: rgb(var(--emerald) / 0.2);
-    border-color: rgb(var(--emerald-light) / 0.5);
-    box-shadow: 0 10px 15px -3px rgb(var(--emerald) / 0.2);
-  }
-  .tag-cyan {
-    transition: all 0.2s ease;
-    transform: translateY(0);
-  }
-  .tag-cyan:hover {
-    transform: translateY(-8px);
-    background-color: rgb(var(--cyan) / 0.2);
-    border-color: rgb(var(--cyan-light) / 0.5);
-    box-shadow: 0 10px 15px -3px rgb(var(--cyan) / 0.2);
-  }
-  .tag-amber {
-    transition: all 0.2s ease;
-    transform: translateY(0);
-  }
-  .tag-amber:hover {
-    transform: translateY(-8px);
-    background-color: rgb(var(--amber) / 0.2);
-    border-color: rgb(var(--amber-bright) / 0.5);
-    box-shadow: 0 10px 15px -3px rgb(var(--amber) / 0.2);
   }
 }
 
@@ -192,16 +82,15 @@
     background: transparent;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgb(var(--emerald) / 0.3);
+    background: var(--color-teal-soft);
     border-radius: 10px;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgb(var(--emerald) / 0.5);
+    background: var(--color-teal);
   }
 }
 
-/* ---- Hero-prototype: cat mascot + lively hover, kept out of the dark
-   terminal/emerald system above on purpose. ------------------------- */
+/* ---- Hero mascot animation and shared interactive motion. ---------------- */
 @layer components {
   @keyframes cat-drift {
     0%, 100% { transform: translateY(0px); }
