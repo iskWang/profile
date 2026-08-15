@@ -67,7 +67,7 @@ const Hero = () => {
               href={hero.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="spring-hover group inline-flex items-center gap-3 rounded-xl bg-teal px-6 py-3 font-medium text-paper shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+              className="spring-hover group inline-flex items-center gap-3 rounded-xl bg-teal-cta px-6 py-3 font-medium text-paper shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
             >
               <PawPrint className="transition-transform group-hover:rotate-12" />
               <span>{hero.resumeBtn}</span>

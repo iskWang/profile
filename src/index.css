@@ -19,6 +19,7 @@
   --color-ink-soft: oklch(0.46 0.016 260);
   --color-teal: oklch(0.62 0.11 185);
   --color-teal-soft: oklch(0.62 0.11 185 / 0.14);
+  --color-teal-cta: #007e73;
   --color-line: oklch(0.75 0.018 95);
   --shadow-mascot: 0 6px 10px rgb(0 0 0 / 0.08);
 }
@@ -38,6 +39,7 @@
   --color-ink-soft: oklch(0.68 0.01 95);
   --color-teal: oklch(0.68 0.12 185);
   --color-teal-soft: oklch(0.68 0.12 185 / 0.18);
+  --color-teal-cta: #007e73;
   --color-line: oklch(0.34 0.014 95);
 }
 

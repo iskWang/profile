@@ -41,13 +41,36 @@
     <meta name="twitter:title" content="Josh Wang | Software Developer" />
     <meta name="twitter:description" content="專注 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者。A software developer focusing on React/Next.js architecture and AI workflow integration." />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6XYV1VQQDX"></script>
+    <!-- Non-critical GA: load on first intent or five seconds after page load. -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-6XYV1VQQDX');
+      (() => {
+        const measurementId = 'G-6XYV1VQQDX';
+        const events = ['scroll', 'pointerdown', 'keydown'];
+        let loaded = false;
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        window.gtag('config', measurementId);
+
+        const loadAnalytics = () => {
+          if (loaded) return;
+          loaded = true;
+          events.forEach((event) => window.removeEventListener(event, loadAnalytics));
+
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+          document.head.appendChild(script);
+        };
+
+        events.forEach((event) => window.addEventListener(event, loadAnalytics, { once: true, passive: true }));
+        window.addEventListener(
+          'load',
+          () => window.setTimeout(loadAnalytics, 5000),
+          { once: true },
+        );
+      })();
     </script>
 
     <!-- JSON-LD: all language variants in one static block, no JS rendering needed -->

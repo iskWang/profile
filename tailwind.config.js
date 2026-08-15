@@ -13,6 +13,7 @@ export default {
         'ink-soft': 'var(--color-ink-soft)',
         teal: 'var(--color-teal)',
         'teal-soft': 'var(--color-teal-soft)',
+        'teal-cta': 'var(--color-teal-cta)',
         line: 'var(--color-line)',
       },
     },
