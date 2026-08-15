@@ -1,8 +1,8 @@
 import React from 'react';
 import { CatFace, PawPrint } from '../../components/common';
 import { useLanguage } from '../../context/useLanguage';
-import picklescoutLogo from '../../assets/picklescout-logo.png';
-import picklescoutSlogan from '../../assets/picklescout-slogan.png';
+import picklescoutLogo from '../../assets/picklescout-logo.webp';
+import picklescoutSlogan from '../../assets/picklescout-slogan.webp';
 
 const Projects = ({ projects }) => {
   const { content } = useLanguage();
@@ -31,11 +31,17 @@ const Projects = ({ projects }) => {
                       src={picklescoutLogo}
                       alt=""
                       aria-hidden="true"
+                      width="128"
+                      height="128"
+                      loading="lazy"
                       className="h-14 w-14 shrink-0 sm:h-16 sm:w-16"
                     />
                     <img
                       src={picklescoutSlogan}
                       alt="PickleScout — Web Scraping & Data Navigation"
+                      width="256"
+                      height="81"
+                      loading="lazy"
                       className="h-8 w-auto sm:h-9"
                     />
                   </div>

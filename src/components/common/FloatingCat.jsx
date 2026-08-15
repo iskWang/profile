@@ -1,5 +1,5 @@
 import React from 'react';
-import catMascotUrl from '../../assets/cat-mascot.webp';
+const catMascotUrl = '/cat-mascot.webp';
 
 const FloatingCat = ({ style, delay = 0, className = '' }) => {
   return (

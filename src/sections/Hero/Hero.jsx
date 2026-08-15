@@ -1,7 +1,8 @@
 import React from 'react';
 import { PawPrint } from '../../components/common';
-import catMascotUrl from '../../assets/cat-mascot.webp';
 import { useLanguage } from '../../context/useLanguage';
+
+const catMascotUrl = '/cat-mascot.webp';
 
 /*
  * Warm paper + single-teal-accent direction, rolled out from Header/Footer/
