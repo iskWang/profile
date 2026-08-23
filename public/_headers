@@ -1,2 +1,6 @@
 /*.md
   Content-Type: text/markdown; charset=utf-8
+/llms.txt
+  Content-Type: text/markdown; charset=utf-8
+/.well-known/api-catalog
+  Content-Type: application/json; charset=utf-8
