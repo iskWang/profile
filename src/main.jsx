@@ -42,8 +42,8 @@ if (typeof navigator !== 'undefined' && 'modelContext' in navigator) {
         execute: async () => ({
           email: 'spjay1@gmail.com',
           location: 'Taipei, Taiwan',
-          resumePdf_ZH: 'https://profile.joshwang.dev/JoshWang_ZH_Resume.pdf',
-          resumePdf_EN: 'https://profile.joshwang.dev/JoshWang_EN_Resume.pdf',
+          resumePdf_ZH: 'https://joshwang.dev/JoshWang_ZH_Resume.pdf',
+          resumePdf_EN: 'https://joshwang.dev/JoshWang_EN_Resume.pdf',
         }),
       },
     ],

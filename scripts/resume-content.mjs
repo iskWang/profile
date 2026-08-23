@@ -65,13 +65,24 @@ export function toWebContent(resume) {
   };
 }
 export function renderLlmsMarkdown(resumes) {
-  const links = "- [English resume](/resume.en.md)\n- [中文履歷](/resume.zh.md)\n- [English PDF](/JoshWang_EN_Resume.pdf)\n- [中文 PDF](/JoshWang_ZH_Resume.pdf)";
+  const site = "https://joshwang.dev";
+  const links = [
+    `- [English resume](${site}/resume.en.md)`,
+    `- [中文履歷](${site}/resume.zh.md)`,
+    `- [English PDF](${site}/JoshWang_EN_Resume.pdf)`,
+    `- [中文 PDF](${site}/JoshWang_ZH_Resume.pdf)`,
+    `- [Sitemap](${site}/sitemap.xml)`,
+    `- [API catalog](${site}/.well-known/api-catalog)`,
+    `- [Agent profile](${site}/.well-known/agent-skills/get-profile.md)`,
+  ].join("\n");
   const sections = ["en", "zh"].map((lang) => {
     const resume = resumes[lang];
     const jobs = resume.jobs.map((job) => `- **${job.title}** — ${job.company} (${job.period})`).join("\n");
-    return `## ${lang === "en" ? "English" : "中文"}\n\n**${resume.name} — ${resume.title}**\n\n${resume.location}\n\n${resume.summaryLines.join(" ")}\n\n### Experience\n${jobs}`;
+    const heading = lang === "en" ? "English profile" : "中文個人資料";
+    const label = lang === "en" ? "Experience" : "工作經歷";
+    return `## ${heading}\n\n**${resume.name} — ${resume.title}**\n\n${resume.location}\n\n${resume.summaryLines.join(" ")}\n\n### ${label}\n${jobs}`;
   }).join("\n\n");
-  return `# Josh Wang — Resume\n\nCanonical Markdown resumes:\n\n${links}\n\n${sections}\n`;
+  return `# Josh Wang — Resume\n\n> Full-stack software developer focused on scalable frontend systems, AI-assisted development workflows, and legacy system modernization.\n\n## Files and machine-readable resources\n\n${links}\n\n${sections}\n`;
 }
 export function generate({ contentDir, generatedFile, publicDir }) {
   const resumes = loadResumes(contentDir);

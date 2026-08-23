@@ -6,7 +6,7 @@
   },
   "transport": {
     "type": "http",
-    "endpoint": "https://profile.joshwang.dev"
+    "endpoint": "https://joshwang.dev"
   },
   "capabilities": {
     "tools": false,

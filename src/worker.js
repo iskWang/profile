@@ -1,8 +1,12 @@
-const SITE_URL = 'https://profile.joshwang.dev';
+const SITE_URL = 'https://joshwang.dev';
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.hostname === 'profile.joshwang.dev') {
+      return Response.redirect(`${SITE_URL}${url.pathname}${url.search}`, 301);
+    }
+
     const accept = request.headers.get('Accept') || '';
 
     if (url.pathname === '/deck' || url.pathname === '/deck/' || url.pathname === '/deck/index.html') {
@@ -42,7 +46,7 @@ export default {
     if (url.pathname === '/' || url.pathname === '/index.html') {
       headers.append('Link', `<${SITE_URL}/sitemap.xml>; rel="sitemap"`);
       headers.append('Link', `<${SITE_URL}/.well-known/api-catalog>; rel="api-catalog"`);
-      headers.append('Link', `<${SITE_URL}/llms.txt>; rel="alternate"; type="text/markdown"`);
+      headers.append('Link', `<${SITE_URL}/llms.txt>; rel="describedby"`);
       headers.set('Vary', 'Accept');
       headers.set('Cache-Control', 'no-store');
       await caches.default.delete(new Request(request.url));

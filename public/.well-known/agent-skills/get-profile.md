@@ -9,7 +9,7 @@ Send a GET request to the homepage with `Accept: text/markdown`:
 
 ```http
 GET / HTTP/1.1
-Host: profile.joshwang.dev
+Host: joshwang.dev
 Accept: text/markdown
 ```
 
@@ -24,7 +24,7 @@ The server will respond with `Content-Type: text/markdown; charset=utf-8` contai
 
 ## Endpoint
 
-`GET https://profile.joshwang.dev/`
+`GET https://joshwang.dev/`
 
 ## Parameters
 
@@ -33,5 +33,5 @@ None required.
 ## Example
 
 ```bash
-curl -H "Accept: text/markdown" https://profile.joshwang.dev/
+curl -H "Accept: text/markdown" https://joshwang.dev/
 ```

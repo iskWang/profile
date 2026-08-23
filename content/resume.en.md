@@ -88,8 +88,8 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
   "subtitle": "Full-stack engineer specializing in React / Next.js front-end architecture, with Node.js backend and AI-assisted development workflow integration experience",
   "location": "Taipei, Taiwan",
   "email": "spjay1@gmail.com",
-  "site": "profile.joshwang.dev",
-  "siteHref": "https://profile.joshwang.dev",
+  "site": "joshwang.dev",
+  "siteHref": "https://joshwang.dev",
   "sectionLabels": {
     "summary": "Summary",
     "achievements": "Key Achievements",
