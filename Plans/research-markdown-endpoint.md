@@ -7,9 +7,10 @@
 - Web 的中英文內容
 - 中文與英文 PDF
 - AI-friendly 的 Markdown endpoint
-- 可選的 `/llms.txt` 導覽檔
+- `llms.txt`：AI-friendly 的固定入口與文件導覽
+- `resume.zh.md` / `resume.en.md`：完整雙語履歷內容
 
-`public/` 在 Vite 中是靜態資產來源目錄，不是 build output；Vite build 會把它原樣複製到 `dist/`。因此 `public/index.md` 可以是部署用的 endpoint 輸出，但若要避免手動漂移，應由 canonical Markdown 在 build 時產生。
+`public/` 在 Vite 中是靜態資產來源目錄，不是 build output；Vite build 會把它原樣複製到 `dist/`。因此 `public/llms.txt` 是部署用的 endpoint 輸出，應由 canonical Markdown 在 build 時產生。
 
 ## 1. HTTP content negotiation
 
@@ -45,18 +46,20 @@ Vary: Accept, Accept-Language
 推薦提供固定且可分享的語言 URL：
 
 ```text
-/index.zh.md
-/index.en.md
+/resume.zh.md
+/resume.en.md
 ```
 
-`Accept-Language` 可以作為 `/index.md` 的 fallback，但不應是唯一入口。固定 URL 的好處：
+`/llms.txt` 是 agent 導覽入口；首頁也透過 `Link: rel="alternate"` 宣告它。`Accept: text/markdown` 則讓 agent 不必先知道檔案名稱，就能從首頁取得 Markdown representation。
+
+固定 URL 的好處：
 
 - 快取與 CDN 行為較簡單
 - URL 可分享、可 bookmark
 - 不依賴客戶端是否正確送出 `Accept-Language`
 - 搜尋、爬蟲與 agent 容易明確選語言
 
-若保留目前 `/` + `Accept: text/markdown` 行為，建議讓它回傳預設語言（例如 `zh-TW`），並在 Markdown 內連到另一語言版本；或讓它依 `Accept-Language` 選擇，但必須正確設定 `Vary: Accept, Accept-Language`。
+首頁若根據 `Accept` 回不同 representation，必須設定 `Vary: Accept`；目前不需要依 `Accept-Language` 動態選擇語言。
 
 ## 3. Markdown for Agents 與 llms.txt
 
@@ -68,13 +71,13 @@ Vary: Accept, Accept-Language
 - HTML 頁面可用 `.md` 版本
 - 使用 `rel="alternate" type="text/markdown"` 或 HTTP `Link` header 宣告 Markdown 版本
 
-本專案現在的 `public/.well-known/api-catalog` 與 Worker 的 `Accept: text/markdown` 路徑，已經是在做相同方向的 agent discoverability；但它們不等於 `llms.txt` 規格。
+本專案的 `/llms.txt` 是 agent 導覽與雙語摘要；`/resume.zh.md`、`/resume.en.md` 是完整履歷。它們分工不同，不需要用 symlink 讓兩個 URL 回傳同一個檔案。
 
 建議：
 
-- `index.zh.md` / `index.en.md`：完整履歷內容
-- `/llms.txt`：短小導覽，連到兩份完整履歷與 PDF
-- 保留 `Link: rel="alternate"; type="text/markdown"` 宣告
+- `/llms.txt`：H1、簡短摘要、履歷與 PDF 連結
+- `/resume.zh.md` / `/resume.en.md`：完整履歷內容
+- 首頁 `Link: rel="alternate"; type="text/markdown"` 指向 `/llms.txt`
 
 來源：
 
@@ -91,12 +94,12 @@ Vite 官方文件指出，`public/` 適合：
 這些檔案開發時由 `/` 提供，build 時原樣複製到 `dist/` root。故本專案的：
 
 ```text
-public/index.md → dist/index.md → 部署後 /index.md
+public/llms.txt → dist/llms.txt → 部署後 /llms.txt
 ```
 
-是正確的靜態資產資料流。`public/index.md` 不是 build output，而是 build input/static source；`dist/index.md` 才是 build copy。
+是正確的靜態資產資料流。`public/llms.txt` 不是 build output，而是 build input/static source；`dist/llms.txt` 才是 build copy。
 
-Cloudflare Workers Static Assets 也建議讓匹配到的靜態檔直接由 assets 層服務，只有需要動態路由時才進入 Worker。這支持「build-time 產生固定 Markdown，部署成靜態檔」的方案，而不是每次 request 動態拼接。
+Cloudflare Workers Static Assets 預設會先服務匹配到的靜態檔。要讓首頁 `Accept: text/markdown` 進入 Worker，`wrangler.json` 使用 `assets.run_worker_first: ["/"]`；Worker 再以 `env.ASSETS.fetch("/llms.txt")` 回傳 Markdown。
 
 來源：
 
@@ -129,9 +132,9 @@ Markdown 應使用固定 headings、front matter 或其他可驗證結構。不�
 2. 定義固定的履歷 Markdown 結構與必要欄位。
 3. 寫一個共用 parser，輸出 typed `ResumeContent`。
 4. Web 與 `resume-tool` 共用 parser/model，不再各自維護履歷常數。
-5. build 時產生 `public/index.zh.md`、`public/index.en.md`。
-6. 產生 `public/index.md` 作為預設語言或雙語入口；若雙語入口很長，改成短導覽並連到兩個語言檔。
-7. 提供 `/llms.txt`，連到兩份 Markdown 與 PDF。
+5. build 時產生 `public/llms.txt`。
+6. 首頁的 `Accept: text/markdown` 回傳 `/llms.txt`，HTML 仍是預設 representation。
+7. 透過首頁 `Link` header 與 `.well-known/api-catalog` 宣告 `/llms.txt`。
 8. 驗證 Web、PDF、Markdown endpoint 的職稱、日期與主要事實完全一致。
 
 ## 取捨
@@ -144,6 +147,6 @@ Markdown 應使用固定 headings、front matter 或其他可驗證結構。不�
 
 優點：可依 `Accept`、`Accept-Language` 即時選 representation。缺點：需要處理 `Vary`、快取、ETag、錯誤與 asset fetch；對公開履歷沒有必要的動態性。
 
-### 只在 `index.md` 放連結
+### 直接使用 `/llms.txt`
 
-優點：檔案很短。缺點：agent 不一定會追蹤連結，完整內容可發現性較差。推薦 `index.md` 做短導覽，並提供固定語言 Markdown URL；若目標是讓單次 fetch 取得完整履歷，則直接內嵌雙語內容。
+優點：agent 有固定、可預期的入口，且符合目前的 llms.txt 社群提案。缺點：它不是 IETF 正式標準，仍應保留首頁 `Accept` negotiation 作為另一個 discovery 路徑。

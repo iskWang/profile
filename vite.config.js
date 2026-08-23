@@ -7,7 +7,7 @@ const PUBLIC_DIR = path.resolve(__dirname, "public");
 
 function serveMarkdown(request, response, next) {
   const pathname = new URL(request.url ?? "/", "http://localhost").pathname;
-  if (!pathname.endsWith(".md")) {
+  if (!pathname.endsWith(".md") && pathname !== "/llms.txt") {
     next();
     return;
   }

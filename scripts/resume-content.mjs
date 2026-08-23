@@ -64,7 +64,7 @@ export function toWebContent(resume) {
     skillsData: { frontend: categories.frontend ?? [], backend: categories.backend ?? [], devops: categories.architecture ?? [], ai: categories.ai ?? [], mobile: categories.mobile ?? [], testing: categories.testing ?? [] },
   };
 }
-export function renderIndexMarkdown(resumes) {
+export function renderLlmsMarkdown(resumes) {
   const links = "- [English resume](/resume.en.md)\n- [中文履歷](/resume.zh.md)\n- [English PDF](/JoshWang_EN_Resume.pdf)\n- [中文 PDF](/JoshWang_ZH_Resume.pdf)";
   const sections = ["en", "zh"].map((lang) => {
     const resume = resumes[lang];
@@ -82,11 +82,11 @@ export function generate({ contentDir, generatedFile, publicDir }) {
   for (const lang of LANGS) {
     fs.copyFileSync(path.join(contentDir, `resume.${lang}.md`), path.join(publicDir, `resume.${lang}.md`));
   }
-  fs.writeFileSync(path.join(publicDir, "index.md"), renderIndexMarkdown(resumes));
+  fs.writeFileSync(path.join(publicDir, "llms.txt"), renderLlmsMarkdown(resumes));
   return { resumes, web };
 }
 if (import.meta.main) {
   const profileDir = path.resolve(import.meta.dir, "..");
   const result = generate({ contentDir: path.join(profileDir, "content"), generatedFile: path.join(profileDir, "src/generated/content.js"), publicDir: path.join(profileDir, "public") });
-  console.log(`Generated Web content and Markdown index for ${Object.keys(result.resumes).join(", ")}.`);
+  console.log(`Generated Web content and llms.txt for ${Object.keys(result.resumes).join(", ")}.`);
 }

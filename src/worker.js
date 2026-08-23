@@ -17,9 +17,9 @@ export default {
       return env.ASSETS.fetch(slidesRequest);
     }
 
-    // Markdown for Agents: serve index.md when Accept: text/markdown on homepage
+    // Markdown for Agents: serve llms.txt when Accept: text/markdown on homepage
     if (accept.includes('text/markdown') && url.pathname === '/') {
-      const mdRequest = new Request(new URL('/index.md', url), {
+      const mdRequest = new Request(new URL('/llms.txt', url), {
         method: request.method,
         headers: request.headers,
       });
@@ -42,6 +42,7 @@ export default {
     if (url.pathname === '/' || url.pathname === '/index.html') {
       headers.append('Link', `<${SITE_URL}/sitemap.xml>; rel="sitemap"`);
       headers.append('Link', `<${SITE_URL}/.well-known/api-catalog>; rel="api-catalog"`);
+      headers.append('Link', `<${SITE_URL}/llms.txt>; rel="alternate"; type="text/markdown"`);
       headers.set('Vary', 'Accept');
       headers.set('Cache-Control', 'no-store');
       await caches.default.delete(new Request(request.url));
