@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../src/layouts/Layout.astro';
+import Header from '../../../src/components/Header/Header.jsx';
+import Footer from '../../../src/components/Footer/Footer.jsx';
+import FloatingCat from '../../../src/components/common/FloatingCat.jsx';
+import Hero from '../../../src/sections/Hero/Hero.jsx';
+import LatestPosts from '../../../src/sections/LatestPosts/LatestPosts.jsx';
+import Projects from '../../../src/sections/Projects/Projects.jsx';
+import Skills from '../../../src/sections/Skills/Skills.jsx';
+import Experience from '../../../src/sections/Experience/Experience.jsx';
+import Contact from '../../../src/sections/Contact/Contact.jsx';
+import { CONTENT } from '../../../src/constants/content.js';
+const content = CONTENT.zh;
+const latestPosts = (await getCollection('blog', ({ data }) => data.lang === 'zh' && !data.draft))
+  .sort((a, b) => b.data.date.localeCompare(a.data.date))
+  .slice(0, 3)
+  .map((post) => ({
+    slug: post.id.replace(/\.(?:zh|en)$/, ''),
+    title: post.data.title,
+    date: post.data.date,
+    summary: post.data.summary,
+    topics: post.data.topics,
+  }));
+---
+<Layout lang="zh-TW">
+  <Fragment slot="head">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="image" href="/cat-mascot.webp" type="image/webp" fetchpriority="high" />
+    <title>Josh Wang | 軟體開發者</title>
+    <meta name="description" content="專注 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者。10+ 年 Web 開發經驗。" />
+    <link rel="canonical" href="https://joshwang.dev/zh-tw" />
+    <link rel="describedby" href="https://joshwang.dev/llms.txt" />
+    <link rel="alternate" hreflang="zh-TW" href="https://joshwang.dev/zh-tw" />
+    <link rel="alternate" hreflang="en" href="https://joshwang.dev/en" />
+    <link rel="alternate" hreflang="x-default" href="https://joshwang.dev/zh-tw" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:url" content="https://joshwang.dev/zh-tw" />
+    <meta property="og:title" content="Josh Wang | 軟體開發者" />
+    <meta property="og:description" content="專注 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者。" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Josh Wang | 軟體開發者" />
+    <meta name="twitter:description" content="專注 React / Next.js 架構設計、AI 開發流程整合與快速交付的軟體開發者。" />
+  </Fragment>
+  <div class="min-h-screen bg-paper text-ink overflow-x-hidden">
+    <FloatingCat style={{ top: '15%', right: '10%' }} className="hidden sm:block" />
+    <Header client:load lang="zh" variant="home" langHref="/en" />
+    <main>
+      <Hero content={content} lang="zh" />
+      <LatestPosts posts={latestPosts} lang="zh" />
+      <Projects content={content} projects={content.projects.items} lang="zh" />
+      <Skills content={content} skills={content.skillsData} lang="zh" />
+      <Experience content={content} experiences={content.experience.items} lang="zh" />
+      <Contact content={content} lang="zh" />
+    </main>
+    <Footer />
+  </div>
+</Layout>

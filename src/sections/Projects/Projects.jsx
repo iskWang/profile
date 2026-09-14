@@ -1,13 +1,8 @@
 import React from 'react';
 import { CatFace, PawPrint } from '../../components/common';
-import { useLanguage } from '../../context/useLanguage';
-import picklescoutLogo from '../../assets/picklescout-logo.webp';
-import picklescoutSlogan from '../../assets/picklescout-slogan.webp';
 
-const Projects = ({ projects }) => {
-  const { content } = useLanguage();
+const Projects = ({ projects, content }) => {
   const { projects: projectsContent } = content;
-
   return (
     <section className="pt-24 pb-24 px-6 bg-paper-deep" id="projects">
       <div className="max-w-5xl mx-auto">
@@ -28,7 +23,7 @@ const Projects = ({ projects }) => {
                 <div className="flex-1">
                   <div className="mb-5 flex items-center gap-4">
                     <img
-                      src={picklescoutLogo}
+                      src="/picklescout-logo.webp"
                       alt=""
                       aria-hidden="true"
                       width="128"
@@ -37,7 +32,7 @@ const Projects = ({ projects }) => {
                       className="h-14 w-14 shrink-0 sm:h-16 sm:w-16"
                     />
                     <img
-                      src={picklescoutSlogan}
+                      src="/picklescout-slogan.webp"
                       alt="PickleScout — Web Scraping & Data Navigation"
                       width="256"
                       height="81"

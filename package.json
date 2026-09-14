@@ -3,30 +3,33 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "packageManager": "bun@1.3.14",
   "scripts": {
-    "dev": "bun run generate-resume-content && vite",
-    "build:client": "bun run generate-resume-content && vite build --outDir dist/client",
-    "build:server": "vite build --ssr src/entry-server.jsx --outDir dist/server",
+    "dev": "bun run generate-resume-content && astro dev",
     "generate-resume-content": "bun scripts/resume-content.mjs",
-    "build": "bun run build:client && bun run build:server && bun prerender.mjs",
-    "preview": "vite preview",
+    "validate-blog-content": "bun scripts/validate-blog-content.mjs",
+    "build": "bun run generate-resume-content && bun run validate-blog-content && astro build",
+    "preview": "astro preview",
     "deploy": "bun run build && wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.1",
+    "@astrojs/react": "6.0.5",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "7.3.2",
+    "parse5": "^8.0.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.5",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.4"
   },
   "devDependencies": {
     "@fontsource/noto-sans-tc": "^5.2.9",
-    "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.18",
     "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1",
-    "vite": "^5.1.4"
-  },
-  "pnpm": {
-    "ignoredBuiltDependencies": [
-      "esbuild"
-    ]
+    "tailwindcss": "^3.4.1"
   }
 }

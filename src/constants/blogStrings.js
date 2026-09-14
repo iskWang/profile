@@ -1,0 +1,28 @@
+export const BLOG_STRINGS = {
+  zh: {
+    nav: '文章',
+    listTitle: '文章',
+    listIntro: '技術筆記與觀點。',
+    allTopics: '全部',
+    sourceLabel: '延伸閱讀來源',
+    machineTranslated: null,
+    latestTitle: '最新文章',
+    viewAll: '看全部文章 →',
+    backHome: '← 回首頁',
+    updatedPrefix: '更新於 ',
+    empty: '還沒有文章。',
+  },
+  en: {
+    nav: 'Blog',
+    listTitle: 'Writing',
+    listIntro: 'Engineering notes and opinions.',
+    allTopics: 'All',
+    sourceLabel: 'Source',
+    machineTranslated: 'Machine-assisted translation, reviewed by the author.',
+    latestTitle: 'Latest writing',
+    viewAll: 'All posts →',
+    backHome: '← Home',
+    updatedPrefix: 'Updated ',
+    empty: 'No posts yet.',
+  },
+};

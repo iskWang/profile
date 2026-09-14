@@ -1,0 +1,38 @@
+---
+import '../index.css';
+interface Props {
+  lang: 'zh-TW' | 'en';
+}
+const { lang } = Astro.props;
+---
+<!doctype html>
+<html lang={lang} data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script is:inline>
+      (() => {
+        let theme = 'light';
+        try {
+          const savedTheme = window.localStorage.getItem('theme');
+          if (savedTheme === 'light' || savedTheme === 'dark') {
+            theme = savedTheme;
+          }
+        } catch (error) {
+          console.warn('[theme] Saved theme is unavailable; using light for this visit.', error);
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <slot name="head" />
+  </head>
+  <body class="bg-paper text-ink"><slot /></body>
+  <script is:inline>
+    document.getElementById('theme-toggle')?.addEventListener('click', () => {
+      const r = document.documentElement;
+      const n = r.dataset.theme === 'dark' ? 'light' : 'dark';
+      r.dataset.theme = n;
+      try { localStorage.setItem('theme', n); } catch {}
+    });
+  </script>
+</html>

@@ -3,6 +3,25 @@
 @tailwind utilities;
 
 /*
+ * Smooth cross-document navigation (home ↔ /blog ↔ post pages). Each page
+ * in this project is a fully separate prerendered document — no client
+ * router — so without this, clicking the Blog link is a hard reload: the
+ * browser paints white, then the next document. `navigation: auto` turns
+ * that into a native cross-fade with zero JS; unsupported browsers just
+ * get today's plain reload back, so this is pure enhancement.
+ * https://developer.chrome.com/docs/web-platform/view-transitions/cross-document
+ */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+  animation-timing-function: ease-out;
+}
+
+/*
  * Design tokens — warm paper ground, graphite ink, a single friendly teal
  * accent. Deliberately not cream+terracotta, not dark+neon, and not the old
  * slate/emerald/cyan/amber terminal palette above (kept above only until
@@ -22,6 +41,11 @@
   --color-teal-cta: #007e73;
   --color-line: oklch(0.75 0.018 95);
   --shadow-mascot: 0 6px 10px rgb(0 0 0 / 0.08);
+  --post-radius: 0.85rem;
+  --post-radius-sm: 0.5rem;
+  --icon-info: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='8.5'/><line x1='12' y1='11' x2='12' y2='16.2'/><circle cx='12' cy='7.6' r='0.9' fill='%23000' stroke='none'/></svg>");
+  --icon-warning: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3.6 21 19.4H3Z'/><line x1='12' y1='9.6' x2='12' y2='13.8'/><circle cx='12' cy='16.6' r='0.9' fill='%23000' stroke='none'/></svg>");
+  --icon-chevron: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='m8 10 4 4 4-4'/></svg>");
 }
 
 /*
@@ -48,6 +72,389 @@
     font-family: 'Noto Sans TC', 'Noto Sans', sans-serif;
   }
 }
+
+.post-body {
+  color: var(--color-ink);
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+
+.post-body > * {
+  max-width: 100%;
+}
+
+.post-body h2,
+.post-body h3,
+.post-body h4,
+.post-body h5,
+.post-body h6 {
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  scroll-margin-top: var(--post-scroll-offset);
+  text-wrap: balance;
+}
+
+.post-body h2 {
+  margin: 3.75rem 0 1.15rem;
+  font-size: clamp(1.7rem, 3vw, 2.25rem);
+  font-weight: 800;
+}
+
+.post-body h2::before {
+  content: "";
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-right: 0.65rem;
+  border-radius: 0.15rem;
+  background: var(--color-teal);
+  vertical-align: 0.15em;
+}
+
+.post-body h3 {
+  margin: 2.85rem 0 0.8rem;
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+  font-weight: 750;
+}
+
+.post-body h4 { margin: 2.25rem 0 0.65rem; font-size: 1.2rem; font-weight: 700; }
+.post-body h5 { margin: 2rem 0 0.55rem; font-size: 1.05rem; font-weight: 650; }
+.post-body h6 {
+  margin: 1.85rem 0 0.5rem;
+  color: var(--color-ink-soft);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.post-body p { margin: 1.35rem 0; }
+.post-body > :first-child { margin-top: 0; }
+.post-body > :last-child { margin-bottom: 0; }
+
+.post-body a,
+.post-notices a,
+.post-references a {
+  color: var(--color-teal-cta);
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.2em;
+}
+
+.post-body a:hover,
+.post-body a:focus-visible,
+.post-notices a:hover,
+.post-notices a:focus-visible,
+.post-references a:hover,
+.post-references a:focus-visible { text-decoration-thickness: 0.14em; }
+
+.post-body ul,
+.post-body ol {
+  margin: 1.35rem 0;
+  padding-left: 1.6rem;
+}
+
+.post-body li { margin: 0.45rem 0; padding-left: 0.2rem; }
+.post-body li::marker { color: var(--color-teal-cta); }
+.post-body ul { list-style: disc; }
+.post-body ol { list-style: decimal; }
+.post-body ul ul { list-style: circle; margin: 0.4rem 0; }
+.post-body ul.contains-task-list { padding-left: 0; list-style: none; }
+.post-body .task-list-item { display: flex; gap: 0.65rem; align-items: flex-start; }
+
+.post-body .task-list-item input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.35em;
+  border: 1.5px solid var(--color-line);
+  border-radius: 0.3rem;
+  background: var(--color-paper);
+  display: inline-grid;
+  place-content: center;
+}
+.post-body .task-list-item input[type="checkbox"]::before {
+  content: "";
+  width: 0.62rem;
+  height: 0.62rem;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transition: transform 120ms ease;
+  box-shadow: inset 1em 1em var(--color-teal-cta);
+}
+.post-body .task-list-item input[type="checkbox"]:checked {
+  border-color: var(--color-teal-cta);
+  background: var(--color-teal-soft);
+}
+.post-body .task-list-item input[type="checkbox"]:checked::before { transform: scale(1); }
+.post-body .task-list-item input[type="checkbox"]:disabled { opacity: 1; }
+
+.post-body blockquote {
+  position: relative;
+  margin: 2.25rem 0;
+  padding: 1.1rem 1.5rem 1.1rem 3rem;
+  border-left: 1px solid var(--color-teal);
+  border-radius: 0 var(--post-radius) var(--post-radius) 0;
+  background: var(--color-paper-deep);
+  color: var(--color-ink-soft);
+  font-size: 1.05em;
+  font-style: italic;
+}
+.post-body blockquote::before {
+  content: "\201C";
+  position: absolute;
+  top: 0.3rem;
+  left: 0.85rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.25rem;
+  font-style: normal;
+  line-height: 1;
+  color: var(--color-teal);
+  opacity: 0.55;
+}
+
+.post-body blockquote > :first-child { margin-top: 0; }
+.post-body blockquote > :last-child { margin-bottom: 0; }
+
+.post-body :not(pre) > code {
+  padding: 0.12em 0.35em;
+  border: 1px solid var(--color-line);
+  border-radius: var(--post-radius-sm);
+  background: var(--color-paper-deep);
+  color: var(--color-ink);
+  font-size: 0.88em;
+  overflow-wrap: break-word;
+}
+
+.post-body pre {
+  max-width: 100%;
+  margin: 1.75rem 0;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--post-radius);
+  background: var(--color-paper-deep);
+  overflow: auto;
+  overscroll-behavior-inline: contain;
+  max-height: 32rem;
+  tab-size: 2;
+}
+
+.post-body pre code { display: block; min-width: max-content; font-size: 0.875rem; line-height: 1.65; }
+
+.post-body img,
+.post-body video,
+.post-body svg { display: block; max-width: 100%; height: auto; }
+.post-body img { margin: 2rem auto; }
+
+.post-body figure { margin: 2.75rem 0; }
+.post-body figcaption {
+  margin-top: 0.8rem;
+  color: var(--color-ink-soft);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  text-align: center;
+}
+.post-body .post-figure img { width: min(100%, 42rem); margin: 0 auto; }
+.post-body .post-figure:not(.post-figure--portrait) img {
+  border: 1px solid var(--color-line);
+  border-radius: var(--post-radius);
+}
+.post-body .post-figure--portrait img { width: min(100%, 22rem); border-radius: calc(var(--post-radius) - 0.3rem); }
+.post-body .post-figure--portrait {
+  padding: 1.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--post-radius);
+  background: var(--color-paper-deep);
+}
+.post-body .post-mascot {
+  display: block;
+  width: min(100%, 22rem);
+  aspect-ratio: 700 / 691;
+  margin: 0 auto;
+  background-color: var(--color-teal);
+  filter: drop-shadow(var(--shadow-mascot));
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.post-body .post-callout {
+  position: relative;
+  margin: 2.25rem 0;
+  padding: 1.1rem 1.25rem 1.1rem 3.35rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--post-radius);
+  background: var(--color-paper-deep);
+  color: var(--color-ink-soft);
+}
+.post-body .post-callout::before {
+  content: "";
+  position: absolute;
+  top: 1.25rem;
+  left: 1.2rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  background-color: var(--color-ink-soft);
+  -webkit-mask: var(--icon-info) center / contain no-repeat;
+  mask: var(--icon-info) center / contain no-repeat;
+}
+.post-body .post-callout--warning {
+  background: color-mix(in oklch, var(--color-paper-deep) 92%, var(--color-ink) 8%);
+  border-color: color-mix(in oklch, var(--color-line) 70%, var(--color-ink) 30%);
+}
+.post-body .post-callout--warning::before {
+  background-color: var(--color-ink);
+  -webkit-mask-image: var(--icon-warning);
+  mask-image: var(--icon-warning);
+}
+.post-body .post-callout > :first-child { margin-top: 0; }
+.post-body .post-callout > :last-child { margin-bottom: 0; }
+.post-body .post-callout strong { display: block; margin-bottom: 0.3rem; color: var(--color-ink); font-size: 0.95rem; }
+.post-body .post-callout p { margin: 0.4rem 0 0; }
+
+.post-body table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; }
+
+.post-body .post-table-scroll {
+  max-width: 100%;
+  margin: 2.25rem 0;
+  border: 1px solid var(--color-line);
+  border-radius: var(--post-radius);
+  overflow: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-color: var(--color-ink-soft) var(--color-paper-deep);
+}
+.post-body .post-table-scroll table { display: table; max-width: none; overflow: visible; width: max-content; min-width: 100%; }
+.post-body th,
+.post-body td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-line);
+  text-align: left;
+  vertical-align: top;
+  max-width: 28rem;
+}
+.post-body th {
+  background: var(--color-paper-deep);
+  color: var(--color-ink);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.post-body tr:last-child td { border-bottom: 0; }
+
+.post-body .post-footnotes,
+.post-body .post-references {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-ink-soft);
+  font-size: 0.9rem;
+}
+.post-body .post-footnotes h4,
+.post-body .post-references h4 {
+  margin: 0 0 0.75rem;
+  color: var(--color-ink-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.post-body .post-footnotes li,
+.post-body .post-references li { margin: 0.55rem 0; }
+
+.post-body .post-specimen {
+  margin: 3.5rem 0 0;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.post-body .post-specimen > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.1rem 0.1rem;
+  cursor: pointer;
+  color: var(--color-ink);
+  font-weight: 700;
+  font-size: 0.95rem;
+  list-style: none;
+}
+.post-body .post-specimen > summary::-webkit-details-marker { display: none; }
+.post-body .post-specimen > summary::after {
+  content: "";
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-left: auto;
+  background-color: var(--color-ink-soft);
+  -webkit-mask: var(--icon-chevron) center / contain no-repeat;
+  mask: var(--icon-chevron) center / contain no-repeat;
+  transition: transform 200ms ease;
+}
+.post-body .post-specimen[open] > summary::after { transform: rotate(180deg); }
+.post-body .post-specimen > summary:hover { color: var(--color-teal-cta); }
+.post-body .post-specimen > summary:hover::after { background-color: var(--color-teal-cta); }
+.post-body .post-specimen-content { padding: 0.25rem 0.1rem 1.75rem; }
+.post-body .post-specimen-content > :first-child { margin-top: 0.5rem; }
+
+.post-body details { margin: 2.25rem 0; }
+.post-body details > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.3rem 0;
+  cursor: pointer;
+  color: var(--color-ink);
+  font-weight: 700;
+  list-style: none;
+}
+.post-body details > summary::-webkit-details-marker { display: none; }
+.post-body details > summary::after {
+  content: "";
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-left: auto;
+  background-color: var(--color-ink-soft);
+  -webkit-mask: var(--icon-chevron) center / contain no-repeat;
+  mask: var(--icon-chevron) center / contain no-repeat;
+  transition: transform 200ms ease;
+}
+.post-body details[open] > summary::after { transform: rotate(180deg); }
+
+.post-body hr {
+  margin: 3rem 0;
+  border: 0;
+  border-top: 1px solid var(--color-line);
+}
+.post-body sup { line-height: 0; }
+.post-body .cat-name { color: var(--color-teal); }
+
+.post-body .code-caption {
+  margin: 1.75rem 0 0.5rem;
+  color: var(--color-ink-soft);
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+.post-body .code-caption + pre { margin-top: 0.5rem; }
+
+:root[data-theme="dark"] .astro-code,
+:root[data-theme="dark"] .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+:root[data-theme="light"] .theme-icon-moon { display: none; }
+:root[data-theme="dark"] .theme-icon-sun { display: none; }
 
 @layer components {
   @keyframes float {
@@ -138,5 +545,297 @@
   [class*="animate-[wave"] {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+/*
+ * Reading-progress cue — the header's border-bottom "fills" with the site's
+ * teal accent as the reader scrolls through an article. Rendered only when
+ * Header receives `progress`, i.e. article pages only (see ArticleLayout.astro,
+ * which computes and sets --reading-progress on <html> during scroll).
+ * No Tailwind slash-opacity here — see the header bg-opacity bug note in
+ * this file's `:root` section; `--color-teal-cta` is a plain hex, safe to
+ * use directly.
+ */
+.header-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.header-progress-fill {
+  height: 100%;
+  width: 100%;
+  transform: scaleX(var(--reading-progress, 0));
+  transform-origin: left;
+  background: var(--color-teal-cta);
+  transition: transform 80ms linear;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .header-progress-fill { transition: none; }
+}
+/* ---- Single-post reading surface --------------------------------------- */
+.post-page {
+  --post-scroll-offset: 6rem;
+  padding: 8.5rem 1.5rem 6rem;
+  background: var(--color-paper);
+}
+
+.post-shell { width: min(100%, 64rem); margin: 0 auto; }
+
+.post-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-ink-soft);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.post-back-link svg { transition: transform 200ms ease; }
+.post-back-link:hover,
+.post-back-link:focus-visible { color: var(--color-teal-cta); }
+.post-back-link:hover svg,
+.post-back-link:focus-visible svg { transform: translateX(-3px); }
+
+.post-header {
+  width: 100%;
+  margin: 3rem auto 0;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--color-line);
+}
+.post-header h1 {
+  max-width: 100%;
+  margin: 0;
+  color: var(--color-ink);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+html[lang="zh-TW"] .post-header h1 { max-width: 18em; }
+
+.post-summary {
+  max-width: 60ch;
+  margin: 1.5rem 0 0;
+  color: var(--color-ink-soft);
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.7;
+}
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+  color: var(--color-ink-soft);
+  font-size: 0.875rem;
+}
+.post-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.post-topics a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: var(--color-teal-soft);
+  color: var(--color-teal-cta);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+.post-topics a::before { content: "#"; margin-right: 0.15rem; opacity: 0.7; }
+.post-topics a:hover,
+.post-topics a:focus-visible { background: var(--color-teal-cta); color: var(--color-paper); }
+
+.post-notices {
+  position: relative;
+  width: 100%;
+  margin: 2.25rem auto 0;
+  padding: 1rem 1.15rem 1rem 3.25rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--post-radius);
+  background: var(--color-paper-deep);
+  color: var(--color-ink-soft);
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+.post-notices::before {
+  content: "";
+  position: absolute;
+  top: 1.15rem;
+  left: 1.15rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  background-color: var(--color-ink-soft);
+  -webkit-mask: var(--icon-info) center / contain no-repeat;
+  mask: var(--icon-info) center / contain no-repeat;
+}
+.post-notices p { margin: 0.25rem 0; }
+.post-notices strong { color: var(--color-ink); font-weight: 700; }
+:root[data-theme="dark"] .post-body a,
+:root[data-theme="dark"] .post-notices a,
+:root[data-theme="dark"] .post-references a,
+:root[data-theme="dark"] .post-topics a { color: var(--color-teal); }
+
+.post-reading-column {
+  width: 100%;
+  max-width: 42rem;
+  margin: 3.5rem auto 0;
+  font-size: 1.0625rem;
+}
+.post-reading-column::selection,
+.post-reading-column *::selection { background: var(--color-teal-soft); color: var(--color-ink); }
+
+/*
+ * The TOC is framed as a distinct bordered card (matching .post-notices'
+ * quiet-card language) rather than full-bleed border-top/border-bottom
+ * rules. The header above already contributes the section's one full-width
+ * divider; stacking the TOC's own top/bottom rules right under it read as
+ * two-to-three redundant lines in quick succession. A single box reads as
+ * one intentional component regardless of whether .post-notices is present.
+ */
+.post-toc {
+  width: 100%;
+  margin: 2.25rem auto 0;
+  border: 1px solid var(--color-line);
+  border-radius: var(--post-radius);
+  background: var(--color-paper-deep);
+}
+.post-toc summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.25rem;
+  cursor: pointer;
+  color: var(--color-ink);
+  font-size: 0.9rem;
+  font-weight: 700;
+  list-style: none;
+}
+.post-toc[open] summary { border-bottom: 1px solid var(--color-line); }
+.post-toc summary::-webkit-details-marker { display: none; }
+.post-toc summary::after {
+  content: "";
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-left: auto;
+  background-color: var(--color-ink-soft);
+  -webkit-mask: var(--icon-chevron) center / contain no-repeat;
+  mask: var(--icon-chevron) center / contain no-repeat;
+  transition: transform 200ms ease;
+}
+.post-toc[open] summary::after { transform: rotate(180deg); }
+.post-toc summary:hover { color: var(--color-teal-cta); }
+.post-toc summary:hover::after { background-color: var(--color-teal-cta); }
+.post-toc nav { padding: 0.5rem 1.25rem 1.15rem; }
+.post-toc ol { margin: 0; padding-left: 1.35rem; }
+.post-toc li { margin: 0.4rem 0; font-size: 0.9rem; }
+
+.post-code-block {
+  max-width: 100%;
+  margin: 1.75rem 0;
+  border: 1px solid var(--color-line);
+  border-radius: var(--post-radius);
+  background: var(--color-paper-deep);
+  overflow: hidden;
+}
+.post-code-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 2.6rem;
+  padding: 0.4rem 0.75rem;
+  border-bottom: 1px solid var(--color-line);
+}
+.post-code-label {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--color-ink-soft);
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.post-copy-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.75rem;
+  transition: border-color 160ms ease, color 160ms ease, transform 120ms ease;
+}
+.post-copy-icon { width: 0.85rem; height: 0.85rem; flex: none; }
+.post-copy-icon-check { display: none; }
+.post-copy-button.is-copied .post-copy-icon-copy { display: none; }
+.post-copy-button.is-copied .post-copy-icon-check { display: block; }
+.post-copy-button.is-copied { border-color: var(--color-teal-cta); color: var(--color-teal-cta); }
+.post-copy-button:hover { border-color: var(--color-teal-cta); color: var(--color-teal-cta); }
+.post-copy-button:active { transform: scale(0.96); }
+.post-copy-button:disabled { opacity: 0.6; cursor: wait; }
+.post-copy-status { color: var(--color-ink-soft); font-size: 0.75rem; }
+.post-copy-status.is-copied { color: var(--color-teal-cta); font-weight: 650; }
+.post-copy-status.is-error { color: var(--color-ink); font-weight: 650; }
+.post-code-block pre { margin: 0; border: 0; border-radius: 0; }
+
+.post-body details > summary:focus-visible,
+.post-toc summary:focus-visible,
+.post-copy-button:focus-visible,
+.post-back-link:focus-visible,
+.post-body a:focus-visible,
+.post-topics a:focus-visible,
+.post-toc a:focus-visible,
+.post-body pre:focus-visible,
+.post-table-scroll:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 3px;
+}
+.post-toc a { color: var(--color-ink-soft); text-decoration: underline; text-underline-offset: 0.2em; }
+.post-toc a:hover { color: var(--color-ink); }
+.post-page pre { scrollbar-color: var(--color-ink-soft) var(--color-paper-deep); }
+.post-body [id] { scroll-margin-top: var(--post-scroll-offset); }
+
+@media (max-width: 48rem) {
+  .post-page { --post-scroll-offset: 9rem; padding: 9rem 1.5rem 4rem; }
+  .post-header { margin-top: 2.5rem; }
+  .post-header h1 { font-size: clamp(2rem, 10vw, 3rem); }
+  .post-reading-column { margin-top: 2.75rem; font-size: 1rem; }
+  .post-body pre { border-radius: 0.6rem; }
+  .post-body .post-callout,
+  .post-body .post-figure--portrait,
+  .post-notices,
+  .post-toc,
+  .post-code-block,
+  .post-table-scroll { border-radius: 0.6rem; }
+  .post-code-toolbar { flex-wrap: wrap; }
+  .post-copy-button { margin-left: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-page *,
+  .post-page *::before,
+  .post-page *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import PawPrint from '../common/PawPrint';
-import { useLanguage } from '../../context/useLanguage';
 
 const ExperienceCard = ({
   company,
@@ -10,8 +9,8 @@ const ExperienceCard = ({
   subProjects,
   description,
   isCurrent = false,
+  lang = 'en',
 }) => {
-  const { lang } = useLanguage();
   const cardClasses = isCurrent ? 'border-teal p-8' : 'border-line p-6';
 
   return (

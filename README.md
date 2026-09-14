@@ -20,10 +20,10 @@ Personal profile website built with React, Vite, and Tailwind CSS. Featuring a "
 
 ```bash
 # Install dependencies
-pnpm install
+bun install
 
 # Run development server
-pnpm dev
+bun run dev
 ```
 
 Detailed technical breakdown and coding standards are available in the **Source of Truth**:

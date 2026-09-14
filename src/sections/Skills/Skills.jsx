@@ -1,11 +1,8 @@
 import React from 'react';
 import { CatFace, SkillBadge } from '../../components/common';
-import { useLanguage } from '../../context/useLanguage';
 
-const Skills = ({ skills }) => {
-  const { content } = useLanguage();
+const Skills = ({ skills, content }) => {
   const { skills: skillsContent } = content;
-
   return (
     <section className="pt-32 sm:pt-24 pb-24 px-6 bg-paper-deep" id="skills">
       <div className="max-w-5xl mx-auto">

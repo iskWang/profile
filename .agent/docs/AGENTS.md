@@ -9,9 +9,9 @@ A React-based personal profile portfolio.
 - **Hosting:** Cloudflare Pages (via Wrangler).
 
 ## Development Commands
-- `pnpm dev`: Start Vite development server.
-- `pnpm build`: Build the production bundle.
-- `pnpm deploy`: Deploy to Cloudflare Pages.
+- `bun run dev`: Start Astro development server.
+- `bun run build`: Build the production output.
+- `bun run deploy`: Deploy to Cloudflare Workers.
 
 ## Code Style & Conventions
 - **Component Structure:**
