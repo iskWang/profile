@@ -71,7 +71,7 @@ export function renderLlmsMarkdown(resumes) {
     `- [中文履歷](${site}/resume.zh.md)`,
     `- [English PDF](${site}/JoshWang_EN_Resume.pdf)`,
     `- [中文 PDF](${site}/JoshWang_ZH_Resume.pdf)`,
-    `- [Sitemap](${site}/sitemap.xml)`,
+    `- [Sitemap](${site}/sitemap-index.xml)`,
     `- [API catalog](${site}/.well-known/api-catalog)`,
     `- [Agent profile](${site}/.well-known/agent-skills/get-profile.md)`,
   ].join("\n");

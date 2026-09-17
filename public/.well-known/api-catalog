@@ -4,7 +4,7 @@
       "anchor": "https://joshwang.dev/",
       "describedby": [
         {
-          "href": "https://joshwang.dev/sitemap.xml",
+          "href": "https://joshwang.dev/sitemap-index.xml",
           "type": "application/xml"
         }
       ],

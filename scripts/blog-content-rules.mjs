@@ -142,6 +142,19 @@ export function resolveWikilinks(html, index, lang) {
   return serialize(fragment);
 }
 
+function validateHtmlWikilinks(html, index, lang, file) {
+  const fragment = parseFragment(html);
+  function visit(node) {
+    if (['code', 'pre', 'script', 'style', 'a'].includes(node.tagName)) return;
+    if (node.nodeName === '#text') {
+      if (node.value.includes('[[')) wikilinks(node.value, index, lang, file, () => '');
+      return;
+    }
+    node.childNodes?.forEach(visit);
+  }
+  visit(fragment);
+}
+
 function validateImage(src, alt, post) {
   const prefix = `/blog/assets/${postIdentity(post.path).slug}/`;
   if (!alt?.trim()) throw fail(post.path, 'image alt must be non-empty');
@@ -171,6 +184,7 @@ export function validatePost(post, index) {
     if (node.type === 'image') validateImage(node.url, node.alt, post);
     if (node.type === 'imageReference') validateImage(definitions.get(node.identifier) ?? '', node.alt, post);
     if (node.type === 'html') {
+      validateHtmlWikilinks(node.value, index, post.data.lang, post.path);
       const fragment = parseFragment(node.value);
       function images(element) {
         if (element.tagName === 'img') {
@@ -196,6 +210,9 @@ export function remarkBlogWikilinks() {
     function visit(node) {
       if (['code', 'inlineCode', 'link', 'linkReference'].includes(node.type) || !node.children) return;
       node.children = node.children.flatMap(child => {
+        if (child.type === 'html' && child.value.includes('[[')) {
+          return [{ type: 'html', value: resolveWikilinks(child.value, index, lang) }];
+        }
         if (child.type !== 'text' || !child.value.includes('[[')) { visit(child); return [child]; }
         const html = wikilinks(child.value, index, lang, path.relative(root, file.path), (href, label) => `<a href="${href}">${escapeHtml(label)}</a>`, escapeHtml);
         return [{ type: 'html', value: html }];

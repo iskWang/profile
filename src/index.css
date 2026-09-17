@@ -805,6 +805,7 @@ html[lang="zh-TW"] .post-header h1 { max-width: 18em; }
 .post-body a:focus-visible,
 .post-topics a:focus-visible,
 .post-toc a:focus-visible,
+.post-related-card:focus-visible,
 .post-body pre:focus-visible,
 .post-table-scroll:focus-visible {
   outline: 2px solid var(--color-teal);
@@ -814,6 +815,24 @@ html[lang="zh-TW"] .post-header h1 { max-width: 18em; }
 .post-toc a:hover { color: var(--color-ink); }
 .post-page pre { scrollbar-color: var(--color-ink-soft) var(--color-paper-deep); }
 .post-body [id] { scroll-margin-top: var(--post-scroll-offset); }
+
+.post-related { width: 100%; margin: 3.5rem auto 0; }
+.post-related-heading { margin: 0 0 1.25rem; color: var(--color-ink); font-size: 1.4rem; font-weight: 700; }
+.post-related-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.post-related-card {
+  display: block;
+  padding: 1.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--post-radius);
+  background: var(--color-paper-deep);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 160ms ease;
+}
+.post-related-card:hover { border-color: var(--color-teal-cta); }
+.post-related-date { margin: 0; color: var(--color-ink-soft); font-size: 0.85rem; }
+.post-related-card h3 { margin: 0.4rem 0; color: var(--color-ink); font-size: 1.05rem; font-weight: 700; }
+.post-related-card p:not(.post-related-date) { margin: 0; color: var(--color-ink-soft); font-size: 0.9rem; line-height: 1.5; }
 
 @media (max-width: 48rem) {
   .post-page { --post-scroll-offset: 9rem; padding: 9rem 1.5rem 4rem; }
@@ -825,6 +844,7 @@ html[lang="zh-TW"] .post-header h1 { max-width: 18em; }
   .post-body .post-figure--portrait,
   .post-notices,
   .post-toc,
+  .post-related-card,
   .post-code-block,
   .post-table-scroll { border-radius: 0.6rem; }
   .post-code-toolbar { flex-wrap: wrap; }

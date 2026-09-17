@@ -30,4 +30,4 @@ Allow: /
 
 Content-Signal: ai-train=no, search=yes, ai-input=no
 
-Sitemap: https://joshwang.dev/sitemap.xml
+Sitemap: https://joshwang.dev/sitemap-index.xml

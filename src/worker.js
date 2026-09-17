@@ -18,34 +18,12 @@ export default {
       return Response.redirect(`${env.SITE_URL}${url.pathname}${url.search}`, 301);
     }
 
-    const acceptLanguage = request.headers.get('Accept-Language') || '';
-    if (url.pathname === '/') {
-      const target = prefersEnglish(acceptLanguage) ? '/en' : '/zh-tw';
-      return Response.redirect(`${url.origin}${target}`, 302);
-    }
-
-    if (url.pathname === '/blog' || (url.pathname.startsWith('/blog/') && !url.pathname.startsWith('/blog/assets/'))) {
-      const locale = prefersEnglish(acceptLanguage) ? 'en' : 'zh-tw';
-      const target = url.pathname.replace(/^\/blog/, `/${locale}/blog`);
-      return Response.redirect(`${url.origin}${target}${url.search}`, 302);
-    }
-
     const accept = request.headers.get('Accept') || '';
+    const isHomepage = url.pathname === '/' || url.pathname === '/zh-tw' || url.pathname === '/en';
 
-    if (url.pathname === '/deck' || url.pathname === '/deck/' || url.pathname === '/deck/index.html') {
-      return Response.redirect(`${url.origin}/slides`, 301);
-    }
-
-    if (url.pathname === '/slides') {
-      const slidesRequest = new Request(new URL('/slides/index.html', url), {
-        method: request.method,
-        headers: request.headers,
-      });
-      return env.ASSETS.fetch(slidesRequest);
-    }
-
-    // Markdown for Agents: serve llms.txt when Accept: text/markdown on homepage
-    if (accept.includes('text/markdown') && url.pathname === '/') {
+    // Markdown for Agents: serve llms.txt when Accept: text/markdown on any homepage path.
+    // Must run before the locale redirect below, otherwise '/' never reaches this branch.
+    if (accept.includes('text/markdown') && isHomepage) {
       const mdRequest = new Request(new URL('/llms.txt', url), {
         method: request.method,
         headers: request.headers,
@@ -60,6 +38,30 @@ export default {
           },
         });
       }
+    }
+
+    const acceptLanguage = request.headers.get('Accept-Language') || '';
+    if (url.pathname === '/') {
+      const target = prefersEnglish(acceptLanguage) ? '/en' : '/zh-tw';
+      return Response.redirect(`${url.origin}${target}`, 302);
+    }
+
+    if (url.pathname === '/blog' || (url.pathname.startsWith('/blog/') && !url.pathname.startsWith('/blog/assets/'))) {
+      const locale = prefersEnglish(acceptLanguage) ? 'en' : 'zh-tw';
+      const target = url.pathname.replace(/^\/blog/, `/${locale}/blog`);
+      return Response.redirect(`${url.origin}${target}${url.search}`, 302);
+    }
+
+    if (url.pathname === '/deck' || url.pathname === '/deck/' || url.pathname === '/deck/index.html') {
+      return Response.redirect(`${url.origin}/slides`, 301);
+    }
+
+    if (url.pathname === '/slides') {
+      // Forward the request as-is: with html_handling "drop-trailing-slash", the canonical
+      // URL for a folder index is the folder path without a trailing slash (matches /folder
+      // in Cloudflare's routing table). Rewriting to /slides/index.html instead hits the
+      // /folder/index.html row, which 307-redirects back to /slides and loops forever.
+      return env.ASSETS.fetch(request);
     }
 
     const response = await env.ASSETS.fetch(request);

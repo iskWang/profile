@@ -69,6 +69,25 @@ describe('blog semantic and security gates', () => {
   test('Obsidian embeds reject publishing', () => {
     expect(() => validatePost(change({}, '![[hello-blog]]'), index)).toThrow('Obsidian embed');
   });
+  test('raw HTML blocks are validated for wikilinks and embeds, not just images', () => {
+    expect(() => validatePost(change({}, '<div>[[missing]]</div>'), index)).toThrow('unresolved wikilink');
+    expect(() => validatePost(change({}, '<div>![[hello-blog]]</div>'), index)).toThrow('Obsidian embed');
+    validatePost(change({}, '<div>[[hello-blog]]</div>'), index);
+  });
+  test('raw HTML code/pre blocks stay exempt from wikilink validation', () => {
+    validatePost(change({}, '<pre><code>[[missing]]</code></pre>'), index);
+  });
+  test('remark compile rewrites wikilinks inside raw HTML blocks into real links', () => {
+    const parser = unified().use(remarkParse);
+    const tree = parser.parse('<div>See [[hello-blog]] for details.</div>');
+    remarkBlogWikilinks()(tree, { path: `${process.cwd()}/${zh.path}` });
+    expect(tree.children[0].value).toBe('<div>See <a href="/zh-tw/blog/hello-blog">hello-blog</a> for details.</div>');
+  });
+  test('remark compile still rejects unresolved wikilinks and embeds inside raw HTML blocks', () => {
+    const parser = unified().use(remarkParse);
+    expect(() => remarkBlogWikilinks()(parser.parse('<div>[[missing]]</div>'), { path: `${process.cwd()}/${zh.path}` })).toThrow('unresolved wikilink');
+    expect(() => remarkBlogWikilinks()(parser.parse('<div>![[hello-blog]]</div>'), { path: `${process.cwd()}/${zh.path}` })).toThrow('Obsidian embed');
+  });
   test('images require meaningful alternative text', () => {
     expect(() => validatePost(change({}, '![](/blog/assets/hello-blog/x.png)'), index)).toThrow('alt');
     expect(() => validatePost(change({}, '<img src="/blog/assets/hello-blog/x.png" alt=" ">'), index)).toThrow('alt');

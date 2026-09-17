@@ -71,6 +71,17 @@ const Header = ({ lang, variant = 'home', langHref, scrollToSection, progress = 
   }, [variant, sections]);
 
   const home = variant === 'home';
+  const blogLink = (
+    <a
+      href={lang === 'en' ? '/en/blog' : '/zh-tw/blog'}
+      className={`spring-hover whitespace-nowrap inline-flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal rounded px-1 ${home ? 'text-ink-soft hover:text-teal' : 'text-teal font-semibold'}`}
+    >
+      {lang === 'en' ? 'Blog' : '文章'}
+      <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+    </a>
+  );
   return (
     <header className="fixed top-0 w-full z-50 bg-paper border-b border-line">
       {progress && (
@@ -97,18 +108,14 @@ const Header = ({ lang, variant = 'home', langHref, scrollToSection, progress = 
               ) : (
                 <a href={`/${lang === 'en' ? 'en' : 'zh-tw'}#${section.id}`} className="spring-hover whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal rounded px-1 text-ink-soft hover:text-teal">{section.label}</a>
               )}
+              {index === 0 && (
+                <>
+                  <span className="text-line sm:hidden">/</span>
+                  {blogLink}
+                </>
+              )}
             </React.Fragment>
           ))}
-          <span className="text-line sm:hidden">/</span>
-          <a
-            href={lang === 'en' ? '/en/blog' : '/zh-tw/blog'}
-            className={`spring-hover whitespace-nowrap inline-flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal rounded px-1 ${home ? 'text-ink-soft hover:text-teal' : 'text-teal font-semibold'}`}
-          >
-            {lang === 'en' ? 'Blog' : '文章'}
-            <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
           {langHref && <a href={langHref} aria-label={lang === 'zh' ? 'EN — 切換為英文' : '中文 — Switch to Chinese'} className="ml-2 font-mono text-xs px-3 py-2 min-h-[44px] flex items-center rounded-lg border border-line text-ink-soft hover:text-teal hover:border-teal transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal">{lang === 'zh' ? 'EN' : '中文'}</a>}
           <button id="theme-toggle" type="button" aria-label="Toggle theme" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-line text-ink-soft transition-all hover:border-teal hover:text-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal">
             <ThemeIcons />

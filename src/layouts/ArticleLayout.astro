@@ -14,6 +14,15 @@ const otherLang = isZh ? 'en' : 'zh';
 const otherPrefix = isZh ? 'en' : 'zh-tw';
 const counterpart = (await getCollection('blog')).find(candidate => candidate.id === `${slug}.${otherLang}` && !candidate.data.draft);
 const langHref = counterpart ? `/${otherPrefix}/blog/${slug}` : undefined;
+const related = (await getCollection('blog', ({ data }) => data.lang === post.data.lang && !data.draft))
+  .filter(candidate => candidate.id !== post.id)
+  .map(candidate => ({
+    post: candidate,
+    shared: candidate.data.topics.filter(topic => post.data.topics.includes(topic)).length,
+  }))
+  .sort((a, b) => b.shared - a.shared || b.post.data.date.localeCompare(a.post.data.date))
+  .slice(0, 3)
+  .map(entry => entry.post);
 const { Content, headings } = await render(post);
 const sections = headings.filter(heading => heading.depth === 2);
 const formatDate = (date: string) => new Intl.DateTimeFormat(locale, {
@@ -23,12 +32,12 @@ const labels = isZh ? {
   back: '回到文章列表', information: '文章資訊', published: '發表於', updated: '更新於',
   topics: '文章主題', notes: '文章說明', adapted: '改寫自', translation: '本文由機器輔助翻譯。',
   contents: '這篇聊什麼', copy: '複製', copied: '已複製', failed: '無法自動複製。請選取程式碼後手動複製。',
-  table: '表格，可左右捲動', code: '程式碼',
+  table: '表格，可左右捲動', code: '程式碼', related: '相關文章',
 } : {
   back: 'Back to all articles', information: 'Article information', published: 'Published', updated: 'Updated',
   topics: 'Topics', notes: 'Article notes', adapted: 'Adapted from', translation: 'This article was translated with machine assistance.',
   contents: 'In this article', copy: 'Copy', copied: 'Copied', failed: 'Could not copy automatically. Select the code and copy it manually.',
-  table: 'Table, scroll horizontally', code: 'Code',
+  table: 'Table, scroll horizontally', code: 'Code', related: 'Related posts',
 };
 ---
 
@@ -72,6 +81,20 @@ const labels = isZh ? {
         </details>
       )}
       <div class="post-body post-reading-column"><Content /></div>
+      {related.length > 0 && (
+        <section class="post-related" aria-label={labels.related}>
+          <h2 class="post-related-heading">{labels.related}</h2>
+          <div class="post-related-grid">
+            {related.map(item => (
+              <a class="post-related-card" href={`/${isZh ? 'zh-tw' : 'en'}/blog/${item.id.replace(/\.(?:zh|en)$/, '')}`}>
+                <p class="post-related-date"><time datetime={item.data.date}>{item.data.date}</time></p>
+                <h3>{item.data.title}</h3>
+                <p>{item.data.summary}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
     </article>
   </main>
   <Footer />
