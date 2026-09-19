@@ -8,7 +8,7 @@ const LatestPosts = ({ posts, lang }) => {
   const strings = BLOG_STRINGS[lang];
 
   return (
-    <section id="writing" className="pt-24 pb-24 px-6 bg-paper-deep">
+    <section id="writing" className="scroll-mt-32 sm:scroll-mt-20 pt-24 pb-24 px-6 bg-paper-deep">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8">
           <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-ink">{strings.latestTitle}</h2>
