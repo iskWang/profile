@@ -1,0 +1,218 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Layout from './Layout.astro';
+import Header from '../components/Header/Header.jsx';
+import Footer from '../components/Footer/Footer.jsx';
+
+interface Props { post: CollectionEntry<'blog'> }
+const { post } = Astro.props;
+const isZh = post.data.lang === 'zh';
+const locale = isZh ? 'zh-TW' : 'en';
+const prefix = isZh ? 'zh-tw' : 'en';
+const slug = post.id.replace(/\.(zh|en)$/, '');
+const otherLang = isZh ? 'en' : 'zh';
+const otherPrefix = isZh ? 'en' : 'zh-tw';
+const counterpart = (await getCollection('blog')).find(candidate => candidate.id === `${slug}.${otherLang}` && !candidate.data.draft);
+const langHref = counterpart ? `/${otherPrefix}/blog/${slug}` : undefined;
+const related = (await getCollection('blog', ({ data }) => data.lang === post.data.lang && !data.draft))
+  .filter(candidate => candidate.id !== post.id)
+  .map(candidate => ({
+    post: candidate,
+    shared: candidate.data.topics.filter(topic => post.data.topics.includes(topic)).length,
+  }))
+  .sort((a, b) => b.shared - a.shared || b.post.data.date.localeCompare(a.post.data.date))
+  .slice(0, 3)
+  .map(entry => entry.post);
+const { Content, headings } = await render(post);
+const sections = headings.filter(heading => heading.depth === 2);
+const formatDate = (date: string) => new Intl.DateTimeFormat(locale, {
+  year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC',
+}).format(new Date(date));
+const labels = isZh ? {
+  back: '回到文章列表', information: '文章資訊', published: '發表於', updated: '更新於',
+  topics: '文章主題', notes: '文章說明', adapted: '改寫自', translation: '本文由機器輔助翻譯。',
+  contents: '這篇聊什麼', copy: '複製', copied: '已複製', failed: '無法自動複製。請選取程式碼後手動複製。',
+  table: '表格，可左右捲動', code: '程式碼', related: '相關文章',
+} : {
+  back: 'Back to all articles', information: 'Article information', published: 'Published', updated: 'Updated',
+  topics: 'Topics', notes: 'Article notes', adapted: 'Adapted from', translation: 'This article was translated with machine assistance.',
+  contents: 'In this article', copy: 'Copy', copied: 'Copied', failed: 'Could not copy automatically. Select the code and copy it manually.',
+  table: 'Table, scroll horizontally', code: 'Code', related: 'Related posts',
+};
+---
+
+<Layout lang={locale}>
+  <title slot="head">{post.data.title} — Josh Wang</title>
+  <meta slot="head" name="description" content={post.data.summary} />
+  <link slot="head" rel="canonical" href={`https://joshwang.dev/${prefix}/blog/${slug}`} />
+  <link slot="head" rel="alternate" hreflang={locale} href={`https://joshwang.dev/${prefix}/blog/${slug}`} />
+  {counterpart && <link slot="head" rel="alternate" hreflang={isZh ? 'en' : 'zh-TW'} href={`https://joshwang.dev${langHref}`} />}
+  <Header lang={post.data.lang} variant="page" langHref={langHref} progress />
+  <main class="post-page">
+    <article class="post-shell" data-article data-copy={labels.copy} data-copied={labels.copied} data-copy-failed={labels.failed} data-table-label={labels.table} data-code-label={labels.code}>
+      <a class="post-back-link" href={`/${prefix}/blog`}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m12 5-7 7 7 7M5 12h14" /></svg>
+        {labels.back}
+      </a>
+      <header class="post-header">
+        <h1>{post.data.title}</h1>
+        <p class="post-summary">{post.data.summary}</p>
+        <div class="post-meta" aria-label={labels.information}>
+          <span>Josh Wang</span><span aria-hidden="true">·</span>
+          <time datetime={post.data.date}>{labels.published} {formatDate(post.data.date)}</time>
+          {post.data.updated && <><span aria-hidden="true">·</span><time datetime={post.data.updated}>{labels.updated} {formatDate(post.data.updated)}</time></>}
+        </div>
+        <ul class="post-topics" aria-label={labels.topics}>
+          {post.data.topics.map(topic => <li><a href={`/${prefix}/blog#${topic}`}>{topic}</a></li>)}
+        </ul>
+      </header>
+      {(post.data.origin === 'adapted' || post.data.translation === 'machine-assisted') && (
+        <aside class="post-notices" aria-label={labels.notes}>
+          {post.data.origin === 'adapted' && post.data.source && <p><strong>{labels.adapted}</strong> <a href={post.data.source} rel="noopener noreferrer">{post.data.source_title ?? post.data.source}</a>{post.data.source_date && <> ({post.data.source_date})</>}</p>}
+          {post.data.translation === 'machine-assisted' && <p>{labels.translation}</p>}
+        </aside>
+      )}
+      {sections.length >= 3 && (
+        <details class="post-toc">
+          <summary>{labels.contents}</summary>
+          <nav aria-label={labels.contents}>
+            <ol>{sections.map(section => <li><a href={`#${section.slug}`}>{section.text}</a></li>)}</ol>
+          </nav>
+        </details>
+      )}
+      <div class="post-body post-reading-column"><Content /></div>
+      {related.length > 0 && (
+        <section class="post-related" aria-label={labels.related}>
+          <h2 class="post-related-heading">{labels.related}</h2>
+          <div class="post-related-grid">
+            {related.map(item => (
+              <a class="post-related-card" href={`/${isZh ? 'zh-tw' : 'en'}/blog/${item.id.replace(/\.(?:zh|en)$/, '')}`}>
+                <p class="post-related-date"><time datetime={item.data.date}>{item.data.date}</time></p>
+                <h3>{item.data.title}</h3>
+                <p>{item.data.summary}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  const article = document.querySelector<HTMLElement>('[data-article]');
+  if (article) {
+    const labels = article.dataset;
+    article.querySelectorAll<HTMLPreElement>('.post-body pre').forEach(pre => {
+      const code = pre.querySelector('code');
+      if (!code) return;
+      const caption = pre.previousElementSibling;
+      const hasCaption = caption?.classList.contains('code-caption');
+      const name = (hasCaption ? caption.textContent : pre.dataset.language) || labels.codeLabel!;
+      const block = document.createElement('div');
+      block.className = 'post-code-block';
+      const toolbar = document.createElement('div');
+      toolbar.className = 'post-code-toolbar';
+      const label = document.createElement('span');
+      label.className = 'post-code-label';
+      label.textContent = name;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'post-copy-button';
+      button.innerHTML = `
+        <svg class="post-copy-icon post-copy-icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="1.5"/><path d="M5.5 15V6a1.5 1.5 0 0 1 1.5-1.5h9"/></svg>
+        <svg class="post-copy-icon post-copy-icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>
+        <span class="post-copy-label">${labels.copy}</span>
+      `;
+      button.setAttribute('aria-label', `${labels.copy}: ${name}`);
+      const status = document.createElement('span');
+      status.className = 'post-copy-status';
+      status.setAttribute('role', 'status');
+      pre.setAttribute('aria-label', name);
+      pre.tabIndex = 0;
+      toolbar.append(label, button, status);
+      pre.before(block);
+      block.append(toolbar, pre);
+      if (hasCaption) caption.remove();
+      let resetTimer: ReturnType<typeof setTimeout> | undefined;
+      button.addEventListener('click', async () => {
+        clearTimeout(resetTimer);
+        status.textContent = '';
+        status.classList.remove('is-copied', 'is-error');
+        button.classList.remove('is-copied');
+        button.disabled = true;
+        let copied = false;
+        try {
+          await navigator.clipboard.writeText(code.textContent || '');
+          copied = true;
+        } catch {
+          // LAN HTTP previews lack Clipboard API; keep a user-initiated fallback.
+          const selection = window.getSelection();
+          const saved = selection && selection.rangeCount ? selection.getRangeAt(0).cloneRange() : null;
+          const range = document.createRange();
+          range.selectNodeContents(code);
+          selection?.removeAllRanges();
+          selection?.addRange(range);
+          try { copied = document.execCommand('copy'); } catch { /* Report failure below. */ }
+          if (copied) {
+            selection?.removeAllRanges();
+            if (saved) selection?.addRange(saved);
+          }
+        }
+        status.textContent = copied ? labels.copied! : labels.copyFailed!;
+        status.classList.add(copied ? 'is-copied' : 'is-error');
+        if (copied) {
+          button.classList.add('is-copied');
+          resetTimer = setTimeout(() => button.classList.remove('is-copied'), 1800);
+        }
+        button.disabled = false;
+      });
+    });
+    article.querySelectorAll<HTMLTableElement>('.post-body table').forEach(table => {
+      const region = document.createElement('div');
+      region.className = 'post-table-scroll';
+      region.tabIndex = 0;
+      region.setAttribute('role', 'region');
+      region.setAttribute('aria-label', table.caption?.textContent || labels.tableLabel!);
+      table.before(region);
+      region.append(table);
+    });
+    const revealHash = () => {
+      let id;
+      try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+      const target = document.getElementById(id);
+      if (!target || !article.contains(target)) return;
+      let opened = false;
+      for (let parent = target.parentElement; parent; parent = parent.parentElement) {
+        if (parent instanceof HTMLDetailsElement && !parent.open) {
+          parent.open = true;
+          opened = true;
+        }
+      }
+      if (opened) target.scrollIntoView();
+    };
+    window.addEventListener('hashchange', revealHash);
+    revealHash();
+
+    // Reading-progress cue for the fixed header's border-bottom: 0 at the
+    // top of the article, 1 once its last line reaches the bottom of the
+    // viewport. rAF-throttled so scroll stays smooth.
+    const root = document.documentElement;
+    let progressFrame: number | undefined;
+    const updateProgress = () => {
+      progressFrame = undefined;
+      const rect = article.getBoundingClientRect();
+      const scrollable = rect.height - window.innerHeight;
+      const value = scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 1;
+      root.style.setProperty('--reading-progress', value.toFixed(4));
+    };
+    const queueProgressUpdate = () => {
+      if (progressFrame !== undefined) return;
+      progressFrame = requestAnimationFrame(updateProgress);
+    };
+    window.addEventListener('scroll', queueProgressUpdate, { passive: true });
+    window.addEventListener('resize', queueProgressUpdate);
+    updateProgress();
+  }
+</script>

@@ -1,13 +1,18 @@
 # Josh Wang — Resume
 
-Canonical Markdown resumes:
+> Full-stack software developer focused on scalable frontend systems, AI-assisted development workflows, and legacy system modernization.
 
-- [English resume](/resume.en.md)
-- [中文履歷](/resume.zh.md)
-- [English PDF](/JoshWang_EN_Resume.pdf)
-- [中文 PDF](/JoshWang_ZH_Resume.pdf)
+## Files and machine-readable resources
 
-## English
+- [English resume](https://joshwang.dev/resume.en.md)
+- [中文履歷](https://joshwang.dev/resume.zh.md)
+- [English PDF](https://joshwang.dev/JoshWang_EN_Resume.pdf)
+- [中文 PDF](https://joshwang.dev/JoshWang_ZH_Resume.pdf)
+- [Sitemap](https://joshwang.dev/sitemap-index.xml)
+- [API catalog](https://joshwang.dev/.well-known/api-catalog)
+- [Agent profile](https://joshwang.dev/.well-known/agent-skills/get-profile.md)
+
+## English profile
 
 **Josh Wang — Software Developer**
 
@@ -21,7 +26,7 @@ Taipei, Taiwan
 - **Front-End Lead** — OEC Group (May 2019 – Oct 2021)
 - **Web Developer** — Startups (Fullinn, CatFi, myTreat, Ecowork) (Jul 2014 – Apr 2019)
 
-## 中文
+## 中文個人資料
 
 **Josh Wang — Software Developer**
 
@@ -29,7 +34,7 @@ Taipei, Taiwan
 
 10+ 年全端開發經驗（前端為主），涵蓋 SaaS、資安、跨國內部系統與 React Native 主導過 7 個以上 Web 系統與 2 個 Mobile App 架構設計，熟悉 TypeScript、CI/CD、AWS 近期專注於 AI-assisted development workflow 落地、技術債重構與高效產品交付
 
-### Experience
+### 工作經歷
 - **Full-Stack Engineer** — Independent (2023/06 – 至今)
 - **Front-End Developer (Platform & Architecture)** — TeamT5 杜浦數位安全 (2021/10 – 2023/06)
 - **Front-End Lead** — 海碩集團 鑫享科技 (OEC Group) (2019/05 – 2021/10)

@@ -1,11 +1,8 @@
 import React from 'react';
 import { CatFace } from '../../components/common';
-import { useLanguage } from '../../context/useLanguage';
 
-const Contact = () => {
-  const { content } = useLanguage();
+const Contact = ({ content }) => {
   const { contact } = content;
-
   return (
     <section className="pt-32 sm:pt-24 pb-24 px-6 surface-glow" id="contact">
       <div className="max-w-5xl mx-auto text-center">

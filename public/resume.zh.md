@@ -88,8 +88,8 @@ title: Software Developer
   "subtitle": "專注 React / Next.js 前端架構，兼具 Node.js 後端與 AI 開發流程整合經驗的全端工程師",
   "location": "Taipei, Taiwan",
   "email": "spjay1@gmail.com",
-  "site": "profile.joshwang.dev",
-  "siteHref": "https://profile.joshwang.dev",
+  "site": "joshwang.dev",
+  "siteHref": "https://joshwang.dev",
   "sectionLabels": {
     "summary": "個人簡介",
     "achievements": "關鍵成果",

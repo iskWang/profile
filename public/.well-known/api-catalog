@@ -1,16 +1,16 @@
 {
   "linkset": [
     {
-      "anchor": "https://profile.joshwang.dev/",
+      "anchor": "https://joshwang.dev/",
       "describedby": [
         {
-          "href": "https://profile.joshwang.dev/sitemap.xml",
+          "href": "https://joshwang.dev/sitemap-index.xml",
           "type": "application/xml"
         }
       ],
       "alternate": [
         {
-          "href": "https://profile.joshwang.dev/llms.txt",
+          "href": "https://joshwang.dev/llms.txt",
           "type": "text/markdown"
         }
       ]

@@ -1,10 +1,9 @@
 import React from 'react';
 import { CatFace } from '../../components/common';
-import { useLanguage } from '../../context/useLanguage';
+ 
 
 
-const Highlights = () => {
-  const { content } = useLanguage();
+const Highlights = ({ content }) => {
   const { highlights } = content;
 
   return (

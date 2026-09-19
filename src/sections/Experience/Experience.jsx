@@ -1,12 +1,9 @@
 import React from 'react';
 import { CatFace, PawPrint } from '../../components/common';
 import ExperienceCard from '../../components/ExperienceCard';
-import { useLanguage } from '../../context/useLanguage';
 
-const Experience = ({ experiences }) => {
-  const { content } = useLanguage();
+const Experience = ({ experiences, content, lang }) => {
   const { experience } = content;
-
   return (
     <section className="pt-32 sm:pt-24 pb-24 px-6 bg-paper" id="experience">
       <div className="max-w-5xl mx-auto">
@@ -18,7 +15,7 @@ const Experience = ({ experiences }) => {
 
         <div className="space-y-6">
           {experiences.map((exp, i) => (
-            <ExperienceCard key={i} {...exp} isCurrent={i === 0} />
+            <ExperienceCard key={i} {...exp} isCurrent={i === 0} lang={lang} />
           ))}
         </div>
 

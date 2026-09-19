@@ -1,6 +1,5 @@
 import React from 'react';
 import { PawPrint } from '../../components/common';
-import { useLanguage } from '../../context/useLanguage';
 
 const catMascotUrl = '/cat-mascot.webp';
 
@@ -13,8 +12,7 @@ const catMascotUrl = '/cat-mascot.webp';
 
 const TAG_TILT = ['-rotate-2', 'rotate-1', '-rotate-1'];
 
-const Hero = () => {
-  const { content } = useLanguage();
+const Hero = ({ content }) => {
   const { hero } = content;
 
   const metaItems = [hero.title, hero.experience, hero.focus, hero.location].filter(Boolean);

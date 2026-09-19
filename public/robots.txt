@@ -1,4 +1,4 @@
-# robots.txt - profile.joshwang.dev
+# robots.txt - joshwang.dev
 # https://www.rfc-editor.org/rfc/rfc9309
 
 # Default: allow all search crawlers
@@ -30,4 +30,4 @@ Allow: /
 
 Content-Signal: ai-train=no, search=yes, ai-input=no
 
-Sitemap: https://profile.joshwang.dev/sitemap.xml
+Sitemap: https://joshwang.dev/sitemap-index.xml
