@@ -71,15 +71,13 @@ const Header = ({ lang, variant = 'home', langHref, scrollToSection }) => {
   }, [variant, sections]);
 
   const home = variant === 'home';
-  const blogLink = (
-    <a
-      href={lang === 'en' ? '/en/blog' : '/zh-tw/blog'}
-      className={`spring-hover whitespace-nowrap inline-flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal rounded px-1 ${home ? 'text-ink-soft hover:text-teal' : 'text-teal font-semibold'}`}
-    >
+  const blogLink = home ? (
+    <button onClick={() => scroll('writing')} className="spring-hover whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal rounded px-1 text-ink-soft hover:text-teal">
       {lang === 'en' ? 'Blog' : '文章'}
-      <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-      </svg>
+    </button>
+  ) : (
+    <a href={`/${lang === 'en' ? 'en' : 'zh-tw'}#writing`} className="spring-hover whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal rounded px-1 text-ink-soft hover:text-teal">
+      {lang === 'en' ? 'Blog' : '文章'}
     </a>
   );
   return (
