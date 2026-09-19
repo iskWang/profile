@@ -35,4 +35,23 @@ const { lang } = Astro.props;
       try { localStorage.setItem('theme', n); } catch {}
     });
   </script>
+  <script is:inline>
+    (() => {
+      const root = document.documentElement;
+      let frame;
+      const update = () => {
+        frame = undefined;
+        const scrollable = root.scrollHeight - window.innerHeight;
+        const value = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 1;
+        root.style.setProperty('--reading-progress', value.toFixed(4));
+      };
+      const queueUpdate = () => {
+        if (frame !== undefined) return;
+        frame = requestAnimationFrame(update);
+      };
+      window.addEventListener('scroll', queueUpdate, { passive: true });
+      window.addEventListener('resize', queueUpdate);
+      update();
+    })();
+  </script>
 </html>

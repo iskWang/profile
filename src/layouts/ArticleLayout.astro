@@ -194,25 +194,5 @@ const labels = isZh ? {
     };
     window.addEventListener('hashchange', revealHash);
     revealHash();
-
-    // Reading-progress cue for the fixed header's border-bottom: 0 at the
-    // top of the article, 1 once its last line reaches the bottom of the
-    // viewport. rAF-throttled so scroll stays smooth.
-    const root = document.documentElement;
-    let progressFrame: number | undefined;
-    const updateProgress = () => {
-      progressFrame = undefined;
-      const rect = article.getBoundingClientRect();
-      const scrollable = rect.height - window.innerHeight;
-      const value = scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 1;
-      root.style.setProperty('--reading-progress', value.toFixed(4));
-    };
-    const queueProgressUpdate = () => {
-      if (progressFrame !== undefined) return;
-      progressFrame = requestAnimationFrame(updateProgress);
-    };
-    window.addEventListener('scroll', queueProgressUpdate, { passive: true });
-    window.addEventListener('resize', queueProgressUpdate);
-    updateProgress();
   }
 </script>

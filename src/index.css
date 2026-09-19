@@ -550,9 +550,9 @@
 
 /*
  * Reading-progress cue — the header's border-bottom "fills" with the site's
- * teal accent as the reader scrolls through an article. Rendered only when
- * Header receives `progress`, i.e. article pages only (see ArticleLayout.astro,
- * which computes and sets --reading-progress on <html> during scroll).
+ * teal accent as the reader scrolls down any page. Always rendered in
+ * Header.jsx; --reading-progress is computed and set on <html> by a
+ * site-wide inline script in Layout.astro (whole-page scroll fraction).
  * No Tailwind slash-opacity here — see the header bg-opacity bug note in
  * this file's `:root` section; `--color-teal-cta` is a plain hex, safe to
  * use directly.

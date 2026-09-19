@@ -14,7 +14,7 @@ const ThemeIcons = () => (
   </>
 );
 
-const Header = ({ lang, variant = 'home', langHref, scrollToSection, progress = false }) => {
+const Header = ({ lang, variant = 'home', langHref, scrollToSection }) => {
   const [activeSection, setActiveSection] = useState('about');
   const content = CONTENT[lang];
   const sections = [
@@ -84,11 +84,9 @@ const Header = ({ lang, variant = 'home', langHref, scrollToSection, progress = 
   );
   return (
     <header className="fixed top-0 w-full z-50 bg-paper border-b border-line">
-      {progress && (
-        <div className="header-progress" aria-hidden="true">
-          <div className="header-progress-fill" />
-        </div>
-      )}
+      <div className="header-progress" aria-hidden="true">
+        <div className="header-progress-fill" />
+      </div>
       <nav className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
         {home ? (
           <button className="flex items-center gap-2 group text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal rounded spring-hover" onClick={() => scroll('about')}>
