@@ -44,9 +44,9 @@ iCloud Obsidian vault
 
 secret token 不會記在這裡: 套件 API Token, MCP 環境設定, Cloudflare API Token, Access Token, Oauth Client Token，以及 Cloudflare 帳號/AUD 都不放在程式裡
 
-## 我在安全上劃的線
+## 關於外部存取的部份
 
-### 服務只接受 loopback
+### 只接受 loopback(127.0.0.1)
 
 MCP 伺服器只綁 `127.0.0.1:3010`，不能直接從網路存取，Tunnel 是唯一的外部入口。Cloudflare Access 的存取政策只允許帳號擁有者的電子郵件，沒有 Everyone 或 Bypass 規則，Tunnel 端也會用 Access assertion 驗證，避免 Access 應用程式被誤刪時原始服務變成裸露服務
 
