@@ -66,7 +66,7 @@ OAuth 由 Cloudflare Access 處理，提供授權伺服器探索、Dynamic Clien
 
 備份保留 30 天，每日一次代表最多損失一天的修改
 
-<aside class="post-callout post-callout--warning"><strong>快照的界線</strong><p>同一帳號可寫的 NAS 快照只能提供回復點，不能當成防勒索或防主機入侵的不可變備份</p></aside>
+<aside class="post-callout post-callout--warning"><strong>備份的界線</strong><p>同一帳號可寫的 NAS 備份只能提供回復點，不能當成防勒索或防主機入侵的不可變備份</p></aside>
 
 ## 實際 API 驗證結果
 
