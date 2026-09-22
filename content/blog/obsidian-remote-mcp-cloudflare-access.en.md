@@ -108,25 +108,40 @@ So I decided not to add a static OAuth client or compatibility layer for Gemini.
 
 If Gemini fixes its DCR implementation later, I can retry the same URL without rebuilding the infrastructure
 
-## Current status and what I will do next
+## Getting Claude web connected
+
+For individual Free/Pro/Max accounts: go to **Customize > Connectors** (`https://claude.ai/customize/connectors`), click **+** next to Connectors, choose **Add custom connector**, and paste `https://mcp.example.com/mcp`. The newer two-step dialog also asks for a display name; after Continue, Claude checks the URL and marks the detected authentication method as **Detected**
+
+For authentication you can pick Claude's built-in identity (CIMD), **Register automatically** (DCR — what I used, since Cloudflare Access advertises a `registration_endpoint`), or bring your own OAuth Client ID (the secret can stay blank). After adding it, go back to Customize > Connectors and click **Connect**; it redirects to the Cloudflare Access login page (One-time PIN, in my case) and returns to Claude once that's done
+
+Then click **+ > Connectors** in the bottom-left of the chat composer and toggle the connector on. Per-tool allow/needs-approval/block settings live on the same Tool permissions page. Team/Enterprise accounts need an Owner to add the connector under Organization settings > Connectors first, then members click Connect from Customize > Connectors
+
+One limitation worth noting: Claude reaches the MCP server from Anthropic's cloud, not from the browser or device, so the MCP endpoint and OAuth discovery must be publicly reachable — an internal-network or VPN-only endpoint will not work
+
+## Getting ChatGPT connected: set up on web, use on web and iOS
+
+The official docs only document the web setup flow: enable Developer mode (**Settings → Security and login → Developer mode**, or Settings → Apps → Advanced Settings depending on account type), open `https://chatgpt.com/plugins`, and click **+** to create a developer-mode app. The creation form has a **Name** field — I entered `obsidian-macmini`, and that name is exactly what you later type after `@` in the chat composer, so it's worth picking the handle you actually want up front. Then fill in the endpoint, choose an authentication method, click **Scan Tools**, complete OAuth if prompted, then click **Create**. A draft has to be published before it shows up in the usable connector list
+
+But once the connector exists and is published, **I tested it on both web and the iOS app, and both work**: typing `@obsidian-macmini` directly in the chat box triggers a call to this MCP. The official FAQ saying "MCP apps are web only" refers specifically to creating/registering a connector; invoking an already-published connector happens through the `@`-mention in the composer, and I verified that on both web and iOS
+
+**Why the `@` mention works on iOS too:** OpenAI's docs define `@`/`+` as a general, surface-agnostic way to designate an available app or plugin in a conversation — that layer of docs never says web-only. The Apps SDK explicitly says these apps are built on MCP. What is officially scoped to "web only" is Developer mode, the create/test/publish surface for connectors. The reasonable reading: `@` mention is a more general app/plugin invocation entry point that works across platforms once a connector is published, while Developer mode's web restriction is specifically about setting one up. To be precise: OpenAI has not published documentation confirming whether the iOS `@` invocation internally uses the exact same MCP tool-calling path as Developer mode, so this should be reported as an observed behavior, not as officially documented iOS MCP support
+
+## Current status
 
 | Client | Status |
 | --- | --- |
-| Claude (web / iOS) | Custom connector created; in the OAuth / tool permissions flow; nonce read-write verification not done yet |
-| ChatGPT (web) | Not tested; should use the same URL with OAuth in Developer mode; the iOS App does not support it |
-| Gemini Apps | Tested and failed |
-
-Next, I will:
-
-- Create a smoke note with a random nonce: `00_Inbox/mcp-smoke-<nonce>.md`
-- Confirm in the terminal that the file content matches the nonce
-- Ask Claude to read back the same nonce
-- Delete the smoke note after the test
-- After Claude passes, run the same verification independently in ChatGPT web Developer mode
-- If I revisit Gemini later, first obtain the registration request it actually sends instead of guessing
+| Claude (web / iOS) | Custom connector created and OAuth authorized; tools can be called once the connector is toggled on |
+| ChatGPT (web / iOS) | Created and published via Developer mode on web; both web and the iOS app trigger it with `@obsidian-macmini`, tested on both |
+| Gemini Apps | Tested and failed, stuck on DCR |
 
 ## References
 
 - [Cloudflare Access Managed OAuth](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/)
-- [Claude Custom Connectors](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)
+- [Claude Custom Connectors — Get started](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)
+- [Claude Remote MCP custom connector docs](https://claude.com/docs/connectors/custom/remote-mcp)
+- [Claude Connectors authentication (DCR/CIMD/PKCE)](https://claude.com/docs/connectors/building/authentication)
+- [ChatGPT Developer mode and MCP apps](https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt)
+- [ChatGPT Connected apps (the `@`-mention mechanism)](https://help.openai.com/en/articles/11487775-connected-apps-in-chatgpt)
+- [OpenAI Apps SDK (apps are built on MCP)](https://help.openai.com/en/articles/12515353-build-with-the-apps-sdk)
+- [OpenAI Platform: ChatGPT Developer mode](https://developers.openai.com/api/docs/guides/developer-mode)
 - [Gemini Apps Custom Connected Apps](https://support.google.com/gemini/answer/17209137)
