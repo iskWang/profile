@@ -45,29 +45,31 @@ The local pieces are the `obsidian-local-rest-api` Obsidian plugin (Local REST A
 
 The secrets are not in this post: the plugin API key, MCP environment file, Cloudflare API token, Access token, OAuth client secret, and Cloudflare account/AUD identifier are all left out
 
-## Where I drew the security line
+## About external access
 
-### The service only accepts loopback traffic
+### Only accepts loopback (127.0.0.1)
 
 The MCP server binds only to `127.0.0.1:3010`, so it cannot be reached directly from the network. The Tunnel is the only external entry point. The Cloudflare Access policy allows only the account owner's email, with no Everyone or Bypass rule, and the Tunnel also checks the Access assertion so a deleted Access app does not leave the origin exposed
 
 ### OAuth and the local API key stay separate
 
-Cloudflare Access handles OAuth, including authorization server discovery, Dynamic Client Registration (DCR), PKCE S256, 15-minute access tokens, and 14-day grant sessions. AI clients receive only the opaque OAuth token issued by Cloudflare. The plugin API key is used only on the loopback segment and is never handed to Claude, ChatGPT, or Gemini
+Cloudflare Access handles OAuth, including authorization server discovery, Dynamic Client Registration (DCR), PKCE S256, 15-minute access tokens, and 14-day grant sessions. AI clients receive only the OAuth token issued by Cloudflare. The API is only used locally and is never handed to Claude, ChatGPT, or Gemini
 
 ### Read-write access, but no command tools
 
-I chose to let AI clients read and write the entire vault, so daily NAS snapshots are a prerequisite rather than an optional extra. `obsidian_execute_command` and `obsidian_list_commands` are not exposed, but that does not make the vault read-only: notes can still be created, overwritten, or deleted, so the client should ask for human confirmation before writes and deletes
+I chose to let AI clients read and write the entire vault, so daily NAS backups are a prerequisite, not extra work
+
+`obsidian_execute_command` and `obsidian_list_commands` are not exposed, but that does not make the vault read-only: notes can still be created, overwritten, or deleted, so the client should ask for human confirmation before writes and deletes
 
 <aside class="post-callout post-callout--warning"><strong>This is not read-only access</strong><p>Even with command tools disabled, an AI can create, overwrite, or delete notes, so human confirmation should remain in place before writes and deletes</p></aside>
 
-### A snapshot is not an immutable backup
+### About backups
 
-The snapshot keeps 30 successful runs. With one run per day, that means I could lose at most a day's changes. The NAS and Mac are writable by the same account, so this is not an immutable backup against ransomware or host compromise
+Backups are kept for 30 days. With one run per day, that means I could lose at most a day's changes
 
-<aside class="post-callout post-callout--warning"><strong>The snapshot boundary</strong><p>A snapshot on a NAS writable by the same account provides a recovery point, not an immutable backup against ransomware or host compromise</p></aside>
+<aside class="post-callout post-callout--warning"><strong>The backup boundary</strong><p>A backup on a NAS writable by the same account provides a recovery point, not an immutable backup against ransomware or host compromise</p></aside>
 
-## What I actually verified
+## Actual API verification results
 
 | Check | Result |
 | --- | --- |
@@ -81,13 +83,13 @@ The snapshot keeps 30 successful runs. With one run per day, that means I could 
 
 ## The hour when the verification email never arrived
 
-I opened the MCP URL directly in a browser and used Cloudflare One-time PIN. The page said the verification code had been sent, but the email never arrived. The same account could receive a PIN when signing in to an existing Vaultwarden Access app, so I treated the difference between the two app configurations as the first thing to isolate
+I opened the MCP URL directly in a browser and used Cloudflare One-time PIN. The page said the verification code had been sent, but the email never arrived. The same account could receive a PIN when signing in to the existing Vaultwarden setup
 
-I compared the settings for both Access apps, temporarily disabled Managed OAuth for the Obsidian MCP app, and tried the direct browser login again. As soon as Managed OAuth was disabled, the PIN email arrived and I could sign in. That proved a relationship, not a final configuration
+I compared the settings for both Access apps, temporarily disabled Managed OAuth for the Obsidian MCP app, and tried the direct browser login again. As soon as Managed OAuth was disabled, the PIN email arrived and I could sign in
 
 I re-enabled Managed OAuth and kept the redirect URI allow-list for Claude, ChatGPT, and Gemini. Remote MCP clients need OAuth discovery, PKCE, and DCR, so I could not leave Managed OAuth disabled just to make direct URL testing convenient
 
-The remaining limitation is that the browser One-time PIN flow from a direct MCP URL may be unreliable. The expected entry point is the OAuth client flow. Claude has entered the formal OAuth connection flow, but end-to-end read-write access still needs a nonce smoke test
+The takeaway: don't rely on the One-time PIN flow. The proper entry point is the OAuth client flow
 
 ## Why Gemini did not connect
 
