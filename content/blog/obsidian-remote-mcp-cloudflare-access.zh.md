@@ -42,7 +42,7 @@ iCloud Obsidian vault
 
 本機會用到 Obsidian 插件 `obsidian-local-rest-api`（Local REST API with MCP）、`obsidian-mcp-server`、啟動包裝 `~/.local/bin/obsidian-mcp-start.sh`，以及存放日誌的 `~/Library/Logs/obsidian-mcp` 目錄。每日 vault 快照由 `~/.local/bin/obsidian-snapshot.sh` 執行，寫到 `/Volumes/Mac_mini/obsidian-snapshots`
 
-祕密不會記在這篇：插件 API 金鑰、MCP 環境檔、Cloudflare API 權杖、Access 存取權杖、OAuth 用戶端密鑰，以及 Cloudflare 帳號/AUD 識別碼都不放進正文
+secret token 不會記在這裡: 套件 API Token, MCP 環境設定, Cloudflare API Token, Access Token, Oauth Client Token，以及 Cloudflare 帳號/AUD 都不放在程式裡
 
 ## 我在安全上劃的線
 
@@ -52,21 +52,23 @@ MCP 伺服器只綁 `127.0.0.1:3010`，不能直接從網路存取，Tunnel 是�
 
 ### OAuth 和本機 API key 分開
 
-OAuth 由 Cloudflare Access 處理，提供授權伺服器探索、Dynamic Client Registration（DCR）、PKCE S256、15 分鐘的存取權杖和 14 天的授權工作階段。AI 用戶端只拿到 Cloudflare 發的 OAuth 權杖，插件 API 金鑰只在本機迴路這一段使用，不會交給 Claude、ChatGPT 或 Gemini
+OAuth 由 Cloudflare Access 處理，提供授權伺服器探索、Dynamic Client Registration（DCR）、PKCE S256、15 分鐘的存取權杖和 14 天的授權工作階段。AI 用戶端只拿到 Cloudflare 發的 OAuth Token，API 只在本機這一段使用，不會交給 Claude、ChatGPT 或 Gemini
 
 ### 可讀寫，但不開 command 工具
 
-我選擇讓 AI 用戶端可以讀寫整個 vault，所以每日 NAS 快照是前提，不是附加功能。`obsidian_execute_command` 和 `obsidian_list_commands` 這兩個指令工具沒有對外暴露，但這不等於唯讀，筆記仍可能被建立、覆寫或刪除，寫入與刪除工具應保留用戶端的人工作業確認
+我選擇讓 AI 用戶端可以讀寫整個 vault，所以每日 NAS 備份是前提，不是額外工作
+
+`obsidian_execute_command` 和 `obsidian_list_commands` 這兩個指令工具沒有對外暴露，但這不等於唯讀，筆記仍可能被建立、覆寫或刪除，寫入與刪除工具應保留用戶端的人工作業確認
 
 <aside class="post-callout post-callout--warning"><strong>這不是唯讀權限</strong><p>即使關掉 command 工具，AI 仍可能建立、覆寫或刪除筆記，寫入與刪除前要保留人工確認</p></aside>
 
-### 快照不是不可變備份
+### 關於備份
 
-快照保留 30 次成功執行，每日一次代表最多損失一天的修改。NAS 和 Mac 使用同一個帳號可寫，所以這不是防勒索或防主機入侵的不可變備份
+備份保留 30 天，每日一次代表最多損失一天的修改
 
 <aside class="post-callout post-callout--warning"><strong>快照的界線</strong><p>同一帳號可寫的 NAS 快照只能提供回復點，不能當成防勒索或防主機入侵的不可變備份</p></aside>
 
-## 我實際驗證了什麼
+## 實際 API 驗證結果
 
 | 驗證 | 結果 |
 | --- | --- |
@@ -80,13 +82,13 @@ OAuth 由 Cloudflare Access 處理，提供授權伺服器探索、Dynamic Clien
 
 ## 收不到驗證信的那一小時
 
-我直接在瀏覽器開 MCP URL，走 Cloudflare One-time PIN，頁面顯示驗證碼已寄出，但電子郵件一直沒到。同一個帳號登入既有的 Vaultwarden Access 應用程式卻能收到 PIN，所以我先把問題當成兩個應用程式的設定差異來隔離
+我直接在瀏覽器開 MCP URL，走 Cloudflare One-time PIN，頁面顯示驗證碼已寄出，但一直沒收到信。同一個帳號登入既有的 Vaultwarden 卻能收到 PIN
 
-我比對兩個 Access app 的設定，暫時關閉 Obsidian MCP 的 Managed OAuth，再重試直接用瀏覽器登入。Managed OAuth 關掉後，PIN 電子郵件立刻收到，也能順利登入；這只能證明兩者有關，不能當成最終設定
+我比對兩個 Access app 的設定，暫時關閉 Obsidian MCP 的 Managed OAuth，再重試直接用瀏覽器登入。Managed OAuth 關掉後，PIN 電子郵件立刻收到，也能順利登入
 
 最後我重新開啟 Managed OAuth，並保留 Claude、ChatGPT、Gemini 的 redirect URI allow-list。遠端 MCP 用戶端需要 OAuth 探索、PKCE 和 DCR，不能為了方便測試直接開網址，就長期關閉 Managed OAuth
 
-留下的限制是，直接開 MCP URL 的瀏覽器 One-time PIN 流程可能不可靠，正式入口應該走 OAuth 用戶端流程。Claude 已進入正式 OAuth 連線流程，但端到端讀寫還要用 nonce 冒煙測試驗證
+代表第一次不要用 One-time PIN，正式入口應該走 OAuth 用戶端流程
 
 ## Gemini 為什麼沒接上
 
