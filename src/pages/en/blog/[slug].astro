@@ -1,16 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import { blogStaticPaths } from '../../../lib/blog.js';
 
-export async function getStaticPaths() {
-  const posts = (await getCollection('blog')).filter((post) => post.data.lang === 'en' && !post.data.draft);
-  return posts.map((post) => ({
-    params: { slug: post.id.replace(/\.en$/, '') },
-    props: { post },
-  }));
-}
-
+export const getStaticPaths = () => blogStaticPaths('en');
 const { post } = Astro.props;
 ---
-
 <ArticleLayout post={post} />

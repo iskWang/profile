@@ -1,91 +1,32 @@
 import React from 'react';
-import { CatFace, SkillBadge } from '../../components/common';
+import { UI } from '../../i18n/ui.js';
+import { skillInventory } from '../../lib/record.js';
+import { Ledger, SectionBar } from '../../components/form';
 
-const Skills = ({ skills, content }) => {
-  const { skills: skillsContent } = content;
+export default function Skills({ lang }) {
+  const ui = UI[lang];
+  const inventory = skillInventory(lang);
   return (
-    <section className="pt-32 sm:pt-24 pb-24 px-6 bg-paper-deep" id="skills">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-black tracking-tight mb-2 flex items-center gap-3 text-ink">
-          <span>{skillsContent.title}</span>
-          <CatFace size="text-2xl" className="ml-2" />
-        </h2>
-        <p className="text-ink-soft mb-12 font-mono text-sm">{skillsContent.subtitle}</p>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-lg font-semibold text-teal mb-3 font-mono">
-                {skillsContent.categories.frontend}
-              </h3>
-              <div className="flex flex-wrap">
-                {skills.frontend.map((skill, i) => (
-                  <SkillBadge key={i} name={skill} />
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-teal mb-3 font-mono">
-                {skillsContent.categories.backend}
-              </h3>
-              <div className="flex flex-wrap">
-                {skills.backend.map((skill, i) => (
-                  <SkillBadge key={i} name={skill} />
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-teal mb-3 font-mono flex items-center gap-2">
-                <span>🤖</span> {skillsContent.categories.ai}
-              </h3>
-              <div className="flex flex-wrap">
-                {skills.ai.map((skill, i) => (
-                  <SkillBadge key={i} name={skill} />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-lg font-semibold text-teal mb-3 font-mono flex items-center gap-2">
-                <span>📱</span> {skillsContent.categories.mobile}
-              </h3>
-              <div className="flex flex-wrap">
-                {skills.mobile.map((skill, i) => (
-                  <SkillBadge key={i} name={skill} />
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-teal mb-3 font-mono flex items-center gap-2">
-                <span>⚙️</span> {skillsContent.categories.testing}
-              </h3>
-              <div className="flex flex-wrap">
-                {skills.devops.map((skill, i) => (
-                  <SkillBadge key={i} name={skill} />
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-teal mb-3 font-mono flex items-center gap-2">
-                <span>🧪</span> {skillsContent.categories.testing_extra || 'Testing'}
-              </h3>
-              <div className="flex flex-wrap">
-                {skills.testing.map((skill, i) => (
-                  <SkillBadge key={i} name={skill} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section id="skills" className="record-part" aria-labelledby="skills-title">
+      <SectionBar titleId="skills-title" title={ui.skills.title} count={ui.skills.count(inventory.length)} />
+      <Ledger
+        caption={ui.skills.caption}
+        className="ledger--inventory"
+        columns={[
+          { key: 'category', label: ui.skills.colCategory, className: 'ledger__category' },
+          { key: 'items', label: ui.skills.colItems },
+        ]}
+        rows={inventory.map((group) => ({
+          cells: {
+            category: group.label,
+            items: (
+              <ul className="inventory">
+                {group.items.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            ),
+          },
+        }))}
+      />
     </section>
   );
-};
-
-export default Skills;
+}

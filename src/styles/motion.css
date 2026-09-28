@@ -1,0 +1,40 @@
+/* Seals: the only red on the page, and the page's one authored motion. */
+.seal {
+  display: inline-block;
+  flex: none;
+  width: var(--seal-size);
+  height: var(--seal-size);
+  color: var(--color-seal);
+  opacity: 0.94;
+  line-height: 0;
+  transform: rotate(var(--seal-tilt));
+}
+.seal svg { display: block; width: 100%; height: 100%; overflow: visible; }
+:root:not([data-theme='dark']) .seal:not(.seal--printed) svg { mix-blend-mode: multiply; }
+.seal--printed { color: var(--color-form); opacity: 1; }
+
+.seal__label { font: 700 14px var(--font-display); letter-spacing: 0.06em; }
+.seal svg[lang='en'] .seal__label { font: 800 9.5px var(--font-body); letter-spacing: 0.1em; }
+.seal__date { font: 700 13px var(--font-data); letter-spacing: 0; }
+.seal__initials { font: 700 12px var(--font-display); letter-spacing: 0.12em; }
+.seal__monogram { font: 700 44px var(--font-display); letter-spacing: -0.02em; }
+
+/* Content is visible by default; the stamp only runs when the head script opts in. */
+@media (prefers-reduced-motion: no-preference) {
+  .js-seals [data-seal]:not(.is-stamped) { opacity: 0; }
+  .js-seals [data-seal].is-stamped { animation: seal-press 380ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+}
+
+@keyframes seal-press {
+  0% { opacity: 0; transform: rotate(calc(var(--seal-tilt) - 7deg)) scale(1.35); filter: blur(1.5px); }
+  55% { opacity: 0.96; transform: rotate(var(--seal-tilt)) scale(0.97); filter: blur(0); }
+  100% { opacity: 0.94; transform: rotate(var(--seal-tilt)) scale(1); filter: blur(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

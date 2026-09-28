@@ -179,6 +179,7 @@ export const CONTENT = {
     },
     "contact": {
       "title": "聯繫方式",
+      "email": "spjay1@gmail.com",
       "subtitle": "// Feel free to contact me 🐱",
       "quote": "樂於參與討論分享觀點，通常不是會議中最安靜的那位",
       "downloadBtn": "下載完整履歷"
@@ -446,6 +447,7 @@ export const CONTENT = {
     },
     "contact": {
       "title": "Contact Me",
+      "email": "spjay1@gmail.com",
       "subtitle": "// Feel free to contact me 🐱",
       "quote": "Passionate about sharing perspectives; rarely the quietest one in the room.",
       "downloadBtn": "Download Full Resume"

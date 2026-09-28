@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-28T00:00:00.000Z",
+  "title": "Design System: Profile Delivery Record",
+  "extensions": {
+    "colorMeta": {
+      "desk": { "role": "neutral", "displayName": "Desk", "canonical": "oklch(0.93 0.01 245)" },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "oklch(0.985 0.004 240)" },
+      "paper-deep": { "role": "neutral", "displayName": "Deep Paper", "canonical": "oklch(0.955 0.008 240)" },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "oklch(0.21 0.02 255)" },
+      "ink-soft": { "role": "neutral", "displayName": "Soft Ink", "canonical": "oklch(0.45 0.02 255)" },
+      "form": { "role": "primary", "displayName": "Form Ink", "canonical": "oklch(0.44 0.11 255)" },
+      "line": { "role": "neutral", "displayName": "Printed Rule", "canonical": "oklch(0.44 0.11 255 / 0.3)" },
+      "seal": { "role": "primary", "displayName": "Cinnabar Seal", "canonical": "oklch(0.55 0.2 28)" },
+      "desk-dark": { "role": "neutral", "displayName": "Night Desk", "canonical": "oklch(0.15 0.018 255)" },
+      "paper-dark": { "role": "neutral", "displayName": "Night Paper", "canonical": "oklch(0.19 0.02 255)" },
+      "paper-deep-dark": { "role": "neutral", "displayName": "Night Deep Paper", "canonical": "oklch(0.23 0.022 255)" },
+      "ink-dark": { "role": "neutral", "displayName": "Night Ink", "canonical": "oklch(0.94 0.01 240)" },
+      "ink-soft-dark": { "role": "neutral", "displayName": "Night Soft Ink", "canonical": "oklch(0.76 0.015 245)" },
+      "form-dark": { "role": "primary", "displayName": "Night Form Ink", "canonical": "oklch(0.78 0.09 250)" },
+      "line-dark": { "role": "neutral", "displayName": "Night Rule", "canonical": "oklch(0.78 0.09 250 / 0.28)" },
+      "seal-dark": { "role": "primary", "displayName": "Night Cinnabar Seal", "canonical": "oklch(0.68 0.18 28)" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display Serif", "purpose": "Headings and signature emphasis." },
+      "body": { "displayName": "CJK Body Sans", "purpose": "Readable prose and form values." },
+      "data": { "displayName": "Data Mono", "purpose": "Numbers, IDs, dates, and code only." }
+    },
+    "shadows": [
+      { "name": "sheet", "value": "0 1px 2px oklch(0.25 0.03 255 / 0.08), 0 20px 44px -28px oklch(0.25 0.03 255 / 0.35)", "purpose": "Subtle separation of the paper sheet from the desk." },
+      { "name": "sheet-dark", "value": "0 1px 2px oklch(0 0 0 / 0.35), 0 20px 44px -28px oklch(0 0 0 / 0.7)", "purpose": "Sheet separation in dark theme." }
+    ],
+    "motion": [
+      { "name": "seal-press", "value": "380ms cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Single authored stamp-press animation; reduced-motion mode is static." }
+    ],
+    "breakpoints": [
+      { "name": "ledger-stack", "value": "40rem" },
+      { "name": "masthead-compact", "value": "60rem" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Sheet Frame",
+      "kind": "custom",
+      "description": "Paper document with double printed frame.",
+      "html": "<article class=\"ds-sheet\"><h2>交付紀錄</h2><p>工作項目與驗收結果</p></article>",
+      "css": ".ds-sheet { position: relative; max-width: 76rem; margin: 0 auto; padding: 2rem; background: var(--color-paper); color: var(--color-ink); box-shadow: var(--shadow-sheet); } .ds-sheet::before, .ds-sheet::after { content: ''; position: absolute; pointer-events: none; inset: 1rem; border: 2px solid var(--color-form); } .ds-sheet::after { inset: calc(1rem + 4px); border-width: 1px; }"
+    },
+    {
+      "name": "Section Bar",
+      "kind": "custom",
+      "description": "Form heading with optional count and action.",
+      "html": "<header class=\"ds-section-bar\"><h2>工作經歷</h2><span data-data>03</span><a href=\"#items\">查看項目</a></header>",
+      "css": ".ds-section-bar { display: flex; align-items: baseline; gap: 1rem; padding: 0.8rem 1rem; border-bottom: 1px solid var(--color-form); } .ds-section-bar h2 { flex: 1; margin: 0; color: var(--color-ink); font: 700 1.5rem/1.25 'Noto Serif TC', 'Songti TC', serif; } .ds-section-bar [data-data] { color: var(--color-form); font: 0.8125rem 'JetBrains Mono Variable', ui-monospace, monospace; } .ds-section-bar a { color: var(--color-form); text-decoration: underline; text-underline-offset: 0.22em; } .ds-section-bar a:hover, .ds-section-bar a:focus-visible { color: var(--color-ink); }"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "description": "Printed label and entered value on paper.",
+      "html": "<div class=\"ds-field\"><span class=\"ds-field-label\">職稱</span><span class=\"ds-field-value\">資深工程師</span></div>",
+      "css": ".ds-field { padding: 0.7rem 1rem 0.9rem; background: var(--color-paper); } .ds-field-label { display: block; margin-bottom: 0.3rem; color: var(--color-form); font: 0.75rem/1.3 'PingFang TC', 'Noto Sans TC', sans-serif; letter-spacing: 0.08em; } .ds-field-value { color: var(--color-ink); font: 1.0625rem/1.55 'PingFang TC', 'Noto Sans TC', sans-serif; }"
+    },
+    {
+      "name": "Ledger Row",
+      "kind": "custom",
+      "description": "Ruled record row that stacks with labels on narrow screens.",
+      "html": "<table class=\"ds-ledger\"><tbody><tr><th>01</th><td data-label=\"項目\">資料匯入</td><td data-label=\"狀態\">已完成</td></tr></tbody></table>",
+      "css": ".ds-ledger { width: 100%; border-collapse: collapse; color: var(--color-ink); } .ds-ledger th, .ds-ledger td { padding: 0.8rem; border-bottom: 1px solid var(--color-line); text-align: start; } .ds-ledger td + td { border-inline-start: 1px solid var(--color-line); } @media (max-width: 40rem) { .ds-ledger thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } .ds-ledger, .ds-ledger tbody { display: block; } .ds-ledger tr { display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); gap: 0.6rem 0.75rem; padding: 1rem 0.85rem; border-bottom: 1px solid var(--color-line); } .ds-ledger td, .ds-ledger th { grid-column: 2; padding: 0; border: 0; } .ds-ledger th { grid-column: 1; grid-row: 1 / span 6; } .ds-ledger td::before { content: attr(data-label); display: block; color: var(--color-form); font-size: 0.6875rem; letter-spacing: 0.08em; } }"
+    },
+    {
+      "name": "Seal Mark",
+      "kind": "custom",
+      "description": "State-bearing stamped mark; shape conveys status without color.",
+      "html": "<span class=\"ds-seal\" aria-label=\"已完成\"><svg viewBox=\"0 0 100 100\" aria-hidden=\"true\"><circle cx=\"50\" cy=\"50\" r=\"42\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"5\"/><text x=\"50\" y=\"56\" text-anchor=\"middle\">完成</text></svg></span>",
+      "css": ".ds-seal { display: inline-block; width: 3rem; height: 3rem; color: var(--color-seal); transform: rotate(-4deg); } .ds-seal svg { width: 100%; height: 100%; } .ds-seal text { fill: currentColor; font: 700 14px 'Noto Serif TC', serif; } .ds-seal:hover { transform: rotate(-4deg) scale(1.02); } .ds-seal:focus-visible { outline: 2px solid var(--color-form); outline-offset: 2px; }"
+    },
+    {
+      "name": "Masthead Navigation",
+      "kind": "nav",
+      "description": "Compact document masthead navigation with ruled active state.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#about\" aria-current=\"page\">關於</a><a href=\"#work\">經歷</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 0.5rem; overflow-x: auto; } .ds-nav a { padding: 0.6rem; border-bottom: 2px solid transparent; color: var(--color-ink-soft); text-decoration: none; white-space: nowrap; } .ds-nav a:hover, .ds-nav a:focus-visible { color: var(--color-ink); } .ds-nav a[aria-current] { border-bottom-color: var(--color-form); color: var(--color-ink); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Delivery Record",
+    "overview": "The site reads as a completed acceptance form: a sheet on a desk, printed furniture, filled-in information, and a restrained hand-stamped sign-off. The visual language is orderly and legible, with a quiet distinction between the form's printed structure and its recorded content.",
+    "keyCharacteristics": [
+      "A centered paper sheet with a printed double frame.",
+      "Form rules and labels use form ink; content uses readable ink.",
+      "Seal geometry carries status, with cinnabar reserved for seals."
+    ],
+    "rules": [
+      { "name": "The Seal-Only Red Rule", "body": "Cinnabar belongs to seal marks, not links, headings, or controls.", "section": "colors" },
+      { "name": "The Recorded-Data Rule", "body": "Do not set ordinary prose in mono; reserve it for identifiers and machine-like values.", "section": "typography" }
+    ],
+    "dos": [
+      "Do keep printed form structure in form ink and entered content in ink.",
+      "Do carry the same paper/form logic into dark mode: it is a carbon copy at night, with desk, paper, rules, and text all retuned together.",
+      "Do let seal shape communicate state even without color.",
+      "Do preserve keyboard focus visibility and the reduced-motion static state."
+    ],
+    "donts": [
+      "Don't use red outside seals.",
+      "Don't add cards, pills, or badges.",
+      "Don't add eyebrow labels or gradient text.",
+      "Don't use hard shadows or emoji icons."
+    ]
+  }
+}

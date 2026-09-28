@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import PostRegister from '../components/PostRegister';
+import { FormHeader } from '../components/form';
+import { UI } from '../i18n/ui.js';
+import { LOCALES, localePath, otherLang } from '../i18n/locales.js';
+import { attachmentCodes, getPublishedPosts, postSlug, postUrl, topicsOf } from '../lib/blog.js';
+
+interface Props { lang: 'zh' | 'en' }
+const { lang } = Astro.props;
+const ui = UI[lang];
+const strings = ui.blog;
+const posts = await getPublishedPosts(lang);
+const codes = attachmentCodes(posts);
+const topics = topicsOf(posts);
+const listPath = localePath(lang, 'blog');
+const alternates = [
+  { lang: 'zh-TW', path: localePath('zh', 'blog') },
+  { lang: 'en', path: localePath('en', 'blog') },
+];
+const register = posts.map((post) => ({
+  code: codes.get(post.id),
+  href: postUrl(lang, postSlug(post)),
+  title: post.data.title,
+  summary: post.data.summary,
+  topics: post.data.topics,
+  date: post.data.date,
+}));
+---
+<Layout
+  lang={LOCALES[lang].htmlLang}
+  title={ui.blogSeo.title}
+  description={ui.blogSeo.description}
+  path={listPath}
+  alternates={alternates}
+  rss={`${listPath}/rss.xml`}
+>
+  <Header lang={lang} variant="page" langHref={localePath(otherLang(lang), 'blog')} />
+  <main class="desk">
+    <div class="sheet">
+      <section class="record-part" aria-labelledby="register-title">
+        <FormHeader title={ui.form.title} docNoLabel={ui.form.docNoLabel} docNo={ui.form.docNo} />
+        <header class="register-head">
+          <h1 id="register-title" class="register-head__title">{strings.listTitle}</h1>
+          <p class="register-head__intro">{strings.listIntro}</p>
+        </header>
+
+        <div class="topic-filter" role="group" aria-label={strings.filter}>
+          {['all', ...topics].map((topic) => (
+            <button type="button" class="topic-filter__option" data-topic={topic} aria-pressed={topic === 'all' ? 'true' : 'false'}>
+              <svg aria-hidden="true" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="1.75" y="1.75" width="12.5" height="12.5" />
+                <path class="topic-filter__check" d="m4.5 8.25 2.5 2.5 4.75-5.5" />
+              </svg>
+              {topic === 'all' ? strings.allTopics : topic}
+            </button>
+          ))}
+        </div>
+
+        <PostRegister lang={lang} posts={register} />
+      </section>
+    </div>
+  </main>
+  <Footer lang={lang} />
+</Layout>
+
+<script is:inline>
+  (() => {
+    const buttons = document.querySelectorAll('[data-topic]');
+    const rows = document.querySelectorAll('[data-post-card]');
+    const validTopics = new Set(Array.from(buttons, (button) => button.dataset.topic));
+
+    const applyFilter = (topic) => {
+      buttons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.topic === topic)));
+      rows.forEach((row) => {
+        row.hidden = topic !== 'all' && !row.dataset.topics.split(' ').includes(topic);
+      });
+    };
+
+    buttons.forEach((button) => button.addEventListener('click', () => {
+      const topic = button.dataset.topic;
+      applyFilter(topic);
+      const hash = topic === 'all' ? '' : `#${topic}`;
+      history.replaceState(null, '', `${location.pathname}${location.search}${hash}`);
+    }));
+
+    window.addEventListener('hashchange', () => {
+      const topic = location.hash.slice(1);
+      applyFilter(validTopics.has(topic) ? topic : 'all');
+    });
+
+    const initialTopic = location.hash.slice(1);
+    applyFilter(validTopics.has(initialTopic) ? initialTopic : 'all');
+  })();
+</script>

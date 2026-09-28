@@ -6,8 +6,9 @@ This is the shared project guide. Root `AGENTS.md` and `CLAUDE.md` are regular t
 
 - The portfolio and bilingual blog use Astro static pages with React components. Add client hydration only where browser interaction requires it.
 - Locale routes live in `src/pages/zh-tw/` and `src/pages/en/`. Content uses `zh` / `en`; the Chinese URL prefix is `zh-tw`.
-- `src/layouts/Layout.astro` owns the HTML shell and theme scripts; `ArticleLayout.astro` owns article rendering. Homepage sections remain in `src/sections/`.
-- `src/components/Header/Header.jsx` is shared by home and blog pages. Preserve the requested navigation order: About → Blog → Projects → Skills → Experience → Contact.
+- `src/pages/{zh-tw,en}/` hold thin locale routes only; shared page bodies live in `src/views/` and take a `lang` prop (`zh` / `en`). `src/layouts/Layout.astro` owns the HTML shell, SEO head (passed as props), and theme / reading-progress / seal scripts; `ArticleLayout.astro` owns article rendering. Home page parts live in `src/sections/`.
+- UI copy lives only in `src/i18n/ui.js`; locale codes and URL prefixes in `src/i18n/locales.js`. Blog queries and RSS go through `src/lib/blog.js` and `src/lib/rss.js`; home-page data derived from the resume (numbered items, key outcomes, seals, skill groups) goes through `src/lib/record.js`.
+- `src/components/Header/Header.jsx` is shared by home and blog pages and is the only hydrated island. Preserve the requested navigation order: About → Blog → Projects → Skills → Experience → Contact.
 - Hosting uses Cloudflare Workers Static Assets. `src/worker.js` handles HTTP routing around the generated assets; consult `wrangler.json` for deployment configuration.
 
 ## Content changes
@@ -19,7 +20,7 @@ This is the shared project guide. Root `AGENTS.md` and `CLAUDE.md` are regular t
 
 ## Visual conventions
 
-- Reuse the paper, ink, and teal theme tokens in `src/index.css` and their Tailwind mappings. Use utilities for layout and shared CSS for complex styling.
+- Follow `DESIGN.md`: the delivery-record system (desk, sheet, form ink, filled-in ink, seals). Tokens are in `src/styles/tokens.css` with Tailwind mappings; cinnabar `seal` is only for seals. Reuse the `src/components/form/` kit (Seal, FormHeader, SectionBar, Field, Ledger) instead of new cards or badges. Use utilities for layout and `src/styles/*.css` for complex styling.
 - Article pages prioritize quiet reading, clear typography, and restrained framing. Preserve mobile readability and both light and dark themes.
 - Keep shared navigation and outer blog container widths consistent across list and article pages.
 - Follow existing React component folders and their `index.js` exports; use Astro pages/layouts for document structure.

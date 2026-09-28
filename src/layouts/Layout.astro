@@ -2,14 +2,24 @@
 import '../index.css';
 interface Props {
   lang: 'zh-TW' | 'en';
+  title?: string;
+  description?: string;
+  path?: string;
+  alternates?: Array<{ lang: string; path: string; type?: string }>;
+  ogType?: string;
+  ogDescription?: string;
+  describedby?: string;
+  rss?: string;
 }
-const { lang } = Astro.props;
+const { lang, title, description, path, alternates = [], ogType, ogDescription = description, describedby, rss } = Astro.props;
+const base = 'https://joshwang.dev';
 ---
 <!doctype html>
 <html lang={lang} data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script is:inline>
       (() => {
         let theme = 'light';
@@ -24,9 +34,40 @@ const { lang } = Astro.props;
         document.documentElement.dataset.theme = theme;
       })();
     </script>
+    <script is:inline>
+      (() => {
+        if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+          document.documentElement.classList.add('js-seals');
+        }
+      })();
+    </script>
+
+    {title && <title>{title}</title>}
+    {description && <meta name="description" content={description} />}
+    {path && <link rel="canonical" href={`${base}${path}`} />}
+    {describedby && <link rel="describedby" href={`${base}${describedby}`} />}
+    {alternates.map((alternate) => <link rel="alternate" hreflang={alternate.lang} href={`${base}${alternate.path}`} type={alternate.type} />)}
+    {rss && <link rel="alternate" type="application/rss+xml" href={`${base}${rss}`} />}
+    {ogType && path && <><meta property="og:type" content={ogType} /><meta property="og:locale" content={lang === 'en' ? 'en_US' : 'zh_TW'} /><meta property="og:locale:alternate" content={lang === 'en' ? 'zh_TW' : 'en_US'} /><meta property="og:url" content={`${base}${path}`} /><meta property="og:title" content={title} /><meta property="og:description" content={ogDescription} /><meta name="twitter:card" content="summary" /><meta name="twitter:title" content={title} /><meta name="twitter:description" content={ogDescription} /></>}
     <slot name="head" />
   </head>
   <body class="bg-paper text-ink"><slot /></body>
+  <script is:inline>
+    // Remember an explicit language choice; src/worker.js and src/pages/index.astro read it on `/`.
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest?.('a[data-lang-switch]');
+      if (!link) return;
+      const secure = location.protocol === 'https:' ? '; Secure' : '';
+      document.cookie = `lang=${link.dataset.langSwitch}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
+      // Home sections share ids in both languages, so land on the same section.
+      const section = document.querySelector('.masthead__nav a[aria-current]')?.hash || location.hash;
+      const target = new URL(link.href);
+      if (section && target.pathname === `/${link.dataset.langSwitch}`) {
+        event.preventDefault();
+        location.assign(target.pathname + section);
+      }
+    });
+  </script>
   <script is:inline>
     document.getElementById('theme-toggle')?.addEventListener('click', () => {
       const r = document.documentElement;
@@ -52,6 +93,27 @@ const { lang } = Astro.props;
       window.addEventListener('scroll', queueUpdate, { passive: true });
       window.addEventListener('resize', queueUpdate);
       update();
+    })();
+  </script>
+  <script is:inline>
+    (() => {
+      if (!document.documentElement.classList.contains('js-seals')) return;
+      const seals = document.querySelectorAll('[data-seal]');
+      const stamp = (seal, delay) => {
+        seal.style.animationDelay = `${delay}ms`;
+        seal.classList.add('is-stamped');
+      };
+      if (!('IntersectionObserver' in window)) {
+        seals.forEach((seal) => stamp(seal, 0));
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.filter((entry) => entry.isIntersecting).forEach((entry, index) => {
+          stamp(entry.target, index * 90);
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.4 });
+      seals.forEach((seal) => observer.observe(seal));
     })();
   </script>
 </html>

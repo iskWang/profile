@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import About from '../sections/About';
+import Writing from '../sections/Writing';
+import Projects from '../sections/Projects';
+import Skills from '../sections/Skills';
+import Experience from '../sections/Experience';
+import Contact from '../sections/Contact';
+import { UI } from '../i18n/ui.js';
+import { CONTENT } from '../generated/content.js';
+import { LOCALES, localePath, otherLang } from '../i18n/locales.js';
+import { attachmentCodes, getPublishedPosts, postSlug } from '../lib/blog.js';
+
+interface Props { lang: 'zh' | 'en' }
+const { lang } = Astro.props;
+const seo = UI[lang].homeSeo;
+const posts = await getPublishedPosts(lang);
+const codes = attachmentCodes(posts);
+const latest = posts.slice(0, 3).map((post) => ({
+  slug: postSlug(post),
+  code: codes.get(post.id),
+  title: post.data.title,
+  date: post.data.date,
+  summary: post.data.summary,
+  topics: post.data.topics,
+}));
+const alternates = [
+  { lang: 'zh-TW', path: localePath('zh') },
+  { lang: 'en', path: localePath('en') },
+  { lang: 'x-default', path: '/' },
+];
+const site = 'https://joshwang.dev';
+const { hero, contact, skillsData } = CONTENT[lang];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${site}/#person`,
+      name: hero.name,
+      jobTitle: hero.title,
+      email: contact.email,
+      url: site,
+      address: { '@type': 'PostalAddress', addressLocality: 'Taipei', addressCountry: 'TW' },
+      sameAs: CONTENT[lang].projects.items.map((project) => project.url).filter(Boolean).map((url) => url.split('/').slice(0, 4).join('/')),
+      knowsAbout: [...new Set(Object.values(skillsData).flat())],
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': `${site}${localePath(lang)}`,
+      url: `${site}${localePath(lang)}`,
+      inLanguage: LOCALES[lang].htmlLang,
+      name: seo.title,
+      description: seo.description,
+      mainEntity: { '@id': `${site}/#person` },
+    },
+  ],
+};
+---
+<Layout
+  lang={LOCALES[lang].htmlLang}
+  title={seo.title}
+  description={seo.description}
+  ogDescription={seo.ogDescription}
+  ogType="profile"
+  path={localePath(lang)}
+  describedby="/llms.txt"
+  alternates={alternates}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <Header client:load lang={lang} variant="home" langHref={localePath(otherLang(lang))} />
+  <main class="desk">
+    <div class="sheet">
+      <About lang={lang} />
+      <Writing lang={lang} total={posts.length} posts={latest} />
+      <Projects lang={lang} />
+      <Skills lang={lang} />
+      <Experience lang={lang} />
+      <Contact lang={lang} />
+    </div>
+  </main>
+  <Footer lang={lang} />
+</Layout>
