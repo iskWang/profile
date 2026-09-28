@@ -71,6 +71,43 @@ describe('worker routing', () => {
     expect(response.headers.get('Location')).toBe('https://joshwang.dev/en/blog/hello-blog');
   });
 
+  test('a saved language choice (cookie lang) wins over Accept-Language', async () => {
+    const env = makeEnv();
+    const home = await worker.fetch(req('/', { 'Accept-Language': 'zh-TW,zh;q=0.9', Cookie: 'theme=dark; lang=en' }), env);
+    expect(home.headers.get('Location')).toBe('https://joshwang.dev/en');
+
+    const blog = await worker.fetch(req('/blog/hello-blog', { 'Accept-Language': 'en', Cookie: 'lang=zh-tw' }), env);
+    expect(blog.headers.get('Location')).toBe('https://joshwang.dev/zh-tw/blog/hello-blog');
+  });
+
+  test('legacy ?lang= share links win over cookie and Accept-Language', async () => {
+    const env = makeEnv();
+    const en = await worker.fetch(req('/?lang=en', { 'Accept-Language': 'zh-TW', Cookie: 'lang=zh-tw' }), env);
+    expect(en.headers.get('Location')).toBe('https://joshwang.dev/en');
+    const zh = await worker.fetch(req('/?lang=zh', { 'Accept-Language': 'en' }), env);
+    expect(zh.headers.get('Location')).toBe('https://joshwang.dev/zh-tw');
+    const junk = await worker.fetch(req('/?lang=fr', { 'Accept-Language': 'en' }), env);
+    expect(junk.headers.get('Location')).toBe('https://joshwang.dev/en');
+  });
+
+  test('locale redirects are not cacheable and vary on language inputs', async () => {
+    const env = makeEnv();
+    for (const path of ['/', '/blog/hello-blog']) {
+      const response = await worker.fetch(req(path, { 'Accept-Language': 'en' }), env);
+      expect(response.status).toBe(302);
+      expect(response.headers.get('Cache-Control')).toBe('no-store');
+      expect(response.headers.get('Vary')).toBe('Accept-Language, Cookie');
+    }
+  });
+
+  test('an unknown cookie lang value falls back to Accept-Language', async () => {
+    const env = makeEnv();
+    for (const cookie of ['lang=fr', 'lang=', 'xlang=en', 'lang=EN']) {
+      const response = await worker.fetch(req('/', { 'Accept-Language': 'zh-TW', Cookie: cookie }), env);
+      expect(response.headers.get('Location')).toBe('https://joshwang.dev/zh-tw');
+    }
+  });
+
   test('redirects /deck to /slides', async () => {
     const env = makeEnv();
     const response = await worker.fetch(req('/deck'), env);

@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@view-transition { navigation: auto; }
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    caret-color: var(--color-form);
+    scrollbar-color: var(--color-form) var(--color-desk);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-ink);
+    background: var(--color-desk);
+    line-break: strict;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  p, li, dd { text-wrap: pretty; }
+  a { text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+  ::selection { background: var(--color-form); color: var(--color-paper); }
+  :focus-visible { outline: 2px solid var(--color-form); outline-offset: 2px; }
+  [data-data], time, code, kbd, samp {
+    font-family: var(--font-data);
+    font-variant-numeric: tabular-nums;
+  }
+  [id] { scroll-margin-top: calc(var(--header-h) + 1rem); }
+}

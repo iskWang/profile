@@ -1,19 +1,18 @@
 import React from 'react';
-import { CatFace } from '../common';
+import { UI } from '../../i18n/ui.js';
+import { localePath } from '../../i18n/locales.js';
 
-const Footer = () => {
+/** Bottom line of the form: document number, owner, feed. */
+export default function Footer({ lang }) {
+  const ui = UI[lang];
   return (
-    <footer className="py-8 px-6 border-t border-line">
-      <div className="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-ink-soft">
-        <p className="font-mono flex items-center gap-2">
-          © {Math.max(new Date().getFullYear(), 2026)} Josh Wang <CatFace size="text-base" />
-        </p>
-        <p className="font-mono">
-          <span className="text-teal">▸</span> Built with React
-        </p>
-      </div>
+    <footer className="colophon">
+      <p>
+        <span data-data>{ui.form.docNo}</span>
+        <span aria-hidden="true"> · </span>
+        Josh Wang
+      </p>
+      <a href={localePath(lang, 'blog/rss.xml')}>RSS</a>
     </footer>
   );
-};
-
-export default Footer;
+}

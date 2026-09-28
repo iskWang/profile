@@ -11,6 +11,30 @@ function prefersEnglish(header) {
   return english.q > bestOther;
 }
 
+const LOCALES = new Set(['zh-tw', 'en']);
+
+// Old SPA share links used ?lang=zh / ?lang=en.
+const LEGACY_LANG = { zh: 'zh-tw', 'zh-tw': 'zh-tw', en: 'en' };
+
+// Explicit choice first (legacy ?lang= link, then cookie `lang` from the language
+// switch), otherwise the browser preference.
+function preferredLocale(request) {
+  const legacy = LEGACY_LANG[new URL(request.url).searchParams.get('lang')];
+  if (legacy) return legacy;
+  const cookies = request.headers.get('Cookie') || '';
+  const saved = cookies.split(';').map((part) => part.trim()).find((part) => part.startsWith('lang='))?.slice(5);
+  if (LOCALES.has(saved)) return saved;
+  return prefersEnglish(request.headers.get('Accept-Language') || '') ? 'en' : 'zh-tw';
+}
+
+// The target depends on the visitor, so the redirect must never be cached as shared.
+function localeRedirect(location) {
+  return new Response(null, {
+    status: 302,
+    headers: { Location: location, 'Cache-Control': 'no-store', Vary: 'Accept-Language, Cookie' },
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -40,16 +64,13 @@ export default {
       }
     }
 
-    const acceptLanguage = request.headers.get('Accept-Language') || '';
     if (url.pathname === '/') {
-      const target = prefersEnglish(acceptLanguage) ? '/en' : '/zh-tw';
-      return Response.redirect(`${url.origin}${target}`, 302);
+      return localeRedirect(`${url.origin}/${preferredLocale(request)}`);
     }
 
     if (url.pathname === '/blog' || (url.pathname.startsWith('/blog/') && !url.pathname.startsWith('/blog/assets/'))) {
-      const locale = prefersEnglish(acceptLanguage) ? 'en' : 'zh-tw';
-      const target = url.pathname.replace(/^\/blog/, `/${locale}/blog`);
-      return Response.redirect(`${url.origin}${target}${url.search}`, 302);
+      const target = url.pathname.replace(/^\/blog/, `/${preferredLocale(request)}/blog`);
+      return localeRedirect(`${url.origin}${target}${url.search}`);
     }
 
     if (url.pathname === '/deck' || url.pathname === '/deck/' || url.pathname === '/deck/index.html') {

@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
     "./src/**/*.{astro,js,ts,jsx,tsx}",
   ],
   theme: {
@@ -11,10 +10,9 @@ export default {
         'paper-deep': 'var(--color-paper-deep)',
         ink: 'var(--color-ink)',
         'ink-soft': 'var(--color-ink-soft)',
-        teal: 'var(--color-teal)',
-        'teal-soft': 'var(--color-teal-soft)',
-        'teal-cta': 'var(--color-teal-cta)',
+        form: 'var(--color-form)',
         line: 'var(--color-line)',
+        seal: 'var(--color-seal)',
       },
     },
   },
