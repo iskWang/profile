@@ -621,7 +621,6 @@
 html[lang="zh-TW"] .post-header h1 { max-width: 18em; }
 
 .post-summary {
-  max-width: 60ch;
   margin: 1.5rem 0 0;
   color: var(--color-ink-soft);
   font-size: clamp(1.05rem, 1.4vw, 1.25rem);
@@ -692,7 +691,6 @@ html[lang="zh-TW"] .post-header h1 { max-width: 18em; }
 
 .post-reading-column {
   width: 100%;
-  max-width: 42rem;
   margin: 3.5rem auto 0;
   font-size: 1.0625rem;
 }
