@@ -5,8 +5,9 @@ import remarkParse from 'remark-parse';
 
 const { posts, errors } = loadPosts();
 if (errors.length) throw new Error(errors.join('\n'));
-const zh = posts.find(post => post.data.lang === 'zh');
-const en = posts.find(post => post.data.lang === 'en');
+const zh = posts.find(post => post.slug === 'hello-blog' && post.data.lang === 'zh');
+const en = posts.find(post => post.slug === 'hello-blog' && post.data.lang === 'en');
+if (!zh || !en) throw new Error('Required test fixtures "hello-blog" (zh/en) not found in content/blog');
 const index = buildIndex(posts);
 const change = (data = {}, body = zh.body, file = zh.path) => ({ ...zh, path: file, data: { ...zh.data, ...data }, body });
 
