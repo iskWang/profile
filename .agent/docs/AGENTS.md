@@ -13,7 +13,8 @@ This is the shared project guide. Root `AGENTS.md` and `CLAUDE.md` are regular t
 ## Content changes
 
 - Edit resume content in `content/resume.zh.md` and `content/resume.en.md`, then run `bun run generate-resume-content`. The generator owns `src/generated/content.js`, public Markdown resumes, and `public/llms.txt`.
-- For blog authoring or validation changes, read `content/blog/_TEMPLATE.md`, `src/content.config.ts`, and `scripts/blog-content-rules.mjs`. The schema and shared validator define the publishing contract.
+- For blog authoring, rewriting, or validation changes, read `.agent/personal-writing-style.md`, `content/blog/_TEMPLATE.md`, `src/content.config.ts`, and `scripts/blog-content-rules.mjs`. The style guide, schema, and shared validator define the voice and publishing contract.
+- When writing or rewriting blog posts, stay within the repository and the target article unless the user explicitly asks to import from an external path (never proactively scan `~/.omp`, local dotfiles, or local Obsidian vaults, and never expose private project names or local machine details).
 - Keep drafts out of pages, lists, feeds, related posts, and sitemap output. Match links and recommendations to the current language.
 - `ASTRO_MIGRATION_PLAN.md` records the migration rationale and historical requirements; verify implementation details against current code and newer user decisions.
 
