@@ -3,8 +3,8 @@ schema: blog-post
 lang: zh
 title: Hello! 我是 Josh!
 date: 2026-09-12
-updated: 2026-09-14
-summary: 這是一篇不像履歷的自我介紹，我想在這裡整理最近對 AI、生活、旅行的一些想法與紀錄
+updated: 2026-11-03
+summary: 這是一篇不太像履歷的自我介紹，記錄我最近對技術、生活與旅行的一些想法。
 topics:
   - writing
   - life
@@ -13,7 +13,9 @@ origin: original
 
 ## 關於我的貓
 
-先講一下這個網站的吉祥物「<span class="cat-name">好貴</span>」——牠是我的挪威森林貓，去年（2025）到我們家，還「裝潢」過幾次，因此得到這個名字，之後應該還會看到牠出現在這裡，不過先聊聊我自己吧：
+先聊聊這個網站的吉祥物「<span class="cat-name">好貴</span>」。
+
+牠是我的挪威森林貓，2025 年來到我們家。因為幾次用爪子幫家裡的沙發和家具「重新裝潢」，身價非凡，才得了這個名字。以後應該還會常在這裡看到牠，不過在聊牠之前，先說說我自己。
 
 <figure class="post-figure post-figure--portrait">
   <span class="post-mascot" role="img" aria-label="首頁的好貴形象：一隻挪威森林貓" style="-webkit-mask-image: url(/blog/assets/hello-blog/cat-mascot.webp); mask-image: url(/blog/assets/hello-blog/cat-mascot.webp);"></span>
@@ -22,17 +24,19 @@ origin: original
 
 ## 我在做什麼
 
-從 2014 年入行，第一份工作是在一家 AWS 代理商承接的 ZyXEL 專案裡擔任 Rails Developer——這是我第一個參與的專案，使用族群以歐洲為主，做過後端開發、測試計畫，也碰過 AWS 架構設計，後來重心轉到前端，主要領域是 React.js、React Native、Node.js
+我從 2014 年入行，第一份工作是在一家 AWS 代理商擔任 Rails 工程師，負責 ZyXEL 的專案。那是我第一次參與面向歐洲市場的產品，寫過後端、做過測試規劃，也碰過 AWS 架構設計。後來工作重心慢慢轉向前端與全端，主要使用的技術是 React、React Native 和 Node.js。
 
-最近幾個專案我會透過 AI agent 處理重複性的工作：像是用 Claude Code 協作過一個房地產網站專案，也在一家數據新創公司用 AI 協助寫 BDD 測試計畫
+這幾年 AI 工具越來越成熟，我開始把不少重複性的工作交給 AI Agent 處理：例如用 Claude Code 協同開發房地產網站專案，或是在數據新創團隊裡用 AI 協助產出 BDD 測試計畫。
 
-在剩下的 AI Token 用完之前，我會做一些 Side Project，除了保持資料隱私落地，也順便回顧後端的技術經驗，像是 [PickleScout](https://github.com/iskWang/PickleScout)，或是用 A1111/ComfyUI 訓練 SDXL LoRA 產生圖片，日常生活的整理則交給 [Hermes Agent](https://hermes-agent.nousresearch.com/) 代勞
+趁著每個月的 AI token 還沒用完，工作之餘我也喜歡動手做些 side project。一方面練習把敏感資料與隱私維持在地端，另一方面也順手重溫後端的技術經驗。像是自己寫的 [PickleScout](https://github.com/iskWang/PickleScout)，或是用 A1111 / ComfyUI 訓練 SDXL LoRA 來生圖；至於日常生活雜務的整理，就交給 [Hermes Agent](https://hermes-agent.nousresearch.com/) 代勞。
 
 ## 我想寫什麼
 
-- **技術與工作方法：** 開發時遇到的問題，或是我在社群上看到、覺得值得轉貼分享的文章結論
-- **生活：** 技術之外，我想記下來的日常事情
-- **旅行計畫：** 身為一個 INTP，我其實不擅長做太長期的計畫，但很擅長「解決問題」——所以我會把跟 AI 討論旅行的過程，以及最後整理出來的行程放在這裡
+這個部落格主要記錄三件事：
+
+- **技術與工作方法**：平時開發踩過的坑、架構取捨的思維，或在社群看到有啟發、值得深思的工程觀點。
+- **日常生活**：程式碼之外，那些純粹想留個紀錄的日常瑣事。
+- **旅行計畫**：身為一個 INTP，我其實不太擅長做太長遠的規劃，但很喜歡「解決問題」。所以我會把跟 AI 一起拆解行程、排解路線限制的過程，以及最後成型的旅程留在這裡。
 
 ## 參考資料
 
@@ -43,7 +47,9 @@ origin: original
 
 ## 如果你還在
 
-這裡不會有「最佳實踐」或「完美的答案」，只是留下我紀錄的過程跟想法——有些事情寫下來，才比較容易看清楚自己想要的是什麼
+這裡大概不會有什麼高深宏大的「最佳實踐」，更不會保證給出標準答案。
+
+它本質上就是我記錄思考與試錯過程的地方——有些事情往往要真正動手寫下來，才比較看得清楚自己想要的是什麼。
 
 ## To agent
 
