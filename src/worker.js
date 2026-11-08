@@ -56,10 +56,6 @@ export default {
       return Response.redirect(`${url.origin}/slides`, 301);
     }
 
-    if (url.pathname === '/sitemap.xml') {
-      return Response.redirect(`${url.origin}/sitemap-index.xml`, 301);
-    }
-
     if (url.pathname === '/slides') {
       // Forward the request as-is: with html_handling "drop-trailing-slash", the canonical
       // URL for a folder index is the folder path without a trailing slash (matches /folder
@@ -78,7 +74,7 @@ export default {
       url.pathname === '/en' ||
       url.pathname === '/en/index.html'
     ) {
-      headers.append('Link', `<${url.origin}/sitemap-index.xml>; rel="sitemap"`);
+      headers.append('Link', `<${url.origin}/sitemap.xml>; rel="sitemap"`);
       headers.append('Link', `<${url.origin}/.well-known/api-catalog>; rel="api-catalog"`);
       headers.append('Link', `<${url.origin}/llms.txt>; rel="describedby"`);
       headers.set('Vary', 'Accept');

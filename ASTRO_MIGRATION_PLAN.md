@@ -109,7 +109,7 @@ un-prefixed homepage and no bare `/blog`.
 | `/zh-tw/blog/<slug>` | Post, zh |
 | `/en/blog/<slug>` | Post, en |
 | `/zh-tw/blog/rss.xml`, `/en/blog/rss.xml` | Per-locale RSS |
-| `/sitemap-index.xml` (or `/sitemap.xml`, Phase 1 confirms which `@astrojs/sitemap` emits) | Combined sitemap incl. `/slides` |
+| `/sitemap.xml` | Combined sitemap incl. `/slides` |
 
 Old bookmarks to `/blog*` (pre-locale-prefix scheme) get a server-side 302 to the `/zh-tw/blog*` equivalent —
 simpler than today's client-side localStorage-sniffing redirect page, now doable because the Worker can read

@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import fs from 'node:fs/promises';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import { loadPosts, remarkBlogWikilinks } from './scripts/blog-content-rules.mjs';
@@ -39,6 +40,24 @@ export default defineConfig({
         return item;
       },
     }),
+    {
+      name: 'flatten-sitemap',
+      hooks: {
+        'astro:build:done': async ({ dir, logger }) => {
+          const sitemap0 = new URL('sitemap-0.xml', dir);
+          const sitemapIndex = new URL('sitemap-index.xml', dir);
+          const sitemapTarget = new URL('sitemap.xml', dir);
+          try {
+            await fs.copyFile(sitemap0, sitemapTarget);
+            await fs.unlink(sitemap0);
+            await fs.unlink(sitemapIndex);
+            logger.info('`sitemap.xml` created at `dist` (flattened from sitemap-0.xml)');
+          } catch (err) {
+            logger.error(`Failed to flatten sitemap: ${err.message}`);
+          }
+        },
+      },
+    },
   ],
   i18n: {
     locales: ['zh-tw', 'en'],
