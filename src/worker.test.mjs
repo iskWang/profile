@@ -78,6 +78,13 @@ describe('worker routing', () => {
     expect(response.headers.get('Location')).toBe('https://joshwang.dev/slides');
   });
 
+  test('redirects /sitemap.xml to /sitemap-index.xml', async () => {
+    const env = makeEnv();
+    const response = await worker.fetch(req('/sitemap.xml'), env);
+    expect(response.status).toBe(301);
+    expect(response.headers.get('Location')).toBe('https://joshwang.dev/sitemap-index.xml');
+  });
+
   test('/slides is served directly without rewriting to /slides/index.html', async () => {
     // Regression: html_handling "drop-trailing-slash" 307-redirects /slides/index.html back to
     // /slides, so rewriting the request there caused an infinite redirect loop. The worker must

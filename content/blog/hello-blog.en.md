@@ -71,7 +71,7 @@ Source: [https://joshwang.dev/llms.txt](https://joshwang.dev/llms.txt)
 - [中文履歷](https://joshwang.dev/resume.zh.md)
 - [English PDF](https://joshwang.dev/JoshWang_EN_Resume.pdf)
 - [中文 PDF](https://joshwang.dev/JoshWang_ZH_Resume.pdf)
-- [Sitemap](https://joshwang.dev/sitemap.xml)
+- [Sitemap](https://joshwang.dev/sitemap-index.xml)
 - [API catalog](https://joshwang.dev/.well-known/api-catalog)
 - [Agent profile](https://joshwang.dev/.well-known/agent-skills/get-profile.md)
 
