@@ -16,14 +16,15 @@ function getPost(slug, lang) {
 export default defineConfig({
   site: 'https://joshwang.dev',
   output: 'static',
+  trailingSlash: 'never',
   integrations: [
     react(),
     sitemap({
+      filter: (page) => new URL(page).pathname !== '/',
       i18n: {
         defaultLocale: 'zh-tw',
         locales: { 'zh-tw': 'zh-TW', en: 'en' },
       },
-      customPages: ['https://joshwang.dev/slides'],
       serialize(item) {
         const match = item.url.match(/\/(zh-tw|en)\/blog\/([^/]+)\/?$/);
         if (match) {
