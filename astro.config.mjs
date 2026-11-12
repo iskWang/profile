@@ -25,7 +25,6 @@ export default defineConfig({
         defaultLocale: 'zh-tw',
         locales: { 'zh-tw': 'zh-TW', en: 'en' },
       },
-      customPages: ['https://joshwang.dev/slides'],
       serialize(item) {
         const match = item.url.match(/\/(zh-tw|en)\/blog\/([^/]+)\/?$/);
         if (match) {

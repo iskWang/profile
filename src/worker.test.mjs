@@ -64,6 +64,14 @@ describe('worker routing', () => {
     expect(zh.headers.get('Location')).toBe('https://joshwang.dev/zh-tw');
   });
 
+  test('301s legacy /?lang=zh|en to the locale homepage', async () => {
+    for (const [q, to] of [['zh', '/zh-tw'], ['en', '/en']]) {
+      const res = await worker.fetch(req(`/?lang=${q}`), makeEnv());
+      expect(res.status).toBe(301);
+      expect(res.headers.get('Location')).toBe(`https://joshwang.dev${to}`);
+    }
+  });
+
   test('redirects old /blog paths into the preferred locale', async () => {
     const env = makeEnv();
     const response = await worker.fetch(req('/blog/hello-blog', { 'Accept-Language': 'en' }), env);
