@@ -72,6 +72,14 @@ describe('worker routing', () => {
     }
   });
 
+  test('unknown ?lang values (incl. __proto__) fall through to the 302 Accept-Language redirect', async () => {
+    for (const q of ['__proto__', 'constructor', 'fr', '']) {
+      const res = await worker.fetch(req(`/?lang=${q}`), makeEnv());
+      expect(res.status).toBe(302);
+      expect(res.headers.get('Location')).toBe('https://joshwang.dev/zh-tw');
+    }
+  });
+
   test('redirects old /blog paths into the preferred locale', async () => {
     const env = makeEnv();
     const response = await worker.fetch(req('/blog/hello-blog', { 'Accept-Language': 'en' }), env);

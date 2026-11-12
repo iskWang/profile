@@ -43,7 +43,8 @@ export default {
     const acceptLanguage = request.headers.get('Accept-Language') || '';
     if (url.pathname === '/') {
       // Legacy ?lang=zh|en URLs are still indexed by Google: permanent redirect so they consolidate.
-      const legacy = { zh: '/zh-tw', en: '/en' }[url.searchParams.get('lang')];
+      const lang = url.searchParams.get('lang');
+      const legacy = lang === 'zh' ? '/zh-tw' : lang === 'en' ? '/en' : null;
       if (legacy) return Response.redirect(`${url.origin}${legacy}`, 301);
       const target = prefersEnglish(acceptLanguage) ? '/en' : '/zh-tw';
       return Response.redirect(`${url.origin}${target}`, 302);
