@@ -47,6 +47,37 @@ const labels = isZh ? {
   <link slot="head" rel="canonical" href={`https://joshwang.dev/${prefix}/blog/${slug}`} />
   <link slot="head" rel="alternate" hreflang={locale} href={`https://joshwang.dev/${prefix}/blog/${slug}`} />
   {counterpart && <link slot="head" rel="alternate" hreflang={isZh ? 'en' : 'zh-TW'} href={`https://joshwang.dev${langHref}`} />}
+  {counterpart && <link slot="head" rel="alternate" hreflang="x-default" href={`https://joshwang.dev/zh-tw/blog/${slug}`} />}
+  <link slot="head" rel="alternate" type="text/markdown" href={`https://joshwang.dev/${prefix}/blog/${slug}.md`} />
+  <link slot="head" rel="alternate" type="application/rss+xml" href={`https://joshwang.dev/${prefix}/blog/rss.xml`} />
+  <meta slot="head" property="og:type" content="article" />
+  <meta slot="head" property="og:locale" content={isZh ? 'zh_TW' : 'en_US'} />
+  {counterpart && <meta slot="head" property="og:locale:alternate" content={isZh ? 'en_US' : 'zh_TW'} />}
+  <meta slot="head" property="og:url" content={`https://joshwang.dev/${prefix}/blog/${slug}`} />
+  <meta slot="head" property="og:title" content={post.data.title} />
+  <meta slot="head" property="og:description" content={post.data.summary} />
+  <meta slot="head" property="og:image" content="https://joshwang.dev/cat-mascot.webp" />
+  <meta slot="head" property="article:published_time" content={post.data.date} />
+  {post.data.updated && <meta slot="head" property="article:modified_time" content={post.data.updated} />}
+  {post.data.topics.map(topic => <meta slot="head" property="article:tag" content={topic} />)}
+  <meta slot="head" name="twitter:card" content="summary" />
+  <meta slot="head" name="twitter:title" content={post.data.title} />
+  <meta slot="head" name="twitter:description" content={post.data.summary} />
+  <meta slot="head" name="twitter:image" content="https://joshwang.dev/cat-mascot.webp" />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.data.title,
+    description: post.data.summary,
+    datePublished: post.data.date,
+    ...(post.data.updated ? { dateModified: post.data.updated } : {}),
+    inLanguage: locale,
+    url: `https://joshwang.dev/${prefix}/blog/${slug}`,
+    mainEntityOfPage: `https://joshwang.dev/${prefix}/blog/${slug}`,
+    keywords: post.data.topics,
+    author: { '@type': 'Person', name: 'Josh Wang', url: 'https://joshwang.dev' },
+    image: 'https://joshwang.dev/cat-mascot.webp',
+  }).replace(/</g, '\\u003c')} />
   <Header lang={post.data.lang} variant="page" langHref={langHref} progress />
   <main class="post-page">
     <article class="post-shell" data-article data-copy={labels.copy} data-copied={labels.copied} data-copy-failed={labels.failed} data-table-label={labels.table} data-code-label={labels.code}>

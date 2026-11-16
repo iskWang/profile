@@ -10,6 +10,8 @@ export async function GET(context) {
     title: 'Josh Wang — 部落格',
     description: 'Josh Wang 的繁體中文部落格文章。',
     site: context.site,
+    trailingSlash: false,
+    customData: '<language>zh-tw</language>',
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: new Date(post.data.date),

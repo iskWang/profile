@@ -1,6 +1,7 @@
 #!/usr/bin/env bun
 import fs from "node:fs";
 import path from "node:path";
+import { loadPosts } from "./blog-content-rules.mjs";
 
 const LANGS = ["zh", "en"];
 const REQUIRED_META = ["schema", "lang", "name", "title"];
@@ -74,6 +75,10 @@ export function renderLlmsMarkdown(resumes) {
     `- [Sitemap](${site}/sitemap.xml)`,
     `- [API catalog](${site}/.well-known/api-catalog)`,
     `- [Agent profile](${site}/.well-known/agent-skills/get-profile.md)`,
+    `- [中文部落格 (Markdown)](${site}/zh-tw/blog/index.md)`,
+    `- [English Blog (Markdown)](${site}/en/blog/index.md)`,
+    `- [中文 RSS](${site}/zh-tw/blog/rss.xml)`,
+    `- [English RSS](${site}/en/blog/rss.xml)`,
   ].join("\n");
   const sections = ["en", "zh"].map((lang) => {
     const resume = resumes[lang];
@@ -82,7 +87,13 @@ export function renderLlmsMarkdown(resumes) {
     const label = lang === "en" ? "Experience" : "工作經歷";
     return `## ${heading}\n\n**${resume.name} — ${resume.title}**\n\n${resume.location}\n\n${resume.summaryLines.join(" ")}\n\n### ${label}\n${jobs}`;
   }).join("\n\n");
-  return `# Josh Wang — Resume\n\n> Full-stack software developer focused on scalable frontend systems, AI-assisted development workflows, and legacy system modernization.\n\n## Files and machine-readable resources\n\n${links}\n\n${sections}\n`;
+
+  const { posts } = loadPosts();
+  const recentPosts = posts.filter(post => !post.data.draft)
+    .sort((a, b) => b.data.date.localeCompare(a.data.date))
+    .map(post => `- [${post.data.title}](${site}/${post.lang === "zh" ? "zh-tw" : "en"}/blog/${post.slug}.md) (${post.data.date}) — ${post.data.summary}`)
+    .join("\n");
+  return `# Josh Wang — Resume\n\n> Full-stack software developer focused on scalable frontend systems, AI-assisted development workflows, and legacy system modernization.\n\n## Files and machine-readable resources\n\n${links}\n\n${sections}\n\n## Recent blog posts\n\n${recentPosts}\n`;
 }
 export function generate({ contentDir, generatedFile, publicDir }) {
   const resumes = loadResumes(contentDir);

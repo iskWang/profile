@@ -15,6 +15,25 @@ const topics = [...new Set(posts.flatMap((post) => post.data.topics))].sort();
   <link slot="head" rel="canonical" href="https://joshwang.dev/en/blog" />
   <link slot="head" rel="alternate" hreflang="zh-TW" href="https://joshwang.dev/zh-tw/blog" />
   <link slot="head" rel="alternate" hreflang="en" href="https://joshwang.dev/en/blog" />
+  <link slot="head" rel="alternate" hreflang="x-default" href="https://joshwang.dev/zh-tw/blog" />
+  <link slot="head" rel="alternate" type="text/markdown" href="https://joshwang.dev/en/blog/index.md" />
+  <meta slot="head" property="og:type" content="website" />
+  <meta slot="head" property="og:locale" content="en_US" />
+  <meta slot="head" property="og:locale:alternate" content="zh_TW" />
+  <meta slot="head" property="og:url" content="https://joshwang.dev/en/blog" />
+  <meta slot="head" property="og:title" content="Blog — Josh Wang" />
+  <meta slot="head" property="og:description" content="Josh Wang's blog about writing, tools, and continuous learning." />
+  <meta slot="head" property="og:image" content="https://joshwang.dev/cat-mascot.webp" />
+  <meta slot="head" name="twitter:card" content="summary" />
+  <meta slot="head" name="twitter:title" content="Blog — Josh Wang" />
+  <meta slot="head" name="twitter:description" content="Josh Wang's blog about writing, tools, and continuous learning." />
+  <meta slot="head" name="twitter:image" content="https://joshwang.dev/cat-mascot.webp" />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'Blog', name: 'Josh Wang Blog',
+    description: "Josh Wang's blog about writing, tools, and continuous learning.",
+    url: 'https://joshwang.dev/en/blog', inLanguage: 'en',
+    author: { '@type': 'Person', name: 'Josh Wang', url: 'https://joshwang.dev' },
+  }).replace(/</g, '\\u003c')} />
   <link slot="head" rel="alternate" type="application/rss+xml" href="https://joshwang.dev/en/blog/rss.xml" />
   <Header lang="en" variant="page" langHref="/zh-tw/blog" />
   <main class="px-6 pb-20 pt-32">

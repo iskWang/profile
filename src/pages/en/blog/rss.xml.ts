@@ -9,6 +9,8 @@ export async function GET(context) {
     title: 'Josh Wang — Blog',
     description: "Josh Wang's blog about writing, tools, and continuous learning.",
     site: context.site,
+    trailingSlash: false,
+    customData: '<language>en</language>',
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: new Date(post.data.date),

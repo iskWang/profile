@@ -150,3 +150,12 @@ Markdown 應使用固定 headings、front matter 或其他可驗證結構。不�
 ### 直接使用 `/llms.txt`
 
 優點：agent 有固定、可預期的入口，且符合目前的 llms.txt 社群提案。缺點：它不是 IETF 正式標準，仍應保留首頁 `Accept` negotiation 作為另一個 discovery 路徑。
+
+## 2026-11-16 本機實作與驗證
+
+- Blog 列表提供 `/{en|zh-tw}/blog/index.md`，文章提供 `/{en|zh-tw}/blog/{slug}.md`；HTML URL 可用 `Accept: text/markdown` 協商，尊重品質權重，回應帶 `Vary: Accept` 並停用共享快取。
+- `/blog-index.json` 僅包含已發布文章。建置路由使用 `astro:content`，不可依打包後的 `import.meta.url` 尋找來源資料夾。
+- WebMCP 提供唯讀 `search_blog_posts` 與 `get_profile_markdown`；不支援 API 的瀏覽器不註冊。輸入經嚴格驗證，註冊失敗會撤回工具。
+- RSS 使用無尾斜線 URL；頁面補齊社群標籤與 JSON-LD。WebMCP 是 agent 功能，不代表搜尋排名加分。
+- 本機已驗證 18 個 sitemap URL、14 篇文章的 HTML／Markdown／BlogPosting、雙語 RSS、404 與 discovery media type；Chromium 原生工具呼叫及手機／桌面文章畫面通過。
+- `bun test`：50 pass；最後 wikilink 修正另跑雙語回歸 2 pass，`bun run build` 通過。未部署，也未驗證 Search Console 收錄或 Core Web Vitals。

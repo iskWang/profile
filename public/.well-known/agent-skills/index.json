@@ -1,12 +1,12 @@
 {
-  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
   "skills": [
     {
       "name": "get-profile",
-      "type": "resource",
+      "type": "skill-md",
       "description": "Retrieve Josh Wang's full profile (experience, skills, contact) in Markdown via Accept: text/markdown on the homepage",
       "url": "https://joshwang.dev/.well-known/agent-skills/get-profile.md",
-      "sha256": "5dde1e2851d824a81697792c1e313e9cc40602fbea36f95645e0c2835ac9b6e6"
+      "digest": "sha256:8cf40aa6749c86963d0a7c930bde77d0fc79a06e708a084cd0fe5e345aae0415"
     }
   ]
 }

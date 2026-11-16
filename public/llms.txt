@@ -11,6 +11,10 @@
 - [Sitemap](https://joshwang.dev/sitemap.xml)
 - [API catalog](https://joshwang.dev/.well-known/api-catalog)
 - [Agent profile](https://joshwang.dev/.well-known/agent-skills/get-profile.md)
+- [中文部落格 (Markdown)](https://joshwang.dev/zh-tw/blog/index.md)
+- [English Blog (Markdown)](https://joshwang.dev/en/blog/index.md)
+- [中文 RSS](https://joshwang.dev/zh-tw/blog/rss.xml)
+- [English RSS](https://joshwang.dev/en/blog/rss.xml)
 
 ## English profile
 
@@ -39,3 +43,20 @@ Taipei, Taiwan
 - **Front-End Developer (Platform & Architecture)** — TeamT5 杜浦數位安全 (2021/10 – 2023/06)
 - **Front-End Lead** — 海碩集團 鑫享科技 (OEC Group) (2019/05 – 2021/10)
 - **Web Developer** — 新創公司（Fullinn、CatFi、myTreat、Ecowork） (2014/07 – 2019/04)
+
+## Recent blog posts
+
+- [I Thought Threads Was Right Until I Hit a Snag](https://joshwang.dev/en/blog/threads-credibility-halo-pitfalls.md) (2026-11-16) — I saw confident social-media advice and thought I could copy it. But what looks good on someone else may not fit me, and a smooth read doesn't mean they've tested the pitfalls for me
+- [我以為 Threads 是對的，直到我踩到雷](https://joshwang.dev/zh-tw/blog/threads-credibility-halo-pitfalls.md) (2026-11-16) — 滑社群看到講得頭頭是道的技術與管理心得，常讓人誤以為直接照抄就行；但別人穿起來好看的衣服不一定合自己的身，讀得順也不代表背後已經替你踩過坑
+- [看完 10 美元 OpenStick 的 Homelab，我最後只給 Mac mini 補了三樣監控](https://joshwang.dev/zh-tw/blog/openstick-mac-mini-monitoring.md) (2026-11-08) — 看到別人用 10 美元硬體把 homelab 跑得風生水起，原本好奇自己跑在 Mac mini 上的服務是不是該大換血，找了兩個 AI 獨立評估後，結論卻出奇一致：現有服務完全不用換，真正缺的反而是映像更新通知、資源曲線與端點存活檢查
+- [I Read About a $10 OpenStick Homelab, Then Added Three Monitoring Tools to My Mac mini](https://joshwang.dev/en/blog/openstick-mac-mini-monitoring.md) (2026-11-08) — After reading about a $10 homelab, I asked two AI advisors whether my Mac mini setup needed replacing. They agreed: keep it, and add image alerts, resource graphs, and endpoint checks
+- [把本機 Agent 記憶接上 Claude 與 ChatGPT 網頁：寫一個 MCP 轉接站的踩坑紀錄](https://joshwang.dev/zh-tw/blog/agent-memory-remote-mcp-gateway.md) (2026-11-06) — 我想讓網頁版 Claude 與 ChatGPT 也能讀寫終端機裡的 agentmemory，但又不想開兩個 MCP 連線，最後在現有的 Obsidian MCP 後面寫了個 gateway 把兩個服務接起來，順便修剪掉五十幾個高風險工具
+- [Connecting local agent memory to Claude and ChatGPT on the web with an MCP gateway](https://joshwang.dev/en/blog/agent-memory-remote-mcp-gateway.md) (2026-11-06) — I connected web-based Claude and ChatGPT to terminal agentmemory through my existing Obsidian MCP, with one gateway and a whitelist that removes more than fifty high-risk tools
+- [Replacing hand-written handoffs with Oh My Pi and Orca for remote coding](https://joshwang.dev/en/blog/omp-orca-mac-mini-notes.md) (2026-10-30) — I used to SSH into my home Mac mini and write handoff notes when switching between Claude Code and Codex; Oh My Pi and Orca keep multi-model work and mobile approvals in one workflow
+- [不用再手寫 handoff 文件：我怎麼用 Oh My Pi 跟 Orca 遠端寫程式](https://joshwang.dev/zh-tw/blog/omp-orca-mac-mini-notes.md) (2026-10-30) — 以前用 SSH 連回家裡的 Mac mini，在 Claude Code 跟 Codex 之間換手都要自己生一份交接文件；換成 Oh My Pi 搭配 Orca 後，多模型分工跟手機端的權限確認終於能留在同一個工作流裡
+- [要 SSR 還是要控制權：我怎麼選 React 框架跟 TypeScript 後端](https://joshwang.dev/zh-tw/blog/react-ssr-backend-tradeoffs.md) (2026-09-22) — React Router v8 Framework Mode 對上 Next.js App Router，以及我為什麼選 Fastify 當 TypeScript API 的起手式，這是我自己用的判斷速記
+- [SSR or control: how I pick a React framework and a TypeScript backend](https://joshwang.dev/en/blog/react-ssr-backend-tradeoffs.md) (2026-09-22) — React Router v8 Framework Mode versus Next.js App Router, and why I pick Fastify as my starting TypeScript API, in my own decision notes
+- [Putting my home Obsidian vault behind Cloudflare Access as a remote MCP](https://joshwang.dev/en/blog/obsidian-remote-mcp-cloudflare-access.md) (2026-09-22) — I turned my Mac mini Obsidian vault into a remote MCP with Cloudflare Tunnel and Access, got Claude connected, and hit a DCR wall with Gemini while drawing clear security boundaries
+- [把家裡的 Obsidian 接上雲端 AI：一次 Cloudflare Access 的踩雷紀錄](https://joshwang.dev/zh-tw/blog/obsidian-remote-mcp-cloudflare-access.md) (2026-09-22) — 我用 Cloudflare Tunnel 跟 Access 把 Mac mini 上的 Obsidian vault 變成遠端 MCP，Claude 接得上、Gemini 卡在 DCR，這是整個過程跟我劃的安全界線
+- [Hello! I'm Josh!](https://joshwang.dev/en/blog/hello-blog.md) (2026-09-12) — A self-introduction that isn't quite a résumé — I'm using this space to collect some recent thoughts on tech, life, and travel.
+- [Hello! 我是 Josh!](https://joshwang.dev/zh-tw/blog/hello-blog.md) (2026-09-12) — 這是一篇不太像履歷的自我介紹，記錄我最近對技術、生活與旅行的一些想法。
