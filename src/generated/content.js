@@ -12,10 +12,10 @@ export const CONTENT = {
       "name": "Josh Wang",
       "title": "Software Developer",
       "experience": "10+ 年",
-      "focus": "React / AI Workflow",
+      "focus": "",
       "location": "Taipei, Taiwan",
       "welcome": "您好，我是 Josh!",
-      "description": "10+ 年全端開發經驗（前端為主），涵蓋 SaaS、資安、跨國內部系統與 React Native 主導過 7 個以上 Web 系統與 2 個 Mobile App 架構設計，熟悉 TypeScript、CI/CD、AWS 近期專注於 AI-assisted development workflow 落地、技術債重構與高效產品交付",
+      "description": "10+ 年軟體開發經驗，雖然履歷上看來跟前端特別有緣，但從 Rails、Node.js 後端到 AWS 雲端架構都實際滾過一輪 主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程 近期熱衷於把 AI Workflow、測試自動化與開發工具接進日常流程——畢竟能讓機器穩定重試的事，就不該半夜找人類加班",
       "tags": [],
       "resumeBtn": "查看完整履歷 (PDF)",
       "resumeUrl": "/JoshWang_ZH_Resume.pdf"
@@ -125,12 +125,12 @@ export const CONTENT = {
         },
         {
           "company": "新創公司（Fullinn、CatFi、myTreat、Ecowork）",
-          "role": "Web Developer",
+          "role": "Web / Rails Developer",
           "period": "2014/07 – 2019/04",
           "highlights": [
             "領導主要前端架構設計，以 Next.js SSR 開發 SEO 導向之旅宿官網建站系統，第一位客戶登陸 Google 後第一週即進入搜尋結果第一頁",
             "使用 React.js 及 GraphQL 開發 OTA 平台及訂單系統，並主導初期 REST API 格式設計，建構 API 設計流程使後端開發更為順暢",
-            "以 Rails、Angular.js 進行全端開發，獨立實作客服後台系統",
+            "於 Ecowork 擔任 Rails Developer，以 Ruby on Rails 與 Angular.js 進行全端開發並獨立實作客服後台系統",
             "以 React Native 開發跨平台行動應用程式，使用 Redux、Redux-saga 處理資料流與 Side Effect",
             "引入 Firebase Push Notification 及 Code Push，降低 Deploy 成本並整合推播服務",
             "串接 Streaming 技術（WebRTC、RTMP），研究即時影像傳輸應用",
@@ -143,7 +143,7 @@ export const CONTENT = {
               "highlights": [
                 "領導主要前端架構設計，以 Next.js SSR 開發 SEO 導向之旅宿官網建站系統，第一位客戶登陸 Google 後第一週即進入搜尋結果第一頁",
                 "使用 React.js 及 GraphQL 開發 OTA 平台及訂單系統，並主導初期 REST API 格式設計，建構 API 設計流程使後端開發更為順暢",
-                "以 Rails、Angular.js 進行全端開發，獨立實作客服後台系統"
+                "於 Ecowork 擔任 Rails Developer，以 Ruby on Rails 與 Angular.js 進行全端開發並獨立實作客服後台系統"
               ]
             },
             {
@@ -214,10 +214,10 @@ export const CONTENT = {
             "Open Source"
           ],
           "highlights": [
-            "以 AI-assisted workflow 於一週內完成 POC 並開源，涵蓋 browser agent、LLM pipeline、self-healing 與全端架構",
+            "後端以 Fastify + BullMQ/Redis 建立 job queue，解耦長時間執行的 LLM 生成任務並實作失敗重試與狀態追蹤機制，生成產物同時包含 GitHub Actions workflow，達成 runtime 零 LLM 依賴",
             "設計兩階段 LLM pipeline：browser agent 探索頁面記錄 ActionLog，自動生成 Gherkin feature 與 Playwright 測試腳本",
             "實作 self-healing 機制：測試失敗時自動讓 LLM 修復 selector 與 timeout 後重試，提升生成測試可用率",
-            "後端以 Fastify + BullMQ/Redis 建立 job queue，解耦長時間執行的 LLM 生成任務並實作失敗重試與狀態追蹤機制，生成產物同時包含 GitHub Actions workflow，達成 runtime 零 LLM 依賴"
+            "以 AI-assisted workflow 於一週內完成 POC 並開源，涵蓋 browser agent、LLM pipeline、self-healing 與全端架構"
           ]
         }
       ]
@@ -279,10 +279,10 @@ export const CONTENT = {
       "name": "Josh Wang",
       "title": "Software Developer",
       "experience": "10+ years",
-      "focus": "React / AI Workflow",
+      "focus": "",
       "location": "Taipei, Taiwan",
       "welcome": "Hi, I'm Josh!",
-      "description": "10+ years of full-stack development experience (primarily front-end), spanning SaaS, cybersecurity, cross-border internal systems, and React Native. Led frontend architecture and delivery for 7+ web systems and 2 mobile apps using TypeScript, CI/CD, monorepo, and AWS. Focused on scalable frontend systems, AI-assisted development workflows, and legacy system modernization.",
+      "description": "10+ years in software development. While my resume skews heavily toward frontend architecture, I've spent plenty of time in the trenches with Rails, Node.js backends, and AWS. Led architecture and delivery for 7+ web systems and 2 mobile apps, often stepping in to untangle legacy debt, monorepos, and CI/CD pipelines. Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't require humans after hours.",
       "tags": [],
       "resumeBtn": "View Full Resume (PDF)",
       "resumeUrl": "/JoshWang_EN_Resume.pdf"
@@ -392,12 +392,12 @@ export const CONTENT = {
         },
         {
           "company": "Startups (Fullinn, CatFi, myTreat, Ecowork)",
-          "role": "Web Developer",
+          "role": "Web / Rails Developer",
           "period": "Jul 2014 – Apr 2019",
           "highlights": [
             "Led frontend architecture with Next.js SSR to build an SEO-optimized hotel booking website builder; first client ranked on Google's first page within one week of launch",
             "Built OTA platform and order system with React.js / GraphQL, and led initial REST API design conventions to streamline backend development",
-            "Delivered full-stack features and a standalone customer service back-office using Rails and Angular.js",
+            "Started as a Rails Developer at Ecowork, building full-stack features and a standalone customer service back-office with Ruby on Rails and Angular.js",
             "Built cross-platform mobile apps with React Native, Redux, and Redux-saga for state and side effect management",
             "Integrated Firebase Push Notification and Code Push to reduce deploy costs and streamline push services",
             "Adopted Fabric and OneSignal for crash reporting and push; integrated WebRTC / RTMP streaming",
@@ -410,7 +410,7 @@ export const CONTENT = {
               "highlights": [
                 "Led frontend architecture with Next.js SSR to build an SEO-optimized hotel booking website builder; first client ranked on Google's first page within one week of launch",
                 "Built OTA platform and order system with React.js / GraphQL, and led initial REST API design conventions to streamline backend development",
-                "Delivered full-stack features and a standalone customer service back-office using Rails and Angular.js"
+                "Started as a Rails Developer at Ecowork, building full-stack features and a standalone customer service back-office with Ruby on Rails and Angular.js"
               ]
             },
             {
@@ -481,10 +481,10 @@ export const CONTENT = {
             "Open Source"
           ],
           "highlights": [
-            "Completed full POC in one week using AI-assisted workflow; open-sourced with browser agent, LLM pipeline, self-healing, and full-stack architecture",
+            "Backend job queue (Fastify + BullMQ/Redis) decouples long-running LLM generation from requests, with failure retry and status tracking; generated output includes a GitHub Actions workflow with zero LLM dependency at runtime",
             "Designed two-pass LLM pipeline: Stagehand browser agent explores target app and records ActionLog, converted to Gherkin feature files and Playwright step definitions",
             "Implemented self-healing mechanism: on test failure, LLM auto-patches selectors and timeouts and retries, improving generated test usability",
-            "Backend job queue (Fastify + BullMQ/Redis) decouples long-running LLM generation from requests, with failure retry and status tracking; generated output includes a GitHub Actions workflow with zero LLM dependency at runtime"
+            "Completed full POC in one week using AI-assisted workflow; open-sourced with browser agent, LLM pipeline, self-healing, and full-stack architecture"
           ]
         }
       ]

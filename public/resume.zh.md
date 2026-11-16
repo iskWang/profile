@@ -8,9 +8,9 @@ title: Software Developer
 # Josh Wang — 履歷
 
 ## Summary
-- 10+ 年全端開發經驗（前端為主），涵蓋 SaaS、資安、跨國內部系統與 React Native
-- 主導過 7 個以上 Web 系統與 2 個 Mobile App 架構設計，熟悉 TypeScript、CI/CD、AWS
-- 近期專注於 AI-assisted development workflow 落地、技術債重構與高效產品交付
+- 10+ 年軟體開發經驗，雖然履歷上看來跟前端特別有緣，但從 Rails、Node.js 後端到 AWS 雲端架構都實際滾過一輪
+- 主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程
+- 近期熱衷於把 AI Workflow、測試自動化與開發工具接進日常流程——畢竟能讓機器穩定重試的事，就不該半夜找人類加班
 
 ## Experience
 ### Full-Stack Engineer — Independent
@@ -47,12 +47,12 @@ title: Software Developer
 - 接手外部廠商原始 HTML/CSS，於一個月內完成主要技術架構（Next.js、i18n 13 語系）
 - 推動 Pull Request Code Review 機制，交換技術意見，提升 code 可讀性及確保需求一致性
 
-### Web Developer — 新創公司（Fullinn、CatFi、myTreat、Ecowork）
+### Web / Rails Developer — 新創公司（Fullinn、CatFi、myTreat、Ecowork）
 2014/07 – 2019/04
 #### 全端架構與 API 設計 | Fullinn、myTreat、Ecowork
 - 領導主要前端架構設計，以 Next.js SSR 開發 SEO 導向之旅宿官網建站系統，第一位客戶登陸 Google 後第一週即進入搜尋結果第一頁
 - 使用 React.js 及 GraphQL 開發 OTA 平台及訂單系統，並主導初期 REST API 格式設計，建構 API 設計流程使後端開發更為順暢
-- 以 Rails、Angular.js 進行全端開發，獨立實作客服後台系統
+- 於 Ecowork 擔任 Rails Developer，以 Ruby on Rails 與 Angular.js 進行全端開發並獨立實作客服後台系統
 #### 行動應用與跨平台開發 | Fullinn、CatFi
 - 以 React Native 開發跨平台行動應用程式，使用 Redux、Redux-saga 處理資料流與 Side Effect
 - 引入 Firebase Push Notification 及 Code Push，降低 Deploy 成本並整合推播服務
@@ -63,10 +63,10 @@ title: Software Developer
 
 ## Projects
 ### PickleScout — LLM 驅動的 E2E 測試自動生成工具
-- 以 AI-assisted workflow 於一週內完成 POC 並開源，涵蓋 browser agent、LLM pipeline、self-healing 與全端架構
+- 後端以 Fastify + BullMQ/Redis 建立 job queue，解耦長時間執行的 LLM 生成任務並實作失敗重試與狀態追蹤機制，生成產物同時包含 GitHub Actions workflow，達成 runtime 零 LLM 依賴
 - 設計兩階段 LLM pipeline：browser agent 探索頁面記錄 ActionLog，自動生成 Gherkin feature 與 Playwright 測試腳本
 - 實作 self-healing 機制：測試失敗時自動讓 LLM 修復 selector 與 timeout 後重試，提升生成測試可用率
-- 後端以 Fastify + BullMQ/Redis 建立 job queue，解耦長時間執行的 LLM 生成任務並實作失敗重試與狀態追蹤機制，生成產物同時包含 GitHub Actions workflow，達成 runtime 零 LLM 依賴
+- 以 AI-assisted workflow 於一週內完成 POC 並開源，涵蓋 browser agent、LLM pipeline、self-healing 與全端架構
 
 ## Education
 文藻外語大學　數位內容應用與管理系 —  (2009/09 – 2013/06)
@@ -85,7 +85,7 @@ title: Software Developer
 {
   "name": "Josh Wang",
   "title": "Software Developer",
-  "subtitle": "專注 React / Next.js 前端架構，兼具 Node.js 後端與 AI 開發流程整合經驗的全端工程師",
+  "subtitle": "橫跨前端架構、後端開發與自動化工具鏈的軟體開發者",
   "location": "Taipei, Taiwan",
   "email": "spjay1@gmail.com",
   "site": "joshwang.dev",
@@ -99,9 +99,9 @@ title: Software Developer
     "skills": "技能"
   },
   "summaryLines": [
-    "10+ 年全端開發經驗（前端為主），涵蓋 SaaS、資安、跨國內部系統與 React Native",
-    "主導過 7 個以上 Web 系統與 2 個 Mobile App 架構設計，熟悉 TypeScript、CI/CD、AWS",
-    "近期專注於 AI-assisted development workflow 落地、技術債重構與高效產品交付"
+    "10+ 年軟體開發經驗，雖然履歷上看來跟前端特別有緣，但從 Rails、Node.js 後端到 AWS 雲端架構都實際滾過一輪",
+    "主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程",
+    "近期熱衷於把 AI Workflow、測試自動化與開發工具接進日常流程——畢竟能讓機器穩定重試的事，就不該半夜找人類加班"
   ],
   "achievements": [
     [
@@ -190,7 +190,7 @@ title: Software Developer
       ]
     },
     {
-      "title": "Web Developer",
+      "title": "Web / Rails Developer",
       "company": "新創公司（Fullinn、CatFi、myTreat、Ecowork）",
       "period": "2014/07 – 2019/04",
       "borderBottom": false,
@@ -200,7 +200,7 @@ title: Software Developer
           "bullets": [
             "領導主要前端架構設計，以 Next.js SSR 開發 SEO 導向之旅宿官網建站系統，第一位客戶登陸 Google 後第一週即進入搜尋結果第一頁",
             "使用 React.js 及 GraphQL 開發 OTA 平台及訂單系統，並主導初期 REST API 格式設計，建構 API 設計流程使後端開發更為順暢",
-            "以 Rails、Angular.js 進行全端開發，獨立實作客服後台系統"
+            "於 Ecowork 擔任 Rails Developer，以 Ruby on Rails 與 Angular.js 進行全端開發並獨立實作客服後台系統"
           ]
         },
         {
@@ -227,10 +227,10 @@ title: Software Developer
     "subtitle": "個人開源專案",
     "href": "https://github.com/iskWang/PickleScout",
     "bullets": [
-      "以 AI-assisted workflow 於一週內完成 POC 並開源，涵蓋 browser agent、LLM pipeline、self-healing 與全端架構",
+      "後端以 Fastify + BullMQ/Redis 建立 job queue，解耦長時間執行的 LLM 生成任務並實作失敗重試與狀態追蹤機制，生成產物同時包含 GitHub Actions workflow，達成 runtime 零 LLM 依賴",
       "設計兩階段 LLM pipeline：browser agent 探索頁面記錄 ActionLog，自動生成 Gherkin feature 與 Playwright 測試腳本",
       "實作 self-healing 機制：測試失敗時自動讓 LLM 修復 selector 與 timeout 後重試，提升生成測試可用率",
-      "後端以 Fastify + BullMQ/Redis 建立 job queue，解耦長時間執行的 LLM 生成任務並實作失敗重試與狀態追蹤機制，生成產物同時包含 GitHub Actions workflow，達成 runtime 零 LLM 依賴"
+      "以 AI-assisted workflow 於一週內完成 POC 並開源，涵蓋 browser agent、LLM pipeline、self-healing 與全端架構"
     ]
   },
   "education": {

@@ -54,52 +54,5 @@ At its core, this is simply a place for me to document my thoughts and experimen
 
 ## To agent
 
-Human readers can go pet the cat now. Here's the `llms.txt` this site currently provides — the entry points for the résumé and related resources are all in there:
+Human readers can go pet the cat now. If you're an agent looking for my résumé, post index, or machine-readable resources, head straight to [llms.txt](https://joshwang.dev/llms.txt) — it's always up to date and much faster than parsing this post.
 
-Source: [https://joshwang.dev/llms.txt](https://joshwang.dev/llms.txt)
-
-<p class="code-caption">llms.txt</p>
-
-```md
-# Josh Wang — Resume
-
-> Full-stack software developer focused on scalable frontend systems, AI-assisted development workflows, and legacy system modernization.
-
-## Files and machine-readable resources
-
-- [English resume](https://joshwang.dev/resume.en.md)
-- [中文履歷](https://joshwang.dev/resume.zh.md)
-- [English PDF](https://joshwang.dev/JoshWang_EN_Resume.pdf)
-- [中文 PDF](https://joshwang.dev/JoshWang_ZH_Resume.pdf)
-- [Sitemap](https://joshwang.dev/sitemap.xml)
-- [API catalog](https://joshwang.dev/.well-known/api-catalog)
-- [Agent profile](https://joshwang.dev/.well-known/agent-skills/get-profile.md)
-
-## English profile
-
-**Josh Wang — Software Developer**
-
-Taipei, Taiwan
-
-10+ years of full-stack development experience (primarily front-end), spanning SaaS, cybersecurity, cross-border internal systems, and React Native. Led frontend architecture and delivery for 7+ web systems and 2 mobile apps using TypeScript, CI/CD, monorepo, and AWS. Focused on scalable frontend systems, AI-assisted development workflows, and legacy system modernization.
-
-### Experience
-- **Full-Stack Engineer** — Independent (Jun 2023 – Present)
-- **Front-End Developer (Platform & Architecture)** — TeamT5 (Cybersecurity) (Oct 2021 – Jun 2023)
-- **Front-End Lead** — OEC Group (May 2019 – Oct 2021)
-- **Web Developer** — Startups (Fullinn, CatFi, myTreat, Ecowork) (Jul 2014 – Apr 2019)
-
-## 中文個人資料
-
-**Josh Wang — Software Developer**
-
-Taipei, Taiwan
-
-10+ 年全端開發經驗（前端為主），涵蓋 SaaS、資安、跨國內部系統與 React Native 主導過 7 個以上 Web 系統與 2 個 Mobile App 架構設計，熟悉 TypeScript、CI/CD、AWS 近期專注於 AI-assisted development workflow 落地、技術債重構與高效產品交付
-
-### 工作經歷
-- **Full-Stack Engineer** — Independent (2023/06 – 至今)
-- **Front-End Developer (Platform & Architecture)** — TeamT5 杜浦數位安全 (2021/10 – 2023/06)
-- **Front-End Lead** — 海碩集團 鑫享科技 (OEC Group) (2019/05 – 2021/10)
-- **Web Developer** — 新創公司（Fullinn、CatFi、myTreat、Ecowork） (2014/07 – 2019/04)
-```

@@ -1,6 +1,6 @@
 # Josh Wang — Resume
 
-> Full-stack software developer focused on scalable frontend systems, AI-assisted development workflows, and legacy system modernization.
+> Software developer with 10+ years of experience across frontend architecture, backend systems, CI/CD automation, and AI-assisted developer tooling.
 
 ## Files and machine-readable resources
 
@@ -22,13 +22,13 @@
 
 Taipei, Taiwan
 
-10+ years of full-stack development experience (primarily front-end), spanning SaaS, cybersecurity, cross-border internal systems, and React Native. Led frontend architecture and delivery for 7+ web systems and 2 mobile apps using TypeScript, CI/CD, monorepo, and AWS. Focused on scalable frontend systems, AI-assisted development workflows, and legacy system modernization.
+10+ years in software development. While my resume skews heavily toward frontend architecture, I've spent plenty of time in the trenches with Rails, Node.js backends, and AWS. Led architecture and delivery for 7+ web systems and 2 mobile apps, often stepping in to untangle legacy debt, monorepos, and CI/CD pipelines. Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't require humans after hours.
 
 ### Experience
 - **Full-Stack Engineer** — Independent (Jun 2023 – Present)
 - **Front-End Developer (Platform & Architecture)** — TeamT5 (Cybersecurity) (Oct 2021 – Jun 2023)
 - **Front-End Lead** — OEC Group (May 2019 – Oct 2021)
-- **Web Developer** — Startups (Fullinn, CatFi, myTreat, Ecowork) (Jul 2014 – Apr 2019)
+- **Web / Rails Developer** — Startups (Fullinn, CatFi, myTreat, Ecowork) (Jul 2014 – Apr 2019)
 
 ## 中文個人資料
 
@@ -36,13 +36,13 @@ Taipei, Taiwan
 
 Taipei, Taiwan
 
-10+ 年全端開發經驗（前端為主），涵蓋 SaaS、資安、跨國內部系統與 React Native 主導過 7 個以上 Web 系統與 2 個 Mobile App 架構設計，熟悉 TypeScript、CI/CD、AWS 近期專注於 AI-assisted development workflow 落地、技術債重構與高效產品交付
+10+ 年軟體開發經驗，雖然履歷上看來跟前端特別有緣，但從 Rails、Node.js 後端到 AWS 雲端架構都實際滾過一輪 主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程 近期熱衷於把 AI Workflow、測試自動化與開發工具接進日常流程——畢竟能讓機器穩定重試的事，就不該半夜找人類加班
 
 ### 工作經歷
 - **Full-Stack Engineer** — Independent (2023/06 – 至今)
 - **Front-End Developer (Platform & Architecture)** — TeamT5 杜浦數位安全 (2021/10 – 2023/06)
 - **Front-End Lead** — 海碩集團 鑫享科技 (OEC Group) (2019/05 – 2021/10)
-- **Web Developer** — 新創公司（Fullinn、CatFi、myTreat、Ecowork） (2014/07 – 2019/04)
+- **Web / Rails Developer** — 新創公司（Fullinn、CatFi、myTreat、Ecowork） (2014/07 – 2019/04)
 
 ## Recent blog posts
 

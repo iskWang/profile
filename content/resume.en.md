@@ -8,9 +8,9 @@ title: Software Developer
 # Josh Wang — Resume
 
 ## Summary
-- 10+ years of full-stack development experience (primarily front-end), spanning SaaS, cybersecurity, cross-border internal systems, and React Native.
-- Led frontend architecture and delivery for 7+ web systems and 2 mobile apps using TypeScript, CI/CD, monorepo, and AWS.
-- Focused on scalable frontend systems, AI-assisted development workflows, and legacy system modernization.
+- 10+ years in software development. While my resume skews heavily toward frontend architecture, I've spent plenty of time in the trenches with Rails, Node.js backends, and AWS.
+- Led architecture and delivery for 7+ web systems and 2 mobile apps, often stepping in to untangle legacy debt, monorepos, and CI/CD pipelines.
+- Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't require humans after hours.
 
 ## Experience
 ### Full-Stack Engineer — Independent
@@ -47,12 +47,12 @@ May 2019 – Oct 2021
 - Took over external vendor's HTML/CSS and completed Next.js + i18n architecture (13 languages) within one month
 - Led Pull Request Code Review culture to improve code quality and ensure requirement alignment
 
-### Web Developer — Startups (Fullinn, CatFi, myTreat, Ecowork)
+### Web / Rails Developer — Startups (Fullinn, CatFi, myTreat, Ecowork)
 Jul 2014 – Apr 2019
 #### Full-stack Architecture & API Design | Fullinn, myTreat, Ecowork
 - Led frontend architecture with Next.js SSR to build an SEO-optimized hotel booking website builder; first client ranked on Google's first page within one week of launch
 - Built OTA platform and order system with React.js / GraphQL, and led initial REST API design conventions to streamline backend development
-- Delivered full-stack features and a standalone customer service back-office using Rails and Angular.js
+- Started as a Rails Developer at Ecowork, building full-stack features and a standalone customer service back-office with Ruby on Rails and Angular.js
 #### Mobile & Cross-platform Development | Fullinn, CatFi
 - Built cross-platform mobile apps with React Native, Redux, and Redux-saga for state and side effect management
 - Integrated Firebase Push Notification and Code Push to reduce deploy costs and streamline push services
@@ -63,10 +63,10 @@ Jul 2014 – Apr 2019
 
 ## Projects
 ### PickleScout — LLM-Driven E2E Test Generation Agent
-- Completed full POC in one week using AI-assisted workflow; open-sourced with browser agent, LLM pipeline, self-healing, and full-stack architecture
+- Backend job queue (Fastify + BullMQ/Redis) decouples long-running LLM generation from requests, with failure retry and status tracking; generated output includes a GitHub Actions workflow with zero LLM dependency at runtime
 - Designed two-pass LLM pipeline: Stagehand browser agent explores target app and records ActionLog, converted to Gherkin feature files and Playwright step definitions
 - Implemented self-healing mechanism: on test failure, LLM auto-patches selectors and timeouts and retries, improving generated test usability
-- Backend job queue (Fastify + BullMQ/Redis) decouples long-running LLM generation from requests, with failure retry and status tracking; generated output includes a GitHub Actions workflow with zero LLM dependency at runtime
+- Completed full POC in one week using AI-assisted workflow; open-sourced with browser agent, LLM pipeline, self-healing, and full-stack architecture
 
 ## Education
 Wenzao Ursuline University of Languages — B.A. Digital Content Application and Management (Sep 2009 – Jun 2013)
@@ -85,7 +85,7 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
 {
   "name": "Josh Wang",
   "title": "Software Developer",
-  "subtitle": "Full-stack engineer specializing in React / Next.js front-end architecture, with Node.js backend and AI-assisted development workflow integration experience",
+  "subtitle": "Software developer working across frontend architecture, backend systems, and developer tooling",
   "location": "Taipei, Taiwan",
   "email": "spjay1@gmail.com",
   "site": "joshwang.dev",
@@ -99,9 +99,9 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
     "skills": "Skills"
   },
   "summaryLines": [
-    "10+ years of full-stack development experience (primarily front-end), spanning SaaS, cybersecurity, cross-border internal systems, and React Native.",
-    "Led frontend architecture and delivery for 7+ web systems and 2 mobile apps using TypeScript, CI/CD, monorepo, and AWS.",
-    "Focused on scalable frontend systems, AI-assisted development workflows, and legacy system modernization."
+    "10+ years in software development. While my resume skews heavily toward frontend architecture, I've spent plenty of time in the trenches with Rails, Node.js backends, and AWS.",
+    "Led architecture and delivery for 7+ web systems and 2 mobile apps, often stepping in to untangle legacy debt, monorepos, and CI/CD pipelines.",
+    "Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't require humans after hours."
   ],
   "achievements": [
     [
@@ -190,7 +190,7 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
       ]
     },
     {
-      "title": "Web Developer",
+      "title": "Web / Rails Developer",
       "company": "Startups (Fullinn, CatFi, myTreat, Ecowork)",
       "period": "Jul 2014 – Apr 2019",
       "borderBottom": false,
@@ -200,7 +200,7 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
           "bullets": [
             "Led frontend architecture with Next.js SSR to build an SEO-optimized hotel booking website builder; first client ranked on Google's first page within one week of launch",
             "Built OTA platform and order system with React.js / GraphQL, and led initial REST API design conventions to streamline backend development",
-            "Delivered full-stack features and a standalone customer service back-office using Rails and Angular.js"
+            "Started as a Rails Developer at Ecowork, building full-stack features and a standalone customer service back-office with Ruby on Rails and Angular.js"
           ]
         },
         {
@@ -227,10 +227,10 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
     "subtitle": "Open Source Side Project",
     "href": "https://github.com/iskWang/PickleScout",
     "bullets": [
-      "Completed full POC in one week using AI-assisted workflow; open-sourced with browser agent, LLM pipeline, self-healing, and full-stack architecture",
+      "Backend job queue (Fastify + BullMQ/Redis) decouples long-running LLM generation from requests, with failure retry and status tracking; generated output includes a GitHub Actions workflow with zero LLM dependency at runtime",
       "Designed two-pass LLM pipeline: Stagehand browser agent explores target app and records ActionLog, converted to Gherkin feature files and Playwright step definitions",
       "Implemented self-healing mechanism: on test failure, LLM auto-patches selectors and timeouts and retries, improving generated test usability",
-      "Backend job queue (Fastify + BullMQ/Redis) decouples long-running LLM generation from requests, with failure retry and status tracking; generated output includes a GitHub Actions workflow with zero LLM dependency at runtime"
+      "Completed full POC in one week using AI-assisted workflow; open-sourced with browser agent, LLM pipeline, self-healing, and full-stack architecture"
     ]
   },
   "education": {
