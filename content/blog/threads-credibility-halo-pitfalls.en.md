@@ -27,7 +27,7 @@ The formatting is clean, the tone is certain, and there are hundreds of likes un
 
 Then I actually try to copy it, and one snag after another blows up
 
-“Let Agents do all the implementation; engineers just review it” sounds as natural as breathing
+“Let Agents do all the implementation, and engineers just review it” sounds as natural as breathing
 
 But when I actually tried it on a project, just dealing with a long Context, complicated cross-file dependencies, or permission roadblocks could take more time than writing the code myself—especially when tracking down which boundary condition the Agent had broken
 
@@ -70,7 +70,7 @@ But “feels credible” and “works in reality” are still two different thin
 
 And when an author compresses a complicated system rewrite or AI rollout into a few sentences, leaving out all the messy work and exception handling, it's easy for us to fall into the “illusion of explanatory depth” described by Rozenblit and Keil. We think we've already understood how to do it, until we try and discover that the devil is in the details that were never written down
 
-## A small filter is enough; no need to hunt for villains
+## A small filter is enough — no need to hunt for villains
 
 I'm not going to take this too far and demand that every Threads post include KPIs or a control group. That would make social media exhausting to scroll through
 

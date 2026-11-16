@@ -86,6 +86,7 @@ title: Software Developer
   "name": "Josh Wang",
   "title": "Software Developer",
   "subtitle": "橫跨前端架構、後端開發與自動化工具鏈的軟體開發者",
+  "heroDescription": "10+ 年軟體開發經驗，橫跨前端架構、Rails / Node.js 後端與自動化工具鏈——畢竟能讓機器穩定重試的事，就不該半夜找人類加班",
   "location": "Taipei, Taiwan",
   "email": "spjay1@gmail.com",
   "site": "joshwang.dev",

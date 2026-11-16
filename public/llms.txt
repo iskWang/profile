@@ -47,7 +47,7 @@ Taipei, Taiwan
 ## Recent blog posts
 
 - [I Thought Threads Was Right Until I Hit a Snag](https://joshwang.dev/en/blog/threads-credibility-halo-pitfalls.md) (2026-11-16) — I saw confident social-media advice and thought I could copy it. But what looks good on someone else may not fit me, and a smooth read doesn't mean they've tested the pitfalls for me
-- [我以為 Threads 是對的，直到我踩到雷](https://joshwang.dev/zh-tw/blog/threads-credibility-halo-pitfalls.md) (2026-11-16) — 滑社群看到講得頭頭是道的技術與管理心得，常讓人誤以為直接照抄就行；但別人穿起來好看的衣服不一定合自己的身，讀得順也不代表背後已經替你踩過坑
+- [我以為 Threads 是對的，直到我踩到雷](https://joshwang.dev/zh-tw/blog/threads-credibility-halo-pitfalls.md) (2026-11-16) — 滑社群看到講得頭頭是道的技術與管理心得，常讓人誤以為直接照抄就行，但別人穿起來好看的衣服不一定合自己的身，讀得順也不代表背後已經替你踩過坑
 - [看完 10 美元 OpenStick 的 Homelab，我最後只給 Mac mini 補了三樣監控](https://joshwang.dev/zh-tw/blog/openstick-mac-mini-monitoring.md) (2026-11-08) — 看到別人用 10 美元硬體把 homelab 跑得風生水起，原本好奇自己跑在 Mac mini 上的服務是不是該大換血，找了兩個 AI 獨立評估後，結論卻出奇一致：現有服務完全不用換，真正缺的反而是映像更新通知、資源曲線與端點存活檢查
 - [I Read About a $10 OpenStick Homelab, Then Added Three Monitoring Tools to My Mac mini](https://joshwang.dev/en/blog/openstick-mac-mini-monitoring.md) (2026-11-08) — After reading about a $10 homelab, I asked two AI advisors whether my Mac mini setup needed replacing. They agreed: keep it, and add image alerts, resource graphs, and endpoint checks
 - [把本機 Agent 記憶接上 Claude 與 ChatGPT 網頁：寫一個 MCP 轉接站的踩坑紀錄](https://joshwang.dev/zh-tw/blog/agent-memory-remote-mcp-gateway.md) (2026-11-06) — 我想讓網頁版 Claude 與 ChatGPT 也能讀寫終端機裡的 agentmemory，但又不想開兩個 MCP 連線，最後在現有的 Obsidian MCP 後面寫了個 gateway 把兩個服務接起來，順便修剪掉五十幾個高風險工具

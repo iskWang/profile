@@ -86,6 +86,7 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
   "name": "Josh Wang",
   "title": "Software Developer",
   "subtitle": "Software developer working across frontend architecture, backend systems, and developer tooling",
+  "heroDescription": "10+ years across frontend architecture, Rails/Node.js backends, and developer tooling — because tasks that can reliably retry in a queue shouldn't wake humans up after hours",
   "location": "Taipei, Taiwan",
   "email": "spjay1@gmail.com",
   "site": "joshwang.dev",

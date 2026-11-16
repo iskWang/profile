@@ -15,7 +15,7 @@ export const CONTENT = {
       "focus": "",
       "location": "Taipei, Taiwan",
       "welcome": "您好，我是 Josh!",
-      "description": "10+ 年軟體開發經驗，雖然履歷上看來跟前端特別有緣，但從 Rails、Node.js 後端到 AWS 雲端架構都實際滾過一輪 主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程 近期熱衷於把 AI Workflow、測試自動化與開發工具接進日常流程——畢竟能讓機器穩定重試的事，就不該半夜找人類加班",
+      "description": "10+ 年軟體開發經驗，橫跨前端架構、Rails / Node.js 後端與自動化工具鏈——畢竟能讓機器穩定重試的事，就不該半夜找人類加班",
       "tags": [],
       "resumeBtn": "查看完整履歷 (PDF)",
       "resumeUrl": "/JoshWang_ZH_Resume.pdf"
@@ -282,7 +282,7 @@ export const CONTENT = {
       "focus": "",
       "location": "Taipei, Taiwan",
       "welcome": "Hi, I'm Josh!",
-      "description": "10+ years in software development. While my resume skews heavily toward frontend architecture, I've spent plenty of time in the trenches with Rails, Node.js backends, and AWS. Led architecture and delivery for 7+ web systems and 2 mobile apps, often stepping in to untangle legacy debt, monorepos, and CI/CD pipelines. Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't require humans after hours.",
+      "description": "10+ years across frontend architecture, Rails/Node.js backends, and developer tooling — because tasks that can reliably retry in a queue shouldn't wake humans up after hours",
       "tags": [],
       "resumeBtn": "View Full Resume (PDF)",
       "resumeUrl": "/JoshWang_EN_Resume.pdf"
