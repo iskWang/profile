@@ -48,6 +48,21 @@ origin: original
 
 其他時間大多在古城、Santitham 到 Maya 之間徒步穿梭，銀廟（Wat Sri Suphan）走到門口看到收費就只在外圍看看沒進去，反而是 Sunshine House 附近的 Wat Santitham 順路去參拜了一下
 
+除了寺廟與商場，日常移動途中也順路鑽進一些非典型景點，像是一間營業到晚上十一點的大型日本二手玩具與雜貨倉庫 [Mumu Chan Japan（มูมู่ จัง เจแปน）](https://www.google.com/maps/search/?api=1&query=Mumu+Chan+Japan+Chiang+Mai)，挑高的鐵皮屋頂下塞滿整排黑鐵貨架的動漫公仔、絨毛玩偶、老時鐘與復古單車，在清邁逛這種大型二手倉庫意外很有挖寶感
+
+<figure class="post-figure post-ig-card">
+  <div class="post-ig-header">
+    <span class="post-ig-place"><span class="post-ig-pin" aria-hidden="true"></span><a href="https://www.google.com/maps/search/?api=1&query=Mumu+Chan+Japan+Chiang+Mai" target="_blank" rel="noopener noreferrer">Mumu Chan Japan มูมู่ จัง เจแปน</a><span class="post-ig-date">· 2026-11-11</span></span>
+    <a class="post-ig-link" href="https://www.instagram.com/joshwang.tw/p/DfmWFBsAReC/" target="_blank" rel="noopener noreferrer">@joshwang.tw · Instagram ↗</a>
+  </div>
+  <div class="post-ig-track" tabindex="0" role="region" aria-label="Mumu Chan Japan 照片輪播（共 3 張，可左右滑動）">
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/mumu-chan-japan-1.jpg" alt="Mumu Chan Japan 鐵皮倉庫內景，中島堆滿皮卡丘、米妮與麵包超人等絨毛玩偶，兩側是整排黑鐵貨架" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">1 / 3</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/mumu-chan-japan-2.jpg" alt="Mumu Chan Japan 打光展示架上擺滿日本二手公仔、娃娃屋、哆啦 A 夢與迪士尼模型" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">2 / 3</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/mumu-chan-japan-3.jpg" alt="Mumu Chan Japan 另一側展區，鋼樑下掛著復古單車與日本旗幟，玻璃櫃內陳列老時鐘、畫框與器皿" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">3 / 3</span></div>
+  </div>
+  <figcaption>清邁的日本二手玩具與復古雜貨倉庫 Mumu Chan Japan，貨架與玻璃櫃從公仔、玩偶一路塞到老件器皿（可左右滑動檢視 3 張照片）</figcaption>
+</figure>
+
 有次過馬路還遇到機車騎士特地用泰文提醒小心，事後還特別去查了一下那個發音的意思
 
 ## 冷氣咖啡廳與漲價的健身房
@@ -58,9 +73,40 @@ origin: original
 
 實際喝了一輪發現，只要是有冷氣的室內店，價格大概都會直接翻一倍（內用美式約 ฿60–฿80，以前在曼谷外帶過 ฿30 的美式，雖然外帶跟內用基準不同），推測可能跟泰國實際電費比台灣貴有關
 
-這趟造訪了幾家不同風格的店：前段去了 Artisan 跟古城的文化空間 Kalm，也在 Rei 點過 ฿65 的冰美式，順口乾淨也很適合久坐休息
+這趟造訪了幾家不同風格的店：前段去了 Artisan，也在 Rei 點過 ฿65 的冰美式，順口乾淨也很適合久坐休息
+
+古城內的文化藝術聚落 [Kalm Village](https://www.google.com/maps/search/?api=1&query=Kalm+Village+Chiang+Mai) 則是前段很喜歡的一處空間，以老柚木與磚瓦圍出安靜的綠意中庭，室內展間可以吹冷氣看當地的織品與工藝裝置展，走上頂樓的木構玻璃涼亭，還能越過周邊屋瓦直接眺望隔壁柴迪隆寺（Wat Chedi Luang）的古磚佛塔
+
+<figure class="post-figure post-ig-card">
+  <div class="post-ig-header">
+    <span class="post-ig-place"><span class="post-ig-pin" aria-hidden="true"></span><a href="https://www.google.com/maps/search/?api=1&query=Kalm+Village+Chiang+Mai" target="_blank" rel="noopener noreferrer">Kalm Village Chiang Mai</a><span class="post-ig-date">· 2026-11-07</span></span>
+    <a class="post-ig-link" href="https://www.instagram.com/joshwang.tw/p/DfbodWjAaRg/" target="_blank" rel="noopener noreferrer">@joshwang.tw · Instagram ↗</a>
+  </div>
+  <div class="post-ig-track" tabindex="0" role="region" aria-label="Kalm Village 照片輪播（共 5 張，可左右滑動）">
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-1.jpg" alt="Kalm Village 頂樓木構玻璃涼亭懸掛紅粉色蘭納編織燈籠，後方可遠眺柴迪隆寺古磚佛塔" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">1 / 5</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-2.jpg" alt="從 Kalm Village 頂樓露台越過古城屋瓦眺望柴迪隆寺（Wat Chedi Luang）的磚造佛塔與佛龕" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">2 / 5</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-3.jpg" alt="Kalm Village 室內展間樓梯上方懸掛的藍染與格紋布料立體織品藝術裝置" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">3 / 5</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-4.jpg" alt="Kalm Village 陽光灑落的石板中庭、綠樹與雙層木造展館建築" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">4 / 5</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-5.jpg" alt="從高處俯瞰 Kalm Village 錯落的深色蘭納斜屋頂與中庭綠蔭" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">5 / 5</span></div>
+  </div>
+  <figcaption>古城內的文化藝術空間 Kalm Village，結合織品展覽、靜謐中庭與能遠眺柴迪隆寺的頂樓涼亭（可左右滑動檢視 5 張照片）</figcaption>
+</figure>
 
 搬到 Santitham 後去 .werb haus 邊工作邊試了偏淺焙的豆子、去了 Ombra Caffe，旅程後段還在 General Coffee 點到一杯帶有特殊青草茶調性的 Cold Brew，風味相當新奇
+
+雖然平常習慣喝黑咖啡，這趟還是去了一間在台灣遊客圈很紅的 [Magic Brew](https://www.google.com/maps/search/?api=1&query=Magic+Brew+Chiang+Mai) 點了杯泰奶——店裡牆上貼滿台灣旅客跟節目《鬧著玩》主持人的便利貼，實際喝起來最加分的是可以調整甜度，對怕死甜的人來說友善很多
+
+<figure class="post-figure post-ig-card">
+  <div class="post-ig-header">
+    <span class="post-ig-place"><span class="post-ig-pin" aria-hidden="true"></span><a href="https://www.google.com/maps/search/?api=1&query=Magic+Brew+Chiang+Mai" target="_blank" rel="noopener noreferrer">Magic Brew</a><span class="post-ig-date">· 2026-11-12</span></span>
+    <a class="post-ig-link" href="https://www.instagram.com/joshwang.tw/p/Dfn90opgcHs/" target="_blank" rel="noopener noreferrer">@joshwang.tw · Instagram ↗</a>
+  </div>
+  <div class="post-ig-track" tabindex="0" role="region" aria-label="Magic Brew 照片輪播（共 2 張，可左右滑動）">
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/magic-brew-1.jpg" alt="Magic Brew 木托盤上的冰泰式奶茶與泰式雕花銀水杯" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">1 / 2</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/magic-brew-2.jpg" alt="Magic Brew 店內貼滿台灣遊客與節目《鬧著玩》主持人ㄚ翔手寫留言的便利貼牆" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">2 / 2</span></div>
+  </div>
+  <figcaption>Magic Brew：「喝了一點，可以調甜度」——附上泰式銀杯冰水與貼滿台灣旅客留言的便利貼牆（可左右滑動檢視 2 張照片）</figcaption>
+</figure>
 
 重訓方面，上次來清邁去過 Pump Fitness，印象中當時單次才 ฿60，這次看好像已經漲到 ฿120，感覺清邁健身房整體都調漲了
 

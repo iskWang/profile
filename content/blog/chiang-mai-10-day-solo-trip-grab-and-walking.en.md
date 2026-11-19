@@ -49,6 +49,21 @@ Visiting Wat Phra That Doi Kham was a classic example. I saw a ride quote of ฿
 
 Most other days were spent walking between the Old City, Santitham, and Maya. At Wat Sri Suphan (the Silver Temple), I saw the admission fee at the entrance and only looked around from the outside, whereas I stopped by Wat Santitham near Sunshine House along my route.
 
+Beyond temples and shopping malls, moving around the city also led to a few offbeat detours—like [Mumu Chan Japan (มูมู่ จัง เจแปน)](https://www.google.com/maps/search/?api=1&query=Mumu+Chan+Japan+Chiang+Mai), a large Japanese secondhand toy and vintage goods warehouse open until 11 PM. Beneath its high metal roof, rows of black shelving and display tables were packed with anime figures, plushies, vintage clocks, and old bicycles, making it a surprisingly fun treasure hunt in Chiang Mai.
+
+<figure class="post-figure post-ig-card">
+  <div class="post-ig-header">
+    <span class="post-ig-place"><span class="post-ig-pin" aria-hidden="true"></span><a href="https://www.google.com/maps/search/?api=1&query=Mumu+Chan+Japan+Chiang+Mai" target="_blank" rel="noopener noreferrer">Mumu Chan Japan มูมู่ จัง เจแปน</a><span class="post-ig-date">· 2026-11-11</span></span>
+    <a class="post-ig-link" href="https://www.instagram.com/joshwang.tw/p/DfmWFBsAReC/" target="_blank" rel="noopener noreferrer">@joshwang.tw · Instagram ↗</a>
+  </div>
+  <div class="post-ig-track" tabindex="0" role="region" aria-label="Mumu Chan Japan photo carousel (3 photos, scroll horizontally)">
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/mumu-chan-japan-1.jpg" alt="Wide aisle inside Mumu Chan Japan warehouse with plushies piled on a center table and black shelving along both sides" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">1 / 3</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/mumu-chan-japan-2.jpg" alt="Illuminated shelves at Mumu Chan Japan filled with Japanese secondhand figurines, dolls, and toy houses" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">2 / 3</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/mumu-chan-japan-3.jpg" alt="Vintage bicycles and Japanese banners hanging above glass cabinets of clocks, framed art, and ceramics at Mumu Chan Japan" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">3 / 3</span></div>
+  </div>
+  <figcaption>Mumu Chan Japan, a Japanese secondhand toy and vintage warehouse in Chiang Mai packed from floor to rafters with figurines, plushies, and curios (swipe or scroll horizontally to view 3 photos).</figcaption>
+</figure>
+
 Once while crossing the street, a passing motorcyclist went out of his way to warn me in Thai to be careful, and I ended up looking up what that pronunciation meant afterward.
 
 ## Air-Conditioned Cafes and Gym Price Shifts
@@ -59,9 +74,40 @@ In Chiang Mai, finding cafes was mainly about sitting down in air conditioning t
 
 After visiting a round of cafes, I noticed that indoor shops with air conditioning roughly double in price (around ฿60–฿80 for a dine-in Americano, compared to ฿30 takeout Americanos I had in Bangkok before, though takeout and dine-in have different baselines), which probably relates to electricity actually costing more in Thailand than in Taiwan.
 
-I visited several places across the trip: early on I went to Artisan and Kalm, a cultural space in the Old City, and ordered a ฿65 iced Americano at Rei that was smooth, clean, and comfortable for a longer stay.
+I visited several places across the trip: early on I went to Artisan, and ordered a ฿65 iced Americano at Rei that was smooth, clean, and comfortable for a longer stay.
+
+[Kalm Village](https://www.google.com/maps/search/?api=1&query=Kalm+Village+Chiang+Mai), an arts and cultural complex in the Old City, ended up being one of my favorite spaces from the first half of the trip. Built with reclaimed teak and brick around a quiet tree-shaded courtyard, its air-conditioned galleries host local textile and craft installations, while the wooden glass-roofed pavilion on the upper terrace looks out across the neighboring tiled roofs directly toward the ancient brick stupa of Wat Chedi Luang.
+
+<figure class="post-figure post-ig-card">
+  <div class="post-ig-header">
+    <span class="post-ig-place"><span class="post-ig-pin" aria-hidden="true"></span><a href="https://www.google.com/maps/search/?api=1&query=Kalm+Village+Chiang+Mai" target="_blank" rel="noopener noreferrer">Kalm Village Chiang Mai</a><span class="post-ig-date">· 2026-11-07</span></span>
+    <a class="post-ig-link" href="https://www.instagram.com/joshwang.tw/p/DfbodWjAaRg/" target="_blank" rel="noopener noreferrer">@joshwang.tw · Instagram ↗</a>
+  </div>
+  <div class="post-ig-track" tabindex="0" role="region" aria-label="Kalm Village photo carousel (5 photos, scroll horizontally)">
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-1.jpg" alt="Red and pink woven Lanna lantern hanging beneath the rooftop wooden glass pavilion at Kalm Village with Wat Chedi Luang in the distance" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">1 / 5</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-2.jpg" alt="View from the Kalm Village rooftop terrace across Old City tiled roofs toward the ancient brick chedi of Wat Chedi Luang" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">2 / 5</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-3.jpg" alt="Overhead textile art installation in indigo and plaid fabrics hanging above an interior staircase at Kalm Village" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">3 / 5</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-4.jpg" alt="Sunlit stone courtyard shaded by lush trees and umbrellas in front of a two-story timber gallery building at Kalm Village" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">4 / 5</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-5.jpg" alt="Elevated view overlooking the dark-tiled Lanna roofs and green courtyard trees of Kalm Village under a blue sky" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">5 / 5</span></div>
+  </div>
+  <figcaption>Kalm Village in Chiang Mai Old City—textile exhibitions, a quiet courtyard, and an open-air rooftop pavilion overlooking Wat Chedi Luang (swipe or scroll horizontally to view 5 photos).</figcaption>
+</figure>
 
 After moving to Santitham, I worked at .werb haus while trying a lighter roast, visited Ombra Caffe, and later in the trip ordered a Cold Brew at General Coffee with an unusual herbal-tea-like profile that felt quite novel.
+
+Even though I mostly stick to black coffee, I also stopped by [Magic Brew](https://www.google.com/maps/search/?api=1&query=Magic+Brew+Chiang+Mai), a spot well-known among Taiwanese travelers, for a cup of Thai milk tea. One wall inside is covered with sticky notes from Taiwanese visitors and the hosts of the travel show *Now You On*, and the best part in practice is being able to adjust the sweetness level—much friendlier if you find standard Thai tea overwhelmingly sweet.
+
+<figure class="post-figure post-ig-card">
+  <div class="post-ig-header">
+    <span class="post-ig-place"><span class="post-ig-pin" aria-hidden="true"></span><a href="https://www.google.com/maps/search/?api=1&query=Magic+Brew+Chiang+Mai" target="_blank" rel="noopener noreferrer">Magic Brew</a><span class="post-ig-date">· 2026-11-12</span></span>
+    <a class="post-ig-link" href="https://www.instagram.com/joshwang.tw/p/Dfn90opgcHs/" target="_blank" rel="noopener noreferrer">@joshwang.tw · Instagram ↗</a>
+  </div>
+  <div class="post-ig-track" tabindex="0" role="region" aria-label="Magic Brew photo carousel (2 photos, scroll horizontally)">
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/magic-brew-1.jpg" alt="Iced Thai milk tea from Magic Brew served on a wooden tray beside an embossed silver Thai water cup" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">1 / 2</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/magic-brew-2.jpg" alt="Wall covered with handwritten sticky notes from Taiwanese visitors and the travel show Now You On at Magic Brew" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">2 / 2</span></div>
+  </div>
+  <figcaption>Magic Brew: "Drank a bit already; sweetness level can be adjusted"—served with iced water in a silver cup beside a wall of visitor sticky notes (swipe or scroll horizontally to view 2 photos).</figcaption>
+</figure>
 
 For weight training, on my previous Chiang Mai trip I had gone to Pump Fitness when a single entry was around ฿60, and seeing it at ฿120 this time made it feel like gyms across Chiang Mai had raised their prices.
 

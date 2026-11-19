@@ -46,6 +46,7 @@
   --icon-info: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='8.5'/><line x1='12' y1='11' x2='12' y2='16.2'/><circle cx='12' cy='7.6' r='0.9' fill='%23000' stroke='none'/></svg>");
   --icon-warning: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3.6 21 19.4H3Z'/><line x1='12' y1='9.6' x2='12' y2='13.8'/><circle cx='12' cy='16.6' r='0.9' fill='%23000' stroke='none'/></svg>");
   --icon-chevron: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='m8 10 4 4 4-4'/></svg>");
+  --icon-pin: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'><path d='M12 21s-6.5-5.8-6.5-11A6.5 6.5 0 0 1 18.5 10c0 5.2-6.5 11-6.5 11Z'/><circle cx='12' cy='10' r='2.3'/></svg>");
 }
 
 /*
@@ -269,6 +270,125 @@
   border: 1px solid var(--color-line);
   border-radius: var(--post-radius);
   background: var(--color-paper-deep);
+}
+.post-body .post-ig-card {
+  margin: 2.5rem 0;
+  border: 1px solid var(--color-line);
+  border-radius: var(--post-radius);
+  background: var(--color-paper-deep);
+  overflow: hidden;
+}
+.post-body .post-ig-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  padding: 0.75rem 1.1rem;
+  border-bottom: 1px solid var(--color-line);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+.post-body .post-ig-place {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-ink);
+  font-weight: 700;
+}
+.post-body .post-ig-pin {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex: none;
+  background-color: var(--color-teal-cta);
+  -webkit-mask: var(--icon-pin) center / contain no-repeat;
+  mask: var(--icon-pin) center / contain no-repeat;
+}
+:root[data-theme="dark"] .post-body .post-ig-pin {
+  background-color: var(--color-teal);
+}
+.post-body .post-ig-date {
+  color: var(--color-ink-soft);
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+.post-body .post-ig-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+.post-body .post-ig-link:hover,
+.post-body .post-ig-link:focus-visible {
+  border-color: var(--color-teal-cta);
+  color: var(--color-teal-cta);
+  text-decoration: none;
+}
+:root[data-theme="dark"] .post-body .post-ig-link {
+  color: var(--color-ink);
+}
+:root[data-theme="dark"] .post-body .post-ig-link:hover,
+:root[data-theme="dark"] .post-body .post-ig-link:focus-visible {
+  border-color: var(--color-teal);
+  color: var(--color-teal);
+}
+.post-body .post-ig-track {
+  display: flex;
+  gap: 0.9rem;
+  padding: 1.1rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 1.1rem;
+  scrollbar-color: var(--color-ink-soft) var(--color-paper-deep);
+}
+.post-body .post-ig-slide {
+  position: relative;
+  flex: 0 0 min(78%, 19.5rem);
+  scroll-snap-align: start;
+}
+.post-body .post-ig-card img {
+  width: 100%;
+  margin: 0;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: 1px solid var(--color-line);
+  border-radius: calc(var(--post-radius) - 0.25rem);
+}
+.post-body .post-ig-count {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--color-paper) 86%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--color-ink);
+  font-size: 0.72rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.35;
+  pointer-events: none;
+}
+.post-body .post-ig-card figcaption {
+  margin: 0;
+  padding: 0.75rem 1.1rem 0.9rem;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-ink-soft);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  text-align: left;
 }
 .post-body .post-mascot {
   display: block;
@@ -805,7 +925,8 @@ html[lang="zh-TW"] .post-header h1 { max-width: 18em; }
 .post-toc a:focus-visible,
 .post-related-card:focus-visible,
 .post-body pre:focus-visible,
-.post-table-scroll:focus-visible {
+.post-table-scroll:focus-visible,
+.post-ig-track:focus-visible {
   outline: 2px solid var(--color-teal);
   outline-offset: 3px;
 }
@@ -840,11 +961,13 @@ html[lang="zh-TW"] .post-header h1 { max-width: 18em; }
   .post-body pre { border-radius: 0.6rem; }
   .post-body .post-callout,
   .post-body .post-figure--portrait,
+  .post-body .post-ig-card,
   .post-notices,
   .post-toc,
   .post-related-card,
   .post-code-block,
   .post-table-scroll { border-radius: 0.6rem; }
+  .post-body .post-ig-slide { flex-basis: 82%; }
   .post-code-toolbar { flex-wrap: wrap; }
   .post-copy-button { margin-left: auto; }
 }
