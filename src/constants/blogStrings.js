@@ -13,7 +13,7 @@ export const BLOG_STRINGS = {
     empty: '還沒有文章。',
   },
   en: {
-    nav: 'Blog',
+    nav: 'blog',
     listTitle: 'Writing',
     listIntro: 'Engineering notes and opinions.',
     allTopics: 'All',
