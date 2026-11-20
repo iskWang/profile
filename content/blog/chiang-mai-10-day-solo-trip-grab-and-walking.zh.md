@@ -56,9 +56,9 @@ origin: original
     <a class="post-ig-link" href="https://www.instagram.com/joshwang.tw/p/DfmWFBsAReC/" target="_blank" rel="noopener noreferrer">@joshwang.tw · Instagram ↗</a>
   </div>
   <div class="post-ig-track" tabindex="0" role="region" aria-label="Mumu Chan Japan 照片輪播（共 3 張，可左右滑動）">
-    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/mumu-chan-japan-1.jpg" alt="Mumu Chan Japan 鐵皮倉庫內景，中島堆滿皮卡丘、米妮與麵包超人等絨毛玩偶，兩側是整排黑鐵貨架" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">1 / 3</span></div>
-    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/mumu-chan-japan-2.jpg" alt="Mumu Chan Japan 打光展示架上擺滿日本二手公仔、娃娃屋、哆啦 A 夢與迪士尼模型" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">2 / 3</span></div>
-    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/mumu-chan-japan-3.jpg" alt="Mumu Chan Japan 另一側展區，鋼樑下掛著復古單車與日本旗幟，玻璃櫃內陳列老時鐘、畫框與器皿" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">3 / 3</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/mumu-chan-japan-1.webp" alt="Mumu Chan Japan 鐵皮倉庫內景，中島堆滿皮卡丘、米妮與麵包超人等絨毛玩偶，兩側是整排黑鐵貨架" width="720" height="960" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">1 / 3</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/mumu-chan-japan-2.webp" alt="Mumu Chan Japan 打光展示架上擺滿日本二手公仔、娃娃屋、哆啦 A 夢與迪士尼模型" width="720" height="960" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">2 / 3</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/mumu-chan-japan-3.webp" alt="Mumu Chan Japan 另一側展區，鋼樑下掛著復古單車與日本旗幟，玻璃櫃內陳列老時鐘、畫框與器皿" width="720" height="960" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">3 / 3</span></div>
   </div>
   <figcaption>清邁的日本二手玩具與復古雜貨倉庫 Mumu Chan Japan，貨架與玻璃櫃從公仔、玩偶一路塞到老件器皿（可左右滑動檢視 3 張照片）</figcaption>
 </figure>
@@ -83,11 +83,11 @@ origin: original
     <a class="post-ig-link" href="https://www.instagram.com/joshwang.tw/p/DfbodWjAaRg/" target="_blank" rel="noopener noreferrer">@joshwang.tw · Instagram ↗</a>
   </div>
   <div class="post-ig-track" tabindex="0" role="region" aria-label="Kalm Village 照片輪播（共 5 張，可左右滑動）">
-    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-1.jpg" alt="Kalm Village 頂樓木構玻璃涼亭懸掛紅粉色蘭納編織燈籠，後方可遠眺柴迪隆寺古磚佛塔" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">1 / 5</span></div>
-    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-2.jpg" alt="從 Kalm Village 頂樓露台越過古城屋瓦眺望柴迪隆寺（Wat Chedi Luang）的磚造佛塔與佛龕" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">2 / 5</span></div>
-    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-3.jpg" alt="Kalm Village 室內展間樓梯上方懸掛的藍染與格紋布料立體織品藝術裝置" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">3 / 5</span></div>
-    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-4.jpg" alt="Kalm Village 陽光灑落的石板中庭、綠樹與雙層木造展館建築" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">4 / 5</span></div>
-    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-5.jpg" alt="從高處俯瞰 Kalm Village 錯落的深色蘭納斜屋頂與中庭綠蔭" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">5 / 5</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-1.webp" alt="Kalm Village 頂樓木構玻璃涼亭懸掛紅粉色蘭納編織燈籠，後方可遠眺柴迪隆寺古磚佛塔" width="720" height="960" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">1 / 5</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-2.webp" alt="從 Kalm Village 頂樓露台越過古城屋瓦眺望柴迪隆寺（Wat Chedi Luang）的磚造佛塔與佛龕" width="720" height="960" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">2 / 5</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-3.webp" alt="Kalm Village 室內展間樓梯上方懸掛的藍染與格紋布料立體織品藝術裝置" width="720" height="960" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">3 / 5</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-4.webp" alt="Kalm Village 陽光灑落的石板中庭、綠樹與雙層木造展館建築" width="720" height="960" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">4 / 5</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/kalm-village-5.webp" alt="從高處俯瞰 Kalm Village 錯落的深色蘭納斜屋頂與中庭綠蔭" width="720" height="960" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">5 / 5</span></div>
   </div>
   <figcaption>古城內的文化藝術空間 Kalm Village，結合織品展覽、靜謐中庭與能遠眺柴迪隆寺的頂樓涼亭（可左右滑動檢視 5 張照片）</figcaption>
 </figure>
@@ -102,8 +102,8 @@ origin: original
     <a class="post-ig-link" href="https://www.instagram.com/joshwang.tw/p/Dfn90opgcHs/" target="_blank" rel="noopener noreferrer">@joshwang.tw · Instagram ↗</a>
   </div>
   <div class="post-ig-track" tabindex="0" role="region" aria-label="Magic Brew 照片輪播（共 2 張，可左右滑動）">
-    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/magic-brew-1.jpg" alt="Magic Brew 木托盤上的冰泰式奶茶與泰式雕花銀水杯" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">1 / 2</span></div>
-    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/magic-brew-2.jpg" alt="Magic Brew 店內貼滿台灣遊客與節目《鬧著玩》主持人ㄚ翔手寫留言的便利貼牆" width="1080" height="1440" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">2 / 2</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/magic-brew-1.webp" alt="Magic Brew 木托盤上的冰泰式奶茶與泰式雕花銀水杯" width="720" height="960" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">1 / 2</span></div>
+    <div class="post-ig-slide"><img src="/blog/assets/chiang-mai-10-day-solo-trip-grab-and-walking/magic-brew-2.webp" alt="Magic Brew 店內貼滿台灣遊客與節目《鬧著玩》主持人ㄚ翔手寫留言的便利貼牆" width="720" height="960" loading="lazy" decoding="async" /><span class="post-ig-count" aria-hidden="true">2 / 2</span></div>
   </div>
   <figcaption>Magic Brew：「喝了一點，可以調甜度」——附上泰式銀杯冰水與貼滿台灣旅客留言的便利貼牆（可左右滑動檢視 2 張照片）</figcaption>
 </figure>

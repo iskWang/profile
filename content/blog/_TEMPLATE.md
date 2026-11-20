@@ -18,7 +18,7 @@ Authoring contract
 - Three or more ## sections automatically get a collapsed contents list titled "這篇聊什麼" / "In this article"; shorter articles have no TOC.
 - When origin is adapted, add source and source_title.
 - translation: machine-assisted belongs only in a .en.md file; it does not claim author review.
-- Images must use local root-relative paths under public/blog/assets/<kebab-slug>/, with meaningful alt text and true width/height attributes.
+- Images must use local root-relative paths under public/blog/assets/<kebab-slug>/, using .webp files resized to the rendered layout size (~2x display density, e.g. 720×960 for 3:4 .post-ig-card slides) with meaningful alt text and matching width/height attributes; preserve original source photos (.jpg/.png) alongside them in the same folder.
 - Use a figure with class="post-figure" and figcaption for an image with caption/source.
   Add post-figure--portrait for a restrained portrait. post-mascot is only for the monochrome cat artwork.
 - For named code blocks, put <p class="code-caption">path/to/file.ts</p> immediately before the fenced block, followed by a blank line. The language on the fence is still required.
