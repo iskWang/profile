@@ -11,6 +11,10 @@ import Skills from '../../../src/sections/Skills/Skills.jsx';
 import Experience from '../../../src/sections/Experience/Experience.jsx';
 import Contact from '../../../src/sections/Contact/Contact.jsx';
 import { CONTENT } from '../../../src/constants/content.js';
+import ShareImage from '../../components/ShareImage.astro';
+import { pageTitles, shareImagePath } from '../../constants/share-cards';
+const title = pageTitles['/en'];
+const image = new URL(shareImagePath('/en', title), Astro.site);
 const content = CONTENT.en;
 const latestPosts = (await getCollection('blog', ({ data }) => data.lang === 'en' && !data.draft))
   .sort((a, b) => b.data.date.localeCompare(a.data.date))
@@ -26,7 +30,7 @@ const latestPosts = (await getCollection('blog', ({ data }) => data.lang === 'en
 <Layout lang="en">
   <Fragment slot="head">
     <link rel="preload" as="image" href="/cat-mascot.webp" type="image/webp" fetchpriority="high" />
-    <title>Josh Wang | Software Developer</title>
+    <title>{title}</title>
     <meta name="description" content="Software developer with 10+ years of experience across frontend architecture, Node.js backends, CI/CD automation, and AI-assisted developer tooling." />
     <link rel="canonical" href="https://joshwang.dev/en" />
     <link rel="describedby" href="https://joshwang.dev/llms.txt" />
@@ -39,13 +43,11 @@ const latestPosts = (await getCollection('blog', ({ data }) => data.lang === 'en
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="zh_TW" />
     <meta property="og:url" content="https://joshwang.dev/en" />
-    <meta property="og:title" content="Josh Wang | Software Developer" />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content="Software developer with 10+ years of experience across frontend architecture, Node.js backends, CI/CD automation, and AI-assisted developer tooling." />
-    <meta property="og:image" content="https://joshwang.dev/cat-mascot.webp" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Josh Wang | Software Developer" />
+    <ShareImage url={image} title={title} />
+    <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content="Software developer with 10+ years of experience across frontend architecture, Node.js backends, CI/CD automation, and AI-assisted developer tooling." />
-    <meta name="twitter:image" content="https://joshwang.dev/cat-mascot.webp" />
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org', '@type': 'ProfilePage',
       mainEntity: {

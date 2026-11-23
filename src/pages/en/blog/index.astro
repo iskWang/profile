@@ -3,6 +3,10 @@ import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
+import ShareImage from '../../../components/ShareImage.astro';
+import { pageTitles, shareImagePath } from '../../../constants/share-cards';
+const title = pageTitles['/en/blog'];
+const image = new URL(shareImagePath('/en/blog', title), Astro.site);
 
 const posts = (await getCollection('blog', ({ data }) => data.lang === 'en' && !data.draft))
   .sort((a, b) => b.data.date.localeCompare(a.data.date));
@@ -10,7 +14,7 @@ const topics = [...new Set(posts.flatMap((post) => post.data.topics))].sort();
 ---
 
 <Layout lang="en">
-  <title slot="head">Blog — Josh Wang</title>
+  <title slot="head">{title}</title>
   <meta slot="head" name="description" content="Josh Wang's blog about writing, tools, and continuous learning." />
   <link slot="head" rel="canonical" href="https://joshwang.dev/en/blog" />
   <link slot="head" rel="alternate" hreflang="zh-TW" href="https://joshwang.dev/zh-tw/blog" />
@@ -21,13 +25,11 @@ const topics = [...new Set(posts.flatMap((post) => post.data.topics))].sort();
   <meta slot="head" property="og:locale" content="en_US" />
   <meta slot="head" property="og:locale:alternate" content="zh_TW" />
   <meta slot="head" property="og:url" content="https://joshwang.dev/en/blog" />
-  <meta slot="head" property="og:title" content="Blog — Josh Wang" />
+  <meta slot="head" property="og:title" content={title} />
   <meta slot="head" property="og:description" content="Josh Wang's blog about writing, tools, and continuous learning." />
-  <meta slot="head" property="og:image" content="https://joshwang.dev/cat-mascot.webp" />
-  <meta slot="head" name="twitter:card" content="summary" />
-  <meta slot="head" name="twitter:title" content="Blog — Josh Wang" />
+  <ShareImage slot="head" url={image} title={title} />
+  <meta slot="head" name="twitter:title" content={title} />
   <meta slot="head" name="twitter:description" content="Josh Wang's blog about writing, tools, and continuous learning." />
-  <meta slot="head" name="twitter:image" content="https://joshwang.dev/cat-mascot.webp" />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify({
     '@context': 'https://schema.org', '@type': 'Blog', name: 'Josh Wang Blog',
     description: "Josh Wang's blog about writing, tools, and continuous learning.",

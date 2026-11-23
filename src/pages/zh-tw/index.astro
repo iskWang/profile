@@ -11,6 +11,10 @@ import Skills from '../../../src/sections/Skills/Skills.jsx';
 import Experience from '../../../src/sections/Experience/Experience.jsx';
 import Contact from '../../../src/sections/Contact/Contact.jsx';
 import { CONTENT } from '../../../src/constants/content.js';
+import ShareImage from '../../components/ShareImage.astro';
+import { pageTitles, shareImagePath } from '../../constants/share-cards';
+const title = pageTitles['/zh-tw'];
+const image = new URL(shareImagePath('/zh-tw', title), Astro.site);
 const content = CONTENT.zh;
 const latestPosts = (await getCollection('blog', ({ data }) => data.lang === 'zh' && !data.draft))
   .sort((a, b) => b.data.date.localeCompare(a.data.date))
@@ -26,7 +30,7 @@ const latestPosts = (await getCollection('blog', ({ data }) => data.lang === 'zh
 <Layout lang="zh-TW">
   <Fragment slot="head">
     <link rel="preload" as="image" href="/cat-mascot.webp" type="image/webp" fetchpriority="high" />
-    <title>Josh Wang | 軟體開發者</title>
+    <title>{title}</title>
     <meta name="description" content="10+ 年經驗的軟體開發者，熟悉前端架構、Node.js 後端、CI/CD 自動化與 AI 開發工具鏈整合。" />
     <link rel="canonical" href="https://joshwang.dev/zh-tw" />
     <link rel="describedby" href="https://joshwang.dev/llms.txt" />
@@ -39,13 +43,11 @@ const latestPosts = (await getCollection('blog', ({ data }) => data.lang === 'zh
     <meta property="og:locale" content="zh_TW" />
     <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:url" content="https://joshwang.dev/zh-tw" />
-    <meta property="og:title" content="Josh Wang | 軟體開發者" />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content="10+ 年經驗的軟體開發者，熟悉前端架構、Node.js 後端、CI/CD 自動化與 AI 開發工具鏈整合。" />
-    <meta property="og:image" content="https://joshwang.dev/cat-mascot.webp" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Josh Wang | 軟體開發者" />
+    <ShareImage url={image} title={title} />
+    <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content="10+ 年經驗的軟體開發者，熟悉前端架構、Node.js 後端、CI/CD 自動化與 AI 開發工具鏈整合。" />
-    <meta name="twitter:image" content="https://joshwang.dev/cat-mascot.webp" />
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org', '@type': 'ProfilePage',
       mainEntity: {
