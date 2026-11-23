@@ -3,7 +3,7 @@ schema: blog-post
 lang: zh
 title: 把本機 Agent 記憶接上 Claude 與 ChatGPT 網頁：寫一個 MCP 轉接站的踩坑紀錄
 date: 2026-11-06
-summary: 我想讓網頁版 Claude 與 ChatGPT 也能讀寫終端機裡的 agentmemory，但又不想開兩個 MCP 連線，最後在現有的 Obsidian MCP 後面寫了個 gateway 把兩個服務接起來，順便修剪掉五十幾個高風險工具
+summary: 想讓網頁版 Claude 跟 ChatGPT 也能讀寫終端機裡的 agentmemory，又不想多管一條 MCP 連線，最後在現有的 Obsidian MCP 後面加一層 gateway 把兩個服務合起來，順便用白名單只留四個記憶工具
 topics:
   - mcp
   - agentmemory
@@ -15,43 +15,43 @@ origin: original
 vault_path: 30_Resources/AI/Agent 工作流/omp 記憶共用到 Claude 與 ChatGPT 網頁：遠端 MCP 可行性調查.md
 ---
 
-## 起點：終端機裡的記憶，網頁版完全不知道
+## 想把所有 Agent 的記憶統一起來
 
-我平常在家裡的 Mac mini 上，用 Oh My Pi（omp）搭配 Orca 調度不同的 coding agent（omp、Claude Code 與 Codex），這些工具在終端機裡有一套共用的記憶系統，叫做 `agentmemory`，跑在 `127.0.0.1:3113`
+這篇想做的事情其實很單純：我希望能把平常在用的各種 AI Agent 記憶統一起來，不管是在家裡的電腦、筆電還是手機上的不同平台都能共用，同時搭配 Cloudflare Tunnel 跟 Cloudflare Access 做一層基礎的資安防護，讓外部連線不會直接打進家裡的機器
 
-每次 agent 踩到雷、或是我們定下來某個專案慣例，agent 就會把經驗寫進記憶庫；下次開新的 session 時，其他模型也能透過 recall 把這些 context 撈出來用
+之前在家裡的 Mac mini 上，我已經讓幾個終端機裡的 coding agent（Oh My Pi / omp、Claude Code 跟 Codex）共用同一套 `agentmemory`，平常踩過的坑或定下來的專案習慣記進去後，下次換別的工具接手都還查得到
 
-但這套工作流出了 terminal 就斷了
+但只要離開電腦，在外面改用手機或筆電開 Claude.ai、ChatGPT 聊架構或問題，這些記過的東西就全用不到了，常常得從頭把背景再講一遍
 
-有時我出門在外，用手機或筆電開 Claude.ai 跟 ChatGPT 討論系統架構，聊到一半常會有一種強烈的斷裂感：「這個坑我上週在 terminal 裡才跟 coding agent 解決過，經驗早就記下來了，為什麼網頁上的 AI 還是一臉茫然，得讓我重講一遍？」
+之前在[[obsidian-remote-mcp-cloudflare-access|把家裡的 Obsidian 接上雲端 AI：一次 Cloudflare Access 的踩雷紀錄]]裡，我已經用 Cloudflare Tunnel 加 Cloudflare Access 把家裡的 Obsidian 筆記接給網頁版 AI 用過，這次就想照著差不多的想法，把這份共用記憶也跨平台接出來
 
-之前在[[obsidian-remote-mcp-cloudflare-access|把家裡的 Obsidian 接上雲端 AI：一次 Cloudflare Access 的踩雷紀錄]]這篇提過，我透過 Cloudflare Tunnel 和 Cloudflare Access，把 Mac mini 上的 Obsidian 筆記庫做成遠端 MCP，讓網頁版 AI 可以直接讀寫筆記，那我能不能把終端機裡的記憶，也用同樣的方式接給網頁版 AI？
+## 要接哪一套記憶，跟為什麼不能直接開 port
 
-## 盤點與限制：不能直接對外開 port
+看了一下目前本機的結構，omp 這邊其實有兩套記憶：
 
-仔細盤點一下 omp 的架構，內部其實有兩套記憶機制：
+1. **Mnemopi**：omp 內建的記憶（設定在 `~/.omp/agent/config.yml`），單純給 CLI 內部自己用，沒有對外提供標準介面
+2. **agentmemory**：獨立跑在本機的服務（v0.9.28），有 REST API，也是幾個 coding agent 真正共用記憶的地方
 
-1. **Mnemopi**：這是 omp 內建的記憶（設定在 `~/.omp/agent/config.yml`），純粹是 CLI 內部邏輯，沒有對外暴露任何標準介面
-2. **agentmemory**：這是一個獨立的本機服務（v0.9.28），提供 REST API，也是我和幾個 coding agent 真正共用知識的地方
+要接出去的對象很明確是 `agentmemory`，不過實際要做之前馬上遇到三個卡關的地方：
 
-所以共用對象很明確是 **agentmemory**，但要把它變成遠端 MCP 給網頁用，馬上遇到三個現實問題：
+- 官方提供的 `@agentmemory/mcp` 只能跑本機 stdio，網頁端的 Claude 或 ChatGPT 連不到
+- `127.0.0.1:3113` 的 REST API 沒有任何密碼或 token 驗證，不可能直接透過 tunnel 對外公開
+- `agentmemory` 預設開了 58 個工具，除了日常讀寫，還有匯出全部資料、刪除記憶、跨機同步（mesh sync）、觸發 webhook、改 slot 之類的高風險操作，全塞給網頁端不只會把工具描述灌滿每一輪的 context，萬一模型不小心呼叫到刪除也很麻煩
 
-- **原廠 MCP 只能跑在本地 stdio**：agentmemory 官方有提供 `@agentmemory/mcp` 套件，但它是透過本機 process 的 stdio 通訊，網頁端的 Claude 或 ChatGPT 根本連不進來
-- **本地 port 完全沒有身分驗證**：`127.0.0.1:3113` 的 REST API 是赤裸裸的，沒有任何密碼或 token 檢查，絕對不能直接透過 tunnel 開給公網
-- **工具數量太多，而且太危險**：agentmemory 預設提供了將近 58 個工具，除了日常讀寫，還有一大堆高風險指令，比如匯出全部資料、刪除記憶、跨機同步（mesh sync）、觸發 webhook、修改 slot 等等，如果把這 58 個工具一股腦塞給網頁版 LLM，除了 prompt context 瞬間被工具描述塞爆，哪天模型產生幻覺誤調刪除指令，資料就直接蒸發了
+## 不想多管一條 MCP 連線，最後決定合進同一個入口
 
-## 架構選擇：我不想在手機端管兩條 MCP 連線
+要處理連線跟權限，我原本想過三種做法：
 
-要解決連線與安全問題，我考慮過幾種做法：
+- **幫 agentmemory 另外開一個遠端 MCP 網址**
+  技術上最直接，但這樣 Claude 跟 ChatGPT 都要各掛兩個 custom connector，一個連 Obsidian、一個連 agentmemory，手機畫面已經夠小了，還要多管一組 OAuth 跟網址，日常用起來太瑣碎
+- **把記憶定時匯出成 Obsidian 筆記，靠現有的筆記 MCP 讀**
+  不用多一條連線，但只能單向看，網頁上聊出的結論沒辦法即時寫回記憶庫，也會少掉 agentmemory 原本的語意搜尋
+- **在現有的 Obsidian MCP 後面加一層轉接站，把兩個服務合起來**
+  最後我選了這個做法，對外維持原本那一個 MCP 網址，後面改接一個自己寫的轉接站（`mcp-gateway`），由它負責分流跟過濾工具
 
-- **做法 A：替 agentmemory 另開一個獨立的遠端 MCP 網址**
-  技術上最直觀，但這代表我的 Claude 和 ChatGPT 網頁端必須同時掛兩個 custom connector（一個連 Obsidian，一個連 agentmemory），手機介面本來就小，多管一組 OAuth 連線跟 endpoint，日常體驗非常瑣碎
-- **做法 B：把記憶定時匯出成 Obsidian 筆記，靠現有的筆記 MCP 來讀**
-  雖然不用加連線，但這樣只能單向讀取，網頁端 AI 沒辦法即時把新的 insight 寫回記憶庫，而且也失去了 agentmemory 原本的語意搜尋能力
-- **做法 C：在現有的 Obsidian MCP 網址後面放轉接站，把兩個服務合併**
-  這是我最後採用的方案，網頁端只認原本那一個 MCP 網址，後面由一個自寫的轉接站（`mcp-gateway`）負責分流與過濾
+順帶一提，這套做法其實不一定要搭配 Obsidian，單獨只接 agentmemory 一樣可以跑，我把它們綁在同一個入口純粹是因為原本那套已經架好了，懶得再改
 
-最後的拓撲長這樣：
+改完之後的架構大概長這樣：
 
 ```text
 Claude / ChatGPT
@@ -59,73 +59,71 @@ Claude / ChatGPT
    ▼
 cloudflared tunnel: mcp.example.com
    ▼
-mcp-gateway 127.0.0.1:3012（二次驗證 Cloudflare Access JWT 與 email）
+mcp-gateway 127.0.0.1:3012（再驗一次 Cloudflare Access JWT 與 email）
    ├─ Obsidian MCP 127.0.0.1:3010 → 12 個筆記工具，原樣轉送
-   └─ agentmemory 127.0.0.1:3113 → 嚴格白名單：只暴露 4 個工具
+   └─ agentmemory 127.0.0.1:3113 → 白名單：只放行 4 個工具
         memory_smart_search、memory_recall、memory_lesson_recall（讀）
         memory_save（寫）
 ```
 
-轉接站做的事情其實很單純：
+轉接站做的事其實不多，主要就三件：
 
-1. **收斂入口**：不管是 Obsidian 筆記還是記憶工具，對外全部合併成一個 MCP tools 清單
-2. **大刀修剪權限**：agentmemory 的 58 個工具裡，我只放行 4 個（3 個讀取、1 個寫入），其餘像 `export`、`governance_delete`、`mesh_sync` 等高風險工具，在轉接站就被徹底隱藏，即使外部送出 tool call 也會直接被攔截，根本進不到後端
-3. **縱深防禦**：除了 Cloudflare Access 在外層擋人，`mcp-gateway` 本身收到請求時，會再解一次 Cloudflare Access JWT，確認 email 確實是本人
+1. 把 Obsidian 筆記跟記憶工具合成同一份 MCP tools 清單對外提供
+2. 在轉接層做白名單，`agentmemory` 的 58 個工具只放行 4 個（3 讀 1 寫），像 `export`、`governance_delete`、`mesh_sync` 這些不只不會出現在清單裡，就算外部硬送 tool call 也會直接被擋掉，不會進到後端
+3. 外層已經有 Cloudflare Access 擋人，`mcp-gateway` 收到請求時還是會再解一次 Cloudflare Access JWT，確認裡面的 email 確實是我自己
 
-## 實作中的細節與意外發現
+## 串接跟實測時遇到的幾個細節
 
-寫轉接站本身不算太複雜，但在實際串接時，有幾個細節比想像中有趣：
+### 一邊掛掉不能把另一邊拖下水
 
-### 1. 單邊故障不能拖垮另一邊
+轉接站後面同時掛了 Obsidian 跟 agentmemory 兩個 upstream，寫測試時才想到一個容易漏掉的狀況：如果哪天 Obsidian 容器剛好在重啟或短暫掛掉，轉接站抓它的 tools 清單失敗，不能因為這樣就直接報錯，連帶把 agentmemory 的工具也一起弄不見
 
-轉接站後面掛了兩個 upstream（Obsidian 與 agentmemory），在寫測試時我發現一個容易忽略的邊界情況：如果哪天我的 Obsidian 容器正在重啟或短暫當掉，轉接站抓 upstream tools 失敗時，絕對不能直接拋出例外，把 agentmemory 的記憶工具也一起弄丟
+兩個 upstream 的 probe 得各自獨立，一邊連不上，另一邊的工具還是要能正常用
 
-兩個 upstream 的 probe 必須各自獨立，一邊掛掉，另一邊的工具依然要正常提供服務
+### 上游錯誤不要包成一句通用失敗
 
-### 2. 上游錯誤要原汁原味回傳
+第一版轉接站碰到 upstream 工具報錯時，我一律包成 `Tool operation failed.` 回去，後來 review 才發現這樣網頁端的 AI 根本看不懂發生什麼事，像是 Claude 去讀一篇不存在的筆記，只拿到一句「操作失敗」，它不會知道是連線斷了還是檔名打錯，把上游原本的錯誤訊息（像是找不到該筆記）直接傳回去，模型才有辦法自己修正
 
-第一版轉接站遇到 upstream 的工具錯誤時，一律包裝成 `Tool operation failed.` 這種通用訊息，review 時才發現這樣會讓網頁端的 AI 抓瞎——例如當 Claude 試圖讀取一篇不存在的筆記時，只拿到一句「操作失敗」，模型根本不知道是連線壞了還是檔名錯了，把上游的錯誤訊息（例如「找不到該筆記」）原樣傳回，LLM 才能依據錯誤反饋自我修正
+### 網頁端刪不了筆記，我決定先維持現狀
 
-### 3. 網頁端不能刪筆記，我選擇維持現狀
+現有的 Obsidian MCP 把刪除筆記歸類成破壞性操作，呼叫時 upstream 會要求 client 做一次確認（elicitation），因為我的轉接站沒有轉送這層確認流程，本機測試時透過轉接站刪筆記會直接失敗
 
-在現有的 Obsidian MCP 設定裡，刪除筆記屬於破壞性操作，upstream 會要求 client 進行確認（elicitation），因為我的轉接站沒有轉送這層 elicitation 協議，本機測試時，經轉接站發動刪除會直接失敗
+原本有猶豫要不要補齊，後來想想在手機或網頁跟 AI 聊天，本來就沒什麼機會需要刪本機筆記，就先放著不管，不過這不算什麼真正的安全機制，`obsidian_write_note` 跟 `obsidian_replace_in_note` 一樣能覆寫甚至把筆記清空，真正的保險還是每天的 vault 快照
 
-我原本猶豫要不要把這段補齊，但轉念一想：我在手機或網頁上跟 AI 聊天，本來就不太需要刪除本機筆記，就維持現狀，不過這不算真正的煞車，`obsidian_write_note`、`obsidian_replace_in_note` 仍然可以覆寫甚至清空一篇筆記，真正的保護還是每日的 vault 快照
+### 各家網頁端支援度跟官方文件不太一樣
 
-### 4. 官方文件與實際狀況的落差
+順手整理了一下幾家平台對遠端 MCP 的支援狀況：
 
-在調查網頁端 MCP 支援度時，各家平台的情況也很有意思：
+- **Claude 網頁版**：Free、Pro、Max 都能加遠端 MCP connector，因為連線是從 Anthropic 雲端直接打進來，Cloudflare Access 那邊要記得放行 OAuth discovery 跟 callback
+- **ChatGPT 網頁版**：OpenAI 官方文件寫自訂 MCP 的完整操作只開放給 Business、Enterprise 跟 Edu，Pro 帳號只能唯讀，但我拿自己的 **Plus** 帳號實測，其實已經可以透過 Obsidian MCP 建立筆記了，文件寫的限制跟線上實際行為不太一樣，還是自己測過比較準
+- **Gemini**：上次測試時，Gemini Apps 連這個 server 在動態客戶端註冊（DCR）就失敗了，原因不明，這次沒有重測
 
-- **Claude 網頁版**：從 Free、Pro 到 Max 都能加入遠端 MCP connector，連線是從 Anthropic 的雲端直接打到伺服器，所以 Cloudflare Access 的設定必須精確放行 OAuth 探索與 callback
-- **ChatGPT 網頁版**：OpenAI 官方文件寫著自訂 MCP 的完整操作權限只開放給 Business、Enterprise 和 Edu，Pro 帳號只能唯讀，但我實際用自己的 **Plus** 帳號測試，發現它已經可以透過 Obsidian MCP 建立筆記了，文件記載的限制和線上系統的真實行為並不一致，還是得自己測了才算數
-- **Gemini**：上次測試時，Gemini Apps 對這個 server 的動態客戶端註冊（DCR）失敗，原因不明，這次沒有重測
+### 寫成 fact，查出來變成 decision
 
-### 5. agentmemory 的型態判定
+實測讀寫時發現一個小狀況：用 `memory_save` 寫入一筆標記為 `fact` 的記憶，之後用 `memory_smart_search` 查回來，回傳欄位的類型卻被標成 `decision`
 
-在實測寫入與查詢時，我發現把一筆記憶標記為 `fact` 寫入（`memory_save`），之後用 `memory_smart_search` 查回來時，回傳的欄位卻被標記成 `decision`
+原因我沒有去追，能確定的是轉接站只是原樣轉送、沒動過這個欄位，而且也不影響搜尋結果
 
-原因我沒有去查，能確定的是轉接站只負責原樣轉發，沒有動這個欄位，而且不影響檢索結果
+## 測試結果跟現在的狀態
 
-## 驗證結果與感受
+上線前我先用自己簽的測試憑證模擬 Cloudflare Access，跑了一輪驗收測試：
 
-整個轉接站上線前，我先寫了一組驗收測試（用自己簽的測試憑證模擬 Cloudflare Access）：
+- 沒帶憑證、偽造憑證或帶錯 email 的請求全部回 401，Host 不對的回 403
+- 工具清單固定維持 16 個（Obsidian 12 個加記憶 4 個）
+- 刻意呼叫被藏起來的記憶刪除工具，直接被擋掉
+- 模擬 Obsidian 掛掉時，記憶工具還是能正常回傳
 
-- 沒帶憑證、偽造憑證、帶錯 email 的請求，全數被擋在門外（回傳 401），Host 不對的請求回傳 403
-- 工具清單精準維持 16 個（Obsidian 12 個 + 記憶 4 個）
-- 刻意去 call 被隱藏的記憶刪除工具，直接被擋掉
-- 模擬 Obsidian 掛掉時，記憶工具依然能正常回傳
+接著在本機實際透過轉接站，寫入再讀回一筆隨機字串的記憶跟筆記，測完刪掉
 
-接著在本機實際經過轉接站，寫入再讀回一筆隨機字串的記憶和筆記，測完刪除
+本機都沒問題後，把 Cloudflare Tunnel 指向轉接站的 port，再到 claude.ai 重新連線，萬一出狀況，只要把 tunnel 改回原本 Obsidian MCP 的 port 就能退回舊設定
 
-本機測試通過後，把 Cloudflare Tunnel 指向轉接站的 port，在 claude.ai 上重新連線，如果出問題，只要把 tunnel 改回原本 Obsidian MCP 的 port 就能回到舊狀態
+在 claude.ai 對話框裡叫 Claude 記一組測試字串，它順利呼叫了 `memory_save`，接著請它搜相關關鍵字，`memory_smart_search` 第一筆就撈出剛剛存的內容，測完再從本機把測試資料清掉
 
-實測在對話框裡叫 Claude 記下一組測試字串，Claude 順利呼叫 `memory_save`；接著請它搜尋相關關鍵字，`memory_smart_search` 第一筆就精準撈出剛剛存下的內容，測完再從本機把測試資料清掉，整個流程一氣呵成
+現在在終端機裡寫 code 的 agent，跟網頁版 Claude 看到的已經是同一份 Obsidian 筆記跟同一份 agentmemory（omp 自動回想用的 Mnemopi 還是只在終端機裡），手機 App 跟 ChatGPT 走這個新轉接站的連線則還沒實際測過
 
-現在坐在電腦前用 terminal 寫 code 的 agent，和網頁版 Claude 看到的是同一份 Obsidian 筆記和同一份 agentmemory（omp 自動回想用的 Mnemopi 仍然只在終端機裡），手機 App 和 ChatGPT 經過新轉接站的連線則還沒實測
+要提醒自己的是，網頁端 AI 可以搜到全部記憶，記憶裡難免會有本機路徑跟內部網址，這點是我評估後決定接受的風險，白名單能擋掉危險操作，擋不住「讀」
 
-要提醒自己的是，網頁端的 AI 可以搜尋**全部**記憶，而記憶裡難免有本機路徑和內部網址，這是我評估後接受的風險，白名單擋得住危險操作，擋不住「讀」
-
-把工具收進單一 gateway 的好處，表面上是少管一個連線網址，但對我來說更有價值的，是終於可以在轉接層把「不該給網頁用的工具」與「不需要的雜訊」乾乾淨淨地修剪掉
+原本做這個 gateway 只是懶得多管一條連線網址，不過跑起來之後覺得比較實際的好處反而是多了一層過濾，可以把不該給網頁碰的工具跟一堆用不到的雜訊先在轉接層擋掉
 
 ## 參考資料
 
