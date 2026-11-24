@@ -44,3 +44,10 @@ This is the shared project guide. Root `AGENTS.md` and `CLAUDE.md` are regular t
 - For UI changes, verify affected pages at mobile and desktop widths. For Worker routing changes, verify HTTP behavior with a local Workers runtime: Astro dev/preview does not execute `src/worker.js`.
 - Review `.github/workflows/` when changing release behavior. A merge/push to `main` triggers the production deployment workflow; an uploaded preview version does not switch production traffic.
 - Deploy only when the user explicitly authorizes it. Keep local validation separate from `bun run deploy` / `wrangler deploy`.
+
+## Pull requests
+
+- Open PRs as the agent account (`iskwang-agent`); never as the repository owner. Commit author and committer must be the agent account.
+- PRs are squash-merged with the PR body as the commit message, so the PR body is the permanent record. Use a conventional-commit PR title.
+- After the last push (a rebase or author rewrite changes hashes), add a `Commits:` list to the PR body: one `- <short hash> <subject>` line per branch commit. The hashes disappear from `main` on squash; `git fetch origin pull/<N>/head` recovers them while GitHub keeps the PR ref.
+- Before pushing, get a PASS from an independent reviewer on `git diff main...HEAD`; send fixes back to the same reviewer. The human merges.
