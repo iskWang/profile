@@ -927,8 +927,8 @@ html, body {
       </div>
       <p class="case-subline">給東南亞旅客的台灣商品指南，無可靠價格就引導去店家查價</p>
       <ul class="case-bullets">
-        <li>人工策展台灣必買商品與選購資訊</li>
-        <li>不做爬蟲，也不做即時比價</li>
+        <li>蒐集東南亞觀光客來台灣必買商品資訊</li>
+        <li>每日爬蟲蒐集價格</li>
         <li>架構：React 前端、Go 搜尋 API，跑在 Cloudflare Workers + D1</li>
       </ul>
       <a class="case-link" href="https://taiwanhaul.com/" target="_blank" rel="noopener noreferrer">taiwanhaul.com ↗</a>
@@ -947,8 +947,8 @@ html, body {
       <h2 class="case-headline">MCP Gateway</h2>
       <p class="case-subline">讓網頁版 AI 也能查本機開發記憶，沿用既有單一入口</p>
       <ul class="case-bullets">
-        <li>58 個記憶工具只開放 4 個，用白名單控管讀寫邊界</li>
-        <li>Claude 驗證過讀寫，ChatGPT 確認查詢可用</li>
+        <li>整合 ChatGPT/Claude 電腦及網頁共同記憶</li>
+        <li>記憶統一留在本機端，避免模型商中斷無法接續工作</li>
       </ul>
       {gatewayPost && !gatewayPost.data.draft && (
         <a class="case-link" href={gatewayPath}>閱讀實作紀錄 ↗</a>
@@ -972,8 +972,8 @@ html, body {
       <h2 class="case-headline">PickleScout</h2>
       <p class="case-subline">用 AI 走訪網站產生測試，匯出後交給 CI 不需要 AI</p>
       <ul class="case-bullets">
-        <li>生成階段用 AI 探索並自動修復，產出 Cucumber + Playwright 測試</li>
-        <li>匯出獨立專案後直接進 CI 執行，Runtime 零模型依賴</li>
+        <li>透過 AI 探索網站功能，搭配既有常見測試步驟，產生自動化測試程式</li>
+        <li>透過 Cucumber + Playwright 提升閱讀性，並降低 LLM 執行依賴</li>
       </ul>
       <a class="case-link" href="https://github.com/iskWang/PickleScout" target="_blank" rel="noopener noreferrer">github.com/iskWang/PickleScout ↗</a>
     </div>
