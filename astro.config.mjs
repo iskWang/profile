@@ -20,7 +20,7 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      filter: (page) => new URL(page).pathname !== '/',
+      filter: (page) => !['/', '/slides'].includes(new URL(page).pathname.replace(/\/$/, '') || '/'),
       i18n: {
         defaultLocale: 'zh-tw',
         locales: { 'zh-tw': 'zh-TW', en: 'en' },

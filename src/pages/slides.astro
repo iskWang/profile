@@ -1,0 +1,1109 @@
+---
+import { getEntry } from 'astro:content';
+import { shareImagePath } from '../constants/share-cards';
+
+const gatewaySlug = 'agent-memory-remote-mcp-gateway';
+const gatewayPost = await getEntry('blog', `${gatewaySlug}.zh`);
+const gatewayPath = `/zh-tw/blog/${gatewaySlug}`;
+const gatewayOgImage =
+  gatewayPost && !gatewayPost.data.draft
+    ? shareImagePath(gatewayPath, gatewayPost.data.title)
+    : null;
+---
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josh Wang — 面試簡報</title>
+<meta property="og:title" content="Josh Wang — 面試簡報">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://joshwang.dev/slides">
+<meta property="og:image" content="https://joshwang.dev/og/v1/slides.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Josh Wang — 面試簡報">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://joshwang.dev/og/v1/slides.png">
+<meta name="twitter:image:alt" content="Josh Wang — 面試簡報">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style is:inline>
+/* ─── THEME ─────────────────────────────────────────────── */
+:root {
+  --bg: #07090f;
+  --surface: #0f1520;
+  --surface2: #1a2336;
+  --text: #eef2f8;
+  --text-dim: #8c9eb8;
+  --accent: #10b981;
+  --accent2: #f59e0b;
+  --accent3: #06b6d4;
+  --border: #1e293b;
+  --chrome-bg: rgba(15, 21, 32, 0.88);
+  --chrome-border: rgba(148, 163, 184, 0.25);
+  color-scheme: dark;
+}
+[data-theme="light"] {
+  --bg: #f8f9fb;
+  --surface: #ffffff;
+  --surface2: #eef1f6;
+  --text: #0b0f18;
+  --text-dim: #4d5c73;
+  --accent: #059669;
+  --accent2: #d97706;
+  --accent3: #0891b2;
+  --border: #d8dfe9;
+  --chrome-bg: rgba(255, 255, 255, 0.92);
+  --chrome-border: rgba(15, 23, 42, 0.14);
+  color-scheme: light;
+}
+
+/* ─── BASE ───────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 100%; height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans TC', sans-serif;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.nw { white-space: nowrap; }
+
+/* ─── PROGRESS ───────────────────────────────────────────── */
+.progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: var(--accent);
+  transition: width 0.4s ease, background 0.35s ease;
+  z-index: 100;
+}
+
+/* ─── SLIDE SYSTEM ───────────────────────────────────────── */
+.deck { width: 100%; height: 100vh; height: 100dvh; position: relative; }
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6vh 8vw;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* ─── NAVIGATION ─────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  bottom: 2.5vh; right: 2.5vw;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.28rem 0.45rem;
+  border-radius: 999px;
+  background: var(--chrome-bg);
+  border: 1px solid var(--chrome-border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  z-index: 100;
+}
+.nav-btn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--chrome-border);
+  background: transparent;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+.nav-counter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text);
+  padding: 0 0.35rem;
+  min-width: 5.5ch;
+  text-align: center;
+  transition: color 0.35s;
+}
+
+/* ─── THEME TOGGLE ───────────────────────────────────────── */
+.theme-toggle {
+  position: fixed;
+  top: 2.2vh; right: 2.2vw;
+  z-index: 200;
+  background: var(--chrome-bg);
+  border: 1px solid var(--chrome-border);
+  border-radius: 999px;
+  padding: 0.42rem 0.95rem;
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text);
+  font-family: 'Noto Sans TC', sans-serif;
+  letter-spacing: 0.06em;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transition: background 0.35s, border-color 0.2s, color 0.2s;
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ─── COVER ──────────────────────────────────────────────── */
+.slide-cover {
+  justify-content: center;
+  align-items: flex-start;
+  padding: 6vh 8vw;
+}
+.cover-name {
+  font-weight: 900;
+  font-size: clamp(3.8rem, 10vw, 9rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  margin-bottom: 0.32em;
+}
+.cover-tagline {
+  font-weight: 500;
+  font-size: clamp(1.15rem, 2.3vw, 2rem);
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+.cover-tagline::before {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+.cover-tagline .hl { color: var(--accent); font-weight: 700; margin: 0 0.12em; }
+.cover-qr-wrap {
+  position: absolute;
+  top: 50%; right: 7vw;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+}
+.cover-qr-wrap img {
+  display: block;
+  width: clamp(132px, 13vw, 190px);
+  height: clamp(132px, 13vw, 190px);
+  border-radius: 8px;
+  background: #fff;
+  padding: 5px;
+}
+.cover-qr-wrap span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+/* ─── TIMELINE & TAKAHASHI ───────────────────────────────── */
+.slide-timeline {
+  align-items: flex-start;
+  justify-content: center;
+  padding: 6vh 10vw;
+}
+.tl-wrap {
+  width: min(100%, 56rem);
+}
+.tl-title {
+  font-weight: 900;
+  font-size: clamp(2.4rem, 5.2vw, 4.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+.tl-divider {
+  width: clamp(2.5rem, 5vw, 4.5rem);
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin: clamp(1rem, 2.4vh, 1.8rem) 0;
+}
+.tl-list {
+  list-style: none;
+  margin-top: clamp(0.8rem, 2vh, 1.6rem);
+}
+.tl-list li {
+  display: grid;
+  grid-template-columns: 11.5rem minmax(0, 1fr);
+  column-gap: 1.8rem;
+  align-items: baseline;
+  padding: clamp(0.85rem, 2vh, 1.35rem) 0;
+  border-top: 1px solid var(--border);
+}
+.tl-list li:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.tl-period {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.tl-role {
+  font-size: clamp(1.35rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.slide-tk {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6vh 12vw;
+}
+.slide-tk .stagger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tk-main {
+  font-weight: 900;
+  font-size: clamp(3rem, 9vw, 8rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  text-wrap: balance;
+}
+.tk-accent { color: var(--accent); }
+.tk-divider {
+  width: clamp(2rem, 5vw, 4.5rem);
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin: clamp(1rem, 2.5vh, 2rem) auto;
+  transition: background 0.35s;
+}
+.closing-email {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4.2vw, 3.6rem);
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 0.08em;
+}
+.closing-email:hover { color: var(--accent); }
+.closing-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  color: var(--text-dim);
+}
+.closing-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--text-dim);
+  text-decoration: none;
+}
+.closing-links a:hover { color: var(--accent); }
+
+/* ─── CASE STUDY SLIDES (3B / 8B / 9 / 10) ────────────────── */
+.slide-case {
+  padding: 0;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.case-right-media .case-text {
+  flex: 0 0 38%;
+  padding: 5vh 3.6vw;
+  border-right: 1px solid var(--border);
+}
+.case-right-media .case-photo {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: border-color 0.35s;
+}
+
+.case-photo-white {
+  background: #ffffff;
+  padding: 0 1.2vw;
+}
+
+.case-photo-screen {
+  background: #f8f7f4;
+  padding: 0;
+}
+.case-photo-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.case-photo-og {
+  background: #f7f5ef;
+  padding: 3vh 1.5vw;
+}
+.og-card-link {
+  display: block;
+  width: 100%;
+  max-width: 1120px;
+}
+.og-card-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Non-destructive crop frame for 1920x1080 Keynote exports */
+.crop-frame {
+  position: relative;
+  width: min(100%, calc(86vh * var(--cw) / var(--ch)));
+  aspect-ratio: var(--cw) / var(--ch);
+  overflow: hidden;
+}
+.crop-frame img {
+  position: absolute;
+  width: calc(1920 / var(--cw) * 100%);
+  height: auto;
+  max-width: none;
+  left: calc(-1 * var(--cx) / var(--cw) * 100%);
+  top: calc(-1 * var(--cy) / var(--ch) * 100%);
+  display: block;
+}
+
+/* ─── PICKLESCOUT DIAGRAM PANEL ──────────────────────────── */
+.case-photo-diagram {
+  background: #f6f8fa;
+  padding: 3vh 3vw;
+  color: #0f172a;
+}
+.ps-diagram {
+  width: min(90%, 860px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.85rem, 1.6vh, 1.25rem);
+}
+.ps-header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.ps-header img {
+  width: clamp(44px, 3.2vw, 56px);
+  height: clamp(44px, 3.2vw, 56px);
+  display: block;
+  flex-shrink: 0;
+}
+.ps-brand {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(1.15rem, 1.45vw, 1.45rem);
+  font-weight: 700;
+  color: #0f172a;
+}
+.ps-tagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.82rem, 0.95vw, 0.96rem);
+  color: #475569;
+}
+.ps-phase {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  padding: clamp(1.1rem, 2.1vh, 1.6rem) clamp(1.25rem, 2vw, 1.8rem);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+}
+.ps-phase-ci {
+  background: #ecfdf5;
+  border: 2px solid #059669;
+}
+.ps-phase-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.76rem, 0.9vw, 0.88rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.18rem 0.65rem;
+  border-radius: 999px;
+  margin-bottom: clamp(0.65rem, 1.2vh, 0.95rem);
+  color: #334155;
+  background: #f1f5f9;
+}
+.ps-phase-ci .ps-phase-badge {
+  color: #065f46;
+  background: #d1fae5;
+}
+.ps-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.65rem, 1.3vh, 1rem);
+}
+.ps-steps li {
+  display: grid;
+  grid-template-columns: 1.85rem minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: start;
+}
+.ps-num {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: #0f172a;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.14rem;
+}
+.ps-step-title {
+  font-weight: 700;
+  font-size: clamp(1.02rem, 1.3vw, 1.3rem);
+  color: #0f172a;
+  line-height: 1.35;
+}
+.ps-step-desc {
+  font-size: clamp(0.86rem, 1.02vw, 1.02rem);
+  color: #475569;
+  line-height: 1.4;
+  margin-top: 0.14rem;
+}
+.ps-boundary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.82rem, 0.98vw, 0.98rem);
+  font-weight: 700;
+  color: #059669;
+  padding: 0.1rem 0;
+}
+.ps-boundary::before,
+.ps-boundary::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #cbd5e1;
+}
+.ps-ci-title {
+  font-weight: 900;
+  font-size: clamp(1.12rem, 1.48vw, 1.48rem);
+  color: #064e3b;
+  line-height: 1.35;
+}
+.ps-ci-desc {
+  font-size: clamp(0.9rem, 1.08vw, 1.08rem);
+  color: #065f46;
+  margin-top: 0.3rem;
+  line-height: 1.45;
+}
+
+/* ─── CASE TEXT ──────────────────────────────────────────── */
+.case-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.1rem;
+  overflow: auto;
+  min-width: 0;
+}
+.case-kicker-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.case-kicker {
+  font-size: clamp(0.8rem, 1.15vw, 0.95rem);
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.35s;
+}
+.wip-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent2);
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 999px;
+  padding: 0.12rem 0.55rem;
+  letter-spacing: 0.06em;
+}
+.case-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.case-headline {
+  font-weight: 900;
+  font-size: clamp(1.85rem, 2.85vw, 2.8rem);
+  line-height: 1.14;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  text-wrap: balance;
+}
+.case-subline {
+  font-size: clamp(1.02rem, 1.45vw, 1.26rem);
+  color: var(--text-dim);
+  font-weight: 400;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+.case-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+.case-bullets li {
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  gap: 0.55rem;
+  font-size: clamp(0.9rem, 1.25vw, 1.05rem);
+  color: var(--text);
+  line-height: 1.55;
+  align-items: start;
+}
+.case-bullets li::before {
+  content: '●';
+  color: var(--accent);
+  font-size: 0.45em;
+  margin-top: 0.6em;
+  transition: color 0.35s;
+}
+.case-link {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.85rem, 1.15vw, 0.98rem);
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em;
+}
+.case-link:hover { opacity: 0.85; }
+
+/* ─── STAGGER ANIMATION ──────────────────────────────────── */
+.slide.active .stagger > * {
+  animation: fadeUp 0.38s ease forwards;
+  opacity: 0;
+}
+.slide.active .stagger > *:nth-child(1) { animation-delay: 0.04s; }
+.slide.active .stagger > *:nth-child(2) { animation-delay: 0.10s; }
+.slide.active .stagger > *:nth-child(3) { animation-delay: 0.16s; }
+.slide.active .stagger > *:nth-child(4) { animation-delay: 0.22s; }
+.slide.active .stagger > *:nth-child(5) { animation-delay: 0.28s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── REDUCED MOTION ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .slide { transition: opacity 0.15s ease; transform: none !important; }
+  .slide.active .stagger > * { animation: none; opacity: 1; }
+  .progress { transition: width 0.15s ease; }
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .slide {
+    justify-content: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .slide-cover {
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5vh 7vw 12vh;
+  }
+  .cover-name { font-size: clamp(3rem, 14vw, 5.2rem); }
+  .cover-tagline { font-size: clamp(1rem, 4.4vw, 1.45rem); }
+  .cover-qr-wrap { display: none; }
+
+  .slide-timeline {
+    justify-content: center;
+    padding: 5vh 7vw 12vh;
+  }
+  .tl-title { font-size: clamp(2rem, 9vw, 3.2rem); }
+  .tl-list li {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+    padding: 0.9rem 0;
+  }
+
+  .slide-tk {
+    justify-content: center;
+    padding: 8vw;
+  }
+  .tk-main { font-size: clamp(2.6rem, 12vw, 5rem); }
+
+  .slide-case {
+    flex-direction: column;
+  }
+  .case-right-media .case-photo {
+    order: -1;
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .case-photo-white {
+    padding: 3.4rem 4vw 1.25rem;
+  }
+  .crop-frame {
+    width: 100%;
+  }
+  .case-photo-screen {
+    height: auto;
+  }
+  .case-photo-screen img {
+    height: auto;
+  }
+  .case-photo-og {
+    padding: 3.4rem 4vw 1.25rem;
+  }
+  .case-photo-diagram {
+    padding: 3.1rem 4vw 1rem;
+  }
+  .ps-diagram {
+    width: 100%;
+    gap: 0.55rem;
+  }
+  .ps-header img {
+    width: 32px;
+    height: 32px;
+  }
+  .ps-brand { font-size: 1rem; }
+  .ps-tagline { font-size: 0.72rem; }
+  .ps-phase {
+    padding: 0.65rem 0.85rem;
+  }
+  .ps-phase-badge {
+    font-size: 0.7rem;
+    margin-bottom: 0.45rem;
+  }
+  .ps-steps {
+    gap: 0.35rem;
+  }
+  .ps-steps li {
+    grid-template-columns: 1.45rem minmax(0, 1fr);
+    gap: 0.55rem;
+  }
+  .ps-num {
+    width: 1.35rem;
+    height: 1.35rem;
+    font-size: 0.7rem;
+  }
+  .ps-step-title { font-size: 0.88rem; }
+  .ps-step-desc { font-size: 0.76rem; }
+  .ps-boundary { font-size: 0.74rem; }
+  .ps-ci-title { font-size: 0.94rem; }
+  .ps-ci-desc { font-size: 0.8rem; }
+  .case-right-media .case-text {
+    flex: 1 0 auto;
+    padding: 1.25rem 6vw 5.5rem;
+    gap: 0.85rem;
+    border-right: none;
+    overflow: visible;
+    justify-content: flex-start;
+  }
+  .case-headline {
+    font-size: clamp(1.55rem, 6.5vw, 2.2rem);
+  }
+  .nav {
+    left: 50%;
+    right: auto;
+    bottom: 1.6vh;
+    transform: translateX(-50%);
+  }
+  .nav-btn { width: 34px; height: 34px; }
+  .theme-toggle { top: 1.2vh; right: 3vw; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">Light</button>
+
+<div class="deck" id="deck">
+
+  <!-- 1: Josh Wang｜產品開發與開發工具 -->
+  <section class="slide slide-cover active" data-slide="0">
+    <div class="stagger">
+      <h1 class="cover-name">Josh Wang</h1>
+      <p class="cover-tagline">產品開發<span class="hl">與</span>開發工具</p>
+    </div>
+    <div class="cover-qr-wrap">
+      <img src="/slides/qr-slides.png" alt="QR code for joshwang.dev/slides">
+      <span>joshwang.dev/slides</span>
+    </div>
+  </section>
+
+  <!-- 2: 十多年軟體開發（全場唯一時間線） -->
+  <section class="slide slide-timeline" data-slide="1">
+    <div class="tl-wrap stagger">
+      <h2 class="tl-title">十多年軟體開發</h2>
+      <div class="tl-divider"></div>
+      <ul class="tl-list">
+        <li>
+          <span class="tl-period">2014–2019</span>
+          <span class="tl-role">全端產品</span>
+        </li>
+        <li>
+          <span class="tl-period">2019–2023</span>
+          <span class="tl-role">企業與資安</span>
+        </li>
+        <li>
+          <span class="tl-period">2023–至今</span>
+          <span class="tl-role">獨立開發</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3: 滿房寶 Web -->
+  <section class="slide slide-case case-right-media" data-slide="2">
+    <div class="case-text stagger">
+      <div class="case-kicker-row">
+        <div class="case-kicker">案例 01</div>
+      </div>
+      <h2 class="case-headline">滿房寶 Web</h2>
+      <p class="case-subline">首次帶前端團隊，用 Next.js 打造旅宿官網，約一個月上線</p>
+      <ul class="case-bullets">
+        <li>採用 Next.js + GraphQL Apollo 架構，支援 SEO</li>
+        <li>主導前端架構選型，並帶領前端成員交付</li>
+      </ul>
+    </div>
+    <div class="case-photo case-photo-white">
+      <div class="crop-frame" style="--cx: 336; --cy: 121; --cw: 1249; --ch: 659;">
+        <img src="/slides/manfangbao-web.png" alt="滿房寶旅宿官網截圖">
+      </div>
+    </div>
+  </section>
+
+  <!-- 4: 滿房寶 React Native -->
+  <section class="slide slide-case case-right-media" data-slide="3">
+    <div class="case-text stagger">
+      <div class="case-kicker-row">
+        <div class="case-kicker">案例 02</div>
+      </div>
+      <h2 class="case-headline">滿房寶 React Native</h2>
+      <p class="case-subline">獨立接手外包 App，同時持續維護網站</p>
+      <ul class="case-bullets">
+        <li>整理外包交付的 RN 程式碼，建立可維護的模組結構</li>
+        <li>系統性修復逾 40% 既有問題</li>
+      </ul>
+    </div>
+    <div class="case-photo case-photo-white">
+      <div class="crop-frame" style="--cx: 237; --cy: 47; --cw: 1396; --ch: 865;">
+        <img src="/slides/manfangbao-rn.png" alt="滿房寶 React Native App 畫面">
+      </div>
+    </div>
+  </section>
+
+  <!-- 5: TeamT5 -->
+  <section class="slide slide-case case-right-media" data-slide="4">
+    <div class="case-text stagger">
+      <div class="case-kicker-row">
+        <div class="case-kicker">案例 03</div>
+      </div>
+      <h2 class="case-headline">TeamT5</h2>
+      <p class="case-subline">官網改為 Next.js 靜態部署至 AWS S3，沿用為活動網站模板</p>
+      <ul class="case-bullets">
+        <li>前後端分離並移除 Legacy Code，統一活動站開發模式</li>
+        <li>頁面載入 2.47 秒 → 1.6 秒，打包體積 13.7 MB → 8.4 MB</li>
+      </ul>
+    </div>
+    <div class="case-photo case-photo-white">
+      <div class="crop-frame" style="--cx: 305; --cy: 97; --cw: 1310; --ch: 674;">
+        <img src="/slides/teamt5-web.png" alt="TeamT5 官網新聞與活動頁面截圖">
+      </div>
+    </div>
+  </section>
+
+  <!-- 6: 信義房屋：生活圈找屋 -->
+  <section class="slide slide-case case-right-media" data-slide="5">
+    <div class="case-text stagger">
+      <div class="case-kicker-row">
+        <div class="case-kicker">案例 04</div>
+      </div>
+      <h2 class="case-headline">信義房屋：生活圈找屋</h2>
+      <p class="case-subline">官網高流量核心找屋頁，同步維護網頁與手機版</p>
+      <ul class="case-bullets">
+        <li>支援 500 公尺與周邊地點即時篩選找屋</li>
+        <li>主導既有 Class Component 改寫至 React Hooks</li>
+      </ul>
+    </div>
+    <div class="case-photo case-photo-white">
+      <div class="crop-frame" style="--cx: 222; --cy: 32; --cw: 1476; --ch: 842;">
+        <img src="/slides/sinyi-poi-search.png" alt="信義房屋生活圈找屋桌面與手機版畫面">
+      </div>
+    </div>
+  </section>
+
+  <!-- 7: 信義房屋：一鍵清空 -->
+  <section class="slide slide-case case-right-media" data-slide="6">
+    <div class="case-text stagger">
+      <div class="case-kicker-row">
+        <div class="case-kicker">案例 05</div>
+      </div>
+      <h2 class="case-headline">信義房屋：一鍵清空</h2>
+      <p class="case-subline">把房間清空前後對照預覽接進既有大型看屋系統上線</p>
+      <ul class="case-bullets">
+        <li>整合看屋頁原有流程，直接切換清空前後畫面</li>
+        <li>在既有系統穩定架構下完成新功能交付</li>
+      </ul>
+    </div>
+    <div class="case-photo case-photo-white">
+      <div class="crop-frame" style="--cx: 205; --cy: 68; --cw: 1588; --ch: 813;">
+        <img src="/slides/sinyi-ai-declutter.png" alt="信義房屋一鍵清空前後對照畫面">
+      </div>
+    </div>
+  </section>
+
+  <!-- 8: TaiwanHaul · WIP -->
+  <section class="slide slide-case case-right-media" data-slide="7">
+    <div class="case-text stagger">
+      <div class="case-kicker-row">
+        <div class="case-kicker">獨立產品</div>
+      </div>
+      <div class="case-title-row">
+        <h2 class="case-headline">TaiwanHaul</h2>
+        <span class="wip-pill">WIP</span>
+      </div>
+      <p class="case-subline">給東南亞旅客的台灣商品指南，無可靠價格就引導去店家查價</p>
+      <ul class="case-bullets">
+        <li>人工策展台灣必買商品與選購資訊</li>
+        <li>不做爬蟲，也不做即時比價</li>
+      </ul>
+      <a class="case-link" href="https://taiwanhaul.com/" target="_blank" rel="noopener noreferrer">taiwanhaul.com ↗</a>
+    </div>
+    <div class="case-photo case-photo-screen">
+      <img src="/slides/taiwanhaul-preview.webp" alt="TaiwanHaul 台灣商品指南網站畫面">
+    </div>
+  </section>
+
+  <!-- 9: MCP Gateway -->
+  <section class="slide slide-case case-right-media" data-slide="8">
+    <div class="case-text stagger">
+      <div class="case-kicker-row">
+        <div class="case-kicker">開發工具</div>
+      </div>
+      <h2 class="case-headline">MCP Gateway</h2>
+      <p class="case-subline">讓網頁版 AI 也能查本機開發記憶，沿用既有單一入口</p>
+      <ul class="case-bullets">
+        <li>58 個記憶工具只開放 4 個，用白名單控管讀寫邊界</li>
+        <li>Claude 驗證過讀寫，ChatGPT 確認查詢可用</li>
+      </ul>
+      {gatewayPost && !gatewayPost.data.draft && (
+        <a class="case-link" href={gatewayPath}>閱讀實作紀錄 ↗</a>
+      )}
+    </div>
+    <div class="case-photo case-photo-og">
+      {gatewayOgImage && (
+        <a class="og-card-link" href={gatewayPath}>
+          <img src={gatewayOgImage} alt="把本機 Agent 記憶接上 Claude 與 ChatGPT 網頁：寫一個 MCP 轉接站的踩坑紀錄" width="1200" height="630">
+        </a>
+      )}
+    </div>
+  </section>
+
+  <!-- 10: PickleScout -->
+  <section class="slide slide-case case-right-media" data-slide="9">
+    <div class="case-text stagger">
+      <div class="case-kicker-row">
+        <div class="case-kicker">開發工具</div>
+      </div>
+      <h2 class="case-headline">PickleScout</h2>
+      <p class="case-subline">用 AI 走訪網站產生測試，匯出後交給 CI 不需要 AI</p>
+      <ul class="case-bullets">
+        <li>生成階段用 AI 探索並自動修復，產出 Cucumber + Playwright 測試</li>
+        <li>匯出獨立專案後直接進 CI 執行，Runtime 零模型依賴</li>
+      </ul>
+      <a class="case-link" href="https://github.com/iskWang/PickleScout" target="_blank" rel="noopener noreferrer">github.com/iskWang/PickleScout ↗</a>
+    </div>
+    <div class="case-photo case-photo-diagram">
+      <div class="ps-diagram">
+        <div class="ps-header">
+          <img src="/picklescout-logo.webp" alt="PickleScout logo" width="40" height="40">
+          <div>
+            <div class="ps-brand">PickleScout</div>
+            <div class="ps-tagline">Browse once, test forever</div>
+          </div>
+        </div>
+        <div class="ps-phase">
+          <span class="ps-phase-badge">生成階段 · 使用 AI</span>
+          <ol class="ps-steps">
+            <li>
+              <span class="ps-num">1</span>
+              <div>
+                <div class="ps-step-title">Browser Agent 走訪網站</div>
+                <div class="ps-step-desc">實際操作頁面並記錄 ActionLog</div>
+              </div>
+            </li>
+            <li>
+              <span class="ps-num">2</span>
+              <div>
+                <div class="ps-step-title">LLM 產生測試腳本</div>
+                <div class="ps-step-desc">輸出 Gherkin .feature 與 Playwright Steps</div>
+              </div>
+            </li>
+            <li>
+              <span class="ps-num">3</span>
+              <div>
+                <div class="ps-step-title">執行驗證與自動修復</div>
+                <div class="ps-step-desc">測試失敗時自動修正 selector 並重跑</div>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="ps-boundary">↓ 匯出獨立專案 .zip</div>
+        <div class="ps-phase ps-phase-ci">
+          <span class="ps-phase-badge">CI 執行階段 · 零模型依賴</span>
+          <div class="ps-ci-title">Cucumber + Playwright 直接在 CI 執行</div>
+          <div class="ps-ci-desc">匯出為標準測試專案，Runtime 不呼叫任何 LLM</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11: 聯絡 -->
+  <section class="slide slide-tk" data-slide="10">
+    <div class="stagger">
+      <h2 class="tk-main tk-accent">Let's Talk</h2>
+      <div class="tk-divider"></div>
+      <a class="closing-email" href="mailto:spjay1@gmail.com">spjay1@gmail.com</a>
+      <div class="closing-links">
+        <a href="https://joshwang.dev/zh-tw" target="_blank" rel="noopener noreferrer">joshwang.dev ↗</a>
+        <span>·</span>
+        <a href="https://github.com/iskWang" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button class="nav-btn" onclick="navigate(-1);this.blur()" aria-label="前一張">←</button>
+  <span class="nav-counter" id="counter"></span>
+  <button class="nav-btn" onclick="navigate(1);this.blur()" aria-label="下一張">→</button>
+</div>
+
+<script is:inline>
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+const counter = document.getElementById('counter');
+const progress = document.getElementById('progress');
+const themeToggle = document.getElementById('themeToggle');
+
+function showSlide(i) {
+  slides.forEach(s => s.classList.remove('active'));
+  slides[i].classList.add('active');
+  counter.textContent = `${i + 1} / ${total}`;
+  progress.style.width = `${((i + 1) / total) * 100}%`;
+  history.replaceState(null, '', '#' + (i + 1));
+}
+
+function navigate(dir) {
+  current = Math.max(0, Math.min(total - 1, current + dir));
+  showSlide(current);
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  themeToggle.textContent = theme === 'light' ? 'Dark' : 'Light';
+  try { localStorage.setItem('slides-theme', theme); } catch(e) {}
+}
+
+function toggleTheme() {
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+}
+
+// Restore saved preference
+try {
+  const saved = localStorage.getItem('slides-theme');
+  if (saved === 'light' || saved === 'dark') applyTheme(saved);
+  else applyTheme('dark');
+} catch(e) { applyTheme('dark'); }
+
+document.addEventListener('keydown', e => {
+  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); navigate(1); }
+  if (['ArrowLeft','ArrowUp'].includes(e.key))         { e.preventDefault(); navigate(-1); }
+});
+
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const d = tx - e.changedTouches[0].clientX;
+  if (Math.abs(d) > 50) navigate(d > 0 ? 1 : -1);
+});
+
+function slideFromHash() {
+  const n = parseInt(location.hash.slice(1)) - 1;
+  return Number.isFinite(n) && n >= 0 ? Math.min(n, total - 1) : 0;
+}
+
+window.addEventListener('hashchange', () => {
+  current = slideFromHash();
+  showSlide(current);
+});
+
+current = slideFromHash();
+showSlide(current);
+</script>
+</body>
+</html>
