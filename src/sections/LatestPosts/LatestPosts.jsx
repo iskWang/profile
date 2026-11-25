@@ -1,5 +1,6 @@
 import React from 'react';
 import { BLOG_STRINGS } from '../../constants/blogStrings';
+import { splitTitleClauses } from '../../../scripts/title-clauses.mjs';
 
 const LatestPosts = ({ posts, lang }) => {
   if (!posts || posts.length === 0) return null;
@@ -19,7 +20,12 @@ const LatestPosts = ({ posts, lang }) => {
             <article key={post.slug} className="border border-line rounded-2xl p-6 bg-paper">
               <h3 className="text-xl font-bold mb-2">
                 <a className="hover:text-teal transition-colors" href={`${blogPrefix}/${post.slug}`}>
-                  {post.title}
+                  {splitTitleClauses(post.title).map(({ text, hasTrailingSpace }, i) => (
+                    <React.Fragment key={i}>
+                      <span className="title-clause">{text}</span>
+                      {hasTrailingSpace ? ' ' : null}
+                    </React.Fragment>
+                  ))}
                 </a>
               </h3>
               <p className="font-mono text-sm text-ink-soft mb-3">{post.date}</p>

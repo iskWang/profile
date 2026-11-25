@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import sharp from 'sharp';
 import { renderShareCard } from './render-share-card.mjs';
+import { splitTitleClauses } from './title-clauses.mjs';
 
 async function inkBounds(buffer) {
   const { data, info } = await sharp(buffer).removeAlpha().raw().toBuffer({ resolveWithObject: true });
@@ -47,4 +48,24 @@ test('share card refuses titles that cannot fit even at minimum size', async () 
     renderShareCard({ title: '界'.repeat(500), lang: 'zh-tw' }),
     { name: 'RangeError', message: 'Share-card title does not fit in the available title area' },
   );
+});
+
+test('splitTitleClauses splits at major CJK and ASCII punctuation without breaking numbers', () => {
+  assert.deepEqual(splitTitleClauses('我以為 Threads 是對的，直到我踩到雷'), [
+    { text: '我以為 Threads 是對的，', hasTrailingSpace: false },
+    { text: '直到我踩到雷', hasTrailingSpace: false },
+  ]);
+  assert.deepEqual(splitTitleClauses('1,000 Ways: Step 1, Step 2'), [
+    { text: '1,000 Ways:', hasTrailingSpace: true },
+    { text: 'Step 1,', hasTrailingSpace: true },
+    { text: 'Step 2', hasTrailingSpace: false },
+  ]);
+});
+
+test('share card breaks CJK title at comma boundary instead of stranding a character', async () => {
+  const full = await inkBounds(await renderShareCard({ title: '我以為 Threads 是對的，直到我踩到雷', lang: 'zh-tw' }));
+  const firstClause = await inkBounds(await renderShareCard({ title: '我以為 Threads 是對的，', lang: 'zh-tw' }));
+  assert.equal(full.outside, 0);
+  // First line must not extend past the first clause (would happen if "直" stayed on line 1).
+  assert.ok(full.right <= firstClause.right + 2);
 });

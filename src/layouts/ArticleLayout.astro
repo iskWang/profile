@@ -4,6 +4,7 @@ import Layout from './Layout.astro';
 import Header from '../components/Header/Header.jsx';
 import Footer from '../components/Footer/Footer.jsx';
 import ShareImage from '../components/ShareImage.astro';
+import TitleText from '../components/TitleText.astro';
 import { shareImagePath } from '../constants/share-cards';
 
 interface Props { post: CollectionEntry<'blog'> }
@@ -87,7 +88,7 @@ const labels = isZh ? {
         {labels.back}
       </a>
       <header class="post-header">
-        <h1>{post.data.title}</h1>
+        <h1><TitleText title={post.data.title} /></h1>
         <p class="post-summary">{post.data.summary}</p>
         <div class="post-meta" aria-label={labels.information}>
           <span>Josh Wang</span><span aria-hidden="true">·</span>
@@ -120,7 +121,7 @@ const labels = isZh ? {
             {related.map(item => (
               <a class="post-related-card" href={`/${isZh ? 'zh-tw' : 'en'}/blog/${item.id.replace(/\.(?:zh|en)$/, '')}`}>
                 <p class="post-related-date"><time datetime={item.data.date}>{item.data.date}</time></p>
-                <h3>{item.data.title}</h3>
+                <h3><TitleText title={item.data.title} /></h3>
                 <p>{item.data.summary}</p>
               </a>
             ))}

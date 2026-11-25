@@ -1,0 +1,12 @@
+---
+import { splitTitleClauses } from '../../scripts/title-clauses.mjs';
+
+interface Props {
+  title: string;
+}
+
+const clauses = splitTitleClauses(Astro.props.title);
+---
+{clauses.map(({ text, hasTrailingSpace }) => (
+  <><span class="title-clause">{text}</span>{hasTrailingSpace && ' '}</>
+))}

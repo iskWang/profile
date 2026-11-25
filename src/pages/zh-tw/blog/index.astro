@@ -4,6 +4,7 @@ import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import ShareImage from '../../../components/ShareImage.astro';
+import TitleText from '../../../components/TitleText.astro';
 import { pageTitles, shareImagePath } from '../../../constants/share-cards';
 const title = pageTitles['/zh-tw/blog'];
 const image = new URL(shareImagePath('/zh-tw/blog', title), Astro.site);
@@ -58,7 +59,7 @@ const topics = [...new Set(posts.flatMap((post) => post.data.topics))].sort();
             return (
               <article class="rounded-2xl border border-line bg-paper-deep/30 p-6 transition hover:border-teal md:p-8" data-post-card data-topics={post.data.topics.join(' ')}>
                 <p class="text-sm text-ink-soft"><time datetime={post.data.date}>{post.data.date}</time></p>
-                <h2 class="mt-2 text-2xl font-bold tracking-tight"><a class="hover:text-teal" href={`/zh-tw/blog/${post.id.replace(/\.(?:zh|en)$/, '')}`}>{post.data.title}</a></h2>
+                <h2 class="mt-2 text-2xl font-bold tracking-tight"><a class="hover:text-teal" href={`/zh-tw/blog/${post.id.replace(/\.(?:zh|en)$/, '')}`}><TitleText title={post.data.title} /></a></h2>
                 <p class="mt-3 leading-7 text-ink-soft">{post.data.summary}</p>
                 <div class="mt-5 flex flex-wrap gap-2">
                   {post.data.topics.map((topic) => <span class="rounded-full bg-teal-soft px-3 py-1 text-xs font-medium text-teal">{topic}</span>)}

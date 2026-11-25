@@ -4,6 +4,7 @@ import { createRequire } from 'node:module';
 import satori from 'satori';
 import sharp from 'sharp';
 import { mascotOverlay } from './share-card-art.mjs';
+import { splitTitleClauses } from './title-clauses.mjs';
 
 const require = createRequire(import.meta.url);
 const FONT_CSS = pathToFileURL(require.resolve('@fontsource/noto-sans-tc/800.css'));
@@ -52,13 +53,22 @@ async function fontsFor(title) {
 }
 
 function cardMarkup(title, fontSize, fontFamily) {
+  const clauses = splitTitleClauses(title);
   return {
     type: 'div',
     props: {
       style: { width: CARD.width, height: CARD.height, display: 'flex', position: 'relative', backgroundColor: '#f7f5ef', color: '#171b21', fontFamily, fontWeight: 800 },
       children: [
         { type: 'div', props: { style: { position: 'absolute', left: 88, top: 80, width: 1024, height: 355, display: 'flex', alignItems: 'center' }, children: {
-          type: 'div', props: { id: 'share-title', style: { width: '100%', fontSize, lineHeight: 1.18, wordBreak: 'break-word' }, children: title },
+          type: 'div',
+          props: {
+            id: 'share-title',
+            style: { width: '100%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', fontSize, lineHeight: 1.18 },
+            children: clauses.map(({ text, hasTrailingSpace }) => ({
+              type: 'div',
+              props: { style: { maxWidth: '100%', wordBreak: 'break-word' }, children: hasTrailingSpace ? `${text} ` : text },
+            })),
+          },
         } } },
         { type: 'div', props: { style: { position: 'absolute', left: 88, top: 500, width: 72, height: 6, backgroundColor: '#007e73', borderRadius: 3 } } },
         { type: 'div', props: { style: { position: 'absolute', left: 88, top: 545, fontSize: 23, fontWeight: 800 }, children: 'joshwang.dev' } },

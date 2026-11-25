@@ -721,6 +721,13 @@
 .post-back-link:hover svg,
 .post-back-link:focus-visible svg { transform: translateX(-3px); }
 
+.title-clause {
+  display: inline-block;
+  max-width: 100%;
+  line-break: strict;
+  word-break: auto-phrase;
+}
+
 .post-header {
   width: 100%;
   margin: 3rem auto 0;
@@ -735,7 +742,9 @@
   font-weight: 800;
   letter-spacing: -0.035em;
   line-height: 1.15;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  line-break: strict;
+  word-break: auto-phrase;
   text-wrap: balance;
 }
 html[lang="zh-TW"] .post-header h1 { max-width: 18em; }
