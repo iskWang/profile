@@ -20,7 +20,7 @@ vault_path: 30_Resources/AI/Agent 工作流/omp 記憶共用到 Claude 與 ChatG
 
 The goal here is pretty simple: I wanted one shared memory across all the AI agents I use, accessible from different platforms whether I'm on my home computer, laptop, or phone, with Cloudflare Tunnel and Cloudflare Access in front as basic security so external traffic never connects directly to my machine
 
-On my Mac mini at home, my terminal coding agents (Oh My Pi / omp, Claude Code, and Codex) already share one local memory store (`agentmemory`). Once a snag or project convention gets saved there, other tools can look it up later
+On my Mac mini at home, my terminal coding agents (Oh My Pi / omp, Claude Code, and Codex) already share one local memory store ([agentmemory](https://github.com/rohitg00/agentmemory)). Once a snag or project convention gets saved there, other tools can look it up later
 
 Once I'm away from my desk and using Claude.ai or ChatGPT on my phone or laptop to talk through an architecture problem, though, none of that history comes with me and I end up explaining the background all over again
 
@@ -128,6 +128,7 @@ I originally wrote the gateway just to avoid managing a second MCP URL, though o
 
 ## References
 
+- [agentmemory GitHub repository](https://github.com/rohitg00/agentmemory)
 - [Claude Help Center: Get started with custom connectors using Remote MCP](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)
 - [OpenAI Help: Connecting custom MCP servers in ChatGPT](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt)
 - [[obsidian-remote-mcp-cloudflare-access|Putting my home Obsidian vault behind Cloudflare Access as a remote MCP]]

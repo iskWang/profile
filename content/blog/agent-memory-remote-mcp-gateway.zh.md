@@ -19,7 +19,7 @@ vault_path: 30_Resources/AI/Agent 工作流/omp 記憶共用到 Claude 與 ChatG
 
 這篇想做的事情其實很單純：我希望能把平常在用的各種 AI Agent 記憶統一起來，不管是在家裡的電腦、筆電還是手機上的不同平台都能共用，同時搭配 Cloudflare Tunnel 跟 Cloudflare Access 做一層基礎的資安防護，讓外部連線不會直接打進家裡的機器
 
-之前在家裡的 Mac mini 上，我已經讓幾個終端機裡的 coding agent（Oh My Pi / omp、Claude Code 跟 Codex）共用同一套 `agentmemory`，平常踩過的坑或定下來的專案習慣記進去後，下次換別的工具接手都還查得到
+之前在家裡的 Mac mini 上，我已經讓幾個終端機裡的 coding agent（Oh My Pi / omp、Claude Code 跟 Codex）共用同一套 [agentmemory](https://github.com/rohitg00/agentmemory)，平常踩過的坑或定下來的專案習慣記進去後，下次換別的工具接手都還查得到
 
 但只要離開電腦，在外面改用手機或筆電開 Claude.ai、ChatGPT 聊架構或問題，這些記過的東西就全用不到了，常常得從頭把背景再講一遍
 
@@ -127,6 +127,7 @@ mcp-gateway 127.0.0.1:3012（再驗一次 Cloudflare Access JWT 與 email）
 
 ## 參考資料
 
+- [agentmemory GitHub 儲存庫](https://github.com/rohitg00/agentmemory)
 - [Claude Help Center: Get started with custom connectors using Remote MCP](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp)
 - [OpenAI Help: Connecting custom MCP servers in ChatGPT](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt)
 - [[obsidian-remote-mcp-cloudflare-access|把家裡的 Obsidian 接上雲端 AI：一次 Cloudflare Access 的踩雷紀錄]]
