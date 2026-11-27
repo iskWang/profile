@@ -30,16 +30,29 @@ const Projects = ({ projects, content }) => {
                         width="128"
                         height="128"
                         loading="lazy"
-                        className="h-14 w-14 shrink-0 sm:h-16 sm:w-16"
+                        className="h-14 w-14 shrink-0 object-contain sm:h-16 sm:w-16"
                       />
-                      <img
-                        src={project.brandImages.slogan}
-                        alt={project.brandImages.sloganAlt}
-                        width="256"
-                        height="81"
-                        loading="lazy"
-                        className="h-8 w-auto sm:h-9"
-                      />
+                      {project.brandImages.slogan ? (
+                        <img
+                          src={project.brandImages.slogan}
+                          alt={project.brandImages.sloganAlt}
+                          width="256"
+                          height="81"
+                          loading="lazy"
+                          className="h-8 w-auto sm:h-9"
+                        />
+                      ) : project.brandImages.label ? (
+                        <div>
+                          <div className="text-lg font-black tracking-tight text-ink sm:text-xl">
+                            {project.brandImages.label}
+                          </div>
+                          {project.brandImages.tagline && (
+                            <div className="text-xs font-mono text-ink-soft sm:text-sm">
+                              {project.brandImages.tagline}
+                            </div>
+                          )}
+                        </div>
+                      ) : null}
                     </div>
                   )}
 
