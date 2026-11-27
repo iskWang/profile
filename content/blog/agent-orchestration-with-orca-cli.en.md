@@ -15,8 +15,8 @@ translation: machine-assisted
 ---
 
 <figure class="post-figure">
-  <img src="/blog/assets/agent-orchestration-with-orca-cli/agent-jumping-meme.webp" alt="Hail the Judge meme with Traditional Chinese caption reading: I like jumping AI agents back and forth, what about it?" width="1200" height="741" loading="eager" decoding="async" />
-  <figcaption>"I like jumping AI agents back and forth, what about it?" (AI-generated meme)</figcaption>
+  <img src="/blog/assets/agent-orchestration-with-orca-cli/agent-jumping-meme.webp" alt="Hail the Judge meme with Traditional Chinese caption reading: I like having AI agents jump back and forth, what about it?" width="1200" height="741" loading="eager" decoding="async" />
+  <figcaption>"I like having AI agents jump back and forth, what about it?" (AI-generated meme)</figcaption>
 </figure>
 
 ## A simple question: how is the main agent controlling Orca?
@@ -90,7 +90,7 @@ Even with good tooling, running multiple agents at once hits the same operationa
 - **Local port collisions**: if Agent A and Agent B both spin up a dev server on `localhost:3000`, one will crash. The usual fix is assigning per-worktree `PORT` overrides via environment variables or relying on a workbench that tracks ports automatically
 - **Package manager lockfile and cache contention**: running `npm install`, `bun install`, or `cargo build` simultaneously across worktrees can trip over shared caches unless caches are isolated or shared read-only
 - **Tab sprawl and overlapping file edits**: if two agents touch the same core file (like a router or database schema), you still pay the merge-conflict tax later. Keeping each ticket to at most two reused tabs (implement + review), closing tabs when cards move to Done, and slicing tasks into non-overlapping modules upfront saves a lot of friction
-- **Worktrees do not isolate credentials or external state**: Git worktrees isolate files and branches, not `.env` secrets, SSH keys, GitHub identities, or remote databases. Keeping a dedicated agent identity (`omp-agent`) and requiring human approval for irreversible actions like push, merge, and deploy remains essential
+- **Separate your Git / GitHub account**: Git worktrees isolate files and branches, not accounts, `.env` secrets, or cloud environments. I used to let agents share my personal GitHub account, but once multiple agents are jumping across branches, opening PRs, and leaving review comments, it becomes hard to tell what the human did versus what the AI did. Splitting out a dedicated GitHub account for agents (with its own SSH key and `gh` token via a wrapper) keeps the audit trail clean, while still requiring human approval for irreversible actions like push, merge, and deploy
 
 ## Takeaway
 

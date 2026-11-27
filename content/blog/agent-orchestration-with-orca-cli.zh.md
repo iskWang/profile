@@ -14,8 +14,8 @@ origin: original
 ---
 
 <figure class="post-figure">
-  <img src="/blog/assets/agent-orchestration-with-orca-cli/agent-jumping-meme.webp" alt="九品芝麻官梗圖，字幕寫著：我喜歡把 AI Agent 跳來跳去，怎麼樣？" width="1200" height="741" loading="eager" decoding="async" />
-  <figcaption>我喜歡把 AI Agent 跳來跳去，怎麼樣？（圖片為 AI 生成）</figcaption>
+  <img src="/blog/assets/agent-orchestration-with-orca-cli/agent-jumping-meme.webp" alt="九品芝麻官梗圖，字幕寫著：我喜歡叫 AI Agent 跳來跳去，怎麼樣？" width="1200" height="741" loading="eager" decoding="async" />
+  <figcaption>我喜歡叫 AI Agent 跳來跳去，怎麼樣？（圖片為 AI 生成）</figcaption>
 </figure>
 
 ## 一個好奇的問題：主 Agent 是靠什麼遙控 Orca 的？
@@ -89,7 +89,7 @@ Orca Runtime（本機工作台）
 - **本機 Port 撞車**：Agent A 跟 Agent B 同時在各自的 worktree 啟動開發伺服器（例如都搶 `localhost:3000`），其中一個就會起不來。解法通常是在每個 worktree 透過環境變數分配不同 port，或交給支援 port 偵測的工作台處理
 - **套件快取與鎖檔互搶**：同時在多個 worktree 跑 `npm install`、`bun install` 或 `cargo build`，偶爾會互相卡住共用快取，需要設定隔離快取或透過工具共享唯讀依賴
 - **分頁越開越多、任務切得不夠乾淨**：如果兩個 agent 同時改到同一個核心檔案（例如路由設定或資料庫 schema），最後合併一樣會解衝突解到懷疑人生。我的做法是在規則裡限制每張票最多兩個分頁（實作 + 審查），修改跟複審直接沿用既有分頁，任務進 Done 就順手關掉，同時一開始就讓主 agent 把修改範圍切開
-- **憑證與外部環境並沒有被 worktree 隔離**：Git worktree 只隔離檔案跟分支，不會幫你隔離 `.env` 密鑰、SSH key、GitHub 帳號或雲端資料庫。所以我還是維持獨立的 `omp-agent` 帳號身分，並且保留高風險指令（例如 push、merge、deploy）的人工確認點
+- **Git / GitHub 帳號記得切開**：Git worktree 只隔離檔案跟分支，不會幫你隔離帳號、`.env` 密鑰或雲端環境。以前我也是讓 agent 直接沿用本尊的 GitHub 帳號，但只要多個 agent 在不同分支跳來跳去、開 PR、留 review，回頭看紀錄根本分不清哪筆是人寫的、哪筆是 AI 動的手。後來乾脆獨立出一個專門給 agent 用的 GitHub 帳號（透過 wrapper 切開 SSH key 跟 `gh` token），本尊跟 AI 的動作一拆開，追蹤紀錄清楚很多，高風險指令（例如 push、merge、deploy）也照樣保留人工確認點
 
 ## 結語
 
