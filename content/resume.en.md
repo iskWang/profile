@@ -8,74 +8,72 @@ title: Software Developer
 # Josh Wang — Resume
 
 ## Summary
-- 10+ years in software development. While my resume skews heavily toward frontend architecture, I've spent plenty of time in the trenches with Rails, Node.js backends, and AWS.
-- Led architecture and delivery for 7+ web systems and 2 mobile apps, often stepping in to untangle legacy debt, monorepos, and CI/CD pipelines.
-- Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't require humans after hours.
+- 10+ years of software development experience across full-stack web systems, Rails / Node.js backends, and AWS / Cloudflare infrastructure, recently applying Go in independent product development
+- Led architecture for 7+ web systems and 2 mobile apps, hired and led 3–4 person teams, and often step in to untangle legacy debt, monorepos, and CI/CD pipelines
+- Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't wake humans up after hours
 
 ## Experience
 ### Full-Stack Engineer — Independent
 Jun 2023 – Present
-#### CI/CD Architecture & Security | Data Analytics SaaS Startup
-- Led CI/CD workflow restructuring, consolidating 5 fragmented branches into 2 and optimizing the monorepo structure to reduce operational overhead
-- Introduced Claude + Playwright MCP for automated Gherkin script generation, reducing regression risk and improving release stability
-- Performed critical security patching under time pressure, resolving CVE-2025-29927 and strengthening system security posture
-#### Map System Development & Technical Debt Cleanup | Major Real Estate Group
-- Served as technical lead to fill development gaps, delivering complex map POI filtering features on tight deadlines
-- Rolled out a Claude Code + MCP-assisted development workflow on the existing codebase, cutting feature POC validation time from weeks to 1.5 days
-- Led systematic module decomposition and refactoring to resolve legacy architectural debt at the root
-#### Real-Time Trading Feature Development | Vue 3 + Nuxt.js
-- Took over an existing Vue 3 + Nuxt 3 + Pinia project, extending real-time trading features within its established architecture conventions
-- Integrated TradingView Widget and ECharts for real-time price feeds, order book visualization, and data analytics
+#### Release Workflow Optimization & Security Patching | Data Analytics SaaS Startup
+- Simplified team development and release workflows by consolidating 5 fragmented branches into 2, cutting operational overhead and establishing automated acceptance checks for more reliable releases
+- Restructured the Monorepo and CI/CD pipeline, urgently patched the critical CVE-2025-29927 vulnerability, and introduced Claude with Playwright MCP to auto-generate Gherkin acceptance tests
+#### Core Property Search System Evolution | Major Real Estate Group
+- Stepped in as a key technical contributor on a high-traffic property search platform, delivering complex map POI filtering on schedule and shortening new-feature prototype validation to 1.5 days
+- Rolled out a Claude Code and MCP-assisted workflow on the existing codebase for rapid requirement integration and API prototyping while decomposing legacy modules to clean up long-standing technical debt
+#### Real-Time Market Data Module | Financial Trading Platform
+- Took over an existing trading platform codebase to extend real-time stock quote and order book features while strengthening user permissions and data access security
+- Built with Vue 3, Nuxt 3, and Pinia, integrating TradingView Widget and ECharts for live market charts and optimizing data access logic within the existing framework
 
 ### Front-End Developer (Platform & Architecture) — TeamT5 (Cybersecurity)
 Oct 2021 – Jun 2023
-#### ThreatSonar Product — Frontend Architecture Planning
-- Led frontend architecture planning for the frontend/backend separation, producing technical specs and architecture design docs as the implementation foundation
-#### Official Website & Event Pages (CYBERSEC 2022/2023, InterOp23)
-- Led cloud architecture migration from Firebase/Cloudinary to AWS S3/CloudFront + Next.js, reducing cloud costs by 90% and improving reliability
-- Refactored 50%+ of the legacy codebase and implemented an AWS SDK/TypeScript/Pica.js file-upload system with auto-thumbnail generation
-- Built CYBERSEC 2022/2023 and InterOp23 event pages with Preact.js + Tailwind CSS, deployed via AWS S3 + CloudFront
-- Identified plaintext password transmission and auth design flaws in an external vendor system; escalated and drove remediation
+#### ThreatSonar Product Architecture Planning
+- Acted as a technical strategy advisor handling early feasibility validation and system planning, delivering technical specifications to guide a 4-person engineering team
+- Leveraged prior Rails backend experience to advise on frontend/backend separation architecture and run technical selection experiments as the foundation for implementation
+#### Website Cloud Migration & Event Platforms (CYBERSEC 2022/2023, InterOp23)
+- Led the official website cloud migration and rebuild, cutting cloud costs by 90%, reducing page load time from 2.47s to 1.6s, and shrinking total page weight from 13.7MB to 8.4MB
+- Replaced Firebase and Cloudinary with AWS S3, CloudFront, and Next.js, refactored 50%+ of legacy code, audited DNS records with MIS to eliminate redundant queries, built an auto-thumbnail file upload system with TypeScript and AWS SDK, and reused the same static deployment pipeline for major event sites
+- Proactively identified plaintext password transmission and auth flaws in an external vendor system, escalating to leadership to drive remediation
 
 ### Front-End Lead — OEC Group
 May 2019 – Oct 2021
-#### B2B/B2C Back-office System
-- Led frontend rebuild using React Hooks and Context API with real-time WebSocket messaging, covering internal systems across 50+ countries
-- Designed 100-field single-page forms using Formik / Yup / React.memo with strict validation and performance control
-- Proposed and adopted GitHub Actions CI/CD pipeline as an early adopter upon its launch in Aug 2019
-#### Website Redesign / Internal Training
-- Took over external vendor's HTML/CSS and completed Next.js + i18n architecture (13 languages) within one month
-- Led Pull Request Code Review culture to improve code quality and ensure requirement alignment
+#### Global Back-Office Platform & Team Leadership
+- Hired 2 mid-level engineers and led a 3–4 person team, owning sprint planning, code reviews, and cross-department alignment while participating in regional server separation planning for internal users across 50+ countries
+- Rebuilt the back-office architecture with React and WebSocket real-time notifications, advised on China and overseas server separation, engineered validated forms with nearly 100 fields for performance, and pioneered GitHub Actions CI/CD adoption in Aug 2019
+#### Multilingual Official Website Rebuild
+- Took over static HTML/CSS from an external vendor and launched a 13-language official website architecture within one month
+- Implemented with Next.js and i18n routing to balance page load performance with ongoing content maintainability
 
 ### Web / Rails Developer — Startups (Fullinn, CatFi, myTreat, Ecowork)
 Jul 2014 – Apr 2019
-#### Full-stack Architecture & API Design | Fullinn, myTreat, Ecowork
-- Led frontend architecture with Next.js SSR to build an SEO-optimized hotel booking website builder; first client ranked on Google's first page within one week of launch
-- Built OTA platform and order system with React.js / GraphQL, and led initial REST API design conventions to streamline backend development
-- Started as a Rails Developer at Ecowork, building full-stack features and a standalone customer service back-office with Ruby on Rails and Angular.js
-#### Mobile & Cross-platform Development | Fullinn, CatFi
-- Built cross-platform mobile apps with React Native, Redux, and Redux-saga for state and side effect management
-- Integrated Firebase Push Notification and Code Push to reduce deploy costs and streamline push services
-- Adopted Fabric and OneSignal for crash reporting and push; integrated WebRTC / RTMP streaming
-#### Testing & Dev Workflow | Ecowork
-- Implemented Cucumber and RSpec to fulfill client test report requirements; assisted DevOps in building automated test environments
-- Introduced Vagrant-based deployment workflow to unify dev environments for faster onboarding
+#### Full-Stack Products & Cloud Dev Workflow | Fullinn, myTreat, Ecowork (AWS Partner)
+- Started in backend development at an AWS partner (Ecowork), independently building a customer service back-office and automated test reporting, and later led hotel website builder architecture and contributed to booking platform delivery at startups where the first client ranked on Google's first page within one week
+- Worked across Ruby on Rails, Next.js, React, and GraphQL, helped DevOps set up automated testing and unified deployment workflows (Cucumber / RSpec), and defined REST API conventions to streamline team collaboration
+#### Cross-Platform Mobile Apps | Fullinn, CatFi
+- Built cross-platform mobile applications with push notifications, over-the-air updates, and live video streaming to lower release and operational costs
+- Engineered with React Native, Redux, and Redux-saga, integrating Firebase Push Notification, Code Push, and WebRTC / RTMP streaming
 
 ## Projects
-### PickleScout — LLM-Driven E2E Test Generation Agent
-- Backend job queue (Fastify + BullMQ/Redis) decouples long-running LLM generation from requests, with failure retry and status tracking; generated output includes a GitHub Actions workflow with zero LLM dependency at runtime
-- Designed two-pass LLM pipeline: Stagehand browser agent explores target app and records ActionLog, converted to Gherkin feature files and Playwright step definitions
-- Implemented self-healing mechanism: on test failure, LLM auto-patches selectors and timeouts and retries, improving generated test usability
-- Completed full POC in one week using AI-assisted workflow; open-sourced with browser agent, LLM pipeline, self-healing, and full-stack architecture
+### TaiwanHaul — Taiwan Shopping & Price Guide for Southeast Asian Travelers
+- Built a Taiwan product and price guide for Southeast Asian travelers (actively iterating), designing product search and price-freshness workflows that direct users to check in-store when reliable pricing is unavailable
+- Designed full-stack architecture with a React frontend and Go search API deployed on Cloudflare Workers and D1 for low edge latency and minimal operating cost
+
+### PickleScout — AI-Driven E2E Website Test Generator
+- Built and open-sourced a test generation tool in one week where an AI agent explores a site to produce test suites, while exported daily CI runs require zero AI model calls
+- Engineered a Fastify, BullMQ, and Redis job queue for retries and status tracking, pairing a browser agent with self-healing logic to export Gherkin specs, Playwright tests, and GitHub Actions workflows
+
+## Selected Writing
+- [Connecting local agent memory to Claude and ChatGPT on the web with an MCP gateway](https://joshwang.dev/en/blog/agent-memory-remote-mcp-gateway)
+- [SSR or control: how I pick a React framework and a TypeScript backend](https://joshwang.dev/en/blog/react-ssr-backend-tradeoffs)
 
 ## Education
 Wenzao Ursuline University of Languages — B.A. Digital Content Application and Management (Sep 2009 – Jun 2013)
 
 ## Skills
-- **Frontend:** React / Next.js / TypeScript / Redux / Tailwind CSS / Vue 3 / Nuxt.js
-- **Backend:** Node.js / Fastify / Rails / Koa / RESTful API / GraphQL / Redis / BullMQ
-- **Architecture & Infra:** Monorepo / CI/CD / GitHub Actions / GitLab Runner / Docker / AWS
-- **AI Workflow:** Claude Code / MCP / Windsurf
+- **Backend & Database:** Node.js / Fastify / Go / Ruby on Rails / RESTful API / GraphQL / SQL / PostgreSQL / SQLite / Cloudflare D1 / Redis / BullMQ
+- **Frontend:** TypeScript / React / Next.js / Vue 3 / Nuxt.js / Redux / Tailwind CSS
+- **Architecture & Infra:** Monorepo / CI/CD / GitHub Actions / GitLab Runner / Docker / AWS / Cloudflare (Workers / Access)
+- **AI Workflow:** Claude Code / MCP / Playwright MCP / Agent Workflow
 - **Testing:** Playwright / Jest / Cucumber / RSpec
 - **Mobile:** React Native / TestFlight
 
@@ -85,8 +83,8 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
 {
   "name": "Josh Wang",
   "title": "Software Developer",
-  "subtitle": "Software developer working across frontend architecture, backend systems, and developer tooling",
-  "heroDescription": "10+ years across frontend architecture, Rails/Node.js backends, and developer tooling — because tasks that can reliably retry in a queue shouldn't wake humans up after hours",
+  "subtitle": "Software developer working across full-stack architecture, cloud operations, and automated developer tooling",
+  "heroDescription": "10+ years of software development experience across full-stack architecture, Rails / Node.js / Go backends, and developer tooling — because tasks that can reliably retry in a queue shouldn't wake humans up after hours",
   "location": "Taipei, Taiwan",
   "email": "spjay1@gmail.com",
   "site": "joshwang.dev",
@@ -96,22 +94,23 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
     "achievements": "Key Achievements",
     "experience": "Experience",
     "projects": "Projects",
+    "writing": "Selected Writing",
     "education": "Education",
     "skills": "Skills"
   },
   "summaryLines": [
-    "10+ years in software development. While my resume skews heavily toward frontend architecture, I've spent plenty of time in the trenches with Rails, Node.js backends, and AWS.",
-    "Led architecture and delivery for 7+ web systems and 2 mobile apps, often stepping in to untangle legacy debt, monorepos, and CI/CD pipelines.",
-    "Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't require humans after hours."
+    "10+ years of software development experience across full-stack web systems, Rails / Node.js backends, and AWS / Cloudflare infrastructure, recently applying Go in independent product development",
+    "Led architecture for 7+ web systems and 2 mobile apps, hired and led 3–4 person teams, and often step in to untangle legacy debt, monorepos, and CI/CD pipelines",
+    "Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't wake humans up after hours"
   ],
   "achievements": [
     [
-      "Reduced cloud infrastructure costs by 90%",
-      "Supported internal systems across 50+ countries"
+      "Cut cloud costs by 90% and page load time to 1.6s",
+      "Supported systems across 50+ countries while hiring and leading teams"
     ],
     [
-      "AI-assisted POC validation: weeks to 1.5 days",
-      "Designed a job-queue-driven LLM pipeline with self-healing retry logic"
+      "Cut AI-assisted feature prototype validation to 1.5 days",
+      "Built full-stack products and AI-assisted developer tooling independently"
     ]
   ],
   "jobs": [
@@ -121,26 +120,24 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
       "period": "Jun 2023 – Present",
       "groups": [
         {
-          "subhead": "CI/CD Architecture & Security | Data Analytics SaaS Startup",
+          "subhead": "Release Workflow Optimization & Security Patching | Data Analytics SaaS Startup",
           "bullets": [
-            "Led CI/CD workflow restructuring, consolidating 5 fragmented branches into 2 and optimizing the monorepo structure to reduce operational overhead",
-            "Introduced Claude + Playwright MCP for automated Gherkin script generation, reducing regression risk and improving release stability",
-            "Performed critical security patching under time pressure, resolving CVE-2025-29927 and strengthening system security posture"
+            "Simplified team development and release workflows by consolidating 5 fragmented branches into 2, cutting operational overhead and establishing automated acceptance checks for more reliable releases",
+            "Restructured the Monorepo and CI/CD pipeline, urgently patched the critical CVE-2025-29927 vulnerability, and introduced Claude with Playwright MCP to auto-generate Gherkin acceptance tests"
           ]
         },
         {
-          "subhead": "Map System Development & Technical Debt Cleanup | Major Real Estate Group",
+          "subhead": "Core Property Search System Evolution | Major Real Estate Group",
           "bullets": [
-            "Served as technical lead to fill development gaps, delivering complex map POI filtering features on tight deadlines",
-            "Rolled out a Claude Code + MCP-assisted development workflow on the existing codebase, cutting feature POC validation time from weeks to 1.5 days",
-            "Led systematic module decomposition and refactoring to resolve legacy architectural debt at the root"
+            "Stepped in as a key technical contributor on a high-traffic property search platform, delivering complex map POI filtering on schedule and shortening new-feature prototype validation to 1.5 days",
+            "Rolled out a Claude Code and MCP-assisted workflow on the existing codebase for rapid requirement integration and API prototyping while decomposing legacy modules to clean up long-standing technical debt"
           ]
         },
         {
-          "subhead": "Real-Time Trading Feature Development | Vue 3 + Nuxt.js",
+          "subhead": "Real-Time Market Data Module | Financial Trading Platform",
           "bullets": [
-            "Took over an existing Vue 3 + Nuxt 3 + Pinia project, extending real-time trading features within its established architecture conventions",
-            "Integrated TradingView Widget and ECharts for real-time price feeds, order book visualization, and data analytics"
+            "Took over an existing trading platform codebase to extend real-time stock quote and order book features while strengthening user permissions and data access security",
+            "Built with Vue 3, Nuxt 3, and Pinia, integrating TradingView Widget and ECharts for live market charts and optimizing data access logic within the existing framework"
           ]
         }
       ]
@@ -152,18 +149,18 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
       "borderBottom": false,
       "groups": [
         {
-          "subhead": "ThreatSonar Product — Frontend Architecture Planning",
+          "subhead": "ThreatSonar Product Architecture Planning",
           "bullets": [
-            "Led frontend architecture planning for the frontend/backend separation, producing technical specs and architecture design docs as the implementation foundation"
+            "Acted as a technical strategy advisor handling early feasibility validation and system planning, delivering technical specifications to guide a 4-person engineering team",
+            "Leveraged prior Rails backend experience to advise on frontend/backend separation architecture and run technical selection experiments as the foundation for implementation"
           ]
         },
         {
-          "subhead": "Official Website & Event Pages (CYBERSEC 2022/2023, InterOp23)",
+          "subhead": "Website Cloud Migration & Event Platforms (CYBERSEC 2022/2023, InterOp23)",
           "bullets": [
-            "Led cloud architecture migration from Firebase/Cloudinary to AWS S3/CloudFront + Next.js, reducing cloud costs by 90% and improving reliability",
-            "Refactored 50%+ of the legacy codebase and implemented an AWS SDK/TypeScript/Pica.js file-upload system with auto-thumbnail generation",
-            "Built CYBERSEC 2022/2023 and InterOp23 event pages with Preact.js + Tailwind CSS, deployed via AWS S3 + CloudFront",
-            "Identified plaintext password transmission and auth design flaws in an external vendor system; escalated and drove remediation"
+            "Led the official website cloud migration and rebuild, cutting cloud costs by 90%, reducing page load time from 2.47s to 1.6s, and shrinking total page weight from 13.7MB to 8.4MB",
+            "Replaced Firebase and Cloudinary with AWS S3, CloudFront, and Next.js, refactored 50%+ of legacy code, audited DNS records with MIS to eliminate redundant queries, built an auto-thumbnail file upload system with TypeScript and AWS SDK, and reused the same static deployment pipeline for major event sites",
+            "Proactively identified plaintext password transmission and auth flaws in an external vendor system, escalating to leadership to drive remediation"
           ]
         }
       ]
@@ -174,18 +171,17 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
       "period": "May 2019 – Oct 2021",
       "groups": [
         {
-          "subhead": "B2B/B2C Back-office System",
+          "subhead": "Global Back-Office Platform & Team Leadership",
           "bullets": [
-            "Led frontend rebuild using React Hooks and Context API with real-time WebSocket messaging, covering internal systems across 50+ countries",
-            "Designed 100-field single-page forms using Formik / Yup / React.memo with strict validation and performance control",
-            "Proposed and adopted GitHub Actions CI/CD pipeline as an early adopter upon its launch in Aug 2019"
+            "Hired 2 mid-level engineers and led a 3–4 person team, owning sprint planning, code reviews, and cross-department alignment while participating in regional server separation planning for internal users across 50+ countries",
+            "Rebuilt the back-office architecture with React and WebSocket real-time notifications, advised on China and overseas server separation, engineered validated forms with nearly 100 fields for performance, and pioneered GitHub Actions CI/CD adoption in Aug 2019"
           ]
         },
         {
-          "subhead": "Website Redesign / Internal Training",
+          "subhead": "Multilingual Official Website Rebuild",
           "bullets": [
-            "Took over external vendor's HTML/CSS and completed Next.js + i18n architecture (13 languages) within one month",
-            "Led Pull Request Code Review culture to improve code quality and ensure requirement alignment"
+            "Took over static HTML/CSS from an external vendor and launched a 13-language official website architecture within one month",
+            "Implemented with Next.js and i18n routing to balance page load performance with ongoing content maintainability"
           ]
         }
       ]
@@ -197,43 +193,64 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
       "borderBottom": false,
       "groups": [
         {
-          "subhead": "Full-stack Architecture & API Design | Fullinn, myTreat, Ecowork",
+          "subhead": "Full-Stack Products & Cloud Dev Workflow | Fullinn, myTreat, Ecowork (AWS Partner)",
           "bullets": [
-            "Led frontend architecture with Next.js SSR to build an SEO-optimized hotel booking website builder; first client ranked on Google's first page within one week of launch",
-            "Built OTA platform and order system with React.js / GraphQL, and led initial REST API design conventions to streamline backend development",
-            "Started as a Rails Developer at Ecowork, building full-stack features and a standalone customer service back-office with Ruby on Rails and Angular.js"
+            "Started in backend development at an AWS partner (Ecowork), independently building a customer service back-office and automated test reporting, and later led hotel website builder architecture and contributed to booking platform delivery at startups where the first client ranked on Google's first page within one week",
+            "Worked across Ruby on Rails, Next.js, React, and GraphQL, helped DevOps set up automated testing and unified deployment workflows (Cucumber / RSpec), and defined REST API conventions to streamline team collaboration"
           ]
         },
         {
-          "subhead": "Mobile & Cross-platform Development | Fullinn, CatFi",
+          "subhead": "Cross-Platform Mobile Apps | Fullinn, CatFi",
           "bullets": [
-            "Built cross-platform mobile apps with React Native, Redux, and Redux-saga for state and side effect management",
-            "Integrated Firebase Push Notification and Code Push to reduce deploy costs and streamline push services",
-            "Adopted Fabric and OneSignal for crash reporting and push; integrated WebRTC / RTMP streaming"
-          ]
-        },
-        {
-          "subhead": "Testing & Dev Workflow | Ecowork",
-          "bullets": [
-            "Implemented Cucumber and RSpec to fulfill client test report requirements; assisted DevOps in building automated test environments",
-            "Introduced Vagrant-based deployment workflow to unify dev environments for faster onboarding"
+            "Built cross-platform mobile applications with push notifications, over-the-air updates, and live video streaming to lower release and operational costs",
+            "Engineered with React Native, Redux, and Redux-saga, integrating Firebase Push Notification, Code Push, and WebRTC / RTMP streaming"
           ]
         }
       ]
     }
   ],
   "project": {
-    "title": "PickleScout — LLM-Driven E2E Test Generation Agent",
+    "title": "PickleScout — AI-Driven E2E Website Test Generator",
     "period": "May 2026",
     "subtitle": "Open Source Side Project",
     "href": "https://github.com/iskWang/PickleScout",
     "bullets": [
-      "Backend job queue (Fastify + BullMQ/Redis) decouples long-running LLM generation from requests, with failure retry and status tracking; generated output includes a GitHub Actions workflow with zero LLM dependency at runtime",
-      "Designed two-pass LLM pipeline: Stagehand browser agent explores target app and records ActionLog, converted to Gherkin feature files and Playwright step definitions",
-      "Implemented self-healing mechanism: on test failure, LLM auto-patches selectors and timeouts and retries, improving generated test usability",
-      "Completed full POC in one week using AI-assisted workflow; open-sourced with browser agent, LLM pipeline, self-healing, and full-stack architecture"
+      "Built and open-sourced a test generation tool in one week where an AI agent explores a site to produce test suites, while exported daily CI runs require zero AI model calls",
+      "Engineered a Fastify, BullMQ, and Redis job queue for retries and status tracking, pairing a browser agent with self-healing logic to export Gherkin specs, Playwright tests, and GitHub Actions workflows"
     ]
   },
+  "projects": [
+    {
+      "title": "TaiwanHaul — Taiwan Shopping & Price Guide for Southeast Asian Travelers",
+      "period": "2026",
+      "subtitle": "Independent Product (WIP)",
+      "href": "https://taiwanhaul.com/",
+      "bullets": [
+        "Built a Taiwan product and price guide for Southeast Asian travelers (actively iterating), designing product search and price-freshness workflows that direct users to check in-store when reliable pricing is unavailable",
+        "Designed full-stack architecture with a React frontend and Go search API deployed on Cloudflare Workers and D1 for low edge latency and minimal operating cost"
+      ]
+    },
+    {
+      "title": "PickleScout — AI-Driven E2E Website Test Generator",
+      "period": "May 2026",
+      "subtitle": "Open Source Side Project",
+      "href": "https://github.com/iskWang/PickleScout",
+      "bullets": [
+        "Built and open-sourced a test generation tool in one week where an AI agent explores a site to produce test suites, while exported daily CI runs require zero AI model calls",
+        "Engineered a Fastify, BullMQ, and Redis job queue for retries and status tracking, pairing a browser agent with self-healing logic to export Gherkin specs, Playwright tests, and GitHub Actions workflows"
+      ]
+    }
+  ],
+  "writing": [
+    {
+      "title": "Connecting local agent memory to Claude and ChatGPT on the web with an MCP gateway",
+      "href": "https://joshwang.dev/en/blog/agent-memory-remote-mcp-gateway"
+    },
+    {
+      "title": "SSR or control: how I pick a React framework and a TypeScript backend",
+      "href": "https://joshwang.dev/en/blog/react-ssr-backend-tradeoffs"
+    }
+  ],
   "education": {
     "school": "Wenzao Ursuline University of Languages",
     "period": "Sep 2009 – Jun 2013",
@@ -241,20 +258,20 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
   },
   "skills": [
     {
-      "cat": "Frontend",
-      "val": "React / Next.js / TypeScript / Redux / Tailwind CSS / Vue 3 / Nuxt.js"
+      "cat": "Backend & Database",
+      "val": "Node.js / Fastify / Go / Ruby on Rails / RESTful API / GraphQL / SQL / PostgreSQL / SQLite / Cloudflare D1 / Redis / BullMQ"
     },
     {
-      "cat": "Backend",
-      "val": "Node.js / Fastify / Rails / Koa / RESTful API / GraphQL / Redis / BullMQ"
+      "cat": "Frontend",
+      "val": "TypeScript / React / Next.js / Vue 3 / Nuxt.js / Redux / Tailwind CSS"
     },
     {
       "cat": "Architecture & Infra",
-      "val": "Monorepo / CI/CD / GitHub Actions / GitLab Runner / Docker / AWS"
+      "val": "Monorepo / CI/CD / GitHub Actions / GitLab Runner / Docker / AWS / Cloudflare (Workers / Access)"
     },
     {
       "cat": "AI Workflow",
-      "val": "Claude Code / MCP / Windsurf"
+      "val": "Claude Code / MCP / Playwright MCP / Agent Workflow"
     },
     {
       "cat": "Testing",

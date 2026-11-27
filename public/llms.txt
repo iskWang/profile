@@ -22,7 +22,11 @@
 
 Taipei, Taiwan
 
-10+ years in software development. While my resume skews heavily toward frontend architecture, I've spent plenty of time in the trenches with Rails, Node.js backends, and AWS. Led architecture and delivery for 7+ web systems and 2 mobile apps, often stepping in to untangle legacy debt, monorepos, and CI/CD pipelines. Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't require humans after hours.
+10+ years of software development experience across full-stack web systems, Rails / Node.js backends, and AWS / Cloudflare infrastructure, recently applying Go in independent product development
+
+Led architecture for 7+ web systems and 2 mobile apps, hired and led 3–4 person teams, and often step in to untangle legacy debt, monorepos, and CI/CD pipelines
+
+Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't wake humans up after hours
 
 ### Experience
 - **Full-Stack Engineer** — Independent (Jun 2023 – Present)
@@ -36,7 +40,11 @@ Taipei, Taiwan
 
 Taipei, Taiwan
 
-10+ 年軟體開發經驗，雖然履歷上看來跟前端特別有緣，但從 Rails、Node.js 後端到 AWS 雲端架構都實際滾過一輪 主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程 近期熱衷於把 AI Workflow、測試自動化與開發工具接進日常流程——畢竟能讓機器穩定重試的事，就不該半夜找人類加班
+10+ 年軟體開發經驗，從 Rails、Node.js 後端到 AWS 與 Cloudflare 雲端架構都實際滾過一輪，近期也將 Go 應用於個人產品開發
+
+主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，曾負責招聘與帶領 3–4 人團隊，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程
+
+近期熱衷於把 AI Workflow、測試自動化與開發工具接進日常流程——畢竟能讓機器穩定重試的事，就不該半夜找人類加班
 
 ### 工作經歷
 - **Full-Stack Engineer** — Independent (2023/06 – 至今)
@@ -56,8 +64,8 @@ Taipei, Taiwan
 - [Connecting local agent memory to Claude and ChatGPT on the web with an MCP gateway](https://joshwang.dev/en/blog/agent-memory-remote-mcp-gateway.md) (2026-11-06) — I wanted web Claude and ChatGPT to use terminal agentmemory without a second MCP connection, so I added a gateway behind my Obsidian MCP and allowlisted four memory tools
 - [Replacing hand-written handoffs with Oh My Pi and Orca for remote coding](https://joshwang.dev/en/blog/omp-orca-mac-mini-notes.md) (2026-10-30) — I used to SSH into my home Mac mini and write handoff notes when switching between Claude Code and Codex; Oh My Pi and Orca keep multi-model work and mobile approvals in one workflow
 - [不用再手寫 handoff 文件：我怎麼用 Oh My Pi 跟 Orca 遠端寫程式](https://joshwang.dev/zh-tw/blog/omp-orca-mac-mini-notes.md) (2026-10-30) — 以前用 SSH 連回家裡的 Mac mini，在 Claude Code 跟 Codex 之間換手都要自己生一份交接文件；換成 Oh My Pi 搭配 Orca 後，多模型分工跟手機端的權限確認終於能留在同一個工作流裡
-- [要 SSR 還是要控制權：我怎麼選 React 框架跟 TypeScript 後端](https://joshwang.dev/zh-tw/blog/react-ssr-backend-tradeoffs.md) (2026-09-22) — React Router v8 Framework Mode 對上 Next.js App Router，以及我為什麼選 Fastify 當 TypeScript API 的起手式，這是我自己用的判斷速記
-- [SSR or control: how I pick a React framework and a TypeScript backend](https://joshwang.dev/en/blog/react-ssr-backend-tradeoffs.md) (2026-09-22) — React Router v8 Framework Mode versus Next.js App Router, and why I pick Fastify as my starting TypeScript API, in my own decision notes
+- [要 SSR 還是要控制權：我怎麼選 React 框架跟 TypeScript 後端](https://joshwang.dev/zh-tw/blog/react-ssr-backend-tradeoffs.md) (2026-09-22) — 開新專案不要無腦上 Next.js 或 SSR，先想清楚自己到底需不需要 SEO，否則只是白白多扛一層框架複雜度跟資安升級債
+- [SSR or control: how I pick a React framework and a TypeScript backend](https://joshwang.dev/en/blog/react-ssr-backend-tradeoffs.md) (2026-09-22) — Don't blindly default to Next.js or SSR on a new project. Decide whether you actually need SEO first, or you end up carrying framework complexity and security upgrade debt for nothing.
 - [Putting my home Obsidian vault behind Cloudflare Access as a remote MCP](https://joshwang.dev/en/blog/obsidian-remote-mcp-cloudflare-access.md) (2026-09-22) — I turned my Mac mini Obsidian vault into a remote MCP with Cloudflare Tunnel and Access, got Claude connected, and hit a DCR wall with Gemini while drawing clear security boundaries
 - [把家裡的 Obsidian 接上雲端 AI：一次 Cloudflare Access 的踩雷紀錄](https://joshwang.dev/zh-tw/blog/obsidian-remote-mcp-cloudflare-access.md) (2026-09-22) — 我用 Cloudflare Tunnel 跟 Access 把 Mac mini 上的 Obsidian vault 變成遠端 MCP，Claude 接得上、Gemini 卡在 DCR，這是整個過程跟我劃的安全界線
 - [Hello! I'm Josh!](https://joshwang.dev/en/blog/hello-blog.md) (2026-09-12) — A self-introduction that isn't quite a résumé — I'm using this space to collect some recent thoughts on tech, life, and travel.

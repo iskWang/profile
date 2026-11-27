@@ -54,6 +54,26 @@ export function toWebContent(resume) {
     ? { about: "關於", experience: "經歷", projects: "專案", skills: "技能", contact: "聯繫", experienceTitle: "工作經歷", skillsTitle: "技能樹", contactTitle: "聯繫方式", projectsTitle: "個人專案", highlightsTitle: "特色亮點" }
     : { about: "about", experience: "experience", projects: "projects", skills: "skills", contact: "contact", experienceTitle: "Experience", skillsTitle: "Skill Tree", contactTitle: "Contact Me", projectsTitle: "Projects", highlightsTitle: "Highlights" };
   const categories = Object.fromEntries(data.skills.map(({ cat, val }) => [cat.toLowerCase().split(" ")[0], val.split(" / ")]));
+  const projectItems = (data.projects?.length ? data.projects : [data.project]).map((proj) => {
+    const isPickleScout = proj.title.includes("PickleScout");
+    const isTaiwanHaul = proj.title.includes("TaiwanHaul");
+    return {
+      title: proj.title,
+      url: proj.href,
+      linkType: proj.href?.includes("github.com") ? "github" : "web",
+      tags: proj.tags ?? (isTaiwanHaul
+        ? ["React", "Go", "Cloudflare Workers", "D1"]
+        : ["AI Agent", "E2E Testing", "LLM", "Open Source"]),
+      brandImages: isPickleScout
+        ? {
+            logo: "/picklescout-logo.webp",
+            slogan: "/picklescout-slogan.webp",
+            sloganAlt: "PickleScout — Web Scraping & Data Navigation",
+          }
+        : null,
+      highlights: proj.bullets,
+    };
+  });
   return {
     nav: { about: labels.about, experience: labels.experience, projects: labels.projects, skills: labels.skills, contact: labels.contact },
     hero: { name: data.name, title: data.title, experience: data.summaryLines[0]?.match(/\d+\+ years|\d+\+ 年/)?.[0] ?? "", focus: "", location: data.location, welcome: isZh ? `您好，我是 ${data.name.split(" ")[0]}!` : `Hi, I'm ${data.name.split(" ")[0]}!`, description: data.heroDescription ?? data.summaryLines.join(" "), tags: [], resumeBtn: isZh ? "查看完整履歷 (PDF)" : "View Full Resume (PDF)", resumeUrl: isZh ? "/JoshWang_ZH_Resume.pdf" : "/JoshWang_EN_Resume.pdf" },
@@ -61,7 +81,7 @@ export function toWebContent(resume) {
     skills: { title: labels.skillsTitle, subtitle: "// Tech stack overview", categories: { frontend: "Frontend", backend: "Back-End", ai: "AI Workflow", mobile: "Mobile", testing: "Architecture & Infra", testing_extra: "Testing" } },
     contact: { title: labels.contactTitle, subtitle: "// Feel free to contact me 🐱", quote: isZh ? "樂於參與討論分享觀點，通常不是會議中最安靜的那位" : "Passionate about sharing perspectives; rarely the quietest one in the room.", downloadBtn: isZh ? "下載完整履歷" : "Download Full Resume" },
     highlights: { title: labels.highlightsTitle, items: data.achievements.flatMap(([left, right], i) => [{ emoji: ["🚀", "🤖", "⚙️", "🔐"][i], title: left, description: right, color: ["cyan", "amber", "emerald", "cyan"][i] }]) },
-    projects: { title: labels.projectsTitle, subtitle: "// Side projects & Open source", items: [{ title: data.project.title, url: data.project.href, tags: ["AI Agent", "E2E Testing", "LLM", "Open Source"], highlights: data.project.bullets }] },
+    projects: { title: labels.projectsTitle, subtitle: "// Side projects & Open source", items: projectItems },
     skillsData: { frontend: categories.frontend ?? [], backend: categories.backend ?? [], devops: categories.architecture ?? [], ai: categories.ai ?? [], mobile: categories.mobile ?? [], testing: categories.testing ?? [] },
   };
 }
@@ -85,7 +105,7 @@ export function renderLlmsMarkdown(resumes) {
     const jobs = resume.jobs.map((job) => `- **${job.title}** — ${job.company} (${job.period})`).join("\n");
     const heading = lang === "en" ? "English profile" : "中文個人資料";
     const label = lang === "en" ? "Experience" : "工作經歷";
-    return `## ${heading}\n\n**${resume.name} — ${resume.title}**\n\n${resume.location}\n\n${resume.summaryLines.join(" ")}\n\n### ${label}\n${jobs}`;
+    return `## ${heading}\n\n**${resume.name} — ${resume.title}**\n\n${resume.location}\n\n${resume.summaryLines.join("\n\n")}\n\n### ${label}\n${jobs}`;
   }).join("\n\n");
 
   const { posts } = loadPosts();

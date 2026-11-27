@@ -8,74 +8,72 @@ title: Software Developer
 # Josh Wang — 履歷
 
 ## Summary
-- 10+ 年軟體開發經驗，雖然履歷上看來跟前端特別有緣，但從 Rails、Node.js 後端到 AWS 雲端架構都實際滾過一輪
-- 主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程
+- 10+ 年軟體開發經驗，從 Rails、Node.js 後端到 AWS 與 Cloudflare 雲端架構都實際滾過一輪，近期也將 Go 應用於個人產品開發
+- 主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，曾負責招聘與帶領 3–4 人團隊，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程
 - 近期熱衷於把 AI Workflow、測試自動化與開發工具接進日常流程——畢竟能讓機器穩定重試的事，就不該半夜找人類加班
 
 ## Experience
 ### Full-Stack Engineer — Independent
 2023/06 – 至今
-#### CI/CD 架構與資安深度優化 | 數據分析新創 (SaaS)
-- 主導 CI/CD 流程重構，將過度拆分的 5 個分支整併為 2 個，優化 Monorepo 結構有效降低維運負擔
-- 導入 Claude + Playwright MCP 自動生成 Gherkin 腳本，建立自動化驗收機制，降低 regression risk 並提升 release 穩定性
-- 針對急迫資安風險進行 Critical Security Patching，修補 CVE-2025-29927 漏洞，強化系統安全等級
-#### 核心地圖系統開發與架構債清理 | 知名房產集團
-- 擔任技術主力填補開發缺口，於期限內完成地圖 POI 篩選等複雜互動功能上線
-- 於既有 codebase 落地 Claude Code + MCP 輔助開發模式，將特定功能 POC 驗證時間從數週縮短至 1.5 天
-- 主導舊專案模組拆解與重構，從根源解決既有架構之技術債問題
-#### 即時交易資訊功能開發 | Vue 3 + Nuxt.js
-- 接手既有 Vue 3 + Nuxt 3 + Pinia 專案，於既有架構慣例下擴充即時交易資訊功能
-- 整合 TradingView Widget 與 ECharts，實作即時股價、最佳五檔行情及數據視覺化
+#### 發版流程優化與資安修補 | 數據分析新創 (SaaS)
+- 簡化團隊開發與上線流程，把原本過度拆分的 5 條開發線整併為 2 條，大幅降低團隊維運負擔，並建立自動化驗收機制提升發版穩定度
+- 重整 Monorepo 與 CI/CD 流程，緊急修補 CVE-2025-29927 重大安全漏洞，並導入 Claude 搭配 Playwright MCP 自動產生 Gherkin 驗收測試
+#### 核心找屋系統開發與翻新 | 知名房產集團
+- 擔任技術主力支援高流量找屋網站開發，如期上線地圖周邊篩選功能，並將新功能雛形驗證時間縮短至 1.5 天內
+- 在既有系統導入 Claude Code 與 MCP 輔助開發，快速完成需求整合與 API 串接驗證，同時拆解舊有模組、清理長期累積的架構技術債
+#### 即時看盤功能擴充 | 金融交易平台
+- 接手既有交易平台專案，在原有系統架構下順利擴充即時股價與五檔行情查詢功能，並強化使用者權限與資料存取安全
+- 使用 Vue 3、Nuxt 3 與 Pinia 開發，整合 TradingView Widget 與 ECharts 呈現即時行情與互動圖表，同時優化既有框架的資料存取邏輯
 
 ### Front-End Developer (Platform & Architecture) — TeamT5 杜浦數位安全
 2021/10 – 2023/06
-#### ThreatSonar 產品前端架構規劃
-- 主導前後端分離架構規劃，產出前端技術規格與架構設計文件，作為後續實作依據
-#### 官方網站架構規劃與活動頁面（CYBERSEC 2022/2023、InterOp23）
-- 主導雲端架構遷移，以 AWS S3/CloudFront 及 Next.js 取代 Firebase/Cloudinary，降低雲端成本 90% 並提升網站可靠性
-- 重構 50% 以上舊系統 code，並以 AWS SDK/TypeScript/Pica.js 實作具自動縮圖功能的 file-upload system
-- 以 Preact.js + Tailwind CSS 開發 CYBERSEC 2022/2023 及 InterOp23 活動頁面，沿用 AWS S3 + CloudFront 部署
-- 發現外部廠商密碼明碼傳輸及登入權限設計問題，提報後獲得高層關注並推動改善
+#### 資安產品架構規劃（ThreatSonar）
+- 擔任技術策略角色，負責前期可行性驗證與系統規劃，產出技術規格提供 4 人開發小組作為實作依據
+- 結合過去 Rails 後端開發背景，擔任產品前後端分離架構規劃與技術選型實驗顧問，建立後續開發依據
+#### 官方網站翻新與大型活動頁（CYBERSEC 2022/2023、InterOp23）
+- 主導官網雲端搬遷與翻新，成功降低 90% 雲端費用，網頁開啟速度從 2.47 秒縮短至 1.6 秒，檔案體積從 13.7MB 降至 8.4MB
+- 以 AWS S3、CloudFront 與 Next.js 取代原有 Firebase 與 Cloudinary，重構超過 50% 舊程式碼並與 MIS 盤點 DNS 紀錄減少重複查詢，同時以 TypeScript 與 AWS SDK 實作自動縮圖上傳系統，沿用同套部署架構交付多場大型活動網站
+- 主動盤查並發現外部廠商密碼明碼傳輸與權限漏洞，即時提報高層並推動改善
 
 ### Front-End Lead — 海碩集團 鑫享科技 (OEC Group)
 2019/05 – 2021/10
-#### B2B/B2C 後台系統
-- 採用 React Hooks 及 Context API 領導全新前端架構，並以 WebSocket 實作即時通知，覆蓋全球 50+ 國內部使用者
-- 使用 Formik、Yup 及 React.memo 設計單頁近百格欄位表單，確保欄位驗證與效能
-- 於 GitHub Actions 推出時（2019/08）即提案導入並建置 CI/CD 流程，為內部早期採用者
-#### 官方網站改版 / 前端成員內部訓練
-- 接手外部廠商原始 HTML/CSS，於一個月內完成主要技術架構（Next.js、i18n 13 語系）
-- 推動 Pull Request Code Review 機制，交換技術意見，提升 code 可讀性及確保需求一致性
+#### 全球營運後台系統與團隊帶領
+- 負責招募 2 位中階工程師並帶領 3–4 人開發小組，主導工作排程、程式碼審查與跨部門溝通，參與跨國伺服器分離規劃，支援全球 50 國以上內部人員日常作業
+- 以 React 重建後台架構並透過 WebSocket 實作即時通知，提供中國與海外伺服器分離設計建議，設計單頁近百欄位的複雜表單驗證與效能控制，並於 2019 年率先導入 GitHub Actions 建立自動化部署（CI/CD）
+#### 多語系官方網站改版
+- 接手外部廠商靜態頁面，在一個月內完成 13 種語言的官方網站架構並順利上線
+- 採用 Next.js 搭配 i18n 多語系架構，兼顧網站載入效能與後續內容維護
 
 ### Web / Rails Developer — 新創公司（Fullinn、CatFi、myTreat、Ecowork）
 2014/07 – 2019/04
-#### 全端架構與 API 設計 | Fullinn、myTreat、Ecowork
-- 領導主要前端架構設計，以 Next.js SSR 開發 SEO 導向之旅宿官網建站系統，第一位客戶登陸 Google 後第一週即進入搜尋結果第一頁
-- 使用 React.js 及 GraphQL 開發 OTA 平台及訂單系統，並主導初期 REST API 格式設計，建構 API 設計流程使後端開發更為順暢
-- 於 Ecowork 擔任 Rails Developer，以 Ruby on Rails 與 Angular.js 進行全端開發並獨立實作客服後台系統
-#### 行動應用與跨平台開發 | Fullinn、CatFi
-- 以 React Native 開發跨平台行動應用程式，使用 Redux、Redux-saga 處理資料流與 Side Effect
-- 引入 Firebase Push Notification 及 Code Push，降低 Deploy 成本並整合推播服務
-- 串接 Streaming 技術（WebRTC、RTMP），研究即時影像傳輸應用
-#### 測試環境與開發流程建置 | Ecowork
-- 研究實作 Cucumber、RSpec 完成客戶測試報告需求，協助 DevOps 同事建立自動測試環境
-- 研究導入 Vagrant 及建置上版作業流程，統一開發環境使新進同仁可迅速上手
+#### 全端產品與雲端開發流程 | Fullinn、myTreat、Ecowork（AWS 代理商）
+- 從 AWS 代理商（Ecowork）的後端開發起步，獨立建置客服後台與自動化測試流程，並於新創期間主導旅宿建站架構、參與訂房系統開發，首位客戶一週內即登上 Google 搜尋第一頁
+- 橫跨 Ruby on Rails、Next.js、React 與 GraphQL 全端開發，協助 DevOps 建置自動測試與統一上版環境（Cucumber / RSpec），並主導初期 REST API 規格設計加速前後端協作
+#### 跨平台手機 App 開發 | Fullinn、CatFi
+- 開發跨平台手機應用程式，整合訊息推播、即時更新與影像串流功能，降低上架與維運成本
+- 使用 React Native、Redux 與 Redux-saga 建構 App，串接 Firebase 推播、Code Push 與 WebRTC / RTMP 影音技術
 
 ## Projects
-### PickleScout — LLM 驅動的 E2E 測試自動生成工具
-- 後端以 Fastify + BullMQ/Redis 建立 job queue，解耦長時間執行的 LLM 生成任務並實作失敗重試與狀態追蹤機制，生成產物同時包含 GitHub Actions workflow，達成 runtime 零 LLM 依賴
-- 設計兩階段 LLM pipeline：browser agent 探索頁面記錄 ActionLog，自動生成 Gherkin feature 與 Playwright 測試腳本
-- 實作 self-healing 機制：測試失敗時自動讓 LLM 修復 selector 與 timeout 後重試，提升生成測試可用率
-- 以 AI-assisted workflow 於一週內完成 POC 並開源，涵蓋 browser agent、LLM pipeline、self-healing 與全端架構
+### TaiwanHaul — 給東南亞旅客的台灣商品與價格指南
+- 打造給東南亞旅客的台灣商品與價格指南（持續迭代中），建立商品搜尋與價格新鮮度管理機制，在缺乏可靠價格時引導使用者至店家查詢
+- 採用 React 前端搭配 Go 搜尋 API，部署於 Cloudflare Workers 與 D1 資料庫，兼顧邊緣低延遲與極低維運成本
+
+### PickleScout — AI 自動化網站測試產生工具
+- 一週內完成並開源的測試輔助工具，讓 AI 先走訪網站自動寫好測試腳本，匯出後日常 CI 執行完全不需再呼叫 AI 模型
+- 後端以 Fastify、BullMQ 與 Redis 建立非同步任務佇列處理重試與狀態追蹤，結合瀏覽器代理與自動修復機制輸出 Gherkin、Playwright 腳本與 GitHub Actions 設定
+
+## Selected Writing
+- [把本機 Agent 記憶接上 Claude 與 ChatGPT 網頁：寫一個 MCP 轉接站的踩坑紀錄](https://joshwang.dev/zh-tw/blog/agent-memory-remote-mcp-gateway)
+- [要 SSR 還是要控制權：我怎麼選 React 框架跟 TypeScript 後端](https://joshwang.dev/zh-tw/blog/react-ssr-backend-tradeoffs)
 
 ## Education
 文藻外語大學　數位內容應用與管理系 —  (2009/09 – 2013/06)
 
 ## Skills
-- **Frontend:** React / Next.js / TypeScript / Redux / Tailwind CSS / Vue 3 / Nuxt.js
-- **Backend:** Node.js / Fastify / Rails / Koa / RESTful API / GraphQL / Redis / BullMQ
-- **Architecture & Infra:** Monorepo / CI/CD / GitHub Actions / GitLab Runner / Docker / AWS
-- **AI Workflow:** Claude Code / MCP / Windsurf
+- **Backend & Database:** Node.js / Fastify / Go / Ruby on Rails / RESTful API / GraphQL / SQL / PostgreSQL / SQLite / Cloudflare D1 / Redis / BullMQ
+- **Frontend:** TypeScript / React / Next.js / Vue 3 / Nuxt.js / Redux / Tailwind CSS
+- **Architecture & Infra:** Monorepo / CI/CD / GitHub Actions / GitLab Runner / Docker / AWS / Cloudflare (Workers / Access)
+- **AI Workflow:** Claude Code / MCP / Playwright MCP / Agent Workflow
 - **Testing:** Playwright / Jest / Cucumber / RSpec
 - **Mobile:** React Native / TestFlight
 
@@ -85,8 +83,8 @@ title: Software Developer
 {
   "name": "Josh Wang",
   "title": "Software Developer",
-  "subtitle": "橫跨前端架構、後端開發與自動化工具鏈的軟體開發者",
-  "heroDescription": "10+ 年軟體開發經驗，橫跨前端架構、Rails / Node.js 後端與自動化工具鏈——畢竟能讓機器穩定重試的事，就不該半夜找人類加班",
+  "subtitle": "橫跨全端系統架構、雲端維運與自動化工具鏈的軟體工程師",
+  "heroDescription": "10+ 年軟體開發經驗，橫跨全端系統架構、Rails / Node.js / Go 後端與自動化工具鏈——畢竟能讓機器穩定重試的事，就不該半夜找人類加班",
   "location": "Taipei, Taiwan",
   "email": "spjay1@gmail.com",
   "site": "joshwang.dev",
@@ -96,22 +94,23 @@ title: Software Developer
     "achievements": "關鍵成果",
     "experience": "工作經歷",
     "projects": "個人專案",
+    "writing": "技術文章",
     "education": "學歷",
     "skills": "技能"
   },
   "summaryLines": [
-    "10+ 年軟體開發經驗，雖然履歷上看來跟前端特別有緣，但從 Rails、Node.js 後端到 AWS 雲端架構都實際滾過一輪",
-    "主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程",
+    "10+ 年軟體開發經驗，從 Rails、Node.js 後端到 AWS 與 Cloudflare 雲端架構都實際滾過一輪，近期也將 Go 應用於個人產品開發",
+    "主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，曾負責招聘與帶領 3–4 人團隊，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程",
     "近期熱衷於把 AI Workflow、測試自動化與開發工具接進日常流程——畢竟能讓機器穩定重試的事，就不該半夜找人類加班"
   ],
   "achievements": [
     [
-      "降低雲端基礎設施成本 90%",
-      "支援全球 50+ 國內部系統"
+      "降低雲端費用 90%，網頁開啟縮短至 1.6 秒",
+      "支援全球 50+ 國系統，主導團隊招聘與架構落地"
     ],
     [
-      "AI 協作 POC 驗證縮短至 1.5 天",
-      "設計 job queue 驅動的 LLM pipeline，實作 self-healing 重試機制"
+      "AI 輔助將新功能雛形驗證縮短至 1.5 天內",
+      "獨立打造全端產品與 AI 自動化開發工具"
     ]
   ],
   "jobs": [
@@ -121,26 +120,24 @@ title: Software Developer
       "period": "2023/06 – 至今",
       "groups": [
         {
-          "subhead": "CI/CD 架構與資安深度優化 | 數據分析新創 (SaaS)",
+          "subhead": "發版流程優化與資安修補 | 數據分析新創 (SaaS)",
           "bullets": [
-            "主導 CI/CD 流程重構，將過度拆分的 5 個分支整併為 2 個，優化 Monorepo 結構有效降低維運負擔",
-            "導入 Claude + Playwright MCP 自動生成 Gherkin 腳本，建立自動化驗收機制，降低 regression risk 並提升 release 穩定性",
-            "針對急迫資安風險進行 Critical Security Patching，修補 CVE-2025-29927 漏洞，強化系統安全等級"
+            "簡化團隊開發與上線流程，把原本過度拆分的 5 條開發線整併為 2 條，大幅降低團隊維運負擔，並建立自動化驗收機制提升發版穩定度",
+            "重整 Monorepo 與 CI/CD 流程，緊急修補 CVE-2025-29927 重大安全漏洞，並導入 Claude 搭配 Playwright MCP 自動產生 Gherkin 驗收測試"
           ]
         },
         {
-          "subhead": "核心地圖系統開發與架構債清理 | 知名房產集團",
+          "subhead": "核心找屋系統開發與翻新 | 知名房產集團",
           "bullets": [
-            "擔任技術主力填補開發缺口，於期限內完成地圖 POI 篩選等複雜互動功能上線",
-            "於既有 codebase 落地 Claude Code + MCP 輔助開發模式，將特定功能 POC 驗證時間從數週縮短至 1.5 天",
-            "主導舊專案模組拆解與重構，從根源解決既有架構之技術債問題"
+            "擔任技術主力支援高流量找屋網站開發，如期上線地圖周邊篩選功能，並將新功能雛形驗證時間縮短至 1.5 天內",
+            "在既有系統導入 Claude Code 與 MCP 輔助開發，快速完成需求整合與 API 串接驗證，同時拆解舊有模組、清理長期累積的架構技術債"
           ]
         },
         {
-          "subhead": "即時交易資訊功能開發 | Vue 3 + Nuxt.js",
+          "subhead": "即時看盤功能擴充 | 金融交易平台",
           "bullets": [
-            "接手既有 Vue 3 + Nuxt 3 + Pinia 專案，於既有架構慣例下擴充即時交易資訊功能",
-            "整合 TradingView Widget 與 ECharts，實作即時股價、最佳五檔行情及數據視覺化"
+            "接手既有交易平台專案，在原有系統架構下順利擴充即時股價與五檔行情查詢功能，並強化使用者權限與資料存取安全",
+            "使用 Vue 3、Nuxt 3 與 Pinia 開發，整合 TradingView Widget 與 ECharts 呈現即時行情與互動圖表，同時優化既有框架的資料存取邏輯"
           ]
         }
       ]
@@ -152,18 +149,18 @@ title: Software Developer
       "borderBottom": false,
       "groups": [
         {
-          "subhead": "ThreatSonar 產品前端架構規劃",
+          "subhead": "資安產品架構規劃（ThreatSonar）",
           "bullets": [
-            "主導前後端分離架構規劃，產出前端技術規格與架構設計文件，作為後續實作依據"
+            "擔任技術策略角色，負責前期可行性驗證與系統規劃，產出技術規格提供 4 人開發小組作為實作依據",
+            "結合過去 Rails 後端開發背景，擔任產品前後端分離架構規劃與技術選型實驗顧問，建立後續開發依據"
           ]
         },
         {
-          "subhead": "官方網站架構規劃與活動頁面（CYBERSEC 2022/2023、InterOp23）",
+          "subhead": "官方網站翻新與大型活動頁（CYBERSEC 2022/2023、InterOp23）",
           "bullets": [
-            "主導雲端架構遷移，以 AWS S3/CloudFront 及 Next.js 取代 Firebase/Cloudinary，降低雲端成本 90% 並提升網站可靠性",
-            "重構 50% 以上舊系統 code，並以 AWS SDK/TypeScript/Pica.js 實作具自動縮圖功能的 file-upload system",
-            "以 Preact.js + Tailwind CSS 開發 CYBERSEC 2022/2023 及 InterOp23 活動頁面，沿用 AWS S3 + CloudFront 部署",
-            "發現外部廠商密碼明碼傳輸及登入權限設計問題，提報後獲得高層關注並推動改善"
+            "主導官網雲端搬遷與翻新，成功降低 90% 雲端費用，網頁開啟速度從 2.47 秒縮短至 1.6 秒，檔案體積從 13.7MB 降至 8.4MB",
+            "以 AWS S3、CloudFront 與 Next.js 取代原有 Firebase 與 Cloudinary，重構超過 50% 舊程式碼並與 MIS 盤點 DNS 紀錄減少重複查詢，同時以 TypeScript 與 AWS SDK 實作自動縮圖上傳系統，沿用同套部署架構交付多場大型活動網站",
+            "主動盤查並發現外部廠商密碼明碼傳輸與權限漏洞，即時提報高層並推動改善"
           ]
         }
       ]
@@ -174,18 +171,17 @@ title: Software Developer
       "period": "2019/05 – 2021/10",
       "groups": [
         {
-          "subhead": "B2B/B2C 後台系統",
+          "subhead": "全球營運後台系統與團隊帶領",
           "bullets": [
-            "採用 React Hooks 及 Context API 領導全新前端架構，並以 WebSocket 實作即時通知，覆蓋全球 50+ 國內部使用者",
-            "使用 Formik、Yup 及 React.memo 設計單頁近百格欄位表單，確保欄位驗證與效能",
-            "於 GitHub Actions 推出時（2019/08）即提案導入並建置 CI/CD 流程，為內部早期採用者"
+            "負責招募 2 位中階工程師並帶領 3–4 人開發小組，主導工作排程、程式碼審查與跨部門溝通，參與跨國伺服器分離規劃，支援全球 50 國以上內部人員日常作業",
+            "以 React 重建後台架構並透過 WebSocket 實作即時通知，提供中國與海外伺服器分離設計建議，設計單頁近百欄位的複雜表單驗證與效能控制，並於 2019 年率先導入 GitHub Actions 建立自動化部署（CI/CD）"
           ]
         },
         {
-          "subhead": "官方網站改版 / 前端成員內部訓練",
+          "subhead": "多語系官方網站改版",
           "bullets": [
-            "接手外部廠商原始 HTML/CSS，於一個月內完成主要技術架構（Next.js、i18n 13 語系）",
-            "推動 Pull Request Code Review 機制，交換技術意見，提升 code 可讀性及確保需求一致性"
+            "接手外部廠商靜態頁面，在一個月內完成 13 種語言的官方網站架構並順利上線",
+            "採用 Next.js 搭配 i18n 多語系架構，兼顧網站載入效能與後續內容維護"
           ]
         }
       ]
@@ -197,43 +193,64 @@ title: Software Developer
       "borderBottom": false,
       "groups": [
         {
-          "subhead": "全端架構與 API 設計 | Fullinn、myTreat、Ecowork",
+          "subhead": "全端產品與雲端開發流程 | Fullinn、myTreat、Ecowork（AWS 代理商）",
           "bullets": [
-            "領導主要前端架構設計，以 Next.js SSR 開發 SEO 導向之旅宿官網建站系統，第一位客戶登陸 Google 後第一週即進入搜尋結果第一頁",
-            "使用 React.js 及 GraphQL 開發 OTA 平台及訂單系統，並主導初期 REST API 格式設計，建構 API 設計流程使後端開發更為順暢",
-            "於 Ecowork 擔任 Rails Developer，以 Ruby on Rails 與 Angular.js 進行全端開發並獨立實作客服後台系統"
+            "從 AWS 代理商（Ecowork）的後端開發起步，獨立建置客服後台與自動化測試流程，並於新創期間主導旅宿建站架構、參與訂房系統開發，首位客戶一週內即登上 Google 搜尋第一頁",
+            "橫跨 Ruby on Rails、Next.js、React 與 GraphQL 全端開發，協助 DevOps 建置自動測試與統一上版環境（Cucumber / RSpec），並主導初期 REST API 規格設計加速前後端協作"
           ]
         },
         {
-          "subhead": "行動應用與跨平台開發 | Fullinn、CatFi",
+          "subhead": "跨平台手機 App 開發 | Fullinn、CatFi",
           "bullets": [
-            "以 React Native 開發跨平台行動應用程式，使用 Redux、Redux-saga 處理資料流與 Side Effect",
-            "引入 Firebase Push Notification 及 Code Push，降低 Deploy 成本並整合推播服務",
-            "串接 Streaming 技術（WebRTC、RTMP），研究即時影像傳輸應用"
-          ]
-        },
-        {
-          "subhead": "測試環境與開發流程建置 | Ecowork",
-          "bullets": [
-            "研究實作 Cucumber、RSpec 完成客戶測試報告需求，協助 DevOps 同事建立自動測試環境",
-            "研究導入 Vagrant 及建置上版作業流程，統一開發環境使新進同仁可迅速上手"
+            "開發跨平台手機應用程式，整合訊息推播、即時更新與影像串流功能，降低上架與維運成本",
+            "使用 React Native、Redux 與 Redux-saga 建構 App，串接 Firebase 推播、Code Push 與 WebRTC / RTMP 影音技術"
           ]
         }
       ]
     }
   ],
   "project": {
-    "title": "PickleScout — LLM 驅動的 E2E 測試自動生成工具",
+    "title": "PickleScout — AI 自動化網站測試產生工具",
     "period": "2026/05",
     "subtitle": "個人開源專案",
     "href": "https://github.com/iskWang/PickleScout",
     "bullets": [
-      "後端以 Fastify + BullMQ/Redis 建立 job queue，解耦長時間執行的 LLM 生成任務並實作失敗重試與狀態追蹤機制，生成產物同時包含 GitHub Actions workflow，達成 runtime 零 LLM 依賴",
-      "設計兩階段 LLM pipeline：browser agent 探索頁面記錄 ActionLog，自動生成 Gherkin feature 與 Playwright 測試腳本",
-      "實作 self-healing 機制：測試失敗時自動讓 LLM 修復 selector 與 timeout 後重試，提升生成測試可用率",
-      "以 AI-assisted workflow 於一週內完成 POC 並開源，涵蓋 browser agent、LLM pipeline、self-healing 與全端架構"
+      "一週內完成並開源的測試輔助工具，讓 AI 先走訪網站自動寫好測試腳本，匯出後日常 CI 執行完全不需再呼叫 AI 模型",
+      "後端以 Fastify、BullMQ 與 Redis 建立非同步任務佇列處理重試與狀態追蹤，結合瀏覽器代理與自動修復機制輸出 Gherkin、Playwright 腳本與 GitHub Actions 設定"
     ]
   },
+  "projects": [
+    {
+      "title": "TaiwanHaul — 給東南亞旅客的台灣商品與價格指南",
+      "period": "2026",
+      "subtitle": "獨立產品 (WIP)",
+      "href": "https://taiwanhaul.com/",
+      "bullets": [
+        "打造給東南亞旅客的台灣商品與價格指南（持續迭代中），建立商品搜尋與價格新鮮度管理機制，在缺乏可靠價格時引導使用者至店家查詢",
+        "採用 React 前端搭配 Go 搜尋 API，部署於 Cloudflare Workers 與 D1 資料庫，兼顧邊緣低延遲與極低維運成本"
+      ]
+    },
+    {
+      "title": "PickleScout — AI 自動化網站測試產生工具",
+      "period": "2026/05",
+      "subtitle": "個人開源專案",
+      "href": "https://github.com/iskWang/PickleScout",
+      "bullets": [
+        "一週內完成並開源的測試輔助工具，讓 AI 先走訪網站自動寫好測試腳本，匯出後日常 CI 執行完全不需再呼叫 AI 模型",
+        "後端以 Fastify、BullMQ 與 Redis 建立非同步任務佇列處理重試與狀態追蹤，結合瀏覽器代理與自動修復機制輸出 Gherkin、Playwright 腳本與 GitHub Actions 設定"
+      ]
+    }
+  ],
+  "writing": [
+    {
+      "title": "把本機 Agent 記憶接上 Claude 與 ChatGPT 網頁：寫一個 MCP 轉接站的踩坑紀錄",
+      "href": "https://joshwang.dev/zh-tw/blog/agent-memory-remote-mcp-gateway"
+    },
+    {
+      "title": "要 SSR 還是要控制權：我怎麼選 React 框架跟 TypeScript 後端",
+      "href": "https://joshwang.dev/zh-tw/blog/react-ssr-backend-tradeoffs"
+    }
+  ],
   "education": {
     "school": "文藻外語大學　數位內容應用與管理系",
     "period": "2009/09 – 2013/06",
@@ -241,20 +258,20 @@ title: Software Developer
   },
   "skills": [
     {
-      "cat": "Frontend",
-      "val": "React / Next.js / TypeScript / Redux / Tailwind CSS / Vue 3 / Nuxt.js"
+      "cat": "Backend & Database",
+      "val": "Node.js / Fastify / Go / Ruby on Rails / RESTful API / GraphQL / SQL / PostgreSQL / SQLite / Cloudflare D1 / Redis / BullMQ"
     },
     {
-      "cat": "Backend",
-      "val": "Node.js / Fastify / Rails / Koa / RESTful API / GraphQL / Redis / BullMQ"
+      "cat": "Frontend",
+      "val": "TypeScript / React / Next.js / Vue 3 / Nuxt.js / Redux / Tailwind CSS"
     },
     {
       "cat": "Architecture & Infra",
-      "val": "Monorepo / CI/CD / GitHub Actions / GitLab Runner / Docker / AWS"
+      "val": "Monorepo / CI/CD / GitHub Actions / GitLab Runner / Docker / AWS / Cloudflare (Workers / Access)"
     },
     {
       "cat": "AI Workflow",
-      "val": "Claude Code / MCP / Windsurf"
+      "val": "Claude Code / MCP / Playwright MCP / Agent Workflow"
     },
     {
       "cat": "Testing",

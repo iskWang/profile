@@ -35,6 +35,20 @@ describe("resume Markdown source", () => {
     for (const post of posts.filter(post => post.data.draft)) expect(llms).not.toContain(post.data.title);
   });
 
+  test("exports both TaiwanHaul and PickleScout for both locales without sharing PickleScout branding", () => {
+    for (const lang of ["zh", "en"]) {
+      const web = toWebContent(resumes[lang]);
+      expect(web.projects.items).toHaveLength(2);
+      const [taiwanHaul, pickleScout] = web.projects.items;
+      expect(taiwanHaul.title).toContain("TaiwanHaul");
+      expect(taiwanHaul.linkType).toBe("web");
+      expect(taiwanHaul.brandImages).toBeNull();
+      expect(pickleScout.title).toContain("PickleScout");
+      expect(pickleScout.linkType).toBe("github");
+      expect(pickleScout.brandImages?.logo).toBe("/picklescout-logo.webp");
+    }
+  });
+
   test("rejects missing front matter", () => {
     expect(() => parseResumeMarkdown("no frontmatter")).toThrow("missing YAML front matter");
   });
