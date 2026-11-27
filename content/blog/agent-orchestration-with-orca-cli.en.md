@@ -1,7 +1,7 @@
 ---
 schema: blog-post
 lang: en
-title: "Orchestrating Subagents with the Orca CLI: No Magic, and Everyone Else Is Doing It Too"
+title: "Jumping Between AI Agents: How Everyone Uses the Orca CLI Too"
 date: 2026-11-27
 summary: Letting a main agent spawn worktrees and tabs via the orca CLI isn't tool-specific magic—here is how it works across Claude Code, Codex, and Antigravity, plus community patterns
 topics:

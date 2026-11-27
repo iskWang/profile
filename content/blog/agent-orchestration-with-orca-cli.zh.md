@@ -1,7 +1,7 @@
 ---
 schema: blog-post
 lang: zh
-title: 讓主 Agent 用 Orca CLI 派工給其他 Subagent：背後沒有黑魔法，社群也都在這樣做
+title: 跟著我的 AI 助理跳來跳去：大家也是這樣用 Orca CLI
 date: 2026-11-27
 summary: 讓主 agent 透過 orca CLI 幫其他 subagent 開 worktree、開分頁並派工，背後其實不是某個工具的專屬魔法；順手查了一圈社群做法，整理這套模式怎麼跨 Claude Code、Codex 跟 Antigravity 共用，以及常見的坑
 topics:
