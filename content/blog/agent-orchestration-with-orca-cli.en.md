@@ -113,12 +113,11 @@ Switching harnesses still requires wiring up each tool's rule-loading and sandbo
 
 ## References
 
-- [Orca](https://orca.dev/)
 - [Orca Documentation](https://orca.dev/docs)
 - [Oh My Pi Documentation](https://omp.sh/docs)
 - [Claude Code Documentation: Memory and CLAUDE.md](https://code.claude.com/docs/en/memory)
 - [Git Documentation: git-worktree](https://git-scm.com/docs/git-worktree)
 - [[omp-orca-mac-mini-notes|Replacing hand-written handoffs with Oh My Pi and Orca for remote coding]]
-- [DEV.to: Orca Explained — The Agent Development Environment for Running AI Coding Agents in Parallel](https://dev.to/arshtechpro/orca-explained-the-agent-development-environment-for-running-ai-coding-agents-in-parallel-440n)
-- [Alex Lavaee: Parallel Agent Sessions & the Infrastructure Gap](https://alexlavaee.me/blog/parallel-agent-sessions-infrastructure-gap/)
+- [DEV.to: Orca: The Agent Development Environment for Running AI Coding Agents in Parallel](https://dev.to/arshtechpro/orca-explained-the-agent-development-environment-for-running-ai-coding-agents-in-parallel-440n)
+- [Alex Lavaee: Designing the Multi-Agent Development Environment](https://alexlavaee.me/blog/parallel-agent-sessions-infrastructure-gap/)
 - [Reddit r/ClaudeCode: My thoughts on Conductor vs Superset vs cmux](https://www.reddit.com/r/ClaudeCode/comments/1rxwkoz/my_thoughts_on_conductor_vs_superset_vs_cmux_vs/)
