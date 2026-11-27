@@ -64,9 +64,9 @@ function cardMarkup(title, fontSize, fontFamily) {
           props: {
             id: 'share-title',
             style: { width: '100%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', fontSize, lineHeight: 1.18 },
-            children: clauses.map(({ text, hasTrailingSpace }) => ({
+            children: clauses.map(({ text, hasTrailingSpace }, index) => ({
               type: 'div',
-              props: { style: { maxWidth: '100%', wordBreak: 'break-word' }, children: hasTrailingSpace ? `${text} ` : text },
+              props: { id: `share-clause-${index}`, style: { maxWidth: '100%', wordBreak: 'break-word' }, children: hasTrailingSpace ? `${text} ` : text },
             })),
           },
         } } },
@@ -83,20 +83,33 @@ export async function renderShareCard({ title, lang }) {
 
   const fonts = await fontsFor(title);
   const fontFamily = fonts.map(({ name }) => name).join(', ');
+  const clauses = splitTitleClauses(title);
   let svg;
-  let titleLayout;
+  let fallbackSvg;
   for (let size = 76; size >= 38; size -= 2) {
-    titleLayout = undefined;
-    svg = await satori(cardMarkup(title, size, fontFamily), {
+    let titleLayout;
+    const clauseLayouts = [];
+    const candidate = await satori(cardMarkup(title, size, fontFamily), {
       ...CARD,
       fonts,
       onNodeDetected(node) {
         if (node.props.id === 'share-title') titleLayout = node;
+        if (typeof node.props.id === 'string' && node.props.id.startsWith('share-clause-')) clauseLayouts.push(node);
       },
     });
-    if (titleLayout && titleLayout.width <= 1024 && titleLayout.height <= 355) break;
-    svg = undefined;
+    if (titleLayout && titleLayout.width <= 1024 && titleLayout.height <= 355) {
+      fallbackSvg ??= candidate;
+      const allClausesSingleLine = clauses.length > 1
+        && clauseLayouts.length === clauses.length
+        && clauseLayouts.every((clause) => clause.height <= size * 1.5);
+      if (clauses.length <= 1 || allClausesSingleLine) {
+        svg = candidate;
+        break;
+      }
+      if (size <= 52) break;
+    }
   }
+  svg ??= fallbackSvg;
   if (!svg) throw new RangeError('Share-card title does not fit in the available title area');
 
   mascotPromise ??= mascotOverlay();

@@ -69,3 +69,10 @@ test('share card breaks CJK title at comma boundary instead of stranding a chara
   // First line must not extend past the first clause (would happen if "直" stayed on line 1).
   assert.ok(full.right <= firstClause.right + 2);
 });
+
+test('share card shrinks slightly so a near-fit CJK clause stays on one line without orphan characters', async () => {
+  const full = await inkBounds(await renderShareCard({ title: '我喜歡叫 AI Agent 跳來跳去，怎麼樣？', lang: 'zh-tw' }));
+  assert.equal(full.outside, 0);
+  // Two clean lines (~160px tall) instead of three wrapped lines (~240px+ tall with orphan "去，").
+  assert.ok(full.bottom - full.top < 200, `expected 2 lines, got height ${full.bottom - full.top}`);
+});
