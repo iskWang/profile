@@ -20,7 +20,7 @@ origin: original
 
 ## 一個好奇的問題：主 Agent 是靠什麼遙控 Orca 的？
 
-之前在[[omp-orca-mac-mini-notes|不用再手寫 handoff 文件：我怎麼用 Oh My Pi 跟 Orca 遠端寫程式]]裡，我記錄了怎麼把 [Orca](https://www.onorca.dev/) 當成遠端盯場跟按確認的入口。後來工作流又往前推了一步：我不再自己手動開分頁、切分支、貼 prompt，而是直接請主 agent（目前常用 Antigravity / agy）幫我開獨立的 Git worktree、叫出 Orca terminal 分頁，再把實作跟獨立 code review 派給底下的 `omp-agent`
+之前在[[omp-orca-mac-mini-notes|不用再手寫 handoff 文件：我怎麼用 Oh My Pi 跟 Orca 遠端寫程式]]裡，我記錄了怎麼把 [Orca](https://orca.dev/) 當成遠端盯場跟按確認的入口。後來工作流又往前推了一步：我不再自己手動開分頁、切分支、貼 prompt，而是直接請主 agent（目前常用 Antigravity / agy）幫我開獨立的 Git worktree、叫出 Orca terminal 分頁，再把實作跟獨立 code review 派給底下的 `omp-agent`
 
 用順了之後突然想到兩個問題：
 
@@ -112,7 +112,7 @@ Orca Runtime（本機工作台）
 
 ## 參考資料
 
-- [Orca 官方網站](https://www.onorca.dev/)
+- [Orca 官方網站](https://orca.dev/)
 - [Orca 官方文件](https://orca.dev/docs)
 - [Oh My Pi 官方文件](https://omp.sh/docs)
 - [Claude Code 官方文件：Memory 與 CLAUDE.md](https://code.claude.com/docs/en/memory)

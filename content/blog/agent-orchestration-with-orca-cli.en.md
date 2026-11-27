@@ -21,7 +21,7 @@ translation: machine-assisted
 
 ## A simple question: how is the main agent controlling Orca?
 
-In [[omp-orca-mac-mini-notes|Replacing hand-written handoffs with Oh My Pi and Orca for remote coding]], I wrote about using [Orca](https://www.onorca.dev/) to monitor sessions and approve commands remotely. Since then, my workflow went one step further: instead of opening tabs, creating branches, and pasting prompts myself, I let a coordinator agent (usually Antigravity / agy) spin up an isolated Git worktree, open Orca terminal tabs, and dispatch implementation and independent code review to `omp-agent` workers
+In [[omp-orca-mac-mini-notes|Replacing hand-written handoffs with Oh My Pi and Orca for remote coding]], I wrote about using [Orca](https://orca.dev/) to monitor sessions and approve commands remotely. Since then, my workflow went one step further: instead of opening tabs, creating branches, and pasting prompts myself, I let a coordinator agent (usually Antigravity / agy) spin up an isolated Git worktree, open Orca terminal tabs, and dispatch implementation and independent code review to `omp-agent` workers
 
 Once that started feeling routine, two questions came up:
 
@@ -113,7 +113,7 @@ Switching harnesses still requires wiring up each tool's rule-loading and sandbo
 
 ## References
 
-- [Orca](https://www.onorca.dev/)
+- [Orca](https://orca.dev/)
 - [Orca Documentation](https://orca.dev/docs)
 - [Oh My Pi Documentation](https://omp.sh/docs)
 - [Claude Code Documentation: Memory and CLAUDE.md](https://code.claude.com/docs/en/memory)
