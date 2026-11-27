@@ -195,7 +195,11 @@ export const CONTENT = {
             "Cloudflare Workers",
             "D1"
           ],
-          "brandImages": null,
+          "brandImages": {
+            "logo": "/taiwanhaul-logo.webp",
+            "label": "TaiwanHaul",
+            "tagline": "給東南亞旅客的台灣商品與價格指南"
+          },
           "highlights": [
             "打造給東南亞旅客的台灣商品與價格指南（持續迭代中），建立商品搜尋與價格新鮮度管理機制，在缺乏可靠價格時引導使用者至店家查詢",
             "採用 React 前端搭配 Go 搜尋 API，部署於 Cloudflare Workers 與 D1 資料庫，兼顧邊緣低延遲與極低維運成本"
@@ -470,7 +474,11 @@ export const CONTENT = {
             "Cloudflare Workers",
             "D1"
           ],
-          "brandImages": null,
+          "brandImages": {
+            "logo": "/taiwanhaul-logo.webp",
+            "label": "TaiwanHaul",
+            "tagline": "Taiwan Shopping & Price Guide"
+          },
           "highlights": [
             "Built a Taiwan product and price guide for Southeast Asian travelers (actively iterating), designing product search and price-freshness workflows that direct users to check in-store when reliable pricing is unavailable",
             "Designed full-stack architecture with a React frontend and Go search API deployed on Cloudflare Workers and D1 for low edge latency and minimal operating cost"

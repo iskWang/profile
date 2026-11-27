@@ -70,7 +70,13 @@ export function toWebContent(resume) {
             slogan: "/picklescout-slogan.webp",
             sloganAlt: "PickleScout — Web Scraping & Data Navigation",
           }
-        : null,
+        : isTaiwanHaul
+          ? {
+              logo: "/taiwanhaul-logo.webp",
+              label: "TaiwanHaul",
+              tagline: isZh ? "給東南亞旅客的台灣商品與價格指南" : "Taiwan Shopping & Price Guide",
+            }
+          : null,
       highlights: proj.bullets,
     };
   });

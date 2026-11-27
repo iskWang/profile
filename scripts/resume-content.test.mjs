@@ -42,7 +42,8 @@ describe("resume Markdown source", () => {
       const [taiwanHaul, pickleScout] = web.projects.items;
       expect(taiwanHaul.title).toContain("TaiwanHaul");
       expect(taiwanHaul.linkType).toBe("web");
-      expect(taiwanHaul.brandImages).toBeNull();
+      expect(taiwanHaul.brandImages?.logo).toBe("/taiwanhaul-logo.webp");
+      expect(taiwanHaul.brandImages?.slogan).toBeUndefined();
       expect(pickleScout.title).toContain("PickleScout");
       expect(pickleScout.linkType).toBe("github");
       expect(pickleScout.brandImages?.logo).toBe("/picklescout-logo.webp");
