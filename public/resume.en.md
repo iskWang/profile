@@ -8,7 +8,7 @@ title: Software Developer
 # Josh Wang — Resume
 
 ## Summary
-- 10+ years of software development experience, rolling up my sleeves across full-stack web systems, Rails / Node.js / Go backends, and AWS / Cloudflare infrastructure
+- 10+ years of software development experience across full-stack web systems, Rails / Node.js backends, and AWS / Cloudflare infrastructure, recently applying Go in independent product development
 - Led architecture for 7+ web systems and 2 mobile apps, hired and led 3–4 person teams, and often step in to untangle legacy debt, monorepos, and CI/CD pipelines
 - Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't wake humans up after hours
 
@@ -31,7 +31,7 @@ Oct 2021 – Jun 2023
 - Acted as a technical strategy advisor handling early feasibility validation and system planning, delivering technical specifications to guide a 4-person engineering team
 - Leveraged prior Rails backend experience to advise on frontend/backend separation architecture and run technical selection experiments as the foundation for implementation
 #### Website Cloud Migration & Event Platforms (CYBERSEC 2022/2023, InterOp23)
-- Led the official website cloud migration and rebuild, cutting cloud costs by 90%, reducing page load time from 2.47s to 1.6s, and shrinking bundle size from 13.7MB to 8.4MB
+- Led the official website cloud migration and rebuild, cutting cloud costs by 90%, reducing page load time from 2.47s to 1.6s, and shrinking total page weight from 13.7MB to 8.4MB
 - Replaced Firebase and Cloudinary with AWS S3, CloudFront, and Next.js, refactored 50%+ of legacy code, audited DNS records with MIS to eliminate redundant queries, built an auto-thumbnail file upload system with TypeScript and AWS SDK, and reused the same static deployment pipeline for major event sites
 - Proactively identified plaintext password transmission and auth flaws in an external vendor system, escalating to leadership to drive remediation
 
@@ -55,7 +55,7 @@ Jul 2014 – Apr 2019
 
 ## Projects
 ### TaiwanHaul — Taiwan Shopping & Price Guide for Southeast Asian Travelers
-- Built a Taiwan must-buy product guide for Southeast Asian travelers (actively iterating), running daily price collection and guiding users to check in-store when reliable pricing is unavailable
+- Built a Taiwan product and price guide for Southeast Asian travelers (actively iterating), designing product search and price-freshness workflows that direct users to check in-store when reliable pricing is unavailable
 - Designed full-stack architecture with a React frontend and Go search API deployed on Cloudflare Workers and D1 for low edge latency and minimal operating cost
 
 ### PickleScout — AI-Driven E2E Website Test Generator
@@ -99,7 +99,7 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
     "skills": "Skills"
   },
   "summaryLines": [
-    "10+ years of software development experience, rolling up my sleeves across full-stack web systems, Rails / Node.js / Go backends, and AWS / Cloudflare infrastructure",
+    "10+ years of software development experience across full-stack web systems, Rails / Node.js backends, and AWS / Cloudflare infrastructure, recently applying Go in independent product development",
     "Led architecture for 7+ web systems and 2 mobile apps, hired and led 3–4 person teams, and often step in to untangle legacy debt, monorepos, and CI/CD pipelines",
     "Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't wake humans up after hours"
   ],
@@ -158,7 +158,7 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
         {
           "subhead": "Website Cloud Migration & Event Platforms (CYBERSEC 2022/2023, InterOp23)",
           "bullets": [
-            "Led the official website cloud migration and rebuild, cutting cloud costs by 90%, reducing page load time from 2.47s to 1.6s, and shrinking bundle size from 13.7MB to 8.4MB",
+            "Led the official website cloud migration and rebuild, cutting cloud costs by 90%, reducing page load time from 2.47s to 1.6s, and shrinking total page weight from 13.7MB to 8.4MB",
             "Replaced Firebase and Cloudinary with AWS S3, CloudFront, and Next.js, refactored 50%+ of legacy code, audited DNS records with MIS to eliminate redundant queries, built an auto-thumbnail file upload system with TypeScript and AWS SDK, and reused the same static deployment pipeline for major event sites",
             "Proactively identified plaintext password transmission and auth flaws in an external vendor system, escalating to leadership to drive remediation"
           ]
@@ -226,7 +226,7 @@ Wenzao Ursuline University of Languages — B.A. Digital Content Application and
       "subtitle": "Independent Product (WIP)",
       "href": "https://taiwanhaul.com/",
       "bullets": [
-        "Built a Taiwan must-buy product guide for Southeast Asian travelers (actively iterating), running daily price collection and guiding users to check in-store when reliable pricing is unavailable",
+        "Built a Taiwan product and price guide for Southeast Asian travelers (actively iterating), designing product search and price-freshness workflows that direct users to check in-store when reliable pricing is unavailable",
         "Designed full-stack architecture with a React frontend and Go search API deployed on Cloudflare Workers and D1 for low edge latency and minimal operating cost"
       ]
     },

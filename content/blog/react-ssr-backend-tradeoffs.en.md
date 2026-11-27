@@ -18,7 +18,7 @@ A lot of React projects today start with `create-next-app` before anyone even fi
 
 I have shipped plenty of Next.js sites in production for marketing websites and hospitality builders. Its SEO story is solid and delivery is fast, so I am not against it at all. After spending years untangling architectural debt for different teams, though, I care much more about one thing: picking a framework is less about how many features come in the box and more about **whose long-term maintenance debt you are signing up to carry**.
 
-That hit home in 2025 when I had to urgently patch Next.js CVE-2025-29927 for a client.
+That hit home in 2025 when I had to urgently patch Next.js CVE-2025-29927 (a middleware authorization bypass vulnerability) for a client. That bug was not caused by SSR itself, of course, but it was a sharp reminder that every extra framework server layer you adopt adds another surface you have to patch under pressure.
 
 If a system does not even need SEO, pulling in an entire SSR server layer, framework caching rules, and upgrade pressure just because "everyone uses it" means you are the one waking up to put out the fire when a critical vulnerability drops.
 
@@ -76,7 +76,7 @@ My preference is simple: I do not enjoy writing layers of classes, decorators, a
 
 Fastify sits right in my sweet spot. Routing, plugins, structured logging, and performance are already solid out of the box, without forcing a rigid programming style on the rest of the codebase.
 
-The downside is obvious too: high freedom means re-picking database and auth tools on every new project gets tiring. My fix is keeping one small, repeatable starter template (Fastify with Zod validation, Drizzle for SQL and migrations, and Better Auth when login is needed) so flexibility turns into a consistent default.
+The downside is obvious too: high freedom means re-picking database and auth tools on every new project gets tiring. My fix is keeping one small, repeatable starter template (Fastify with Zod validation, Drizzle for SQL and migrations, and Better Auth when login is needed) so flexibility turns into a consistent default — while remembering that Better Auth handles authentication (who you are), not authorization (what you are allowed to do).
 
 One side note on authentication: I now try to avoid locking core login into a single external vendor. I have been burned by an Auth0 outage that left the system stuck waiting, so whenever practical, I prefer keeping critical dependencies within boundaries I can control.
 

@@ -22,7 +22,11 @@
 
 Taipei, Taiwan
 
-10+ years of software development experience, rolling up my sleeves across full-stack web systems, Rails / Node.js / Go backends, and AWS / Cloudflare infrastructure Led architecture for 7+ web systems and 2 mobile apps, hired and led 3–4 person teams, and often step in to untangle legacy debt, monorepos, and CI/CD pipelines Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't wake humans up after hours
+10+ years of software development experience across full-stack web systems, Rails / Node.js backends, and AWS / Cloudflare infrastructure, recently applying Go in independent product development
+
+Led architecture for 7+ web systems and 2 mobile apps, hired and led 3–4 person teams, and often step in to untangle legacy debt, monorepos, and CI/CD pipelines
+
+Lately focused on developer tooling, test automation, and AI workflows — mostly because tasks that can reliably retry in a queue shouldn't wake humans up after hours
 
 ### Experience
 - **Full-Stack Engineer** — Independent (Jun 2023 – Present)
@@ -36,7 +40,11 @@ Taipei, Taiwan
 
 Taipei, Taiwan
 
-10+ 年軟體開發經驗，從 Rails、Node.js、Go 後端到 AWS 與 Cloudflare 雲端架構都實際滾過一輪 主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，曾負責招聘與帶領 3–4 人團隊，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程 近期熱衷於把 AI Workflow、測試自動化與開發工具接進日常流程——畢竟能讓機器穩定重試的事，就不該半夜找人類加班
+10+ 年軟體開發經驗，從 Rails、Node.js 後端到 AWS 與 Cloudflare 雲端架構都實際滾過一輪，近期也將 Go 應用於個人產品開發
+
+主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，曾負責招聘與帶領 3–4 人團隊，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程
+
+近期熱衷於把 AI Workflow、測試自動化與開發工具接進日常流程——畢竟能讓機器穩定重試的事，就不該半夜找人類加班
 
 ### 工作經歷
 - **Full-Stack Engineer** — Independent (2023/06 – 至今)

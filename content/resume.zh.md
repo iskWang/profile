@@ -8,7 +8,7 @@ title: Software Developer
 # Josh Wang — 履歷
 
 ## Summary
-- 10+ 年軟體開發經驗，從 Rails、Node.js、Go 後端到 AWS 與 Cloudflare 雲端架構都實際滾過一輪
+- 10+ 年軟體開發經驗，從 Rails、Node.js 後端到 AWS 與 Cloudflare 雲端架構都實際滾過一輪，近期也將 Go 應用於個人產品開發
 - 主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，曾負責招聘與帶領 3–4 人團隊，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程
 - 近期熱衷於把 AI Workflow、測試自動化與開發工具接進日常流程——畢竟能讓機器穩定重試的事，就不該半夜找人類加班
 
@@ -55,7 +55,7 @@ title: Software Developer
 
 ## Projects
 ### TaiwanHaul — 給東南亞旅客的台灣商品與價格指南
-- 打造給東南亞觀光客的台灣必買商品指南（持續迭代中），每日自動蒐集最新價格，遇到缺漏價格時主動引導去店家查詢，避免過時資訊誤導
+- 打造給東南亞旅客的台灣商品與價格指南（持續迭代中），建立商品搜尋與價格新鮮度管理機制，在缺乏可靠價格時引導使用者至店家查詢
 - 採用 React 前端搭配 Go 搜尋 API，部署於 Cloudflare Workers 與 D1 資料庫，兼顧邊緣低延遲與極低維運成本
 
 ### PickleScout — AI 自動化網站測試產生工具
@@ -99,7 +99,7 @@ title: Software Developer
     "skills": "技能"
   },
   "summaryLines": [
-    "10+ 年軟體開發經驗，從 Rails、Node.js、Go 後端到 AWS 與 Cloudflare 雲端架構都實際滾過一輪",
+    "10+ 年軟體開發經驗，從 Rails、Node.js 後端到 AWS 與 Cloudflare 雲端架構都實際滾過一輪，近期也將 Go 應用於個人產品開發",
     "主導過 7 個以上 Web 系統與 2 個 Mobile App 架構，曾負責招聘與帶領 3–4 人團隊，習慣在既有系統裡拆解技術債、重整 Monorepo 與 CI/CD 流程",
     "近期熱衷於把 AI Workflow、測試自動化與開發工具接進日常流程——畢竟能讓機器穩定重試的事，就不該半夜找人類加班"
   ],
@@ -226,7 +226,7 @@ title: Software Developer
       "subtitle": "獨立產品 (WIP)",
       "href": "https://taiwanhaul.com/",
       "bullets": [
-        "打造給東南亞觀光客的台灣必買商品指南（持續迭代中），每日自動蒐集最新價格，遇到缺漏價格時主動引導去店家查詢，避免過時資訊誤導",
+        "打造給東南亞旅客的台灣商品與價格指南（持續迭代中），建立商品搜尋與價格新鮮度管理機制，在缺乏可靠價格時引導使用者至店家查詢",
         "採用 React 前端搭配 Go 搜尋 API，部署於 Cloudflare Workers 與 D1 資料庫，兼顧邊緣低延遲與極低維運成本"
       ]
     },

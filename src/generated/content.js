@@ -186,14 +186,36 @@ export const CONTENT = {
       "subtitle": "// Side projects & Open source",
       "items": [
         {
+          "title": "TaiwanHaul — 給東南亞旅客的台灣商品與價格指南",
+          "url": "https://taiwanhaul.com/",
+          "linkType": "web",
+          "tags": [
+            "React",
+            "Go",
+            "Cloudflare Workers",
+            "D1"
+          ],
+          "brandImages": null,
+          "highlights": [
+            "打造給東南亞旅客的台灣商品與價格指南（持續迭代中），建立商品搜尋與價格新鮮度管理機制，在缺乏可靠價格時引導使用者至店家查詢",
+            "採用 React 前端搭配 Go 搜尋 API，部署於 Cloudflare Workers 與 D1 資料庫，兼顧邊緣低延遲與極低維運成本"
+          ]
+        },
+        {
           "title": "PickleScout — AI 自動化網站測試產生工具",
           "url": "https://github.com/iskWang/PickleScout",
+          "linkType": "github",
           "tags": [
             "AI Agent",
             "E2E Testing",
             "LLM",
             "Open Source"
           ],
+          "brandImages": {
+            "logo": "/picklescout-logo.webp",
+            "slogan": "/picklescout-slogan.webp",
+            "sloganAlt": "PickleScout — Web Scraping & Data Navigation"
+          },
           "highlights": [
             "一週內完成並開源的測試輔助工具，讓 AI 先走訪網站自動寫好測試腳本，匯出後日常 CI 執行完全不需再呼叫 AI 模型",
             "後端以 Fastify、BullMQ 與 Redis 建立非同步任務佇列處理重試與狀態追蹤，結合瀏覽器代理與自動修復機制輸出 Gherkin、Playwright 腳本與 GitHub Actions 設定"
@@ -321,7 +343,7 @@ export const CONTENT = {
           "highlights": [
             "Acted as a technical strategy advisor handling early feasibility validation and system planning, delivering technical specifications to guide a 4-person engineering team",
             "Leveraged prior Rails backend experience to advise on frontend/backend separation architecture and run technical selection experiments as the foundation for implementation",
-            "Led the official website cloud migration and rebuild, cutting cloud costs by 90%, reducing page load time from 2.47s to 1.6s, and shrinking bundle size from 13.7MB to 8.4MB",
+            "Led the official website cloud migration and rebuild, cutting cloud costs by 90%, reducing page load time from 2.47s to 1.6s, and shrinking total page weight from 13.7MB to 8.4MB",
             "Replaced Firebase and Cloudinary with AWS S3, CloudFront, and Next.js, refactored 50%+ of legacy code, audited DNS records with MIS to eliminate redundant queries, built an auto-thumbnail file upload system with TypeScript and AWS SDK, and reused the same static deployment pipeline for major event sites",
             "Proactively identified plaintext password transmission and auth flaws in an external vendor system, escalating to leadership to drive remediation"
           ],
@@ -336,7 +358,7 @@ export const CONTENT = {
             {
               "title": "Website Cloud Migration & Event Platforms (CYBERSEC 2022/2023, InterOp23)",
               "highlights": [
-                "Led the official website cloud migration and rebuild, cutting cloud costs by 90%, reducing page load time from 2.47s to 1.6s, and shrinking bundle size from 13.7MB to 8.4MB",
+                "Led the official website cloud migration and rebuild, cutting cloud costs by 90%, reducing page load time from 2.47s to 1.6s, and shrinking total page weight from 13.7MB to 8.4MB",
                 "Replaced Firebase and Cloudinary with AWS S3, CloudFront, and Next.js, refactored 50%+ of legacy code, audited DNS records with MIS to eliminate redundant queries, built an auto-thumbnail file upload system with TypeScript and AWS SDK, and reused the same static deployment pipeline for major event sites",
                 "Proactively identified plaintext password transmission and auth flaws in an external vendor system, escalating to leadership to drive remediation"
               ]
@@ -439,14 +461,36 @@ export const CONTENT = {
       "subtitle": "// Side projects & Open source",
       "items": [
         {
+          "title": "TaiwanHaul — Taiwan Shopping & Price Guide for Southeast Asian Travelers",
+          "url": "https://taiwanhaul.com/",
+          "linkType": "web",
+          "tags": [
+            "React",
+            "Go",
+            "Cloudflare Workers",
+            "D1"
+          ],
+          "brandImages": null,
+          "highlights": [
+            "Built a Taiwan product and price guide for Southeast Asian travelers (actively iterating), designing product search and price-freshness workflows that direct users to check in-store when reliable pricing is unavailable",
+            "Designed full-stack architecture with a React frontend and Go search API deployed on Cloudflare Workers and D1 for low edge latency and minimal operating cost"
+          ]
+        },
+        {
           "title": "PickleScout — AI-Driven E2E Website Test Generator",
           "url": "https://github.com/iskWang/PickleScout",
+          "linkType": "github",
           "tags": [
             "AI Agent",
             "E2E Testing",
             "LLM",
             "Open Source"
           ],
+          "brandImages": {
+            "logo": "/picklescout-logo.webp",
+            "slogan": "/picklescout-slogan.webp",
+            "sloganAlt": "PickleScout — Web Scraping & Data Navigation"
+          },
           "highlights": [
             "Built and open-sourced a test generation tool in one week where an AI agent explores a site to produce test suites, while exported daily CI runs require zero AI model calls",
             "Engineered a Fastify, BullMQ, and Redis job queue for retries and status tracking, pairing a browser agent with self-healing logic to export Gherkin specs, Playwright tests, and GitHub Actions workflows"
