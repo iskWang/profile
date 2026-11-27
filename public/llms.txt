@@ -54,6 +54,8 @@ Taipei, Taiwan
 
 ## Recent blog posts
 
+- [我喜歡叫 AI Agent 跳來跳去，怎麼樣？](https://joshwang.dev/zh-tw/blog/agent-orchestration-with-orca-cli.md) (2026-11-27) — 透過 Orca CLI 與 Markdown Skills，把指揮者跟實作者拆開，讓 Antigravity、Claude Code、Codex 都能接手同一套工作流；順手記錄跨工具載入規則的差異、幾款類似工具的做法，以及實戰踩過的坑
+- [I Like Making AI Agents Jump Around — Orchestrating Agents with Orca CLI](https://joshwang.dev/en/blog/agent-orchestration-with-orca-cli.md) (2026-11-27) — Using the Orca CLI and Markdown skills decouples the coordinator from worker agents across Antigravity, Claude Code, and Codex—plus rule-loading quirks, similar tools, and gotchas
 - [清邁十天，不想當觀光客但省下的錢都花在 Grab 跟走路](https://joshwang.dev/zh-tw/blog/chiang-mai-10-day-solo-trip-grab-and-walking.md) (2026-11-16) — 再訪清邁短住十天，原本以為住宿與日常開銷能比曼谷省一點，結果少了捷運網路後，省下的錢跟體力全都變成了 Grab 車資與烈日下的步數
 - [Ten Days in Chiang Mai: Trying Not to Be a Tourist, Only to Spend Everything I Saved on Grab and Walking](https://joshwang.dev/en/blog/chiang-mai-10-day-solo-trip-grab-and-walking.md) (2026-11-16) — Returning to Chiang Mai for a ten-day stay, I thought I would save money compared to Bangkok, only to trade the difference for Grab rides and long walks in the heat
 - [I Thought Threads Was Right Until I Hit a Snag](https://joshwang.dev/en/blog/threads-credibility-halo-pitfalls.md) (2026-11-16) — I saw confident social-media advice and thought I could copy it. But what looks good on someone else may not fit me, and a smooth read doesn't mean they've tested the pitfalls for me
